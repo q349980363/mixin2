@@ -214,11 +214,10 @@ func (hubS *HubSession) EmptyGroup() error {
 	hubS.lock.Unlock()
 	return nil
 }
-
-func (hubS *HubSession) WriteAlert(txt string) {
+func (hubS *HubSession) CallFunction(name string, args ...interface{}) {
 	hubS.WriteJson(gin.H{
-		"type": "alert",
-		"data": txt,
+		"type": "call",
+		"args": args,
 	})
 }
 
