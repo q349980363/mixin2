@@ -1,4 +1,4 @@
-# mixin-vue3
+# hello-world
 
 ## Project setup
 ```

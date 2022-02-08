@@ -22,18 +22,20 @@ type Hub struct {
 	session__GroupToSession    map[string][]*HubSession
 	session__SessionToUserInfo map[*melody.Session]*HubSession
 }
-type handleMessageFunc func(*HubSession, string, map[string]string)
+type handleMessageFunc func(*HubSession, string, map[string]interface{})
 type handleSessionFunc func(*HubSession)
 
 func NewHub() *Hub {
-	hub := &Hub{}
-	hub.m = melody.New()
-	hub.lock = new(sync.Mutex)
+	hub := &Hub{
+		m:                          melody.New(),
+		lock:                       new(sync.Mutex),
+		session__SessionToUserInfo: make(map[*melody.Session]*HubSession),
+		session__GroupToSession:    make(map[string][]*HubSession),
+	}
 	hub.m.HandleConnect(hub.handleConnect)
 	hub.m.HandleMessage(hub.handleMessage)
 	hub.m.HandleDisconnect(hub.handleDisconnect)
-	hub.session__SessionToUserInfo = make(map[*melody.Session]*HubSession)
-	hub.session__GroupToSession = make(map[string][]*HubSession)
+
 	return hub
 }
 
@@ -51,9 +53,9 @@ func (hub *Hub) handleConnect(s *melody.Session) {
 		hubS.UserInfo = userInfo
 	}
 	s.Keys["session"] = hubS
-	// hub.lock.Lock()
-	// hub.session__SessionToUserInfo[s] = hubS
-	// hub.lock.Unlock()
+	hub.lock.Lock()
+	hub.session__SessionToUserInfo[s] = hubS
+	hub.lock.Unlock()
 }
 
 func (hub *Hub) handleAuthorization(token string) (*UserInfo, bool) {
@@ -64,18 +66,18 @@ func (hub *Hub) handleAuthorization(token string) (*UserInfo, bool) {
 }
 
 func (hub *Hub) handleMessage(s *melody.Session, bytes []byte) {
-	requestData := make(map[string]string)
+	requestData := make(map[string]interface{})
 	_ = json.Unmarshal(bytes, &requestData)
 	hubS := s.Keys["session"].(*HubSession)
-	hub.messageHandler(hubS, requestData["type"], requestData)
+	hub.messageHandler(hubS, requestData["type"].(string), requestData)
 }
 
 func (hub *Hub) handleDisconnect(s *melody.Session) {
-	// hub.lock.Lock()
-	// delete(hub.session__SessionToUserInfo, s)
-	// hub.lock.Unlock()
 	hubS := s.Keys["session"].(*HubSession)
-	hubS.EmptyGroup()
+	hub.lock.Lock()
+	delete(hub.session__SessionToUserInfo, s)
+	hubS.EmptyGroupUnlock()
+	hub.lock.Unlock()
 }
 
 func (hub *Hub) HandleRequest(c *gin.Context) {
@@ -201,19 +203,17 @@ func (hubS *HubSession) DelGroup(name string) error {
 	return err
 }
 
-func (hubS *HubSession) EmptyGroup() error {
-	hubS.lock.Lock()
+func (hubS *HubSession) EmptyGroupUnlock() error {
 	groups := hubS.Groups
 	for _, g := range groups {
 		err := hubS.DelGroupUnlock(g)
 		if err != nil {
-			hubS.lock.Unlock()
 			return err
 		}
 	}
-	hubS.lock.Unlock()
 	return nil
 }
+
 func (hubS *HubSession) CallFunction(name string, args ...interface{}) {
 	hubS.WriteJson(gin.H{
 		"type": "call",
@@ -228,14 +228,39 @@ func (hubS *HubSession) WriteLog(v interface{}) {
 	})
 }
 
-func (hubS *HubSession) WriteObj(txt string, v interface{}) {
-	json, _ := json.Marshal(v)
-	hubS.s.Write(json)
+func (hubS *HubSession) WriteError(code int, v interface{}) {
+	hubS.WriteJson(gin.H{
+		"type":    "error",
+		"error":   code,
+		"message": v,
+	})
 }
 
 func (hubS *HubSession) WriteJson(v interface{}) {
 	json, _ := json.Marshal(v)
 	hubS.s.Write(json)
+}
+
+func (hubS *HubSession) Call(fnName string, args []interface{}) {
+
+}
+
+func (s *HubSession) functionReturn(request map[string]interface{}, response interface{}) {
+	requestId := request["id"].(int)
+	s.WriteJson(gin.H{
+		"type":     "functionReturn",
+		"id":       requestId,
+		"response": response,
+	})
+}
+
+func (s *HubSession) functionReturnError(request map[string]interface{}, response interface{}) {
+	requestId := request["id"].(int)
+	s.WriteJson(gin.H{
+		"type":     "functionReturnError",
+		"id":       requestId,
+		"response": response,
+	})
 }
 
 func (hubS *HubSession) Close() {

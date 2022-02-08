@@ -12,10 +12,7 @@ import (
 	"gopkg.in/olahol/melody.v1"
 )
 
-var qqWry QQwry
-
-// 初始化纯真IP库
-func init_qqwry() {
+func init() {
 	log.Println("初始化IP数据库,有可能时间较长.")
 	datFile := flag.String("qqwry", "./qqwry.dat", "纯真 IP 库的地址")
 	IPData.FilePath = *datFile
@@ -28,6 +25,8 @@ func init_qqwry() {
 	qqWry = NewQQwry()
 	log.Println("初始化IP数据库完毕.")
 }
+
+var qqWry QQwry
 
 // 通过 melody.Session 获取ip地理位置.
 func getIpAddr_melody(s *melody.Session) (string, string) {

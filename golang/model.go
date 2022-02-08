@@ -15,16 +15,6 @@ type UserInfo struct {
 	Tags     string
 }
 
-//基础消息
-type Chat struct {
-	gorm.Model
-	Type     string
-	Data     string
-	UserName string
-	Ip       string
-	IpAddr   string
-}
-
 //系统消息       [加好用申请|加群申请] 等
 type SystemChat struct {
 	gorm.Model
@@ -40,7 +30,7 @@ type SystemChat struct {
 	Operation string //是否可操作以及操作类型[""|"ok"|"ok_no"]
 }
 
-//基础消息
+//好友消息
 type FriendsChat struct {
 	gorm.Model
 	Type     string //消息类型
