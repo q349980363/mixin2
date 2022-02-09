@@ -1,0 +1,15 @@
+<svg id="personal-checked" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="39" viewBox="0 0 60 39">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="矩形_42" data-name="矩形 42" width="20" height="20" fill="#007bff"/>
+    </clipPath>
+  </defs>
+  <rect id="矩形-我的" width="60" height="39" fill="none"/>
+  <g id="组-我的" transform="translate(20)">
+    <g id="组_20" data-name="组 20" clip-path="url(#clip-path)">
+      <path id="路径_16" data-name="路径 16" d="M121.71,10.8a5.4,5.4,0,1,1,5.366-5.407A5.41,5.41,0,0,1,121.71,10.8m0-9.121a3.706,3.706,0,1,0,3.675,3.7,3.7,3.7,0,0,0-3.675-3.7" transform="translate(-111.71)" fill="#007bff"/>
+      <path id="路径_17" data-name="路径 17" d="M20,237.42H0v-.855a10,10,0,1,1,20,0ZM1.724,235.727H18.276a8.315,8.315,0,0,0-16.553,0" transform="translate(0 -217.42)" fill="#007bff"/>
+    </g>
+  </g>
+  <text id="我的" transform="translate(30 36)" fill="#007bff" font-size="12" font-family="MicrosoftYaHei-Bold, Microsoft YaHei" font-weight="700" letter-spacing="0.2em"><tspan x="-13.2" y="0">我的</tspan></text>
+</svg>

@@ -1,0 +1,24 @@
+<svg id="news-unchecked" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="39" viewBox="0 0 60 39">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="矩形_40" data-name="矩形 40" width="19.947" height="20" fill="#515151"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="矩形_41" data-name="矩形 41" width="20" height="20" fill="#515151"/>
+    </clipPath>
+  </defs>
+  <rect id="矩形-消息" width="60" height="39" fill="none"/>
+  <g id="组-消息" transform="translate(20)">
+    <g id="组_16" data-name="组 16">
+      <g id="组_15" data-name="组 15" clip-path="url(#clip-path)">
+        <path id="路径_14" data-name="路径 14" d="M9.974.858C4.491.858,0,4.675,0,9.451L0,9.6a8.565,8.565,0,0,0,5.426,7.5l.107.046v2.89l0,.059a.767.767,0,0,0,1.226.554l3.471-2.611.067,0c5.334-.148,9.646-3.908,9.646-8.588,0-4.776-4.491-8.593-9.974-8.593m0,1.534c4.686,0,8.44,3.19,8.44,7.058s-3.753,7.058-8.44,7.058l-.071,0a.768.768,0,0,0-.39.151L7.07,18.5V16.629a.767.767,0,0,0-.5-.72c-3.047-1.128-5.034-3.655-5.034-6.459,0-3.868,3.753-7.058,8.44-7.058" transform="translate(0 -0.834)" fill="#515151"/>
+      </g>
+    </g>
+    <g id="组_18" data-name="组 18">
+      <g id="组_17" data-name="组 17" clip-path="url(#clip-path-2)">
+        <path id="路径_15" data-name="路径 15" d="M150.938,328.538a.77.77,0,0,1,.684.416l-.037-.054a4.479,4.479,0,0,0,3.73,2.129l.139,0v1.534a6.009,6.009,0,0,1-5.079-2.709l-.08-.121,0,0a.767.767,0,0,1,.64-1.194" transform="translate(-145.938 -319.307)" fill="#515151"/>
+      </g>
+    </g>
+  </g>
+  <text id="消息" transform="translate(30 36)" fill="#515151" font-size="12" font-family="MicrosoftYaHei, Microsoft YaHei" letter-spacing="0.2em"><tspan x="-13.2" y="0">消息</tspan></text>
+</svg>
