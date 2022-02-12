@@ -6,7 +6,7 @@
     <div class="login-pass">
       <input type="password" placeholder="密码" />
     </div>
-    <router-link to="/new">
+    <router-link :to="{ name: 'MessageList' }">
       <button class="login-but">登录</button></router-link
     >
     <div class="login-reg">

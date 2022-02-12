@@ -2,19 +2,19 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Home from "../views/Home.vue";
 
 const routes: Array<RouteRecordRaw> = [
-  // {
-  //   path: "/",
-  //   name: "Home",
-  //   component: Home,
-  // },
   {
     path: "/",
-    name: "main",
+    name: "Default",
     redirect: (to) => {
-      return "/login";
+      //TODO 做权限判定,如果已经登录直接跳转至home
+      //如果未登录跳转至其他页面
+      return "login";
     },
-    // component: () => import("../views/Login.vue"),
+    meta: {
+      login: false,
+    },
   },
+
   {
     path: "/login",
     name: "Login",
@@ -23,6 +23,7 @@ const routes: Array<RouteRecordRaw> = [
       login: false,
     },
   },
+
   {
     path: "/register",
     name: "Register",
@@ -31,30 +32,65 @@ const routes: Array<RouteRecordRaw> = [
       login: false,
     },
   },
+
   {
-    path: "/personal",
-    name: "Personal",
-    component: () => import("../views/Personal.vue"),
+    path: "/homenav",
+    name: "HomeNav",
+    component: import("../views/HomeNavigation.vue"),
+    children: [
+      {
+        path: "/homenav/messagelist",
+        name: "MessageList",
+        alias: ["/homenav"],
+        component: import("../views/MessageList.vue"),
+      },
+      {
+        path: "/homenav/users",
+        name: "Users",
+        component: import("../views/Users.vue"),
+      },
+      {
+        path: "/homenav/my",
+        name: "My",
+        component: import("../views/My.vue"),
+      },
+    ],
+  },
+
+  {
+    path: "/searchusers",
+    name: "SearchUsers",
+    component: () => import("../views/SearchUsers.vue"),
   },
   {
-    path: "/new",
-    name: "New",
-    component: () => import("../views/New.vue"),
+    path: "/addusers",
+    name: "AddUsers",
+    component: () => import("../views/AddUsers.vue"),
   },
   {
-    path: "/contacts",
-    name: "Contacts",
-    component: () => import("../views/Contacts.vue"),
+    path: "/systemnotice",
+    name: "SystemNotice",
+    component: () => import("../views/SystemNotice.vue"),
   },
   {
-    path: "/search",
-    name: "Search",
-    component: () => import("../views/Search.vue"),
+    path: "/userchat",
+    name: "UserChat",
+    component: () => import("../views/UserChat.vue"),
   },
   {
-    path: "/chatpage",
-    name: "Chatpage",
-    component: () => import("../views/Chatpage.vue"),
+    path: "/group",
+    name: "Group",
+    component: () => import("../views/Group.vue"),
+  },
+  {
+    path: "/groupchat",
+    name: "GroupChat",
+    component: () => import("../views/GroupChat.vue"),
+  },
+  {
+    path: "/creategroup",
+    name: "Creategroup",
+    component: () => import("../views/Creategroup.vue"),
   },
 ];
 

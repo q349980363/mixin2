@@ -1,16 +1,16 @@
 <template>
     <!-- 搜索页 -->
-    <div class="search">
-      <div class="search-case">
+    <div class="SearchUsers">
+      <div class="SearchUsers-case">
         <img src="../assets/images/search.svg" alt="" />
         <input type="text" placeholder="搜索" />
-        <a href="#">取消</a>
+        <router-link to="/homenav/contacts">取消</router-link>
       </div>
     </div>
 </template>
 
 <style scoped>
-.search-case {
+.SearchUsers-case {
     position: relative;
     display: flex;
     align-items: center;
@@ -19,11 +19,11 @@
     height: 45px;
     /* border: 1px solid #000; */
 }
-.search-case img{
+.SearchUsers-case img{
     position: absolute;
     left: 20px;
 }
-.search-case input{
+.SearchUsers-case input{
     flex:1;
     height:36px;
     border-radius: 5px;
@@ -32,7 +32,7 @@
     border:none;
 }
 
-.search-case a{
+.SearchUsers-case a{
     width:35px;
     margin-left: 5px;
     font-size: 16px;

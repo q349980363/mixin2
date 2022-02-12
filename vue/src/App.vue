@@ -4,7 +4,9 @@
     <router-link to="/about">About</router-link> |
     <router-link to="/login">Login</router-link>
   </div> -->
-  <router-view />
+  <keep-alive>
+    <router-view />
+  </keep-alive>
 </template>
 
 <style lang="less">
