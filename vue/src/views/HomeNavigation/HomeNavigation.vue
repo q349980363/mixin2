@@ -15,11 +15,7 @@ import BottomNavigationBar from "@/components/BottomNavigationBar.vue"; // @ is 
   },
 })
 export default class HomeNavigation extends Vue {
-  //   msg!: string;
 
-  a() {
-    this.$router.go(-1);
-  }
 }
 </script>
 

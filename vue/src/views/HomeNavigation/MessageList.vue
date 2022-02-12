@@ -3,15 +3,27 @@
   <div class="messagelist">
     <TopBar title="消息">
       <!-- 添加 -->
-      <PopupMenu :src="require('@/assets/images/add.svg')">
-        <div class="searchusers-group">
-          <img src="../assets/images/group.svg" alt="" />
-          <div>创建群聊</div>
-        </div>
-        <div class="searchusers-users">
-          <img src="../assets/images/users.svg" alt="" />
+      <PopupMenu :show="false" :src="require('@/assets/images/add.svg')">
+        <PopupMenuItem
+          :src="require('@/assets/images/group.svg')"
+          title="添加群"
+        />
+          <PopupMenuItem
+          :src="require('@/assets/images/users.svg')"
+          title="添加朋友"
+        />
+          <PopupMenuItem
+          :src="require('@/assets/images/users.svg')"
+          title="添加朋友"
+        />
+          <PopupMenuItem
+          :src="require('@/assets/images/users.svg')"
+          title="添加朋友"
+        />
+        <!-- <div class="searchusers-users">
+          <img src="@/assets/images/users.svg" alt="" />
           <div>添加朋友</div>
-        </div>
+        </div> -->
       </PopupMenu>
     </TopBar>
 
@@ -23,7 +35,7 @@
         :key="i"
       >
         <div class="messagelist-head">
-          <img src="../assets/images/nan.svg" alt="" />
+          <img src="@/assets/images/nan.svg" alt="" />
         </div>
         <div class="messagelist-body">
           <div class="body-left">
@@ -36,7 +48,7 @@
         </div>
       </router-link>
 
-      <router-link to="/chatpage" class="messagelist-talk">
+      <!-- <router-link to="/userchat" class="messagelist-talk">
         <div class="messagelist-head">
           <img src="../assets/images/nan1.svg" alt="" />
         </div>
@@ -49,7 +61,7 @@
             <div>上午9:41</div>
           </div>
         </div>
-      </router-link>
+      </router-link> -->
     </div>
   </div>
 </template>
@@ -59,12 +71,13 @@ import { Options, Vue } from "vue-class-component";
 import BottomNavigationBar from "@/components/BottomNavigationBar.vue";
 import TopBar from "@/components/TopBar.vue";
 import PopupMenu from "@/components/PopupMenu.vue";
-//  require  addSvg from "../assets/images/add.svg";
+import PopupMenuItem from "@/components/PopupMenuItem.vue";
 @Options({
   components: {
     BottomNavigationBar,
     TopBar,
     PopupMenu,
+    PopupMenuItem,
   },
 })
 export default class New extends Vue {
@@ -73,6 +86,16 @@ export default class New extends Vue {
 </script>
 
 <style scoped>
+/* .searchusers {
+  display: flex;
+  flex-direction: column;
+  width: 120px;
+  height: 80px;
+  background-color: #6d6d6d;
+  color: #ffffff;
+  border-radius: 5px;
+} */
+
 .messagelist {
   /* 父元素必须也有边框自动,子元素才能生效,不知道是为什么 */
   overflow-y: auto;

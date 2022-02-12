@@ -1,9 +1,9 @@
 <template>
   <!-- 聊天页 -->
   <div class="userchat">
-    <TopBarBack title="Mg">
-      <img src="../assets/images/more.svg" alt="" />
-    </TopBarBack>
+    <BaseTopBarBack title="Mg">
+      <img src="@/assets/images/more.svg" alt="" />
+    </BaseTopBarBack>
     <div class="userchat-body">
       <div class="userchat-body-my" v-for="i in 10" :key="i">
         <div class="userchat-body-time">上午9:41</div>
@@ -25,7 +25,7 @@
             3123123123123123123123123123123123123123123123123123123123123123123123123123
           </div>
           <div class="my-right">
-            <img src="../assets/images/nv.svg" alt="" />
+            <img src="@/assets/images/nv.svg" alt="" />
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@
         <div class="userchat-body-time">上午9:41</div>
         <div class="userchat-body-talk-he">
           <div class="he-right">
-            <img src="../assets/images/nan.svg" alt="" />
+            <img src="@/assets/images/nan.svg" alt="" />
           </div>
           <div class="he-left">
             <svg
@@ -64,12 +64,10 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import BottomNavigationBar from "@/components/BottomNavigationBar.vue"; // @ is an alias to /src
-import TopBarBack from "@/components/TopBarBack.vue"; // @ is an alias to /src
 
 @Options({
   components: {
     BottomNavigationBar,
-    TopBarBack,
   },
 })
 export default class Chatpage extends Vue {}

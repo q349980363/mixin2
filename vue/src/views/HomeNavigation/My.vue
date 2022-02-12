@@ -3,7 +3,7 @@
   <div class="my">
     <div class="my-message">
       <div class="message-head">
-        <img src="../assets/images/nv.svg" alt="" />
+        <img src="@/assets/images/nv.svg" alt="" />
       </div>
       <div class="message-name">Mg1</div>
     </div>

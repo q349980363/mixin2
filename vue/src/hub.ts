@@ -63,3 +63,5 @@ class CallBack<T> {
 }
 
 //TODO 数据库自动种子
+//TODO 动画效果
+//https://www.npmjs.com/package/gsap

@@ -1,9 +1,11 @@
 <template>
   <div class="PopupMenu">
-    <img :src="src" class="Icon" alt="加号按钮" @click="show = !show" />
-    <div class="Popup">
-      <slot v-if="show"></slot>
+    <div class="Mask" v-if="_show" @click="switchShow()"></div>
+    <img :src="src" class="Icon" alt="加号按钮" @click="switchShow()" />
+    <div class="Popup" v-if="_show" @click="switchShow()">
+      <slot></slot>
     </div>
+      
   </div>
 </template>
 
@@ -13,44 +15,52 @@ import { Options, Vue } from "vue-class-component";
 @Options({
   props: {
     src: String,
+    show: {
+      type: Boolean,
+      default: false,
+    },
   },
 })
 export default class PopupMenu extends Vue {
   src!: string;
-  show = false;
+  show!: boolean;
+  _show = this.show;
+  switchShow() {
+    this._show = !this._show;
+  }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 .PopupMenu {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   padding: 12px 15px;
-  //   height: 45px;
-  //   border-bottom: 1px solid #cdcdcd;
-  //   font-size: 18px;
-  //   font-weight: 700;
   position: relative;
 }
 .Popup {
+  display: flex;
+  flex-direction: column;
   position: absolute;
-  background-color: #6d6d6d;
-
-  color: #ffffff;
+  background-color: #000;
+  border: 1px solid #464646;
+  color: #fff;
   border-radius: 5px;
   width: 120px;
-  right: 16px;
+  right: 18px;
   top: 24px;
+  font-size: 15px;
+  font-weight: 400;
+  padding: 10px;
 }
 .Icon {
   //   padding: 5px;
+  cursor: pointer;
+}
+.Mask{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #00000059;
 }
 </style>
 
-<style lang="less">
-
-
-
-
-</style>
+<style lang="less"></style>

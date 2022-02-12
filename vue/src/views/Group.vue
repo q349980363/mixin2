@@ -1,20 +1,23 @@
 <template>
   <!-- 群聊列表 -->
   <div class="group">
-    <div class="group-title">
+    <BaseTopBarBack title="群聊">
+      <img src="../assets/images/search.svg" alt="" />
+    </BaseTopBarBack>
+    <!-- <div class="group-title">
       <img src="../assets/images/return.svg" alt="" />
       <div class="title-name">群聊</div>
       <img src="../assets/images/search.svg" alt="" />
-    </div>
+    </div> -->
 
     <div class="group-list">
       <router-link
-        to="/userchat"
+        to="/groupchat"
         class="messagelist-talk"
         v-for="i in 20"
         :key="i"
       >
-        <div class="group-talk" v-for="i in 15" :key="i">
+        <div class="group-talk">
           <div class="group-head">
             <img src="../assets/images/nv1.svg" alt="" />
           </div>
@@ -27,13 +30,13 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="less" scoped>
 .group {
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-.group-title {
+/* .group-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -42,7 +45,7 @@
   border-bottom: 1px solid #cdcdcd;
   font-size: 18px;
   font-weight: 700;
-}
+} */
 .group-list {
   overflow-y: auto;
   flex: 1;

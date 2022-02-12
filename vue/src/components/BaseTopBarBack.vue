@@ -1,11 +1,6 @@
 <template>
   <div class="TopBarBack">
-    <img
-      src="../assets/images/return.svg"
-      class="back"
-      @click="back()"
-      alt=""
-    />
+    <img src="@/assets/images/return.svg" class="back" @click="back()" alt="" />
     <div class="title-name">{{ title }}</div>
     <div class="tool">
       <slot></slot>
@@ -15,23 +10,17 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-
+// import { State, Getter, Action, Mutation, namespace } from "vuex-class";
+import { Action } from "vuex-class";
 @Options({
   props: {
     title: String,
   },
 })
-export default class TopBarBack extends Vue {
+export default class BaseTopBarBack extends Vue {
   title!: string;
-  back() {
-    if (window.history.length <= 2) {
-      //TODO 当页面进入时记录历史记录长度
-      // 如果与页面进入时长度相等则无法后退
-      this.$router.replace("/homenav");
-    } else {
-      this.$router.go(-1);
-    }
-  }
+  @Action("back")
+  back?: () => void;
 }
 </script>
 

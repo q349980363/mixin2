@@ -36,23 +36,23 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/homenav",
     name: "HomeNav",
-    component: import("../views/HomeNavigation.vue"),
+    component: import("../views/HomeNavigation/HomeNavigation.vue"),
     children: [
       {
         path: "/homenav/messagelist",
         name: "MessageList",
         alias: ["/homenav"],
-        component: import("../views/MessageList.vue"),
+        component: import("../views/HomeNavigation/MessageList.vue"),
       },
       {
         path: "/homenav/users",
         name: "Users",
-        component: import("../views/Users.vue"),
+        component: import("../views/HomeNavigation/Users.vue"),
       },
       {
         path: "/homenav/my",
         name: "My",
-        component: import("../views/My.vue"),
+        component: import("../views/HomeNavigation/My.vue"),
       },
     ],
   },
@@ -75,7 +75,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/userchat",
     name: "UserChat",
-    component: () => import("../views/UserChat.vue"),
+    component: () => import("../views/Chat/UserChat.vue"),
   },
   {
     path: "/group",
@@ -85,7 +85,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/groupchat",
     name: "GroupChat",
-    component: () => import("../views/GroupChat.vue"),
+    component: () => import("../views/Chat/GroupChat.vue"),
   },
   {
     path: "/creategroup",

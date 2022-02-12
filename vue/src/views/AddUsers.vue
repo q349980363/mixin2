@@ -1,11 +1,9 @@
 <template>
   <!-- 添加 -->
   <div class="addusers">
-    <div class="addusers-title">
-      <img src="../assets/images/return.svg" alt="" />
-      <div>添加</div>
+    <BaseTopBarBack title="添加">
       <img src="../assets/images/more.svg" alt="" />
-    </div>
+    </BaseTopBarBack>
 
     <div class="addusers-search">
       <img src="../assets/images/search.svg" alt="" />
@@ -14,12 +12,35 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="less" scoped>
 .addusers {
-  position: relative;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  .addusers-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    margin-top: 10px;
+    width: 100%;
+    height: 45px;
+    /* border: 1px solid #000; */
+    img {
+      position: absolute;
+      left: 20px;
+    }
+    input {
+      flex: 1;
+      height: 49px;
+      border-radius: 5px;
+      padding: 0 30px;
+      font-size: 16px;
+      border: 1px solid #cdcdcd;
+    }
+  }
 }
-.addusers-title {
+/* .addusers-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -28,28 +49,6 @@
   border-bottom: 1px solid #cdcdcd;
   font-size: 18px;
   font-weight: 700;
-}
+} */
 
-.addusers-search {
-  position: relative;
-  display: flex; 
-  align-items: center;
-  padding: 0 15px;
-  margin-top: 10px;
-  width: 100%;
-  height: 45px;
-  /* border: 1px solid #000; */
-}
-.addusers-search img {
-  position: absolute;
-  left: 20px;
-}
-.addusers-search input {
-  flex: 1;
-  height: 49px;
-  border-radius: 5px;
-  padding: 0 30px;
-  font-size: 16px;
-  border: 1px solid #cdcdcd;
-}
 </style>

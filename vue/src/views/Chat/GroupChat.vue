@@ -1,9 +1,9 @@
 <template>
   <!-- 群聊聊天页 -->
   <div class="groupchat">
-    <TopBarBack title="群1">
-      <img src="../assets/images/more.svg" alt="" />
-    </TopBarBack>
+    <BaseTopBarBack title="群1">
+      <img src="@/assets/images/more.svg" alt="" />
+    </BaseTopBarBack>
     <div class="groupchat-body">
       <div class="groupchat-body-my" v-for="i in 10" :key="i">
         <div class="groupchat-body-time">上午9:41</div>
@@ -25,7 +25,7 @@
             3123123123123123123123123123123123123123123123123123123123123123123123123123
           </div>
           <div class="my-right">
-            <img src="../assets/images/nv.svg" alt="" />
+            <img src="@/assets/images/nv.svg" alt="" />
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@
         <div class="groupchat-body-time">上午9:41</div>
         <div class="groupchat-body-talk-he">
           <div class="he-right">
-            <img src="../assets/images/nan.svg" alt="" />
+            <img src="@/assets/images/nan.svg" alt="" />
           </div>
           <div class="he-left">
             <svg
@@ -64,12 +64,10 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import BottomNavigationBar from "@/components/BottomNavigationBar.vue"; // @ is an alias to /src
-import TopBarBack from "@/components/TopBarBack.vue"; // @ is an alias to /src
 
 @Options({
   components: {
     BottomNavigationBar,
-    TopBarBack,
   },
 })
 export default class Chatpage extends Vue {}
@@ -79,12 +77,36 @@ export default class Chatpage extends Vue {}
   height: 100%;
   display: flex;
   flex-direction: column;
+  .groupchat-body {
+    overflow-y: auto;
+    flex: 1;
+    .groupchat-body-my {
+      text-align: center;
+      .groupchat-body-time {
+        margin: 8px;
+      }
+      .groupchat-body-talk-my {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+    .groupchat-body-he {
+      text-align: center;
+      .groupchat-body-time {
+        margin: 8px;
+      }
+      .groupchat-body-talk-he {
+        display: flex;
+        justify-content: flex-start;
+      }
+    }
+  }
 }
 .my-left {
   // border: 10px solid transparent;
   padding: 10px;
   background-color: rgb(0, 123, 255);
-  /* border-image: url(../assets/images/talk_right.svg) 5 8 5 5 stretch; */
+  /* border-image: url(@/assets/images/talk_right.svg) 5 8 5 5 stretch; */
   color: #fff;
   max-width: 70%;
   border-radius: 5px;
@@ -104,7 +126,7 @@ export default class Chatpage extends Vue {}
   padding: 10px;
   margin-left: 10px;
   background-color: rgb(255, 255, 255);
-  /* border-image: url(../assets/images/talk_right.svg) 5 8 5 5 stretch; */
+  /* border-image: url(@/assets/images/talk_right.svg) 5 8 5 5 stretch; */
   color: #000;
   max-width: 70%;
   border-radius: 5px;
@@ -120,23 +142,6 @@ export default class Chatpage extends Vue {}
     width: 18px;
   }
 }
-.groupchat-body {
-  overflow-y: auto;
-  flex: 1;
-}
-.groupchat-body-time {
-  margin: 8px;
-}
-
-.groupchat-body-my,
-.groupchat-body-he {
-  text-align: center;
-}
-
-.groupchat-body-talk-my {
-  display: flex;
-  justify-content: flex-end;
-}
 
 .my-right,
 .he-right {
@@ -151,11 +156,6 @@ export default class Chatpage extends Vue {}
 .he-right img {
   width: 34px;
   height: 34px;
-}
-
-.groupchat-body-talk-he {
-  display: flex;
-  justify-content: flex-start;
 }
 
 .groupchat-bar {

@@ -24,11 +24,22 @@ export default class TopBar extends Vue {
 <style scoped lang="less">
 .TopBar {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
+
   padding: 12px 15px;
   height: 45px;
   border-bottom: 1px solid #cdcdcd;
   font-size: 18px;
   font-weight: 700;
+}
+.title-icons {
+  flex: 1;
+  text-align: right;
+}
+</style>
+<style lang="less">
+.title-icons > * {
+  display: inline-block;
+  // text-align: right;
 }
 </style>

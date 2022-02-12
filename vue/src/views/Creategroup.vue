@@ -38,11 +38,9 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import TopBarBack from "@/components/TopBarBack.vue"; // @ is an alias to /src
 
 @Options({
   components: {
-    TopBarBack,
   },
 })
 export default class Chatpage extends Vue {}
