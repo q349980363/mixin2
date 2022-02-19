@@ -94,9 +94,9 @@ export default class BottomNavigationBar extends Vue {
   span {
     position: absolute;
     left: 72px;
-    top: 22px;
-    min-width: 6px;
-    height: 6px;
+    top: 8px;
+    min-width: 8px;
+    height: 8px;
     // line-height: 10px;
     text-align: center;
     border: none;

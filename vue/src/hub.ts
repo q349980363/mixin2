@@ -36,10 +36,17 @@ export default class Hub {
     hubName: string,
     methodName: string,
     ...args: any[]
-  ): Promise<any> {
+  ): Promise<T> {
     const ID = this.GetID;
     const promise = new Promise<T>((resolve, reject) => {
       this.callBackList[ID.toString()] = new CallBack<T>(resolve, reject);
+      const data = {
+        hubName: hubName,
+        methodName: methodName,
+        args: args,
+      };
+      this.websocket.send(JSON.stringify(data));
+      //TODO 超时机制
     });
     return promise;
   }

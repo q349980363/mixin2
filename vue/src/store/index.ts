@@ -12,18 +12,13 @@ export default createStore({
   mutations: {
     ConnectionSuccess(state) {
       state.hubConnection = 10;
+      state.reconnectCount = 0;
     },
     ConnectionReconnect(state) {
       state.hubConnection = -1;
     },
-    ConnectionClose(state) {
-      state.hubConnection = -1;
-    },
     ConnectionStop(state) {
       state.hubConnection = -2;
-    },
-    setConnectionState(state, connectionState: number) {
-      state.hubConnection = connectionState;
     },
     reconnectCountIncrement(state) {
       state.reconnectCount++;
@@ -61,6 +56,7 @@ export default createStore({
         }, 1000);
       }
     },
+    // async invokeHub({ dispatch, commit, state }): Promise<T> {},
   },
   modules: {},
 });

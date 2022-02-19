@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import Home from "../views/Home.vue";
+// import Home from "../views/Home.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -34,25 +34,25 @@ const routes: Array<RouteRecordRaw> = [
   },
 
   {
-    path: "/homenav",
+    path: "/homenav/",
     name: "HomeNav",
     component: import("../views/HomeNavigation/HomeNavigation.vue"),
     children: [
       {
-        path: "/homenav/messagelist",
+        path: "messagelist",
         name: "MessageList",
         alias: ["/homenav"],
         component: import("../views/HomeNavigation/MessageList.vue"),
       },
       {
-        path: "/homenav/users",
+        path: "users",
         name: "Users",
         component: import("../views/HomeNavigation/Users.vue"),
       },
       {
-        path: "/homenav/my",
+        path: "my",
         name: "My",
-        component: import("../views/HomeNavigation/My.vue"),
+        component: import("../views/HomeNavigation/My/My.vue"),
       },
     ],
   },
@@ -62,16 +62,13 @@ const routes: Array<RouteRecordRaw> = [
     name: "SearchUsers",
     component: () => import("../views/SearchUsers.vue"),
   },
-  {
-    path: "/addusers",
-    name: "AddUsers",
-    component: () => import("../views/AddUsers.vue"),
-  },
+  
   {
     path: "/systemnotice",
     name: "SystemNotice",
     component: () => import("../views/SystemNotice.vue"),
   },
+  // 聊天页
   {
     path: "/userchat",
     name: "UserChat",
@@ -79,40 +76,76 @@ const routes: Array<RouteRecordRaw> = [
     meta: { transition: "slide-left" },
   },
   {
-    path: "/group",
-    name: "Group",
-    component: () => import("../views/Group.vue"),
-  },
-  {
     path: "/groupchat",
     name: "GroupChat",
     component: () => import("../views/Chat/GroupChat.vue"),
     meta: { transition: "slide-left" },
   },
+  // 用户
   {
-    path: "/creategroup",
-    name: "Creategroup",
-    component: () => import("../views/Creategroup.vue"),
-  },
-  {
-    path: "/groupchatset",
-    name: "GroupChatSet",
-    component: () => import("../views/GroupChatSet.vue"),
+    path: "/addusers",
+    name: "AddUsers",
+    component: () => import("../views/User/AddUsers.vue"),
   },
   {
     path: "/userchatset",
     name: "UserChatSet",
-    component: () => import("../views/UserChatSet.vue"),
+    component: () => import("../views/User/UserChatSet.vue"),
   },
   {
     path: "/setusername",
     name: "SetUserName",
-    component: () => import("../views/SetUserName.vue"),
+    component: () => import("../views/User/SetUserName.vue"),
+  },
+  // 群
+  {
+    path: "/group",
+    name: "Group",
+    component: () => import("../views/Group/Group.vue"),
+  },
+
+  {
+    path: "/creategroup",
+    name: "Creategroup",
+    component: () => import("../views/Group/Creategroup.vue"),
+  },
+  {
+    path: "/groupchatset",
+    name: "GroupChatSet",
+    component: () => import("../views/Group/GroupChatSet.vue"),
   },
   {
     path: "/setgroupname",
     name: "SetGroupName",
-    component: () => import("../views/SetGroupName.vue"),
+    component: () => import("../views/Group/SetGroupName.vue"),
+  },
+ 
+
+  // 我的页
+  {
+    path: "/userinfo",
+    name: "UserInfo",
+    component: () => import("../views/HomeNavigation/My/UserInfo.vue"),
+  },
+  {
+    path: "/card",
+    name: "Card",
+    component: () => import("../views/HomeNavigation/My/Card.vue"),
+  },
+  {
+    path: "/settings",
+    name: "Settings",
+    component: () => import("../views/HomeNavigation/My/Settings.vue"),
+  },
+  {
+    path: "/about",
+    name: "About",
+    component: () => import("../views/HomeNavigation/My/About.vue"),
+  },
+  {
+    path: "/administer",
+    name: "Administer",
+    component: () => import("../views/HomeNavigation/My/Administer.vue"),
   },
 ];
 

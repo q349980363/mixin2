@@ -84,7 +84,7 @@ export default class New extends Vue {
   /* border: 1px solid #000; */
   // border-bottom: 1px solid #cdcdcd;
   background-color: #fff;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 2px rgba(0,0,0,0.1);
   .messagelist-head {
     position: relative;
     width: 35px;
@@ -97,10 +97,10 @@ export default class New extends Vue {
     }
     span {
       position: absolute;
-      left: 72px;
-      top: 22px;
-      min-width: 6px;
-      height: 6px;
+      left: 28px;
+      top: -3px;
+      min-width: 10px;
+      height: 10px;
       // line-height: 10px;
       text-align: center;
       border: none;
