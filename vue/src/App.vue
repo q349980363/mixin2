@@ -8,13 +8,15 @@
 
   <router-view class="views" />
   <ConnectMask v-if="stateHubConnection == 0" />
-  <ConnectMask v-if="stateHubConnection == -1" />
+  <ReconnectMask v-if="stateHubConnection == -1" />
+  <ConnectStopMask v-if="stateHubConnection == 0" />
   <!-- </keep-alive> -->
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import ConnectMask from "@/components/Mask/ConnectMask.vue";
+import ConnectStopMask from "@/components/Mask/ConnectStopMask.vue";
 import ReconnectMask from "@/components/Mask/ReconnectMask.vue";
 
 import { State, Action } from "vuex-class";
@@ -22,6 +24,7 @@ import { State, Action } from "vuex-class";
 @Options({
   components: {
     ConnectMask,
+    ConnectStopMask,
     ReconnectMask,
   },
 })
