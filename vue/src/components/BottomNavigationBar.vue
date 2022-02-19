@@ -15,6 +15,7 @@
           alt="消息激活"
         />
         <img v-else src="../assets/images/news-unchecked.svg" alt="消息" />
+        <span></span>
       </router-link>
       <!-- 联系人 -->
       <router-link
@@ -34,6 +35,7 @@
           src="../assets/images/contacts-unchecked.svg"
           alt="联系人"
         />
+        <span></span>
       </router-link>
       <!-- 个人中心 -->
       <router-link
@@ -88,6 +90,22 @@ export default class BottomNavigationBar extends Vue {
   // margin-top: 5px;
   padding-top: 8px;
   padding-bottom: 0px;
+  position: relative;
+  span {
+    position: absolute;
+    left: 72px;
+    top: 22px;
+    min-width: 6px;
+    height: 6px;
+    // line-height: 10px;
+    text-align: center;
+    border: none;
+    background: #dc3545;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 12px;
+    padding: 2px;
+  }
 }
 
 .bar-active {

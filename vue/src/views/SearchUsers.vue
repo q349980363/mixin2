@@ -2,7 +2,7 @@
   <!-- 搜索页 -->
   <div class="SearchUsers">
     <div class="SearchUsers-case">
-      <img src="../assets/images/search.svg" alt="" />
+      <img src="@/assets/images/search.svg" alt="" />
       <input type="text" placeholder="搜索" />
       <div @click="back()">取消</div>
     </div>

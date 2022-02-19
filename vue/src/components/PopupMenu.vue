@@ -2,10 +2,12 @@
   <div class="PopupMenu">
     <div class="Mask" v-if="_show" @click="switchShow()"></div>
     <img :src="src" class="Icon" alt="加号按钮" @click="switchShow()" />
-    <div class="Popup" v-if="_show" @click="switchShow()">
-      <slot></slot>
-    </div>
-      
+
+    <transition name="fade">
+      <div class="Popup" v-if="_show" @click="switchShow()">
+        <slot></slot>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -48,18 +50,31 @@ export default class PopupMenu extends Vue {
   font-size: 15px;
   font-weight: 400;
   padding: 10px;
+
+  transition: height;
 }
 .Icon {
   //   padding: 5px;
   cursor: pointer;
 }
-.Mask{
+.Mask {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   background: #00000059;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+  // transition: height 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
 

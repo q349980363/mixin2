@@ -11,7 +11,7 @@
     <div class="register-tips">请记住您的密码</div>
     <div class="register-clause">
       <div class="clause-item">
-        <img src="../assets/images/unchecked.svg" alt="" />
+        <img src="@/assets/images/unchecked.svg" alt="" />
       </div>
       <div>我已阅读并同意用户注册协议</div>
     </div>

@@ -76,6 +76,7 @@ const routes: Array<RouteRecordRaw> = [
     path: "/userchat",
     name: "UserChat",
     component: () => import("../views/Chat/UserChat.vue"),
+    meta: { transition: "slide-left" },
   },
   {
     path: "/group",
@@ -86,11 +87,32 @@ const routes: Array<RouteRecordRaw> = [
     path: "/groupchat",
     name: "GroupChat",
     component: () => import("../views/Chat/GroupChat.vue"),
+    meta: { transition: "slide-left" },
   },
   {
     path: "/creategroup",
     name: "Creategroup",
     component: () => import("../views/Creategroup.vue"),
+  },
+  {
+    path: "/groupchatset",
+    name: "GroupChatSet",
+    component: () => import("../views/GroupChatSet.vue"),
+  },
+  {
+    path: "/userchatset",
+    name: "UserChatSet",
+    component: () => import("../views/UserChatSet.vue"),
+  },
+  {
+    path: "/setusername",
+    name: "SetUserName",
+    component: () => import("../views/SetUserName.vue"),
+  },
+  {
+    path: "/setgroupname",
+    name: "SetGroupName",
+    component: () => import("../views/SetGroupName.vue"),
   },
 ];
 

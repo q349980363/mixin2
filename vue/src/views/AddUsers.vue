@@ -2,11 +2,11 @@
   <!-- 添加 -->
   <div class="addusers">
     <BaseTopBarBack title="添加">
-      <img src="../assets/images/more.svg" alt="" />
+      <img src="@/assets/images/more.svg" alt="" />
     </BaseTopBarBack>
 
     <div class="addusers-search">
-      <img src="../assets/images/search.svg" alt="" />
+      <img src="@/assets/images/search.svg" alt="" />
       <input type="text" placeholder="搜索联系人" />
     </div>
   </div>

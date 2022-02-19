@@ -1,8 +1,8 @@
 <template>
-  <div class="PopupMenuItem">
+  <router-link :to="to" class="PopupMenuItem">
     <img :src="src" alt="" />
     <div class="PopupMenuName">{{ title }}</div>
-  </div>
+  </router-link>
 </template>
 
 <script lang="ts">
@@ -12,6 +12,7 @@ import { Options, Vue } from "vue-class-component";
   props: {
     src: String,
     title: String,
+    to: String,
   },
 })
 export default class PopupMenuItem extends Vue {}
@@ -20,6 +21,7 @@ export default class PopupMenuItem extends Vue {}
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 .PopupMenuItem {
+  color: #fff;
   cursor: pointer;
   display: flex;
   flex-direction: row;

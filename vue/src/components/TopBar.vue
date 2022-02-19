@@ -35,6 +35,7 @@ export default class TopBar extends Vue {
 .title-icons {
   flex: 1;
   text-align: right;
+  position:relative;
 }
 </style>
 <style lang="less">

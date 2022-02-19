@@ -74,7 +74,6 @@ func Cors() gin.HandlerFunc {
 			c.AbortWithStatus(http.StatusNoContent)
 		}
 		c.Next()
-
 	}
 }
 
@@ -110,15 +109,4 @@ func Ips() (map[string]string, error) {
 		}
 	}
 	return ips, nil
-}
-
-func init_ip() {
-	// log.SetFlags(log.flag)
-	log.Println("http://127.0.0.1:8080/")
-	var ips = make(map[string]string)
-	ips, _ = Ips()
-	//key是网卡名称，value是网卡IP
-	for k, v := range ips {
-		log.Println("http://" + v + ":8080/    " + k)
-	}
 }

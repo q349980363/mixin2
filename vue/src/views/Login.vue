@@ -1,7 +1,7 @@
 <template>
   <!-- 登录 -->
   <div class="login">
-    <div class="login-ico"><img src="../assets/images/logo.svg" alt="" /></div>
+    <div class="login-ico"><img src="@/assets/images/logo.svg" alt="" /></div>
     <div class="login-text"><input type="text" placeholder="用户名" /></div>
     <div class="login-pass">
       <input type="password" placeholder="密码" />

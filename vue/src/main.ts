@@ -6,7 +6,7 @@ import router from "./router";
 import store from "./store";
 
 const app = createApp(App);
-
+store.dispatch("init");
 const requireComponent = require.context(
   // 组件文件夹的相对路径
   "./components",
@@ -30,7 +30,7 @@ requireComponent.keys().forEach((fileName: string) => {
         .replace(/\.\w+$/, "")
     )
   );
-  console.log(componentName);
+  // console.log(componentName);
   app.component(
     componentName,
     // 在 `.default` 上查找组件选项。
@@ -39,5 +39,5 @@ requireComponent.keys().forEach((fileName: string) => {
     componentConfig.default || componentConfig
   );
 });
-console.log("requireComponent", requireComponent.keys());
+// console.log("requireComponent", requireComponent.keys());
 app.use(store).use(router).mount("#app");

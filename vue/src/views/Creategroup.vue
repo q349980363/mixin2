@@ -1,26 +1,26 @@
 <template>
   <!-- 创建群聊 -->
   <div class="creategroup">
-     <!-- <TopBarBack title="创建群聊">
-      <img src="../assets/images/more.svg" alt="" />
-    </TopBarBack> -->
-    <div class="creategroup-title">
+    <BaseTopBarBack title="创建群聊">
+      <img src="@/assets/images/more.svg" alt="" />
+    </BaseTopBarBack>
+    <!-- <div class="creategroup-title">
       <img src="../assets/images/return.svg" alt="" />
       <div class="title-name">创建群聊</div>
       <img src="../assets/images/more.svg" alt="" />
-    </div>
+    </div> -->
 
     <div class="creategroup-search">
-      <img src="../assets/images/search.svg" alt="" />
+      <img src="@/assets/images/search.svg" alt="" />
       <input type="text" placeholder="搜索" />
     </div>
 
     <div class="creategroup-list">
       <div class="creategroup-talk" v-for="i in 20" :key="i">
-        <img src="../assets/images/creategroup-unchecked.svg" alt="" />
+        <img src="@/assets/images/creategroup-unchecked.svg" alt="" />
 
         <div class="creategroup-head">
-          <img src="../assets/images/nan.svg" alt="" />
+          <img src="@/assets/images/nan.svg" alt="" />
         </div>
         <div class="creategroup-body">
           <div class="body-left">
@@ -36,16 +36,6 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Options, Vue } from "vue-class-component";
-
-@Options({
-  components: {
-  },
-})
-export default class Chatpage extends Vue {}
-</script>
-
 <style scoped>
 .creategroup {
   height: 100%;
@@ -56,7 +46,7 @@ export default class Chatpage extends Vue {}
   overflow-y: auto;
   flex: 1;
 }
-.creategroup-title {
+/* .creategroup-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -65,7 +55,7 @@ export default class Chatpage extends Vue {}
   border-bottom: 1px solid #cdcdcd;
   font-size: 18px;
   font-weight: 700;
-}
+} */
 .creategroup-search {
   position: relative;
   display: flex;

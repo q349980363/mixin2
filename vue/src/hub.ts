@@ -1,4 +1,4 @@
-export class Hub {
+export default class Hub {
   ID = 0;
   callBackList: { [key: string]: CallBack<any> } = {};
   websocket: WebSocket = <any>{};
@@ -29,26 +29,22 @@ export class Hub {
     console.error("Hub onclose", e);
   }
 
-  onMessage(methodName: string, newMethod: (...args: any[]) => void) {}
-  on(methodName: string, newMethod: (...args: any[]) => void) {}
+  // onMessage(methodName: string, newMethod: (...args: any[]) => void) {}
+  // on(methodName: string, newMethod: (...args: any[]) => void) {}
 
   invoke<T = any>(
     hubName: string,
     methodName: string,
     ...args: any[]
   ): Promise<any> {
-    var ID = this.GetID;
-    var promise = new Promise<T>((resolve, reject) => {
+    const ID = this.GetID;
+    const promise = new Promise<T>((resolve, reject) => {
       this.callBackList[ID.toString()] = new CallBack<T>(resolve, reject);
     });
     return promise;
   }
-
   GetID = () => this.ID++;
 }
-
-
-
 
 class CallBack<T> {
   resolve: (value: T | PromiseLike<T>) => void;

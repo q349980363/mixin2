@@ -5,6 +5,7 @@
       <!-- 系统中心 -->
       <router-link to="/systemnotice">
         <img src="@/assets/images/notice.svg" alt="" />
+        <span class="add"></span>
       </router-link>
       <!-- 搜索 -->
       <router-link to="/searchusers">
@@ -13,27 +14,15 @@
       <!-- 添加 -->
       <PopupMenu :show="false" :src="require('@/assets/images/add.svg')">
         <PopupMenuItem
+          to="/creategroup"
           :src="require('@/assets/images/group.svg')"
           title="添加群"
         />
         <PopupMenuItem
+          to="/addusers"
           :src="require('@/assets/images/users.svg')"
           title="添加朋友"
         />
-        <PopupMenuItem
-          :src="require('@/assets/images/users.svg')"
-          title="添加朋友"
-        />
-        <PopupMenuItem
-          :src="require('@/assets/images/users.svg')"
-          title="添加朋友"
-        />
-        <!-- <img src="@/assets/images/add.svg" alt="" /> -->
-
-        <!-- <div class="searchusers-users">
-          <img src="@/assets/images/users.svg" alt="" />
-          <div>添加朋友</div>
-        </div> -->
       </PopupMenu>
     </TopBar>
 
@@ -86,6 +75,21 @@ export default class New extends Vue {
   display: flex;
   flex-direction: column;
 }
+.add {
+  position: absolute;
+  right: 60px;
+  top: 0;
+  min-width: 10px;
+  height: 10px;
+  /* line-height: 15px; */
+  text-align: center;
+  border: none;
+  background: #dc3545;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 12px;
+  padding: 2px;
+}
 .users-list {
   overflow-y: auto;
   flex: 1;
@@ -97,27 +101,28 @@ export default class New extends Vue {
   padding: 0 15px;
   height: 52px;
   /* border: 1px solid #000; */
-  border-bottom: 1px solid #cdcdcd;
+  // border-bottom: 1px solid #cdcdcd;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
   background-color: #fff;
-}
-.users-talk .users-body {
-  flex: 1;
-  display: flex;
-  justify-content: space-between;
-  margin-left: 10px;
-  font-size: 14px;
-}
-.users-talk .users-head {
-  width: 35px;
-  height: 35px;
-  border: 1px solid #dbdbdb;
-  border-radius: 5px;
+  .users-head {
+    width: 35px;
+    height: 35px;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+    img {
+      width: 34px;
+      height: 34px;
+    }
+  }
+  .users-body {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10px;
+    font-size: 14px;
+  }
 }
 
-.users-talk .users-head img {
-  width: 34px;
-  height: 34px;
-}
 .title-icons .icons {
   margin: 0 10px;
 }

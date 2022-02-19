@@ -4,10 +4,32 @@
     <router-link to="/about">About</router-link> |
     <router-link to="/login">Login</router-link>
   </div> -->
-  <keep-alive>
-    <router-view />
-  </keep-alive>
+  <!-- <keep-alive> -->
+
+  <router-view class="views" />
+  <ConnectMask v-if="stateHubConnection == 0" />
+  <ConnectMask v-if="stateHubConnection == -1" />
+  <!-- </keep-alive> -->
 </template>
+
+<script lang="ts">
+import { Options, Vue } from "vue-class-component";
+import ConnectMask from "@/components/Mask/ConnectMask.vue";
+import ReconnectMask from "@/components/Mask/ReconnectMask.vue";
+
+import { State, Action } from "vuex-class";
+
+@Options({
+  components: {
+    ConnectMask,
+    ReconnectMask,
+  },
+})
+export default class App extends Vue {
+  @State("hubConnection")
+  stateHubConnection!: boolean;
+}
+</script>
 
 <style lang="less">
 @import "assets/normalize.css";
@@ -20,6 +42,7 @@
   text-align: center;
   color: #2c3e50;
   height: 100%;
+  position: relative;
 }
 
 #nav {
@@ -33,5 +56,18 @@
       color: #42b983;
     }
   }
+}
+</style>
+
+<style scoped lang="less">
+.views {
+  // position: absolute;
+  // width: 100%;
+  // transition: all 0.8s ease;
+  // top: 0;
+
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 </style>

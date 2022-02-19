@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"errors"
-	"log"
 	"sync"
 
 	"github.com/gin-gonic/gin"
@@ -40,6 +39,7 @@ func NewHub() *Hub {
 }
 
 func (hub *Hub) handleConnect(s *melody.Session) {
+	s.Keys = make(map[string]interface{})
 	hubS := NewHubSession(s, hub)
 	if hub.authorizationHandle != nil {
 		token := s.Request.URL.Query()["toKen"][0]
@@ -82,7 +82,8 @@ func (hub *Hub) handleDisconnect(s *melody.Session) {
 
 func (hub *Hub) HandleRequest(c *gin.Context) {
 	hub.m.HandleRequest(c.Writer, c.Request)
-	log.Fatalln("HandleRequest:" + c.ClientIP())
+	//上方代码后再调用c 就会抛错.
+	// log.Fatalln("HandleRequest:" + c.ClientIP())
 }
 
 // 用户授权,如果授权成功返回用户信息,授权失败返回nil.
