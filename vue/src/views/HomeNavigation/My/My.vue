@@ -9,11 +9,10 @@
         </div>
         <div class="message-name">
           <div class="name">Mg1</div>
-          <div class="account">账号:</div>
+          <div class="account">账号:11111111</div>
         </div>
-        <router-link to="/card">
-          <img class="message-card" src="@/assets/images/card.svg" alt="" />
-        </router-link>
+        <img class="message-card" src="@/assets/images/card.svg" alt="" />
+        <img class="return-right" src="@/assets/images/return-right.svg" alt=""/>
       </div>
     </router-link>
 
@@ -22,18 +21,29 @@
         <div class="list-set">
           <img src="@/assets/images/set.svg" alt="" />
           <span>设置</span>
+          <img
+            class="return-right"
+            src="@/assets/images/return-right.svg"
+            alt=""
+          />
         </div>
       </router-link>
       <router-link to="/about">
         <div class="list-set">
           <img src="@/assets/images/about.svg" alt="" />
           <span>关于</span>
+          <img
+            class="return-right"
+            src="@/assets/images/return-right.svg"
+            alt=""
+          />
         </div>
       </router-link>
       <router-link to="/administer">
         <div class="list-set">
           <img src="@/assets/images/administer.svg" alt="" />
           <span>后台管理</span>
+          <img class="return-right" src="@/assets/images/return-right.svg" alt=""/>
         </div>
         <div class="list-but">
           <router-link to="/login">退出登录</router-link>
@@ -91,6 +101,11 @@ export default class New extends Vue {
   .message-card {
     margin-right: 30px;
   }
+  .return-right{
+    width: 12px;
+    height: 12px;
+    margin-right: 15px;
+  }
 }
 
 .my-list {
@@ -106,9 +121,14 @@ export default class New extends Vue {
     margin: 10px 0;
     background-color: #fff;
     cursor: pointer;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
     img {
       width: 22px;
       height: 22px;
+    }
+    .return-right {
+      width: 12px;
+      height: 12px;
     }
     span {
       flex: 1;
@@ -122,6 +142,7 @@ export default class New extends Vue {
     height: 45px;
     line-height: 45px;
     background-color: #fff;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
     a {
       display: block;
       color: #dc3545;

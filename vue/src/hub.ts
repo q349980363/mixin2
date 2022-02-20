@@ -1,5 +1,6 @@
 export default class Hub {
   ID = 0;
+  onclose?: () => void;
   callBackList: { [key: string]: CallBack<any> } = {};
   websocket: WebSocket = <any>{};
   url: string;
@@ -9,24 +10,30 @@ export default class Hub {
 
   open(): Promise<void> {
     this.websocket = new WebSocket(this.url);
+    this.websocket.onmessage = this.MessageEvent.bind(this);
     return new Promise((resolve, reject) => {
       this.websocket.onopen = (e) => {
         resolve();
-        this.websocket.onerror = this.onError;
-        this.websocket.onclose = this.onClose;
+        this.websocket.onerror = this.ErrorEvent.bind(this);
+        this.websocket.onclose = this.CloseEvent.bind(this);
+        console.log("websocket open");
       };
       this.websocket.onclose = (e) => {
         reject();
       };
     });
   }
-
-  onError(e: Event) {
+  private MessageEvent(e: MessageEvent) {
+    console.error("Hub onMessage", e);
+  }
+  private ErrorEvent(e: Event) {
     console.error("Hub onError", e);
   }
-
-  onClose(e: Event) {
+  private CloseEvent(e: Event) {
     console.error("Hub onclose", e);
+    if (this.onclose != null) {
+      this.onclose();
+    }
   }
 
   // onMessage(methodName: string, newMethod: (...args: any[]) => void) {}
@@ -34,7 +41,7 @@ export default class Hub {
 
   invoke<T = any>(
     hubName: string,
-    methodName: string,
+    functionName: string,
     ...args: any[]
   ): Promise<T> {
     const ID = this.GetID;
@@ -42,15 +49,16 @@ export default class Hub {
       this.callBackList[ID.toString()] = new CallBack<T>(resolve, reject);
       const data = {
         hubName: hubName,
-        methodName: methodName,
+        functionName: functionName,
         args: args,
+        type: "call",
       };
       this.websocket.send(JSON.stringify(data));
       //TODO 超时机制
     });
     return promise;
   }
-  GetID = () => this.ID++;
+  private GetID = () => this.ID++;
 }
 
 class CallBack<T> {

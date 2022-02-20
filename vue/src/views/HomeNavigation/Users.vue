@@ -110,8 +110,8 @@ export default class New extends Vue {
     border: 1px solid #dbdbdb;
     border-radius: 5px;
     img {
-      width: 34px;
-      height: 34px;
+      width: 32px;
+      height: 32px;
     }
   }
   .users-body {

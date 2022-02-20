@@ -147,6 +147,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "Administer",
     component: () => import("../views/HomeNavigation/My/Administer.vue"),
   },
+  {
+    path: "/setmyname",
+    name: "SetMyName",
+    component: () => import("../views/HomeNavigation/My/SetMyName.vue"),
+  },
 ];
 
 const router = createRouter({

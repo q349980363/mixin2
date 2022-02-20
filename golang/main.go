@@ -10,6 +10,7 @@ import (
 
 var r *gin.Engine
 var hub *Hub
+var route *Route
 
 func main() {
 	rand.Seed(time.Now().UnixNano())
@@ -19,6 +20,8 @@ func main() {
 	// m = melody.New()
 	// m.Upgrader.CheckOrigin = func(r *http.Request) bool { return true }
 	hub = NewHub()
+	route = NewRoute(hub)
+
 	r.GET("/ws", func(c *gin.Context) {
 		hub.HandleRequest(c)
 		// c.ClientIP()

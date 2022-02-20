@@ -36,6 +36,12 @@ export default createStore({
     },
     //初始化
     async init({ dispatch, commit, state }) {
+      state.hub.onclose = () => {
+        setTimeout(() => {
+          dispatch("reconnect");
+        }, 1000);
+      };
+
       try {
         await state.hub.open();
         commit("ConnectionSuccess");

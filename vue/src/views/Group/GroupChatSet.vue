@@ -12,6 +12,15 @@
   </div>
 </template>
 
+<script lang="ts">
+import { Options, Vue } from "vue-class-component";
+
+@Options({
+  components: {},
+})
+export default class Login extends Vue {}
+</script>
+
 <style lang="less" scoped>
 .groupchatset-body {
   text-align: left;
@@ -24,6 +33,7 @@
   line-height: 49px;
   background-color: #fff;
   cursor: pointer;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
   a {
     display: block;
   }
@@ -32,7 +42,7 @@
   color: #0b5ed7;
 }
 .userchatset-del {
-  text-align-last: center;
+  text-align: center;
   color: #dc3545;
 }
 </style>

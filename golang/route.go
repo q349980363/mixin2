@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"reflect"
 )
 
@@ -16,15 +17,15 @@ func NewRoute(hub *Hub) *Route {
 	return route
 }
 
-func (route *Route) handleMessage(s *HubSession, _type string, json map[string]interface{}) {
-	if _type != "call" {
+func (route *Route) handleMessage(s *HubSession, msgType string, json map[string]interface{}) {
+	if msgType != "call" {
 		return
 	}
 	var controller interface{}
 	auth := false
-	switch json["controller"].(string) {
+	switch json["hubName"].(string) {
 	case "login":
-		controller = NewLoginController(s)
+		controller = new(LoginHub)
 	case "user":
 		//TODO 未编写
 		auth = true
@@ -38,12 +39,18 @@ func (route *Route) handleMessage(s *HubSession, _type string, json map[string]i
 			return
 		}
 	}
-
+	// reflect.
 	t := reflect.ValueOf(controller)
+	t = reflect.ValueOf(&LoginHub{})
+	functionName := json["functionName"].(string)
+	numMethod := t.NumMethod()
+	_ = numMethod
+	fn := t.MethodByName(functionName)
+	fmt.Println(fn)
 
-	fn := t.MethodByName(json["function"].(string))
-	if fn.IsZero() {
+	if !fn.IsValid() {
 		//TODO 错误
+		return
 	}
 
 	args := json["args"].([]interface{})
