@@ -1,7 +1,8 @@
 export default class Hub {
   ID = 0;
   onclose?: () => void;
-  callBackList: { [key: string]: CallBack<any> } = {};
+  onmessage?: (json: any) => void;
+  callBackMap = new Map<number, CallBack<any>>();
   websocket: WebSocket = <any>{};
   url: string;
   constructor(wsUri: string) {
@@ -24,8 +25,31 @@ export default class Hub {
     });
   }
   private MessageEvent(e: MessageEvent) {
-    console.error("Hub onMessage", e);
+    const json = JSON.parse(e.data);
+    console.log("Hub onMessage", json);
+    switch (json.type) {
+      case "functionReturn":
+        if (this.callBackMap.has(json.id)) {
+          const callBack = this.callBackMap.get(json.id);
+          this.callBackMap.delete(json.id);
+          const state: boolean = json.state;
+          const stateCode: number = json.stateCode;
+          const response: any = json.response;
+          if (state) {
+            callBack?.resolve(response);
+          } else {
+            callBack?.reject(response);
+          }
+        }
+        break;
+      case "invoke":
+        break;
+      default:
+        console.error("Hub onMessage error", e);
+        return;
+    }
   }
+
   private ErrorEvent(e: Event) {
     console.error("Hub onError", e);
   }
@@ -39,15 +63,17 @@ export default class Hub {
   // onMessage(methodName: string, newMethod: (...args: any[]) => void) {}
   // on(methodName: string, newMethod: (...args: any[]) => void) {}
 
+  /** 调用函数 */
   invoke<T = any>(
     hubName: string,
     functionName: string,
     ...args: any[]
   ): Promise<T> {
-    const ID = this.GetID;
+    const ID = this.GetID();
     const promise = new Promise<T>((resolve, reject) => {
-      this.callBackList[ID.toString()] = new CallBack<T>(resolve, reject);
+      this.callBackMap.set(ID, new CallBack<T>(resolve, reject));
       const data = {
+        requestId: ID,
         hubName: hubName,
         functionName: functionName,
         args: args,
@@ -62,7 +88,9 @@ export default class Hub {
 }
 
 class CallBack<T> {
+  /** 成功 */
   resolve: (value: T | PromiseLike<T>) => void;
+  /** 错误 */
   reject: (reason?: any) => void;
   constructor(
     resolve: (value: T | PromiseLike<T>) => void,

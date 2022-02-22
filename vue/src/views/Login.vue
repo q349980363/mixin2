@@ -1,19 +1,15 @@
 <template>
   <!-- 登录 -->
   <div class="login">
-    <div class="login-ico"><img src="@/assets/images/logo.svg" alt="" /></div>
-    <div class="login-text">
-      <input type="text" placeholder="用户名" v-model="username" />
-    </div>
-    <div class="login-pass">
-      <input type="password" placeholder="密码" v-model="password" />
-    </div>
+    <img src="@/assets/images/logo.svg" alt="" />
+
+    <input class="text" type="text" placeholder="用户名" v-model="username" />
+    <input class="pass" type="password" placeholder="密码" v-model="password" />
+
     <!-- <router-link :to="{ name: 'MessageList' }"> -->
-    <button class="login-but" @click="clickLogin()">登录</button>
+    <button class="but" @click="clickLogin()">登录</button>
     <!-- </router-link> -->
-    <div class="login-reg">
-      <router-link to="/register">注册新用户</router-link>
-    </div>
+    <router-link class="reg" to="/register">注册新用户</router-link>
   </div>
 </template>
 
@@ -43,12 +39,69 @@ export default class Login extends Vue {
       this.username,
       this.password
     );
+    console.log(response);
   }
 }
 </script>
 
-<style scoped>
-.login-ico {
-  margin-bottom: 30px;
+<style lang="less" scoped>
+.login {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  text-align: center;
+  /* background-color: #fff; */
+  padding-top: 170px;
+  img {
+    width: 60px;
+    height: 60px;
+    margin: 30px auto;
+  }
+  .text {
+    padding-left: 10px;
+    width: 300px;
+    height: 40px;
+    border: 1px solid #bbbbbb;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+  }
+  .text:focus-within {
+    z-index: 2;
+    position: relative;
+  }
+  .pass {
+    padding-left: 10px;
+    width: 300px;
+    height: 40px;
+    border: 1px solid #bbbbbb;
+    border-radius: 0 0 8px 8px;
+  }
+  .but {
+    margin-top: 30px;
+    width: 300px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    background-color: #007bff;
+    border: 1px solid #ced4da;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  .but:focus {
+    color: #fff;
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+    box-shadow: rgba(13, 110, 253, 0.25) 0px 0px 0px 4px;
+  }
+  .but:active {
+    background-color: #0b5ed7;
+  }
+  .reg {
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: left;
+  }
 }
 </style>

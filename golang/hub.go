@@ -247,20 +247,35 @@ func (hubS *HubSession) Call(fnName string, args []interface{}) {
 }
 
 func (s *HubSession) functionReturn(request map[string]interface{}, response interface{}) {
-	requestId := request["id"].(int)
+	requestId := int(request["requestId"].(float64))
 	s.WriteJson(gin.H{
-		"type":     "functionReturn",
-		"id":       requestId,
-		"response": response,
+		"type":      "functionReturn",
+		"id":        requestId,
+		"state":     true,
+		"stateCode": 1,
+		"response":  response,
 	})
 }
 
 func (s *HubSession) functionReturnError(request map[string]interface{}, response interface{}) {
-	requestId := request["id"].(int)
+	requestId := request["requestId"].(int)
 	s.WriteJson(gin.H{
-		"type":     "functionReturnError",
-		"id":       requestId,
-		"response": response,
+		"type":      "functionReturn",
+		"id":        requestId,
+		"state":     false,
+		"stateCode": -1,
+		"response":  response,
+	})
+}
+
+func (s *HubSession) functionReturnErrorCode(request map[string]interface{}, response interface{}, errorCode int) {
+	requestId := request["requestId"].(int)
+	s.WriteJson(gin.H{
+		"type":      "functionReturn",
+		"id":        requestId,
+		"state":     false,
+		"stateCode": errorCode,
+		"response":  response,
 	})
 }
 

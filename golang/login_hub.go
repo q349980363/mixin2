@@ -14,6 +14,6 @@ func (c *LoginHub) Login(username string, passwor string) (string, bool) {
 	return "test", false
 }
 
-func (c *LoginHub) Register(username string, passwor string) {
-
+func (c *LoginHub) Register(username string, passwor string) (string, bool) {
+	return "test", false
 }

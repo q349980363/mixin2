@@ -1,28 +1,15 @@
 <template>
-  <!-- 群聊列表 -->
+  <!-- 群列表 -->
   <div class="group">
     <BaseTopBarBack title="群聊" />
 
-    <!-- <div class="group-title">
-      <img src="../assets/images/return.svg" alt="" />
-      <div class="title-name">群聊</div>
-      <img src="../assets/images/search.svg" alt="" />
-    </div> -->
-
     <div class="group-list">
-      <router-link
-        to="/groupchat"
-        class="messagelist-talk"
-        v-for="i in 20"
-        :key="i"
-      >
-        <div class="group-talk">
-          <div class="group-head">
+      <router-link to="/groupchat" v-for="i in 20" :key="i">
+        <div class="list-row">
+          <div class="portrait">
             <img src="@/assets/images/nv1.svg" alt="" />
           </div>
-          <div class="group-body">
-            <div class="body-name">群1</div>
-          </div>
+          <div class="name">群1</div>
         </div>
       </router-link>
     </div>
@@ -35,26 +22,23 @@ import { Options, Vue } from "vue-class-component";
 @Options({
   components: {},
 })
-export default class Login extends Vue {}
+export default class Group extends Vue {}
+
 </script>
 <style lang="less" scoped>
-.group {
-}
 .group-list {
   overflow-y: auto;
   flex: 1;
 }
-.group-talk {
+.list-row {
   display: flex;
   align-items: center;
   margin-top: 10px;
   padding: 0 15px;
   height: 52px;
-  /* border: 1px solid #000; */
   border-bottom: 1px solid #cdcdcd;
   background-color: #fff;
-  .group-head {
-    position: relative;
+  .portrait {
     width: 35px;
     height: 35px;
     border: 1px solid #dbdbdb;
@@ -64,7 +48,7 @@ export default class Login extends Vue {}
       height: 34px;
     }
   }
-  .group-body {
+  .name {
     flex: 1;
     display: flex;
     justify-content: space-between;

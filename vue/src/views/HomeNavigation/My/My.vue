@@ -4,21 +4,25 @@
     <router-link to="/userinfo">
       <div class="my-message">
         <!-- 个人信息 -->
-        <div class="message-head">
+        <div class="portrait">
           <img src="@/assets/images/nv.svg" alt="" />
         </div>
-        <div class="message-name">
+        <div class="main">
           <div class="name">Mg1</div>
           <div class="account">账号:11111111</div>
         </div>
-        <img class="message-card" src="@/assets/images/card.svg" alt="" />
-        <img class="return-right" src="@/assets/images/return-right.svg" alt=""/>
+        <img class="card" src="@/assets/images/card.svg" alt="" />
+        <img
+          class="return-right"
+          src="@/assets/images/return-right.svg"
+          alt=""
+        />
       </div>
     </router-link>
 
     <div class="my-list">
       <router-link to="/settings">
-        <div class="list-set">
+        <div class="row">
           <img src="@/assets/images/set.svg" alt="" />
           <span>设置</span>
           <img
@@ -29,7 +33,7 @@
         </div>
       </router-link>
       <router-link to="/about">
-        <div class="list-set">
+        <div class="row">
           <img src="@/assets/images/about.svg" alt="" />
           <span>关于</span>
           <img
@@ -40,12 +44,16 @@
         </div>
       </router-link>
       <router-link to="/administer">
-        <div class="list-set">
+        <div class="row">
           <img src="@/assets/images/administer.svg" alt="" />
           <span>后台管理</span>
-          <img class="return-right" src="@/assets/images/return-right.svg" alt=""/>
+          <img
+            class="return-right"
+            src="@/assets/images/return-right.svg"
+            alt=""
+          />
         </div>
-        <div class="list-but">
+        <div class="but">
           <router-link to="/login">退出登录</router-link>
         </div>
       </router-link>
@@ -60,7 +68,7 @@ import BottomNavigationBar from "@/components/BottomNavigationBar.vue";
 @Options({
   components: { BottomNavigationBar },
 })
-export default class New extends Vue {
+export default class My extends Vue {
   msg!: string;
 }
 </script>
@@ -68,7 +76,7 @@ export default class New extends Vue {
 .my {
   overflow-y: auto;
   height: 100%;
-  flex: 1;
+  // flex: 1;
   display: flex;
   flex-direction: column;
 }
@@ -78,15 +86,13 @@ export default class New extends Vue {
   height: 170px;
   background-color: #fff;
   font-size: 18px;
-  // background-color: rgba(0,0,0,0.1);
-  // background-image: url("../../assets/images/pic.png");
-  .message-head {
+  .portrait {
     margin-left: 30px;
     width: 70px;
     height: 70px;
     border: 1px solid #f5f5f5;
   }
-  .message-name {
+  .main {
     flex: 1;
     margin-left: 10px;
     text-align: left;
@@ -98,10 +104,10 @@ export default class New extends Vue {
       font-size: 16px;
     }
   }
-  .message-card {
+  .card {
     margin-right: 30px;
   }
-  .return-right{
+  .return-right {
     width: 12px;
     height: 12px;
     margin-right: 15px;
@@ -112,7 +118,7 @@ export default class New extends Vue {
   overflow-y: auto;
   flex: 1;
   text-align: left;
-  .list-set {
+  .row {
     display: flex;
     align-items: center;
     height: 45px;
@@ -126,16 +132,16 @@ export default class New extends Vue {
       width: 22px;
       height: 22px;
     }
-    .return-right {
-      width: 12px;
-      height: 12px;
-    }
     span {
       flex: 1;
       margin-left: 5px;
     }
+    .return-right {
+      width: 12px;
+      height: 12px;
+    }
   }
-  .list-but {
+  .but {
     padding: 0 15px;
     margin: 10px 0;
     text-align: center;

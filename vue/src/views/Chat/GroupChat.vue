@@ -6,10 +6,11 @@
         <img src="@/assets/images/more.svg" alt=""
       /></router-link>
     </BaseTopBarBack>
-    <div class="groupchat-body" ref="list">
-      <div class="groupchat-body-my" v-for="i in 10" :key="i">
-        <div class="groupchat-body-time">上午9:41</div>
-        <div class="groupchat-body-talk-my">
+
+    <div class="groupchat-list" ref="list">
+      <div class="list-my" v-for="i in 10" :key="i">
+        <div class="time">上午9:41</div>
+        <div class="chatbox-my">
           <ChatBubble direction="left">
             123123123123123123123123123123
             123123123123123123123123123123123123123123
@@ -18,16 +19,16 @@
             312312312312312312312312312312312312312312
             312312312312312312312312312312312312312312312312312312312312312
           </ChatBubble>
-          <div class="my-right">
+          <div class="portrait">
             <img src="@/assets/images/nv.svg" alt="" />
           </div>
         </div>
       </div>
 
-      <div class="groupchat-body-he">
-        <div class="groupchat-body-time">上午9:41</div>
-        <div class="groupchat-body-talk-he">
-          <div class="he-right">
+      <div class="list-he">
+        <div class="time">上午9:41</div>
+        <div class="chatbox-he">
+          <div class="portrait">
             <img src="@/assets/images/nan.svg" alt="" />
           </div>
           <ChatBubble direction="right">
@@ -69,7 +70,7 @@ window.scrollTo({
     ChatBubble,
   },
 })
-export default class Chatpage extends Vue {
+export default class GroupChat extends Vue {
   declare $refs: {
     list: HTMLDivElement;
   };
@@ -97,24 +98,20 @@ export default class Chatpage extends Vue {
 }
 </script>
 <style lang="less" scoped>
-.groupchat {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
 
-.groupchat-body {
+.groupchat-list {
   overflow-y: auto;
   flex: 1;
-  .groupchat-body-my {
+  
+  .list-my {
     text-align: center;
-    .groupchat-body-time {
+    .time {
       margin: 8px;
     }
-    .groupchat-body-talk-my {
+    .chatbox-my {
       display: flex;
       justify-content: flex-end;
-      .my-right {
+      .portrait {
         width: 35px;
         height: 35px;
         border: 1px solid #dbdbdb;
@@ -128,15 +125,15 @@ export default class Chatpage extends Vue {
     }
   }
 
-  .groupchat-body-he {
+  .list-he {
     text-align: center;
-    .groupchat-body-time {
+    .time {
       margin: 8px;
     }
-    .groupchat-body-talk-he {
+    .chatbox-he {
       display: flex;
       justify-content: flex-start;
-      .he-right {
+      .portrait {
         width: 35px;
         height: 35px;
         border: 1px solid #dbdbdb;
@@ -181,44 +178,5 @@ export default class Chatpage extends Vue {
     font-size: 16px;
   }
 }
-.my-left {
-  // border: 10px solid transparent;
-  padding: 10px;
-  background-color: rgb(0, 123, 255);
-  /* border-image: url(@/assets/images/talk_right.svg) 5 8 5 5 stretch; */
-  color: #fff;
-  max-width: 70%;
-  border-radius: 5px;
-  /* padding: 15px; */
-  word-wrap: break-word;
-  word-break: break-all;
-  text-align: left;
-  position: relative;
-  .angle {
-    position: absolute;
-    top: 0px;
-    right: -8px;
-    width: 18px;
-  }
-}
-.he-left {
-  padding: 10px;
-  margin-left: 10px;
-  background-color: rgb(255, 255, 255);
-  /* border-image: url(@/assets/images/talk_right.svg) 5 8 5 5 stretch; */
-  color: #000;
-  max-width: 70%;
-  border-radius: 5px;
-  /* padding: 15px; */
-  word-wrap: break-word;
-  word-break: break-all;
-  text-align: left;
-  position: relative;
-  .angle {
-    position: absolute;
-    top: 0px;
-    left: -8px;
-    width: 18px;
-  }
-}
+
 </style>

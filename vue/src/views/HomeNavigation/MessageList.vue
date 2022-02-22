@@ -18,24 +18,18 @@
     </TopBar>
 
     <div class="messagelist-list">
-      <router-link
-        to="/userchat"
-        class="messagelist-talk"
-        v-for="i in 20"
-        :key="i"
-      >
-        <div class="messagelist-head">
+      <router-link to="/userchat" class="row" v-for="i in 20" :key="i">
+        <div class="portrait">
           <img src="@/assets/images/nan.svg" alt="" />
           <span></span>
         </div>
-        <div class="messagelist-body">
-          <div class="body-left">
-            <div class="body-name">Mg</div>
-            <div class="body-content">11111111111</div>
+
+        <div class="main">
+          <div class="left">
+            <div class="name">Mg</div>
+            <div class="content">11111111111</div>
           </div>
-          <div class="body-right">
-            <div>上午9:41</div>
-          </div>
+          <div>上午9:41</div>
         </div>
       </router-link>
     </div>
@@ -56,7 +50,7 @@ import PopupMenuItem from "@/components/PopupMenuItem.vue";
     PopupMenuItem,
   },
 })
-export default class New extends Vue {
+export default class MessageList extends Vue {
   msg!: string;
 }
 </script>
@@ -66,7 +60,7 @@ export default class New extends Vue {
   /* 父元素必须也有边框自动,子元素才能生效,不知道是为什么 */
   overflow-y: auto;
   height: 100%;
-  flex: 1;
+  // flex: 1;
   display: flex;
   flex-direction: column;
 }
@@ -75,7 +69,7 @@ export default class New extends Vue {
   overflow-y: auto;
   flex: 1;
 }
-.messagelist-talk {
+.row {
   display: flex;
   align-items: center;
   margin-top: 10px;
@@ -84,8 +78,8 @@ export default class New extends Vue {
   /* border: 1px solid #000; */
   // border-bottom: 1px solid #cdcdcd;
   background-color: #fff;
-  box-shadow: 0 2px 2px rgba(0,0,0,0.1);
-  .messagelist-head {
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  .portrait {
     position: relative;
     width: 35px;
     height: 35px;
@@ -111,18 +105,19 @@ export default class New extends Vue {
       padding: 2px;
     }
   }
-  .messagelist-body {
+  .main {
     flex: 1;
     display: flex;
     justify-content: space-between;
     margin-left: 10px;
     font-size: 14px;
-    .body-left {
+    .left {
+      flex: 1;
       text-align: left;
-      .body-name {
+      .name {
         margin-bottom: 5px;
       }
-      .body-content {
+      .content {
         font-size: 12px;
       }
     }

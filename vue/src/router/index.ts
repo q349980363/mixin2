@@ -119,6 +119,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "SetGroupName",
     component: () => import("../views/Group/SetGroupName.vue"),
   },
+  {
+    path: "/groupcard",
+    name: "GroupCard",
+    component: () => import("../views/Group/GroupCard.vue"),
+  },
  
 
   // 我的页
@@ -131,6 +136,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/card",
     name: "Card",
     component: () => import("../views/HomeNavigation/My/Card.vue"),
+  },
+  {
+    path: "/setmyname",
+    name: "SetMyName",
+    component: () => import("../views/HomeNavigation/My/SetMyName.vue"),
   },
   {
     path: "/settings",
@@ -148,10 +158,22 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/HomeNavigation/My/Administer.vue"),
   },
   {
-    path: "/setmyname",
-    name: "SetMyName",
-    component: () => import("../views/HomeNavigation/My/SetMyName.vue"),
+    path: "/administerusers",
+    name: "AdministerUsers",
+    component: () => import("../views/HomeNavigation/My/AdministerUsers.vue"),
   },
+  {
+    path: "/administergroup",
+    name: "AdministerGroup",
+    component: () => import("../views/HomeNavigation/My/AdministerGroup.vue"),
+  },
+  
+  {
+    path: "/promptbox",
+    name: "PromptBox",
+    component: () => import("../views/PromptBox.vue"),
+  },
+ 
 ];
 
 const router = createRouter({

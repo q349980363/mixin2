@@ -2,14 +2,15 @@
   <!-- 聊天页 -->
   <div class="userchat">
     <BaseTopBarBack title="Mg">
-     <router-link to="/userchatset">
+      <router-link to="/userchatset">
         <img src="@/assets/images/more.svg" alt=""
       /></router-link>
     </BaseTopBarBack>
-    <div class="userchat-body" ref="list">
-      <div class="userchat-body-my" v-for="i in 10" :key="i">
-        <div class="userchat-body-time">上午9:41</div>
-        <div class="userchat-body-talk-my">
+
+    <div class="userchat-list" ref="list">
+      <div class="list-my" v-for="i in 10" :key="i">
+        <div class="time">上午9:41</div>
+        <div class="chatbox-my">
           <ChatBubble direction="left">
             123123123123123123123123123123
             123123123123123123123123123123123123123123
@@ -18,16 +19,16 @@
             312312312312312312312312312312312312312312
             312312312312312312312312312312312312312312312312312312312312312
           </ChatBubble>
-          <div class="my-right">
+          <div class="portrait">
             <img src="@/assets/images/nv.svg" alt="" />
           </div>
         </div>
       </div>
 
-      <div class="userchat-body-he">
-        <div class="userchat-body-time">上午9:41</div>
-        <div class="userchat-body-talk-he">
-          <div class="he-right">
+      <div class="list-he">
+        <div class="time">上午9:41</div>
+        <div class="chatbox-he">
+          <div class="portrait">
             <img src="@/assets/images/nan.svg" alt="" />
           </div>
           <ChatBubble direction="right">
@@ -69,7 +70,7 @@ window.scrollTo({
     ChatBubble,
   },
 })
-export default class Chatpage extends Vue {
+export default class UserChat extends Vue {
   declare $refs: {
     list: HTMLDivElement;
   };
@@ -99,48 +100,53 @@ export default class Chatpage extends Vue {
 
 
 <style lang="less" scoped>
-.userchat {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.userchat-body {
+.userchat-list {
   overflow-y: auto;
   flex: 1;
-}
-.userchat-body-time {
-  margin: 8px;
-}
 
-.userchat-body-my,
-.userchat-body-he {
-  text-align: center;
-}
+  .list-my {
+    text-align: center;
+    .time {
+      margin: 8px;
+    }
+    .chatbox-my {
+      display: flex;
+      justify-content: flex-end;
+      .portrait {
+        width: 35px;
+        height: 35px;
+        border: 1px solid #dbdbdb;
+        border-radius: 5px;
+        margin-left: 10px;
+        img {
+          width: 34px;
+          height: 34px;
+        }
+      }
+    }
+  }
 
-.userchat-body-talk-my {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.my-right,
-.he-right {
-  width: 35px;
-  height: 35px;
-  border: 1px solid #dbdbdb;
-  border-radius: 5px;
-  margin-left: 10px;
-}
-
-.my-right img,
-.he-right img {
-  width: 34px;
-  height: 34px;
-}
-
-.userchat-body-talk-he {
-  display: flex;
-  justify-content: flex-start;
+  .list-he {
+    text-align: center;
+    .time {
+      margin: 8px;
+    }
+    .chatbox-he {
+      display: flex;
+      justify-content: flex-start;
+      .portrait {
+        width: 35px;
+        height: 35px;
+        border: 1px solid #dbdbdb;
+        border-radius: 5px;
+        margin-left: 10px;
+        img {
+          width: 34px;
+          height: 34px;
+        }
+      }
+    }
+  }
 }
 
 .userchat-bar {
@@ -154,25 +160,23 @@ export default class Chatpage extends Vue {
   height: 49px;
   background-color: #efefef;
   padding: 0 8px;
-}
-
-.userchat-bar input {
-  flex: 1;
-  padding-left: 5px;
-  height: 36px;
-  border-radius: 5px;
-  border: none;
-}
-
-.userchat-bar button {
-  margin-left: 5px;
-  width: 55px;
-  height: 36px;
-  line-height: 36px;
-  border-radius: 5px;
-  border: none;
-  background-color: #007bff;
-  color: #ffffff;
-  font-size: 16px;
+  input {
+    flex: 1;
+    padding-left: 5px;
+    height: 36px;
+    border-radius: 5px;
+    border: none;
+  }
+  button {
+    margin-left: 5px;
+    width: 55px;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: #ffffff;
+    font-size: 16px;
+  }
 }
 </style>

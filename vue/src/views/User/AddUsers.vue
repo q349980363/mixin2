@@ -1,11 +1,9 @@
 <template>
   <!-- 添加用户 -->
   <div class="addusers">
-    <BaseTopBarBack title="添加">
-      <img src="@/assets/images/more.svg" alt="" />
-    </BaseTopBarBack>
+    <BaseTopBarBack title="添加" />
 
-    <div class="addusers-search">
+    <div class="search">
       <img src="@/assets/images/search.svg" alt="" />
       <input type="text" placeholder="搜索联系人" />
     </div>
@@ -15,19 +13,15 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 
-
 @Options({
   components: {},
 })
-export default class Login extends Vue {}
+export default class AddUsers extends Vue {}
 </script>
 
 <style lang="less" scoped>
 .addusers {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  .addusers-search {
+  .search {
     position: relative;
     display: flex;
     align-items: center;
@@ -35,7 +29,6 @@ export default class Login extends Vue {}
     margin-top: 10px;
     width: 100%;
     height: 45px;
-    /* border: 1px solid #000; */
     img {
       position: absolute;
       left: 20px;
@@ -50,15 +43,4 @@ export default class Login extends Vue {}
     }
   }
 }
-/* .addusers-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 15px;
-  height: 45px;
-  border-bottom: 1px solid #cdcdcd;
-  font-size: 18px;
-  font-weight: 700;
-} */
-
 </style>
