@@ -6,7 +6,7 @@
         <span class="submit">提交</span>
       </router-link>
     </BaseTopBarBack>
-    <div class="body">
+    <div class="main">
       <input type="text" value="" />
     </div>
   </div>
@@ -30,7 +30,7 @@ export default class SetUserName extends Vue {
     font-size: 16px;
     color: #515151;
   }
-  .body {
+  .main {
     margin: 10px 0;
     height: 45px;
     background-color: #ffffff;

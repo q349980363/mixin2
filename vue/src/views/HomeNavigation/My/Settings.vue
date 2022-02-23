@@ -12,22 +12,26 @@
           alt=""
         />
       </div>
-      <div class="info">
-        <span>聊天</span>
-        <img
-          class="return-right"
-          src="@/assets/images/return-right.svg"
-          alt=""
-        />
-      </div>
-      <div class="info">
-        <span>通用</span>
-        <img
-          class="return-right"
-          src="@/assets/images/return-right.svg"
-          alt=""
-        />
-      </div>
+      <router-link to="/settingschat">
+        <div class="info">
+          <span>聊天</span>
+          <img
+            class="return-right"
+            src="@/assets/images/return-right.svg"
+            alt=""
+          />
+        </div>
+      </router-link>
+      <router-link to="/settingscurrency">
+        <div class="info">
+          <span>通用</span>
+          <img
+            class="return-right"
+            src="@/assets/images/return-right.svg"
+            alt=""
+          />
+        </div>
+      </router-link>
     </div>
   </div>
 </template>

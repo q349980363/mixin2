@@ -1,53 +1,55 @@
 <template>
-  <!-- 聊天页 -->
-  <div class="userchat">
-    <BaseTopBarBack title="Mg">
-      <router-link to="/userchatset">
-        <img src="@/assets/images/more.svg" alt=""
-      /></router-link>
-    </BaseTopBarBack>
+  <!-- <transition name=""> -->
+    <!-- 聊天页 -->
+    <div class="userchat">
+      <BaseTopBarBack title="Mg">
+        <router-link to="/userchatset">
+          <img src="@/assets/images/more.svg" alt=""
+        /></router-link>
+      </BaseTopBarBack>
 
-    <div class="userchat-list" ref="list">
-      <div class="list-my" v-for="i in 10" :key="i">
-        <div class="time">上午9:41</div>
-        <div class="chatbox-my">
-          <ChatBubble direction="left">
-            123123123123123123123123123123
-            123123123123123123123123123123123123123123
-            1231231231231231231231231231231231231231231231
-            2312312312312312312312312312312312312312312312
-            312312312312312312312312312312312312312312
-            312312312312312312312312312312312312312312312312312312312312312
-          </ChatBubble>
-          <div class="portrait">
-            <img src="@/assets/images/nv.svg" alt="" />
+      <div class="userchat-list" ref="list">
+        <div class="list-my" v-for="i in 10" :key="i">
+          <div class="time">上午9:41</div>
+          <div class="chatbox-my">
+            <ChatBubble direction="left">
+              123123123123123123123123123123
+              123123123123123123123123123123123123123123
+              1231231231231231231231231231231231231231231231
+              2312312312312312312312312312312312312312312312
+              312312312312312312312312312312312312312312
+              312312312312312312312312312312312312312312312312312312312312312
+            </ChatBubble>
+            <div class="portrait">
+              <img src="@/assets/images/nv.svg" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <div class="list-he">
+          <div class="time">上午9:41</div>
+          <div class="chatbox-he">
+            <div class="portrait">
+              <img src="@/assets/images/nan.svg" alt="" />
+            </div>
+            <ChatBubble direction="right">
+              123123123123123123123123123123
+              123123123123123123123123123123123123123123
+              1231231231231231231231231231231231231231231231
+              2312312312312312312312312312312312312312312312
+              312312312312312312312312312312
+              3123123123123123123123123123123123123123123
+              12312312312312312312312312312312
+            </ChatBubble>
           </div>
         </div>
       </div>
-
-      <div class="list-he">
-        <div class="time">上午9:41</div>
-        <div class="chatbox-he">
-          <div class="portrait">
-            <img src="@/assets/images/nan.svg" alt="" />
-          </div>
-          <ChatBubble direction="right">
-            123123123123123123123123123123
-            123123123123123123123123123123123123123123
-            1231231231231231231231231231231231231231231231
-            2312312312312312312312312312312312312312312312
-            312312312312312312312312312312
-            3123123123123123123123123123123123123123123
-            12312312312312312312312312312312
-          </ChatBubble>
-        </div>
+      <div class="userchat-bar">
+        <input type="text" />
+        <button @click="chatListToEnd('smooth')">发送</button>
       </div>
     </div>
-    <div class="userchat-bar">
-      <input type="text" />
-      <button @click="chatListToEnd('smooth')">发送</button>
-    </div>
-  </div>
+  <!-- </transition> -->
 </template>
 
 <script lang="ts">
@@ -97,7 +99,6 @@ export default class UserChat extends Vue {
   }
 }
 </script>
-
 
 <style lang="less" scoped>
 .userchat-list {

@@ -11,7 +11,7 @@ const routes: Array<RouteRecordRaw> = [
       return "login";
     },
     meta: {
-      login: false,
+      requiresAuth: false,
     },
   },
 
@@ -20,7 +20,7 @@ const routes: Array<RouteRecordRaw> = [
     name: "Login",
     component: () => import("../views/Login.vue"),
     meta: {
-      login: false,
+      requiresAuth: false,
     },
   },
 
@@ -29,7 +29,7 @@ const routes: Array<RouteRecordRaw> = [
     name: "Register",
     component: () => import("../views/Register.vue"),
     meta: {
-      login: false,
+      requiresAuth: false,
     },
   },
 
@@ -37,6 +37,7 @@ const routes: Array<RouteRecordRaw> = [
     path: "/homenav/",
     name: "HomeNav",
     component: import("../views/HomeNavigation/HomeNavigation.vue"),
+    redirect: "/homenav/messagelist",
     children: [
       {
         path: "messagelist",
@@ -62,7 +63,7 @@ const routes: Array<RouteRecordRaw> = [
     name: "SearchUsers",
     component: () => import("../views/SearchUsers.vue"),
   },
-  
+
   {
     path: "/systemnotice",
     name: "SystemNotice",
@@ -124,7 +125,6 @@ const routes: Array<RouteRecordRaw> = [
     name: "GroupCard",
     component: () => import("../views/Group/GroupCard.vue"),
   },
- 
 
   // 我的页
   {
@@ -148,6 +148,27 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/HomeNavigation/My/Settings.vue"),
   },
   {
+    path: "/settingsnumber",
+    name: "SettingsNumber",
+    component: () => import("../views/HomeNavigation/My/SettingsNumber.vue"),
+  },
+  {
+    path: "/settingschat",
+    name: "SettingsChat",
+    component: () => import("../views/HomeNavigation/My/SettingsChat.vue"),
+  },
+  {
+    path: "/settingscurrency",
+    name: "SettingsCurrency",
+    component: () => import("../views/HomeNavigation/My/SettingsCurrency.vue"),
+  },
+  {
+    path: "/settingscurrencysize",
+    name: "SettingsCurrencySize",
+    component: () =>
+      import("../views/HomeNavigation/My/SettingsCurrencySize.vue"),
+  },
+  {
     path: "/about",
     name: "About",
     component: () => import("../views/HomeNavigation/My/About.vue"),
@@ -167,13 +188,6 @@ const routes: Array<RouteRecordRaw> = [
     name: "AdministerGroup",
     component: () => import("../views/HomeNavigation/My/AdministerGroup.vue"),
   },
-  
-  {
-    path: "/promptbox",
-    name: "PromptBox",
-    component: () => import("../views/PromptBox.vue"),
-  },
- 
 ];
 
 const router = createRouter({

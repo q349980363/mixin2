@@ -1,6 +1,6 @@
 <template>
   <!-- 搜索页 -->
-  <div class="search-users">
+  <div class="searchusers">
     <div class="title">
       <img src="@/assets/images/search.svg" alt="" />
       <input type="text" placeholder="搜索" />
@@ -20,7 +20,7 @@ export default class SearchUsers extends Vue {
 </script>
 
 <style lang="less" scoped>
-.search-users {
+.searchusers {
   .title {
     position: relative;
     display: flex;

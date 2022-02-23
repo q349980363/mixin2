@@ -4,10 +4,42 @@
     <BaseTopBarBack title="聊天设置" />
 
     <div class="userchatset-list">
-      <div><router-link to="/setusername">修改备注</router-link></div>
-      <div><router-link to="/searchusers">查找聊天记录</router-link></div>
-      <div class="clear">删除聊天记录</div>
-      <div class="del">删除好友</div>
+      <router-link to="/setusername">
+        <div>
+          <span>修改备注</span>
+          <img
+            class="return-right"
+            src="@/assets/images/return-right.svg"
+            alt=""
+          />
+        </div>
+      </router-link>
+      <router-link to="/searchusers">
+        <div>
+          <span>查找聊天记录</span>
+          <img
+            class="return-right"
+            src="@/assets/images/return-right.svg"
+            alt=""
+          />
+        </div>
+      </router-link>
+      <div class="clear">
+        <span>清空聊天记录</span>
+        <img
+          class="return-right"
+          src="@/assets/images/return-right.svg"
+          alt=""
+        />
+      </div>
+      <div>
+        <span class="del">删除好友</span>
+        <img
+          class="return-right"
+          src="@/assets/images/return-right.svg"
+          alt=""
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -22,28 +54,43 @@ export default class UserChatSet extends Vue {}
 </script>
 
 <style lang="less" scoped>
-.userchatset-list {
-  overflow-y: auto;
-  flex: 1;
-  text-align: left;
-  color: #000;
-  div {
-    margin: 5px 0;
-    padding: 0 15px;
-    height: 49px;
-    line-height: 49px;
-    background-color: #fff;
-    cursor: pointer;
-    a {
-      display: block;
+.userchatset {
+  .userchatset-list {
+    overflow-y: auto;
+    flex: 1;
+    text-align: left;
+    color: #000;
+    div {
+      display: flex;
+      align-items: center;
+      height: 45px;
+      line-height: 45px;
+      padding: 0 15px;
+      margin: 10px 0;
+      background-color: #fff;
+      cursor: pointer;
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+      span {
+        flex: 1;
+        text-align: left;
+      }
+      img {
+        width: 22px;
+        height: 22px;
+      }
+      .return-right {
+        width: 12px;
+        height: 12px;
+        margin-left: 8px;
+      }
     }
-  }
-  .clear {
-    color: #0b5ed7;
-  }
-  del {
-    text-align: center;
-    color: #dc3545;
+    .clear {
+      color: #0b5ed7;
+    }
+    .del {
+      text-align: center;
+      color: #dc3545;
+    }
   }
 }
 </style>

@@ -53,10 +53,10 @@
             alt=""
           />
         </div>
-        <div class="but">
-          <router-link to="/login">退出登录</router-link>
-        </div>
       </router-link>
+      <div class="but">
+        <router-link to="/login">退出登录</router-link>
+      </div>
     </div>
   </div>
 </template>

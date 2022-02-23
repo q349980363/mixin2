@@ -5,6 +5,27 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
+router.beforeEach((to, from, next) => {
+  console.log(to)
+  if (to.meta.requiresAuth === false) {
+    next();
+    return;
+  }
+  // console.log(to.meta);
+
+  if (store.state.loginState) {
+    if (to.name == "Default") {
+      next({ name: "HomeNav" });
+      return;
+    }
+    next();
+  } else {
+    next({ name: "Login" });
+  }
+
+  // next();
+});
+
 const app = createApp(App);
 store.dispatch("init");
 const requireComponent = require.context(

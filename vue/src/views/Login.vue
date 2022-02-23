@@ -3,8 +3,8 @@
   <div class="login">
     <img src="@/assets/images/logo.svg" alt="" />
 
-    <input class="text" type="text" placeholder="用户名" v-model="username" />
-    <input class="pass" type="password" placeholder="密码" v-model="password" />
+    <input class="username" type="text" placeholder="用户名" v-model="username" />
+    <input class="password" type="password" placeholder="密码" v-model="password" />
 
     <!-- <router-link :to="{ name: 'MessageList' }"> -->
     <button class="but" @click="clickLogin()">登录</button>
@@ -25,12 +25,15 @@ import { State, Action } from "vuex-class";
   },
 })
 export default class Login extends Vue {
-  username!: string;
+  username: string = localStorage.username;
   password!: string;
   @State("hub") hub!: Hub;
+  @Action("tokenLogin") tokenLogin!: (token: string) => void;
+  @Action("tips") tips!: (msg: string) => void;
   async clickLogin() {
+    localStorage.username = this.username;
     if (!this.username || !this.password) {
-      alert("用户名或密码不能为空");
+      this.tips("用户名或密码不能为空");
       return;
     }
     var response = await this.hub.invoke(
@@ -40,6 +43,15 @@ export default class Login extends Vue {
       this.password
     );
     console.log(response);
+    const msg = response[0];
+    const state = response[1];
+    if (state) {
+      this.tips("登录成功");
+      const token = msg;
+      this.tokenLogin(msg);
+    } else {
+      this.tips("登录失败," + msg);
+    }
   }
 }
 </script>
@@ -58,7 +70,7 @@ export default class Login extends Vue {
     height: 60px;
     margin: 30px auto;
   }
-  .text {
+  .username {
     padding-left: 10px;
     width: 300px;
     height: 40px;
@@ -66,11 +78,11 @@ export default class Login extends Vue {
     border-bottom: none;
     border-radius: 8px 8px 0 0;
   }
-  .text:focus-within {
+  .username:focus-within {
     z-index: 2;
     position: relative;
   }
-  .pass {
+  .password {
     padding-left: 10px;
     width: 300px;
     height: 40px;

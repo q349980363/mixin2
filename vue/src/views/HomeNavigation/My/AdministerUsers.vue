@@ -3,9 +3,11 @@
     <BaseTopBarBack title="用户列表" />
     <div class="administerusers-list">
       <div class="row" v-for="i in 15" :key="i">
-        <div class="portrait">
-          <img src="@/assets/images/nan.svg" alt="" />
-          <div>Mg</div>
+        <div class="left">
+          <div class="portrait">
+            <img src="@/assets/images/nan.svg" alt="" />
+          </div>
+          <span>Mg</span>
         </div>
         <div class="main">
           <div>IP</div>
@@ -32,27 +34,31 @@ export default class AdministerUsers extends Vue {}
   flex: 1;
   .row {
     display: flex;
-    align-items: center;
     margin-top: 10px;
     padding: 0 15px;
-    height: 90px;
+    height: 70px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
     background-color: #fff;
-    .portrait {
-      width: 35px;
-      height: 35px;
-      border: 1px solid #dbdbdb;
-      border-radius: 5px;
-      img {
-        width: 32px;
-        height: 32px;
+    .left {
+      padding: 8px 0;
+      .portrait {
+        width: 35px;
+        height: 35px;
+        border: 1px solid #dbdbdb;
+        border-radius: 5px;
+        img {
+          width: 32px;
+          height: 32px;
+        }
       }
     }
     .main {
       flex: 1;
-      margin-left: 10px;
+      margin-left:10px;
       font-size: 14px;
       text-align: left;
+      padding: 5px 0;
+      line-height: 1.5;
     }
   }
 }

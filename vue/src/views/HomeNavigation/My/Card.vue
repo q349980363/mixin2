@@ -5,8 +5,10 @@
 
     <div class="card-body">
       <div class="top">
-        <img src="@/assets/images/nv.svg" alt="" />
-        <span>Mg1</span>
+        <div class="portrait">
+          <img src="@/assets/images/nv.svg" alt="" />
+          <span>Mg1</span>
+        </div>
       </div>
       <div class="box"></div>
     </div>
@@ -32,6 +34,20 @@ export default class Card extends Vue {}
   background-color: #fff;
   border-radius: 6px;
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+  .top {
+    flex: 1;
+    margin-top: 20px;
+    .portrait {
+      width: 35px;
+      height: 35px;
+      border: 1px solid #dbdbdb;
+      border-radius: 5px;
+      img {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
   .box {
     margin: 30px;
     width: 200px;

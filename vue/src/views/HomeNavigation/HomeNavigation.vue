@@ -14,9 +14,7 @@ import BottomNavigationBar from "@/components/BottomNavigationBar.vue"; // @ is 
     BottomNavigationBar,
   },
 })
-export default class HomeNavigation extends Vue {
-
-}
+export default class HomeNavigation extends Vue {}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -66,16 +66,6 @@ export default class PopupMenu extends Vue {
   background: #00000059;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s ease;
-  // transition: height 0.2s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
 </style>
 
 <style lang="less"></style>

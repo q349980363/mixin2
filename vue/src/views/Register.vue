@@ -7,14 +7,14 @@
     <input class="pass" type="password" placeholder="密码" v-model="password" />
 
     <div class="tips">请记住您的密码</div>
-
+    <!--
     <div class="clause">
-      <!-- <img  src="@/assets/images/checked.svg" alt="" /> -->
+      <img  src="@/assets/images/checked.svg" alt="" />
       <img src="@/assets/images/unchecked.svg" alt="" />
 
       <span>我已阅读并同意用户注册协议</span>
     </div>
-
+ -->
     <button class="but" @click="clickRegister()">注册</button>
     <router-link class="reg" to="/">返回登录</router-link>
   </div>
@@ -28,12 +28,14 @@ import { State, Action } from "vuex-class";
   components: {},
 })
 export default class Register extends Vue {
-  username!: string;
+  username: string = localStorage.username;
   password!: string;
   @State("hub") hub!: Hub;
+  @Action("tokenLogin") tokenLogin!: (token: string) => void;
+  @Action("tips") tips!: (msg: string) => void;
   async clickRegister() {
     if (!this.username || !this.password) {
-      alert("用户名或密码不能为空");
+      this.tips("用户名或密码不能为空");
       return;
     }
     var response = await this.hub.invoke(
@@ -43,6 +45,16 @@ export default class Register extends Vue {
       this.password
     );
     console.log(response);
+    const msg = response[0];
+    const state = response[1];
+    localStorage.username = this.username;
+    if (state) {
+      this.tips("注册成功");
+      const token = msg;
+      this.tokenLogin(msg);
+    } else {
+      this.tips("注册失败," + msg);
+    }
   }
 }
 </script>
@@ -102,6 +114,15 @@ export default class Register extends Vue {
     background-color: #28a745;
     border: 1px solid #ced4da;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  .but:focus {
+    color: #fff;
+    background-color: #199235;
+    border-color: #227535;
+    box-shadow: rgba(13, 82, 28, 0.25) 0px 0px 0px 4px;
+  }
+  .but:active {
+    background-color: #199235;
   }
   .reg {
     margin-top: 10px;

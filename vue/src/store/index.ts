@@ -7,9 +7,14 @@ export default createStore({
     // 页面连接状态
     hubConnection: 0,
     reconnectCount: 0,
+    tipsList: Array<string>(),
+    loginState: false,
     hub: new Hub("ws://192.168.1.157:8000/ws"),
   },
   mutations: {
+    LoginSuccess(state) {
+      state.loginState = true;
+    },
     ConnectionSuccess(state) {
       state.hubConnection = 10;
       state.reconnectCount = 0;
@@ -22,6 +27,13 @@ export default createStore({
     },
     reconnectCountIncrement(state) {
       state.reconnectCount++;
+    },
+
+    addTips(state, msg: string) {
+      state.tipsList.push(msg);
+    },
+    shiftTips(state) {
+      state.tipsList.shift();
     },
   },
   actions: {
@@ -61,6 +73,19 @@ export default createStore({
           dispatch("reconnect");
         }, 1000);
       }
+    },
+    async tokenLogin({ dispatch, commit, state }, token: string) {
+      console.log("tokenLogin:" + token);
+      localStorage.token = token;
+      commit("LoginSuccess");
+      router.replace("/HomeNav");
+    },
+    async tips({ dispatch, commit, state }, msg: string) {
+      console.log("Tips:" + msg);
+      commit("addTips", msg);
+      setTimeout(() => {
+        commit("shiftTips");
+      }, 1000);
     },
     // async invokeHub({ dispatch, commit, state }): Promise<T> {},
   },

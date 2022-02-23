@@ -6,10 +6,18 @@
   </div> -->
   <!-- <keep-alive> -->
 
-  <router-view class="views" />
+  <router-view class="views" v-slot="{ Component, route }">
+    <transition :name="route.meta.transition || 'fade'">
+      <component :is="Component" />
+    </transition>
+  </router-view>
+
   <ConnectMask v-if="stateHubConnection == 0" />
   <ReconnectMask v-if="stateHubConnection == -1" />
   <ConnectStopMask v-if="stateHubConnection == 0" />
+
+  <Tips />
+
   <!-- </keep-alive> -->
 </template>
 
@@ -18,6 +26,7 @@ import { Options, Vue } from "vue-class-component";
 import ConnectMask from "@/components/Mask/ConnectMask.vue";
 import ConnectStopMask from "@/components/Mask/ConnectStopMask.vue";
 import ReconnectMask from "@/components/Mask/ReconnectMask.vue";
+import Tips from "@/components/Tips.vue";
 
 import { State, Action } from "vuex-class";
 
@@ -26,6 +35,7 @@ import { State, Action } from "vuex-class";
     ConnectMask,
     ConnectStopMask,
     ReconnectMask,
+    Tips,
   },
 })
 export default class App extends Vue {

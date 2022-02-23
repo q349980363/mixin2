@@ -4,13 +4,15 @@
 
     <div class="administergroup-list">
       <div class="row" v-for="i in 15" :key="i">
-        <div class="portrait">
-          <img src="@/assets/images/group-head.svg" alt="" />
-          <div>群1</div>
+        <div class="left">
+          <div class="portrait">
+            <img src="@/assets/images/group-head.svg" alt="" />
+            <span>群1</span>
+          </div>
         </div>
         <div class="main">
           <div>群主</div>
-          <div>群人数2</div>
+          <div>群人数</div>
         </div>
       </div>
     </div>
@@ -32,20 +34,22 @@ export default class AdministerGroup extends Vue {}
   flex: 1;
   .row {
     display: flex;
-    align-items: center;
     margin-top: 10px;
     padding: 0 15px;
-    height: 90px;
+    height: 65px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
     background-color: #fff;
-    .portrait {
-      width: 35px;
-      height: 35px;
-      border: 1px solid #dbdbdb;
-      border-radius: 5px;
-      img {
-        width: 32px;
-        height: 32px;
+    .left {
+      padding: 5px 0;
+      .portrait {
+        width: 35px;
+        height: 35px;
+        border: 1px solid #dbdbdb;
+        border-radius: 5px;
+        img {
+          width: 32px;
+          height: 32px;
+        }
       }
     }
     .main {
@@ -53,6 +57,8 @@ export default class AdministerGroup extends Vue {}
       margin-left: 10px;
       font-size: 14px;
       text-align: left;
+      padding: 8px 0;
+      line-height: 1.5;
     }
   }
 }

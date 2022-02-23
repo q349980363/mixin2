@@ -4,16 +4,54 @@
     <BaseTopBarBack title="群聊设置" />
 
     <div class="groupchatset-list">
-      <div><router-link to="/setgroupname">修改备注</router-link></div>
+      <router-link to="/setgroupname">
+        <div>
+          <span>修改备注</span>
+          <img
+            class="return-right"
+            src="@/assets/images/return-right.svg"
+            alt=""
+          />
+        </div>
+      </router-link>
+
       <router-link to="/groupcard">
         <div class="card">
           <span>群二维码</span>
           <img src="@/assets/images/card.svg" alt="" />
+          <img
+            class="return-right"
+            src="@/assets/images/return-right.svg"
+            alt=""
+          />
         </div>
       </router-link>
-      <div><router-link to="/searchusers">查找聊天记录</router-link></div>
-      <div class="clear">删除聊天记录</div>
-      <div class="del">删除好友</div>
+      <router-link to="/searchusers">
+        <div>
+          <span>查找聊天记录</span>
+          <img
+            class="return-right"
+            src="@/assets/images/return-right.svg"
+            alt=""
+          />
+        </div>
+      </router-link>
+      <div class="clear">
+        <span>清空聊天记录</span>
+        <img
+          class="return-right"
+          src="@/assets/images/return-right.svg"
+          alt=""
+        />
+      </div>
+      <div>
+        <span class="del">删除并退出</span>
+        <img
+          class="return-right"
+          src="@/assets/images/return-right.svg"
+          alt=""
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -34,24 +72,27 @@ export default class GroupChatSet extends Vue {}
   text-align: left;
   color: #000;
   div {
-    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    height: 45px;
+    line-height: 45px;
     padding: 0 15px;
-    height: 49px;
-    line-height: 49px;
+    margin: 10px 0;
     background-color: #fff;
     cursor: pointer;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-    a {
-      display: block;
+    span {
+      flex: 1;
+      text-align: left;
     }
-  }
-  .card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     img {
       width: 22px;
       height: 22px;
+    }
+    .return-right {
+      width: 12px;
+      height: 12px;
+      margin-left: 8px;
     }
   }
   .clear {
@@ -62,5 +103,4 @@ export default class GroupChatSet extends Vue {}
     color: #dc3545;
   }
 }
-
 </style>

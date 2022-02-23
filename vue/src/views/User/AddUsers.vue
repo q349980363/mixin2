@@ -3,7 +3,7 @@
   <div class="addusers">
     <BaseTopBarBack title="添加" />
 
-    <div class="search">
+    <div class="main">
       <img src="@/assets/images/search.svg" alt="" />
       <input type="text" placeholder="搜索联系人" />
     </div>
@@ -21,7 +21,7 @@ export default class AddUsers extends Vue {}
 
 <style lang="less" scoped>
 .addusers {
-  .search {
+  .main {
     position: relative;
     display: flex;
     align-items: center;

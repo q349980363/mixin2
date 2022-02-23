@@ -45,35 +45,37 @@ export default class About extends Vue {}
 </script>
 
 <style lang="less" scoped>
-img {
-  margin: 20px auto;
-  width: 40px;
-  height: 40px;
-}
-.about-list {
-  overflow-y: auto;
-  flex: 1;
-  .info {
-    display: flex;
-    align-items: center;
-    height: 45px;
-    line-height: 45px;
-    padding: 0 15px;
-    margin: 10px 0;
-    background-color: #fff;
-    cursor: pointer;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-    span {
-      flex: 1;
-      text-align: left;
-    }
-    .return-right {
-      width: 12px;
-      height: 12px;
+.about {
+  img {
+    margin: 20px auto;
+    width: 60px;
+    height: 60px;
+  }
+  .about-list {
+    overflow-y: auto;
+    flex: 1;
+    .info {
+      display: flex;
+      align-items: center;
+      height: 45px;
+      line-height: 45px;
+      padding: 0 15px;
+      margin: 10px 0;
+      background-color: #fff;
+      cursor: pointer;
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+      span {
+        flex: 1;
+        text-align: left;
+      }
+      .return-right {
+        width: 12px;
+        height: 12px;
+      }
     }
   }
-}
-.company-info {
-  height: 40px;
+  .company-info {
+    height: 40px;
+  }
 }
 </style>
