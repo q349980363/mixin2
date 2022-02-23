@@ -2,7 +2,7 @@
   <div class="userinfo">
     <BaseTopBarBack title="个人信息" />
     <div class="userinfo-list">
-      <div class="icons">
+      <!-- <div class="icons">
         <img src="@/assets/images/nv.svg" alt="" />
         <img src="@/assets/images/nv1.svg" alt="" />
         <img src="@/assets/images/nv2.svg" alt="" />
@@ -19,24 +19,46 @@
         <img src="@/assets/images/nan1.svg" alt="" />
         <img src="@/assets/images/nan1.svg" alt="" />
         <img src="@/assets/images/nan1.svg" alt="" />
-      </div>
+      </div> -->
+
       <div class="info">
         <span>头像</span>
         <img src="@/assets/images/nv.svg" alt="" />
+        <img
+          class="return-right"
+          src="@/assets/images/return-right.svg"
+          alt=""
+        />
       </div>
 
-      <router-link to="/setmyname" class="info">
+      <router-link  class="info" to="/setmyname">
         <span>名字</span>
         <div>Mg1</div>
+        <img
+          class="return-right"
+          src="@/assets/images/return-right.svg"
+          alt=""
+        />
       </router-link>
 
       <div class="info">
         <span>账号</span>
         <div>11111111</div>
+        <img
+          class="return-right"
+          src="@/assets/images/return-right.svg"
+          alt=""
+        />
       </div>
+
       <router-link to="/card" class="info">
         <span>二维码名片</span>
         <img src="@/assets/images/card.svg" alt="" />
+        <img
+          class="return-right"
+          src="@/assets/images/return-right.svg"
+          alt=""
+        />
       </router-link>
     </div>
   </div>
@@ -85,6 +107,11 @@ export default class UserInfo extends Vue {}
     img {
       width: 22px;
       height: 22px;
+    }
+    .return-right {
+      width: 12px;
+      height: 12px;
+      margin-left: 8px;
     }
   }
 }
