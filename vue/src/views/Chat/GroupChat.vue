@@ -19,7 +19,7 @@
             312312312312312312312312312312312312312312
             312312312312312312312312312312312312312312312312312312312312312
           </ChatBubble>
-          <div class="portrait">
+          <div class="headportrait">
             <img src="@/assets/images/nv.svg" alt="" />
           </div>
         </div>
@@ -28,7 +28,7 @@
       <div class="list-he">
         <div class="time">上午9:41</div>
         <div class="chatbox-he">
-          <div class="portrait">
+          <div class="headportrait">
             <img src="@/assets/images/nan.svg" alt="" />
           </div>
           <ChatBubble direction="right">
@@ -98,85 +98,81 @@ export default class GroupChat extends Vue {
 }
 </script>
 <style lang="less" scoped>
-
-.groupchat-list {
-  overflow-y: auto;
-  flex: 1;
-  
-  .list-my {
-    text-align: center;
-    .time {
-      margin: 8px;
-    }
-    .chatbox-my {
-      display: flex;
-      justify-content: flex-end;
-      .portrait {
-        width: 35px;
-        height: 35px;
-        border: 1px solid #dbdbdb;
-        border-radius: 5px;
-        margin-left: 10px;
-        img {
-          width: 34px;
-          height: 34px;
-        }
-      }
-    }
-  }
-
-  .list-he {
-    text-align: center;
-    .time {
-      margin: 8px;
-    }
-    .chatbox-he {
-      display: flex;
-      justify-content: flex-start;
-      .portrait {
-        width: 35px;
-        height: 35px;
-        border: 1px solid #dbdbdb;
-        border-radius: 5px;
-        margin-left: 10px;
-        img {
-          width: 34px;
-          height: 34px;
-        }
-      }
-    }
-  }
-}
-
-.groupchat-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  // position: absolute;
-  // bottom: 0;
-  // left: 0;
-  // width: 100%;
-  height: 49px;
-  background-color: #efefef;
-  padding: 0 8px;
-  input {
+.groupchat {
+  .groupchat-list {
+    overflow-y: auto;
     flex: 1;
-    padding-left: 5px;
-    height: 36px;
-    border-radius: 5px;
-    border: none;
+
+    .list-my {
+      text-align: center;
+      .time {
+        margin: 8px;
+      }
+      .chatbox-my {
+        display: flex;
+        justify-content: flex-end;
+        .headportrait {
+          width: 35px;
+          height: 35px;
+          border: 1px solid #dbdbdb;
+          border-radius: 5px;
+          margin-left: 10px;
+          img {
+            width: 34px;
+            height: 34px;
+          }
+        }
+      }
+    }
+
+    .list-he {
+      text-align: center;
+      .time {
+        margin: 8px;
+      }
+      .chatbox-he {
+        display: flex;
+        justify-content: flex-start;
+        .headportrait {
+          width: 35px;
+          height: 35px;
+          border: 1px solid #dbdbdb;
+          border-radius: 5px;
+          margin-left: 10px;
+          img {
+            width: 34px;
+            height: 34px;
+          }
+        }
+      }
+    }
   }
-  button {
-    margin-left: 5px;
-    width: 55px;
-    height: 36px;
-    line-height: 36px;
-    border-radius: 5px;
-    border: none;
-    background-color: #007bff;
-    color: #ffffff;
-    font-size: 16px;
+
+  .groupchat-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 49px;
+    background-color: #efefef;
+    padding: 0 8px;
+    input {
+      flex: 1;
+      padding-left: 5px;
+      height: 36px;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      margin-left: 5px;
+      width: 55px;
+      height: 36px;
+      line-height: 36px;
+      border-radius: 5px;
+      border: none;
+      background-color: #007bff;
+      color: #ffffff;
+      font-size: 16px;
+    }
   }
 }
-
 </style>

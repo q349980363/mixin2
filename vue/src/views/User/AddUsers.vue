@@ -1,45 +1,95 @@
 <template>
-  <!-- 添加用户 -->
+  <!-- 添加朋友 -->
   <div class="addusers">
-    <BaseTopBarBack title="添加" />
-
-    <div class="main">
+    <BaseTopBarBack />
+    <div class="searchbox">
       <img src="@/assets/images/search.svg" alt="" />
-      <input type="text" placeholder="搜索联系人" />
+      <input type="text" placeholder="搜索联系人" v-model="username" />
+      <div class="search">搜索</div>
     </div>
+
+    <div class="list">
+      <router-link to="/askusers" class="row" v-for="i in 20" :key="i">
+        <div class="headportrait">
+          <img src="@/assets/images/nan1.svg" alt="" />
+        </div>
+        <div class="name">Mg2</div>
+      </router-link>
+    </div>
+
+    <!-- <router-link to="/addusersinfo"> 123 </router-link> -->
   </div>
 </template>
 
 <script lang="ts">
+import Hub from "@/hub";
 import { Options, Vue } from "vue-class-component";
+import { State, Action } from "vuex-class";
 
 @Options({
   components: {},
 })
-export default class AddUsers extends Vue {}
+export default class AddUsers extends Vue {
+  username = "";
+  @State("hub") hub!: Hub;
+  clickSearch() {
+    console.log(this.username);
+  }
+}
 </script>
 
 <style lang="less" scoped>
 .addusers {
-  .main {
+  .searchbox {
     position: relative;
     display: flex;
     align-items: center;
     padding: 0 15px;
     margin-top: 10px;
-    width: 100%;
-    height: 45px;
     img {
       position: absolute;
-      left: 20px;
+      left: 22px;
+      width: 18px;
     }
     input {
       flex: 1;
-      height: 49px;
+      height: 36px;
       border-radius: 5px;
       padding: 0 30px;
       font-size: 16px;
-      border: 1px solid #cdcdcd;
+      border: none;
+    }
+    .search {
+      margin-left: 5px;
+      cursor: pointer;
+    }
+  }
+  .list {
+    overflow-y: auto;
+    flex: 1;
+    .row {
+      display: flex;
+      align-items: center;
+      padding: 0 15px;
+      height: 80px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      .headportrait {
+        width: 50px;
+        height: 50px;
+        border: 1px solid #dbdbdb;
+        border-radius: 5px;
+        img {
+          width: 48px;
+          height: 48px;
+        }
+      }
+      .name {
+        flex: 1;
+        text-align: left;
+        margin-left: 20px;
+        font-weight: 600;
+        font-size: 18px;
+      }
     }
   }
 }

@@ -3,8 +3,18 @@
   <div class="register">
     <div class="title">注册</div>
 
-    <input class="text" type="text" placeholder="用户名" v-model="username" />
-    <input class="pass" type="password" placeholder="密码" v-model="password" />
+    <input
+      class="username"
+      type="text"
+      placeholder="用户名"
+      v-model="username"
+    />
+    <input
+      class="password"
+      type="password"
+      placeholder="密码"
+      v-model="password"
+    />
 
     <div class="tips">请记住您的密码</div>
     <!--
@@ -29,7 +39,7 @@ import { State, Action } from "vuex-class";
 })
 export default class Register extends Vue {
   username: string = localStorage.username;
-  password!: string;
+  password = "";
   @State("hub") hub!: Hub;
   @Action("tokenLogin") tokenLogin!: (token: string) => void;
   @Action("tips") tips!: (msg: string) => void;
@@ -45,8 +55,8 @@ export default class Register extends Vue {
       this.password
     );
     console.log(response);
-    const msg = response[0];
-    const state = response[1];
+    const msg = response[1];
+    const state = response[0];
     localStorage.username = this.username;
     if (state) {
       this.tips("注册成功");
@@ -72,7 +82,7 @@ export default class Register extends Vue {
     margin-bottom: 30px;
     font-size: 30px;
   }
-  .text {
+  .username {
     padding-left: 10px;
     width: 300px;
     height: 40px;
@@ -80,7 +90,11 @@ export default class Register extends Vue {
     border-bottom: none;
     border-radius: 8px 8px 0 0;
   }
-  .pass {
+  .username:focus-within {
+    z-index: 2;
+    position: relative;
+  }
+  .password {
     padding-left: 10px;
     width: 300px;
     height: 40px;
@@ -119,7 +133,7 @@ export default class Register extends Vue {
     color: #fff;
     background-color: #199235;
     border-color: #227535;
-    box-shadow: rgba(13, 82, 28, 0.25) 0px 0px 0px 4px;
+    box-shadow: rgba(19, 82, 0, 0.25) 0px 0px 0px 4px;
   }
   .but:active {
     background-color: #199235;

@@ -2,11 +2,9 @@
   <!-- 修改群名称 -->
   <div class="setmyname">
     <BaseTopBarBack title="更改名字">
-      <router-link to="/userinfo">
-        <span class="setmyname-submit">提交</span>
-      </router-link>
+      <div class="submit" @click="back">提交</div>
     </BaseTopBarBack>
-    <div class="body">
+    <div class="main">
       <input type="text" value="" />
     </div>
   </div>
@@ -14,12 +12,14 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-
+import { Action } from "vuex-class";
 @Options({
   components: {},
 })
 export default class SetMyName extends Vue {
   msg!: string;
+  @Action("back")
+  back?: () => void;
 }
 </script>
 
@@ -30,7 +30,7 @@ export default class SetMyName extends Vue {
     font-size: 16px;
     color: #515151;
   }
-  .body {
+  .main {
     margin: 10px 0;
     height: 45px;
     background-color: #ffffff;

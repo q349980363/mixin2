@@ -66,41 +66,43 @@ export default class GroupChatSet extends Vue {}
 </script>
 
 <style lang="less" scoped>
-.groupchatset-list {
-  overflow-y: auto;
-  flex: 1;
-  text-align: left;
-  color: #000;
-  div {
-    display: flex;
-    align-items: center;
-    height: 45px;
-    line-height: 45px;
-    padding: 0 15px;
-    margin: 10px 0;
-    background-color: #fff;
-    cursor: pointer;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-    span {
-      flex: 1;
-      text-align: left;
+.groupchatset {
+  .groupchatset-list {
+    overflow-y: auto;
+    flex: 1;
+    text-align: left;
+    color: #000;
+    div {
+      display: flex;
+      align-items: center;
+      height: 45px;
+      line-height: 45px;
+      padding: 0 15px;
+      margin: 10px 0;
+      background-color: #fff;
+      cursor: pointer;
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+      span {
+        flex: 1;
+        text-align: left;
+      }
+      img {
+        width: 22px;
+        height: 22px;
+      }
+      .return-right {
+        width: 12px;
+        height: 12px;
+        margin-left: 8px;
+      }
     }
-    img {
-      width: 22px;
-      height: 22px;
+    .clear {
+      color: #0b5ed7;
     }
-    .return-right {
-      width: 12px;
-      height: 12px;
-      margin-left: 8px;
+    .del {
+      text-align: center;
+      color: #dc3545;
     }
-  }
-  .clear {
-    color: #0b5ed7;
-  }
-  .del {
-    text-align: center;
-    color: #dc3545;
   }
 }
 </style>

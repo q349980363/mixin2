@@ -14,6 +14,13 @@ type Route struct {
 func NewRoute(hub *Hub) *Route {
 	route := &Route{hub}
 	hub.HandleMessage(route.handleMessage)
+	hub.HandleAuthorization(func(token string) (*UserInfo, bool) {
+		var userInfo UserInfo
+		if db.First(&userInfo, &UserInfo{ToKen: token}).RecordNotFound() {
+			return nil, true
+		}
+		return &userInfo, true
+	})
 	return route
 }
 
@@ -25,7 +32,7 @@ func (route *Route) handleMessage(s *HubSession, msgType string, json map[string
 	auth := false
 	switch json["hubName"].(string) {
 	case "login":
-		controller = new(LoginHub)
+		controller = NewLoginHub(s)
 	case "user":
 		//TODO 未编写
 		auth = true
@@ -39,18 +46,17 @@ func (route *Route) handleMessage(s *HubSession, msgType string, json map[string
 			return
 		}
 	}
-	// reflect.
 	t := reflect.ValueOf(controller)
-	t = reflect.ValueOf(&LoginHub{})
 	functionName := json["functionName"].(string)
 	numMethod := t.NumMethod()
 	_ = numMethod
 	fn := t.MethodByName(functionName)
 	fmt.Println(fn)
+	// if fn.IsNil() {
 
+	// }
 	if !fn.IsValid() {
-		//TODO 错误
-		return
+		//TODO 如果指针空则会触发异常.
 	}
 
 	args := json["args"].([]interface{})
@@ -60,13 +66,15 @@ func (route *Route) handleMessage(s *HubSession, msgType string, json map[string
 	}
 	returns := fn.Call(values)
 	if len(returns) > 0 {
+
+		returnsInterface := make([]interface{}, len(returns))
+		for i := range returns {
+			returnsInterface[i] = returns[i].Interface()
+		}
+
 		if len(returns) == 1 {
-			s.functionReturn(json, returns[0].Interface())
+			s.functionReturn(json, returnsInterface[0])
 		} else {
-			returnsInterface := make([]interface{}, len(returns))
-			for i := range returns {
-				returnsInterface[i] = returns[i].Interface()
-			}
 			s.functionReturn(json, returnsInterface)
 		}
 	}

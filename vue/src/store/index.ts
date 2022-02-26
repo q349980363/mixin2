@@ -4,20 +4,33 @@ import Hub from "../hub";
 
 export default createStore({
   state: {
+    connectionInitPromise: new Promise((resolve, reject) => {
+      console.log("占位函数");
+    }),
+    connectionInitPromiseResolve: (value: unknown) => {
+      console.log("占位函数");
+    },
     // 页面连接状态
     hubConnection: 0,
     reconnectCount: 0,
     tipsList: Array<string>(),
+    userInfo: <any>{
+      // UserName: "",
+    },
     loginState: false,
-    hub: new Hub("ws://192.168.1.157:8000/ws"),
+    hub: new Hub("ws://192.168.1.157:8000/ws?token=" + localStorage.token),
   },
   mutations: {
-    LoginSuccess(state) {
+    LoginSuccess(state, userInfo) {
       state.loginState = true;
+      console.log(userInfo, "#########");
+      state.userInfo = userInfo;
+      //TODO userInfo需要检查 如果登陆失败有可能 userinfo 返回空用户
     },
     ConnectionSuccess(state) {
       state.hubConnection = 10;
       state.reconnectCount = 0;
+      state.connectionInitPromiseResolve("");
     },
     ConnectionReconnect(state) {
       state.hubConnection = -1;
@@ -56,7 +69,8 @@ export default createStore({
 
       try {
         await state.hub.open();
-        commit("ConnectionSuccess");
+        // commit("ConnectionSuccess");
+        dispatch("connectionSuccess");
       } catch (error) {
         dispatch("reconnect");
       }
@@ -66,7 +80,8 @@ export default createStore({
       commit("ConnectionReconnect");
       try {
         await state.hub.open();
-        commit("ConnectionSuccess");
+        // commit("ConnectionSuccess");
+        dispatch("connectionSuccess");
       } catch (error) {
         commit("reconnectCountIncrement");
         setTimeout(() => {
@@ -77,8 +92,14 @@ export default createStore({
     async tokenLogin({ dispatch, commit, state }, token: string) {
       console.log("tokenLogin:" + token);
       localStorage.token = token;
-      commit("LoginSuccess");
+      const json = await this.state.hub.invoke("login", "GetMy");
+      commit("LoginSuccess", json);
       router.replace("/HomeNav");
+    },
+    async connectionSuccess({ dispatch, commit, state }, token: string) {
+      const json = await this.state.hub.invoke("login", "GetMy");
+      commit("LoginSuccess", json);
+      commit("ConnectionSuccess");
     },
     async tips({ dispatch, commit, state }, msg: string) {
       console.log("Tips:" + msg);
@@ -91,3 +112,7 @@ export default createStore({
   },
   modules: {},
 });
+
+//TODO 滚动问题
+
+//https://github.com/ustbhuangyi/better-scroll/blob/master/README_zh-CN.md

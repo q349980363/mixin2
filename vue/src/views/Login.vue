@@ -25,6 +25,7 @@ import { State, Action } from "vuex-class";
   },
 })
 export default class Login extends Vue {
+  
   username: string = localStorage.username;
   password!: string;
   @State("hub") hub!: Hub;
@@ -43,8 +44,8 @@ export default class Login extends Vue {
       this.password
     );
     console.log(response);
-    const msg = response[0];
-    const state = response[1];
+    const msg = response[1];
+    const state = response[0];
     if (state) {
       this.tips("登录成功");
       const token = msg;

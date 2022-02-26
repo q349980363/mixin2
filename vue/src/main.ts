@@ -4,9 +4,12 @@ import camelCase from "lodash/camelCase";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-
-router.beforeEach((to, from, next) => {
-  console.log(to)
+store.state.connectionInitPromise = new Promise((resolve, reject) => {
+  store.state.connectionInitPromiseResolve = resolve;
+});
+router.beforeEach(async (to, from, next) => {
+  await store.state.connectionInitPromise;
+  console.log(to);
   if (to.meta.requiresAuth === false) {
     next();
     return;

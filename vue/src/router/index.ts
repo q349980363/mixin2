@@ -98,6 +98,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "SetUserName",
     component: () => import("../views/User/SetUserName.vue"),
   },
+  {
+    path: "/askusers",
+    name: "AskUsers",
+    component: () => import("../views/User/AskUsers.vue"),
+  },
   // 群
   {
     path: "/group",

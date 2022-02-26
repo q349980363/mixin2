@@ -1,54 +1,54 @@
 <template>
   <!-- <transition name=""> -->
-    <!-- 聊天页 -->
-    <div class="userchat">
-      <BaseTopBarBack title="Mg">
-        <router-link to="/userchatset">
-          <img src="@/assets/images/more.svg" alt=""
-        /></router-link>
-      </BaseTopBarBack>
+  <!-- 聊天页 -->
+  <div class="userchat">
+    <BaseTopBarBack title="Mg">
+      <router-link to="/userchatset">
+        <img src="@/assets/images/more.svg" alt=""
+      /></router-link>
+    </BaseTopBarBack>
 
-      <div class="userchat-list" ref="list">
-        <div class="list-my" v-for="i in 10" :key="i">
-          <div class="time">上午9:41</div>
-          <div class="chatbox-my">
-            <ChatBubble direction="left">
-              123123123123123123123123123123
-              123123123123123123123123123123123123123123
-              1231231231231231231231231231231231231231231231
-              2312312312312312312312312312312312312312312312
-              312312312312312312312312312312312312312312
-              312312312312312312312312312312312312312312312312312312312312312
-            </ChatBubble>
-            <div class="portrait">
-              <img src="@/assets/images/nv.svg" alt="" />
-            </div>
-          </div>
-        </div>
-
-        <div class="list-he">
-          <div class="time">上午9:41</div>
-          <div class="chatbox-he">
-            <div class="portrait">
-              <img src="@/assets/images/nan.svg" alt="" />
-            </div>
-            <ChatBubble direction="right">
-              123123123123123123123123123123
-              123123123123123123123123123123123123123123
-              1231231231231231231231231231231231231231231231
-              2312312312312312312312312312312312312312312312
-              312312312312312312312312312312
-              3123123123123123123123123123123123123123123
-              12312312312312312312312312312312
-            </ChatBubble>
+    <div class="userchat-list" ref="list">
+      <div class="list-my" v-for="i in 10" :key="i">
+        <div class="time">上午9:41</div>
+        <div class="chatbox-my">
+          <ChatBubble direction="left">
+            123123123123123123123123123123
+            123123123123123123123123123123123123123123
+            1231231231231231231231231231231231231231231231
+            2312312312312312312312312312312312312312312312
+            312312312312312312312312312312312312312312
+            312312312312312312312312312312312312312312312312312312312312312
+          </ChatBubble>
+          <div class="headportrait">
+            <img src="@/assets/images/nv.svg" alt="" />
           </div>
         </div>
       </div>
-      <div class="userchat-bar">
-        <input type="text" />
-        <button @click="chatListToEnd('smooth')">发送</button>
+
+      <div class="list-he">
+        <div class="time">上午9:41</div>
+        <div class="chatbox-he">
+          <div class="headportrait">
+            <img src="@/assets/images/nan.svg" alt="" />
+          </div>
+          <ChatBubble direction="right">
+            123123123123123123123123123123
+            123123123123123123123123123123123123123123
+            1231231231231231231231231231231231231231231231
+            2312312312312312312312312312312312312312312312
+            312312312312312312312312312312
+            3123123123123123123123123123123123123123123
+            12312312312312312312312312312312
+          </ChatBubble>
+        </div>
       </div>
     </div>
+    <div class="userchat-bar">
+      <input type="text" />
+      <button @click="chatListToEnd('smooth')">发送</button>
+    </div>
+  </div>
   <!-- </transition> -->
 </template>
 
@@ -101,83 +101,81 @@ export default class UserChat extends Vue {
 </script>
 
 <style lang="less" scoped>
-.userchat-list {
-  overflow-y: auto;
-  flex: 1;
-
-  .list-my {
-    text-align: center;
-    .time {
-      margin: 8px;
-    }
-    .chatbox-my {
-      display: flex;
-      justify-content: flex-end;
-      .portrait {
-        width: 35px;
-        height: 35px;
-        border: 1px solid #dbdbdb;
-        border-radius: 5px;
-        margin-left: 10px;
-        img {
-          width: 34px;
-          height: 34px;
-        }
-      }
-    }
-  }
-
-  .list-he {
-    text-align: center;
-    .time {
-      margin: 8px;
-    }
-    .chatbox-he {
-      display: flex;
-      justify-content: flex-start;
-      .portrait {
-        width: 35px;
-        height: 35px;
-        border: 1px solid #dbdbdb;
-        border-radius: 5px;
-        margin-left: 10px;
-        img {
-          width: 34px;
-          height: 34px;
-        }
-      }
-    }
-  }
-}
-
-.userchat-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  // position: absolute;
-  // bottom: 0;
-  // left: 0;
-  // width: 100%;
-  height: 49px;
-  background-color: #efefef;
-  padding: 0 8px;
-  input {
+.userchat {
+  .userchat-list {
+    overflow-y: auto;
     flex: 1;
-    padding-left: 5px;
-    height: 36px;
-    border-radius: 5px;
-    border: none;
+
+    .list-my {
+      text-align: center;
+      .time {
+        margin: 8px;
+      }
+      .chatbox-my {
+        display: flex;
+        justify-content: flex-end;
+        .headportrait {
+          width: 35px;
+          height: 35px;
+          border: 1px solid #dbdbdb;
+          border-radius: 5px;
+          margin-left: 10px;
+          img {
+            width: 34px;
+            height: 34px;
+          }
+        }
+      }
+    }
+
+    .list-he {
+      text-align: center;
+      .time {
+        margin: 8px;
+      }
+      .chatbox-he {
+        display: flex;
+        justify-content: flex-start;
+        .headportrait {
+          width: 35px;
+          height: 35px;
+          border: 1px solid #dbdbdb;
+          border-radius: 5px;
+          margin-left: 10px;
+          img {
+            width: 34px;
+            height: 34px;
+          }
+        }
+      }
+    }
   }
-  button {
-    margin-left: 5px;
-    width: 55px;
-    height: 36px;
-    line-height: 36px;
-    border-radius: 5px;
-    border: none;
-    background-color: #007bff;
-    color: #ffffff;
-    font-size: 16px;
+
+  .userchat-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 49px;
+    background-color: #efefef;
+    padding: 0 8px;
+    input {
+      flex: 1;
+      padding-left: 5px;
+      height: 36px;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      margin-left: 5px;
+      width: 55px;
+      height: 36px;
+      line-height: 36px;
+      border-radius: 5px;
+      border: none;
+      background-color: #007bff;
+      color: #ffffff;
+      font-size: 16px;
+    }
   }
 }
 </style>

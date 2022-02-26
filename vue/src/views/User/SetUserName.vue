@@ -2,9 +2,7 @@
   <!-- 修改用户名称 -->
   <div class="setusername">
     <BaseTopBarBack title="编辑名称">
-      <router-link to="/userchat">
-        <span class="submit">提交</span>
-      </router-link>
+      <div class="submit" @click="back()">提交</div>
     </BaseTopBarBack>
     <div class="main">
       <input type="text" value="" />
@@ -14,12 +12,14 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-
+import { Action } from "vuex-class";
 @Options({
   components: {},
 })
 export default class SetUserName extends Vue {
   msg!: string;
+  @Action("back")
+  back?: () => void;
 }
 </script>
 

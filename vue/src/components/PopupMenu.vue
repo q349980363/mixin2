@@ -37,14 +37,15 @@ export default class PopupMenu extends Vue {
   position: relative;
 }
 .Popup {
+  z-index: 11;
   display: flex;
   flex-direction: column;
   position: absolute;
-  background-color: #000;
-  border: 1px solid #464646;
+  background-color: #515151;
+  // border: 1px solid #464646;
   color: #fff;
   border-radius: 5px;
-  width: 120px;
+  width: 130px;
   right: 18px;
   top: 24px;
   font-size: 15px;
@@ -58,6 +59,8 @@ export default class PopupMenu extends Vue {
   cursor: pointer;
 }
 .Mask {
+  
+  z-index: 10;
   position: fixed;
   top: 0;
   right: 0;

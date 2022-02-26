@@ -29,7 +29,7 @@ export default class PopupMenuItem extends Vue {}
   align-items: center;
   // margin: 0 auto;
   // text-align: left;
-  padding: 5px;
+  padding: 10px;
   img {
     // padding-top: 5px;
     width: 18px;

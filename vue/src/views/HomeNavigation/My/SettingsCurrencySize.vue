@@ -10,6 +10,5 @@
 .settingscurrencysize-list {
   overflow-y: auto;
   flex: 1;
-
 }
 </style>

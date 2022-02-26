@@ -41,6 +41,9 @@ export default class BaseTopBarBack extends Vue {
   padding-right: 15px;
   display: block;
 }
+.title-name{
+  flex:1;
+}
 .tool {
   padding-left: 15px;
   padding-right: 15px;

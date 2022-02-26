@@ -36,27 +36,28 @@ export default class Administer extends Vue {}
 </script>
     
 <style lang="less" scoped>
-
-.administer-list {
-  overflow-y: auto;
-  flex: 1;
-  .info {
-    display: flex;
-    align-items: center;
-    height: 45px;
-    line-height: 45px;
-    padding: 0 15px;
-    margin: 10px 0;
-    background-color: #fff;
-    cursor: pointer;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-    span{
-      flex:1;
-      text-align:left;
-    }
-    .return-right {
-      width: 12px;
-      height: 12px;
+.administer {
+  .administer-list {
+    overflow-y: auto;
+    flex: 1;
+    .info {
+      display: flex;
+      align-items: center;
+      height: 45px;
+      line-height: 45px;
+      padding: 0 15px;
+      margin: 10px 0;
+      background-color: #fff;
+      cursor: pointer;
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+      span {
+        flex: 1;
+        text-align: left;
+      }
+      .return-right {
+        width: 12px;
+        height: 12px;
+      }
     }
   }
 }

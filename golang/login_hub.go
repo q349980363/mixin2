@@ -10,27 +10,28 @@ func NewLoginHub(s *HubSession) *LoginHub {
 	return login
 }
 
-func (c *LoginHub) Login(username string, password string) (string, bool) {
+func (hub *LoginHub) Login(username string, password string) (bool, string) {
 	if username == "" || password == "" {
-		return "用户名或密码不能为空", false
+		return false, "用户名或密码不能为空"
 	}
 	var userInfo UserInfo
 	if db.First(&userInfo, &UserInfo{UserName: username}).RecordNotFound() {
-		return "用户不存在", false
+		return false, "用户不存在"
 	}
 
 	if password != userInfo.PassWord {
-		return "密码不正确", false
+		return false, "密码不正确"
 	}
-	return userInfo.ToKen, true
+	hub.loginSuccess(&userInfo)
+	return true, userInfo.ToKen
 }
 
-func (c *LoginHub) Register(username string, password string) (string, bool) {
+func (hub *LoginHub) Register(username string, password string) (bool, string) {
 	if username == "" || password == "" {
-		return "用户名或密码不能为空", false
+		return false, "用户名或密码不能为空"
 	}
 	if !db.First(&UserInfo{}, &UserInfo{UserName: username}).RecordNotFound() {
-		return "用户已存在", false
+		return false, "用户已存在"
 	}
 	userInfo := UserInfo{
 		UserName: username,
@@ -38,5 +39,19 @@ func (c *LoginHub) Register(username string, password string) (string, bool) {
 		ToKen:    randomString(32),
 	}
 	db.Create(&userInfo)
-	return userInfo.ToKen, true
+	hub.loginSuccess(&userInfo)
+	return true, userInfo.ToKen
+}
+
+func (hub *LoginHub) GetMy() *UserInfo {
+	// if hub.session.UserInfo == nil {
+	// 	return UserInfo{}
+	// }
+	return hub.session.UserInfo
+}
+
+func (hub *LoginHub) loginSuccess(userInfo *UserInfo) {
+	hub.session.UserInfo = userInfo
+	hub.session.AddGroup("user_" + userInfo.UserName)
+	// hub.session.AddGroup("World Channel")
 }

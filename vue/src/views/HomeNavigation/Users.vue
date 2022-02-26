@@ -16,7 +16,7 @@
         <PopupMenuItem
           to="/creategroup"
           :src="require('@/assets/images/group.svg')"
-          title="添加群"
+          title="创建群聊"
         />
         <PopupMenuItem
           to="/addusers"
@@ -28,14 +28,14 @@
 
     <div class="users-list">
       <router-link to="/group" class="row">
-        <div class="portrait">
+        <div class="headportrait">
           <img src="@/assets/images/group-head.svg" alt="" />
         </div>
         <div class="name">群聊</div>
       </router-link>
 
       <router-link to="/userchat" class="row" v-for="i in 15" :key="i">
-        <div class="portrait">
+        <div class="headportrait">
           <img src="@/assets/images/nan.svg" alt="" />
         </div>
         <div class="name">Mg</div>
@@ -70,51 +70,51 @@ export default class Users extends Vue {
   // flex: 1;
   display: flex;
   flex-direction: column;
-}
-.red-dot {
-  position: absolute;
-  right: 60px;
-  top: 0;
-  min-width: 10px;
-  height: 10px;
-  text-align: center;
-  border: none;
-  background: #dc3545;
-  border-radius: 50%;
-  color: #fff;
-  font-size: 12px;
-  padding: 2px;
-}
-.icons {
-  margin: 0 10px;
-}
-.users-list {
-  overflow-y: auto;
-  flex: 1;
-}
-.row {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-  padding: 0 15px;
-  height: 52px;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  .portrait {
-    width: 35px;
-    height: 35px;
-    border: 1px solid #dbdbdb;
-    border-radius: 5px;
-    img {
-      width: 32px;
-      height: 32px;
-    }
+  .red-dot {
+    position: absolute;
+    right: 60px;
+    top: 0;
+    min-width: 10px;
+    height: 10px;
+    text-align: center;
+    border: none;
+    background: #dc3545;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 12px;
+    padding: 2px;
   }
-  .name {
+  .icons {
+    margin: 0 10px;
+  }
+  .users-list {
+    overflow-y: auto;
     flex: 1;
-    margin-left: 10px;
-    font-size: 14px;
-    text-align:left;
+    .row {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+      padding: 0 15px;
+      height: 52px;
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      .headportrait {
+        width: 35px;
+        height: 35px;
+        border: 1px solid #dbdbdb;
+        border-radius: 5px;
+        img {
+          width: 32px;
+          height: 32px;
+        }
+      }
+      .name {
+        flex: 1;
+        margin-left: 10px;
+        font-size: 14px;
+        text-align: left;
+      }
+    }
   }
 }
 </style>

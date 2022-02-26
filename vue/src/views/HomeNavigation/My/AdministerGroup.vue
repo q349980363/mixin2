@@ -5,7 +5,7 @@
     <div class="administergroup-list">
       <div class="row" v-for="i in 15" :key="i">
         <div class="left">
-          <div class="portrait">
+          <div class="headportrait">
             <img src="@/assets/images/group-head.svg" alt="" />
             <span>群1</span>
           </div>
@@ -29,36 +29,38 @@ export default class AdministerGroup extends Vue {}
 </script>
 
 <style lang="less" scoped>
-.administergroup-list {
-  overflow-y: auto;
-  flex: 1;
-  .row {
-    display: flex;
-    margin-top: 10px;
-    padding: 0 15px;
-    height: 65px;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    .left {
-      padding: 5px 0;
-      .portrait {
-        width: 35px;
-        height: 35px;
-        border: 1px solid #dbdbdb;
-        border-radius: 5px;
-        img {
-          width: 32px;
-          height: 32px;
+.administergroup {
+  .administergroup-list {
+    overflow-y: auto;
+    flex: 1;
+    .row {
+      display: flex;
+      margin-top: 10px;
+      padding: 0 15px;
+      height: 65px;
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      .left {
+        padding: 5px 0;
+        .headportrait {
+          width: 35px;
+          height: 35px;
+          border: 1px solid #dbdbdb;
+          border-radius: 5px;
+          img {
+            width: 32px;
+            height: 32px;
+          }
         }
       }
-    }
-    .main {
-      flex: 1;
-      margin-left: 10px;
-      font-size: 14px;
-      text-align: left;
-      padding: 8px 0;
-      line-height: 1.5;
+      .main {
+        flex: 1;
+        margin-left: 10px;
+        font-size: 14px;
+        text-align: left;
+        padding: 8px 0;
+        line-height: 1.5;
+      }
     }
   }
 }

@@ -42,8 +42,16 @@ export default class Hub {
           }
         }
         break;
-      case "invoke":
+      case "error":
+        console.error("##########################################")
+        console.error("Hub server error:", json.message);
+        console.error("##########################################")
         break;
+      case "log":
+        console.log("Hub server log:", json.message);
+        break;
+      // case "invoke":
+      //   break;
       default:
         console.error("Hub onMessage error", e);
         return;

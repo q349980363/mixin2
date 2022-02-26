@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"sync"
 
 	"github.com/gin-gonic/gin"
@@ -37,14 +38,37 @@ func NewHub() *Hub {
 
 	return hub
 }
+func (hub *Hub) GetGroupAllUsers(name string) []*HubSession {
+	var old []*HubSession
+	hub.lock.Lock()
+	old = hub.session__GroupToSession[name]
+	hub.lock.Unlock()
+	return old
+}
+
+func (hub *Hub) broadcastGroupJson(name string, v interface{}) {
+	var list []*HubSession
+	hub.lock.Lock()
+	list = hub.session__GroupToSession[name]
+	hub.lock.Unlock()
+	go func() {
+		for _, v := range list {
+			v.WriteJson(v)
+		}
+	}()
+}
 
 func (hub *Hub) handleConnect(s *melody.Session) {
 	s.Keys = make(map[string]interface{})
 	hubS := NewHubSession(s, hub)
 	if hub.authorizationHandle != nil {
-		token := s.Request.URL.Query()["toKen"][0]
+		token := ""
+		query := s.Request.URL.Query()
+
+		token = query["token"][0]
 		userInfo, auth := hub.handleAuthorization(token)
 		if !auth {
+			fmt.Println("踢出")
 			hubS.CloseWithMsg(gin.H{
 				"type": "auth",
 			})
@@ -69,6 +93,13 @@ func (hub *Hub) handleMessage(s *melody.Session, bytes []byte) {
 	requestData := make(map[string]interface{})
 	_ = json.Unmarshal(bytes, &requestData)
 	hubS := s.Keys["session"].(*HubSession)
+
+	defer func() {
+		if err := recover(); err != nil {
+			fmt.Println("\033[1;37;41m HandleMessage err :", err)
+			hubS.WriteError(-1, err)
+		}
+	}()
 	hub.messageHandler(hubS, requestData["type"].(string), requestData)
 }
 
@@ -224,8 +255,8 @@ func (hubS *HubSession) CallFunction(name string, args ...interface{}) {
 
 func (hubS *HubSession) WriteLog(v interface{}) {
 	hubS.WriteJson(gin.H{
-		"type": "log",
-		"data": v,
+		"type":    "log",
+		"message": v,
 	})
 }
 

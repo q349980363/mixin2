@@ -31,7 +31,7 @@
         />
       </div>
 
-      <router-link  class="info" to="/setmyname">
+      <router-link class="info" to="/setmyname">
         <span>名字</span>
         <div>Mg1</div>
         <img
@@ -74,44 +74,46 @@ export default class UserInfo extends Vue {}
 </script>
 
 <style lang="less" scoped>
-.userinfo-list {
-  position: relative;
-  overflow-y: auto;
-  flex: 1;
-  .icons {
-    position: absolute;
-    top: 56px;
-    right: 0;
-    width: 180px;
-    height: 180px;
-    border: 1px solid #ccc;
-    img {
-      width: 40px;
-      height: 40px;
+.userinfo {
+  .userinfo-list {
+    position: relative;
+    overflow-y: auto;
+    flex: 1;
+    .icons {
+      position: absolute;
+      top: 56px;
+      right: 0;
+      width: 180px;
+      height: 180px;
+      border: 1px solid #ccc;
+      img {
+        width: 40px;
+        height: 40px;
+      }
     }
-  }
-  .info {
-    display: flex;
-    align-items: center;
-    height: 45px;
-    line-height: 45px;
-    padding: 0 15px;
-    margin: 10px 0;
-    background-color: #fff;
-    cursor: pointer;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-    span {
-      flex: 1;
-      text-align: left;
-    }
-    img {
-      width: 22px;
-      height: 22px;
-    }
-    .return-right {
-      width: 12px;
-      height: 12px;
-      margin-left: 8px;
+    .info {
+      display: flex;
+      align-items: center;
+      height: 45px;
+      line-height: 45px;
+      padding: 0 15px;
+      margin: 10px 0;
+      background-color: #fff;
+      cursor: pointer;
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+      span {
+        flex: 1;
+        text-align: left;
+      }
+      img {
+        width: 22px;
+        height: 22px;
+      }
+      .return-right {
+        width: 12px;
+        height: 12px;
+        margin-left: 8px;
+      }
     }
   }
 }
