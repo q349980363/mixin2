@@ -22,8 +22,12 @@ export default createStore({
   },
   mutations: {
     LoginSuccess(state, userInfo) {
+      if (!userInfo) {
+        state.loginState = false;
+        return;
+      }
       state.loginState = true;
-      console.log(userInfo, "#########");
+      console.log("#############################", userInfo);
       state.userInfo = userInfo;
       //TODO userInfo需要检查 如果登陆失败有可能 userinfo 返回空用户
     },
@@ -93,6 +97,7 @@ export default createStore({
       console.log("tokenLogin:" + token);
       localStorage.token = token;
       const json = await this.state.hub.invoke("login", "GetMy");
+      console.log("json", json);
       commit("LoginSuccess", json);
       router.replace("/HomeNav");
     },

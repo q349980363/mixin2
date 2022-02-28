@@ -32,6 +32,7 @@ export default class PopupMenu extends Vue {
   }
 }
 </script>
+
 <style scoped lang="less">
 .PopupMenu {
   position: relative;
@@ -70,5 +71,3 @@ export default class PopupMenu extends Vue {
 }
 
 </style>
-
-<style lang="less"></style>

@@ -33,6 +33,9 @@ func (route *Route) handleMessage(s *HubSession, msgType string, json map[string
 	switch json["hubName"].(string) {
 	case "login":
 		controller = NewLoginHub(s)
+	case "friends":
+		controller = NewFriendsHub(s)
+		auth = true
 	case "user":
 		//TODO 未编写
 		auth = true

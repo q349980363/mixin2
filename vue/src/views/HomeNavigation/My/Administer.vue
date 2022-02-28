@@ -2,7 +2,10 @@
   <div class="administer">
     <BaseTopBarBack title="后台管理" />
     <div class="administer-list">
-      <router-link to="/administerusers">
+      <ListItem to="administerusers" name="用户列表" />
+      <ListItem to="administergroup" name="群列表" />
+
+      <!-- <router-link to="/administerusers">
         <div class="info">
           <span>用户列表</span>
           <img
@@ -21,16 +24,18 @@
             alt=""
           />
         </div>
-      </router-link>
+      </router-link> -->
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-
+import ListItem from "@/components/ListItem.vue";
 @Options({
-  components: {},
+  components: {
+    ListItem,
+  },
 })
 export default class Administer extends Vue {}
 </script>
@@ -40,25 +45,25 @@ export default class Administer extends Vue {}
   .administer-list {
     overflow-y: auto;
     flex: 1;
-    .info {
-      display: flex;
-      align-items: center;
-      height: 45px;
-      line-height: 45px;
-      padding: 0 15px;
-      margin: 10px 0;
-      background-color: #fff;
-      cursor: pointer;
-      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-      span {
-        flex: 1;
-        text-align: left;
-      }
-      .return-right {
-        width: 12px;
-        height: 12px;
-      }
-    }
+    // .info {
+    //   display: flex;
+    //   align-items: center;
+    //   height: 45px;
+    //   line-height: 45px;
+    //   padding: 0 15px;
+    //   margin: 10px 0;
+    //   background-color: #fff;
+    //   cursor: pointer;
+    //   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    //   span {
+    //     flex: 1;
+    //     text-align: left;
+    //   }
+    //   .return-right {
+    //     width: 12px;
+    //     height: 12px;
+    //   }
+    // }
   }
 }
 </style>

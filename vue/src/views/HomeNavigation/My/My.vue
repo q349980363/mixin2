@@ -1,57 +1,55 @@
 <template>
   <!-- 我的页 -->
   <div class="my">
-
-      <router-link to="/userinfo" class="my-message">
-       
-        <!-- 个人信息 -->
-        <div class="portrait">
-          <img src="@/assets/images/nv.svg" alt="" />
-        </div>
-        <div class="main">
-          <div class="name">{{ userInfo.UserName }}</div>
-          <div class="account">账号:11111111</div>
-        </div>
-        <div class="card"><img src="@/assets/images/card.svg" alt="" /></div>
-        <div class="return-right">
-          <img src="@/assets/images/return-right.svg" alt="" />
-        </div>
-      
-
+    <router-link to="/userinfo" class="my-message">
+      <!-- 个人信息 -->
+      <div class="portrait">
+        <img src="@/assets/images/nv.svg" alt="" />
+      </div>
+      <div class="main">
+        <div class="name">{{ userInfo.UserName }}</div>
+        <div class="account">UID:{{ userInfo.ID }}</div>
+      </div>
+      <div class="card"><img src="@/assets/images/card.svg" alt="" /></div>
+      <div class="return-right">
+        <img src="@/assets/images/return-right.svg" alt="" />
+      </div>
     </router-link>
 
     <div class="my-list">
- 
-        <router-link ta to="/settings" class="row">
-          <img src="@/assets/images/set.svg" alt="" />
-          <span>设置</span>
-          <img
-            class="return-right"
-            src="@/assets/images/return-right.svg"
-            alt=""
-          />
-        </router-link>
-
-        <router-link to="/about" class="row">
-          <img src="@/assets/images/about.svg" alt="" />
-          <span>关于</span>
-          <img
-            class="return-right"
-            src="@/assets/images/return-right.svg"
-            alt=""
-          />
-        </router-link>
-
-        <router-link to="/administer" class="row">
-          <img src="@/assets/images/administer.svg" alt="" />
-          <span>后台管理</span>
-          <img
-            class="return-right"
-            src="@/assets/images/return-right.svg"
-            alt=""
-          />
-        </router-link>
-
+      <List name="用户信息">
+        <ListItem to="/userinfo" name="头像">
+          <img src="@/assets/images/nv.svg" alt="" />
+        </ListItem>
+        <ListItem to="setmyname" name="名字">
+          <div>Mg1</div>
+        </ListItem>
+        <ListItem to="/userinfo" name="账号">
+          <div>11111111</div>
+        </ListItem>
+        <ListItem to="/card" name="二维码名片">
+          <img src="@/assets/images/card.svg" alt="" />
+        </ListItem>
+      </List>
+      <List name="用户信息">
+        <ListItem to="/settings" name="设置">
+          <template v-slot:left>
+            <img src="@/assets/images/set.svg" alt="" />
+          </template>
+        </ListItem>
+        <ListItem to="/about" name="关于">
+          <template v-slot:left>
+            <img src="@/assets/images/about.svg" alt="" />
+          </template>
+        </ListItem>
+      </List>
+      <List name="用户信息">
+        <ListItem to="/administer" name="后台管理">
+          <template v-slot:left>
+            <img src="@/assets/images/administer.svg" alt="" />
+          </template>
+        </ListItem>
+      </List>
       <div class="but" @click="clickLogin()">
         退出登录
         <router-link to="/login">123</router-link>
@@ -64,9 +62,14 @@
 import { Options, Vue } from "vue-class-component";
 import BottomNavigationBar from "@/components/BottomNavigationBar.vue";
 import { State, Action } from "vuex-class";
-
+import ListItem from "@/components/ListItem.vue";
+import List from "@/components/List.vue";
 @Options({
-  components: { BottomNavigationBar },
+  components: {
+    BottomNavigationBar,
+    List,
+    ListItem,
+  },
 })
 export default class My extends Vue {
   msg!: string;
@@ -95,9 +98,9 @@ export default class My extends Vue {
       width: 70px;
       height: 70px;
       border: 1px solid #f5f5f5;
-      img{
-         width: 70px;
-      height: 70px;
+      img {
+        width: 70px;
+        height: 70px;
       }
     }
     .main {
@@ -126,29 +129,34 @@ export default class My extends Vue {
     overflow-y: auto;
     flex: 1;
     text-align: left;
-    .row {
-      display: flex;
-      align-items: center;
-      height: 45px;
-      line-height: 45px;
-      padding: 0 15px;
-      margin: 10px 0;
-      background-color: #fff;
-      cursor: pointer;
-      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-      img {
-        width: 22px;
-        height: 22px;
-      }
-      span {
-        flex: 1;
-        margin-left: 5px;
-      }
-      .return-right {
-        width: 12px;
-        height: 12px;
-      }
+    img {
+      width: 22px;
+      height: 22px;
+      padding-right: 5px;
     }
+    // .row {
+    //   display: flex;
+    //   align-items: center;
+    //   height: 45px;
+    //   line-height: 45px;
+    //   padding: 0 15px;
+    //   margin: 10px 0;
+    //   background-color: #fff;
+    //   cursor: pointer;
+    //   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    //   img {
+    //     width: 22px;
+    //     height: 22px;
+    //   }
+    //   span {
+    //     flex: 1;
+    //     margin-left: 5px;
+    //   }
+    //   .return-right {
+    //     width: 12px;
+    //     height: 12px;
+    //   }
+    // }
     .but {
       padding: 0 15px;
       margin: 10px 0;
@@ -158,10 +166,7 @@ export default class My extends Vue {
       background-color: #fff;
       box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
       color: #dc3545;
-      // a {
-      //   display: block;
-      //   color: #dc3545;
-      // }
+      cursor: pointer;
     }
   }
 }

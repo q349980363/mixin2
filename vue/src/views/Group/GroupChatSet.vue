@@ -4,7 +4,15 @@
     <BaseTopBarBack title="群聊设置" />
 
     <div class="groupchatset-list">
-      <router-link to="/setgroupname">
+      <ListItem to="/setgroupname" name="修改备注" />
+      <ListItem to="/groupcard" name="群二维码">
+        <img src="@/assets/images/card.svg" alt="" />
+      </ListItem>
+      <ListItem to="/searchusers" name="查找聊天记录" />
+      <ListItem to="/groupchatset" name="清空聊天记录" class="clear" />
+      <ListItem to="/groupchatset" name="删除并退出" class="del" />
+
+      <!-- <router-link to="/setgroupname">
         <div>
           <span>修改备注</span>
           <img
@@ -26,6 +34,7 @@
           />
         </div>
       </router-link>
+
       <router-link to="/searchusers">
         <div>
           <span>查找聊天记录</span>
@@ -51,16 +60,18 @@
           src="@/assets/images/return-right.svg"
           alt=""
         />
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-
+import ListItem from "@/components/ListItem.vue";
 @Options({
-  components: {},
+  components: {
+    ListItem,
+  },
 })
 export default class GroupChatSet extends Vue {}
 </script>
@@ -72,30 +83,34 @@ export default class GroupChatSet extends Vue {}
     flex: 1;
     text-align: left;
     color: #000;
-    div {
-      display: flex;
-      align-items: center;
-      height: 45px;
-      line-height: 45px;
-      padding: 0 15px;
-      margin: 10px 0;
-      background-color: #fff;
-      cursor: pointer;
-      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-      span {
-        flex: 1;
-        text-align: left;
-      }
-      img {
-        width: 22px;
-        height: 22px;
-      }
-      .return-right {
-        width: 12px;
-        height: 12px;
-        margin-left: 8px;
-      }
+    img {
+      width: 22px;
+      height: 22px;
     }
+    // div {
+    //   display: flex;
+    //   align-items: center;
+    //   height: 45px;
+    //   line-height: 45px;
+    //   padding: 0 15px;
+    //   margin: 10px 0;
+    //   background-color: #fff;
+    //   cursor: pointer;
+    //   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    //   span {
+    //     flex: 1;
+    //     text-align: left;
+    //   }
+    //   img {
+    //     width: 22px;
+    //     height: 22px;
+    //   }
+    //   .return-right {
+    //     width: 12px;
+    //     height: 12px;
+    //     margin-left: 8px;
+    //   }
+    // }
     .clear {
       color: #0b5ed7;
     }

@@ -7,8 +7,8 @@
       <div class="top">
         <div class="headportrait">
           <img src="@/assets/images/nv.svg" alt="" />
-          <span>Mg1</span>
         </div>
+        <div>Mg1</div>
       </div>
       <div class="box"></div>
     </div>
@@ -38,6 +38,7 @@ export default class Card extends Vue {}
     .top {
       flex: 1;
       margin-top: 20px;
+      display: flex;
       .headportrait {
         width: 35px;
         height: 35px;

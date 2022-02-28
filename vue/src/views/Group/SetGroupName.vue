@@ -29,6 +29,7 @@ export default class SetGroupName extends Vue {
     font-weight: 400;
     font-size: 16px;
     color: #515151;
+    cursor: pointer;
   }
   .main {
     margin: 10px 0;

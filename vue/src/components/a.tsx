@@ -1,2 +1,1 @@
-
-const a = <div></div>; 
+const a = <svg />;

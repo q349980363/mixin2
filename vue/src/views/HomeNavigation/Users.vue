@@ -4,15 +4,19 @@
     <TopBar title="联系人">
       <!-- 系统中心 -->
       <router-link to="/systemnotice">
-        <img src="@/assets/images/notice.svg" alt="" />
+        <img src="@/assets/images/notice.svg" alt="" class="icons" />
         <span class="red-dot"></span>
       </router-link>
       <!-- 搜索 -->
-      <router-link to="/searchusers">
-        <img src="@/assets/images/search.svg" alt="" class="icons" />
-      </router-link>
+      <!-- <router-link to="/searchusers"> -->
+      <img src="@/assets/images/search.svg" alt="" class="icons" />
+      <!-- </router-link> -->
       <!-- 添加 -->
-      <PopupMenu :show="false" :src="require('@/assets/images/add.svg')">
+      <PopupMenu
+        :show="false"
+        :src="require('@/assets/images/add.svg')"
+        class="icons"
+      >
         <PopupMenuItem
           to="/creategroup"
           :src="require('@/assets/images/group.svg')"
@@ -27,7 +31,18 @@
     </TopBar>
 
     <div class="users-list">
-      <router-link to="/group" class="row">
+      <MessageBar to="/group">
+        <MessageBarItem
+          :src="require('@/assets/images/group-head.svg')"
+          name="群1"
+        >
+        </MessageBarItem>
+      </MessageBar>
+
+      <MessageBar to="/userchat">
+        <MessageBarItem :src="require('@/assets/images/nan.svg')" name="Mg" />
+      </MessageBar>
+      <!-- <router-link to="/group" class="row">
         <div class="headportrait">
           <img src="@/assets/images/group-head.svg" alt="" />
         </div>
@@ -39,7 +54,7 @@
           <img src="@/assets/images/nan.svg" alt="" />
         </div>
         <div class="name">Mg</div>
-      </router-link>
+      </router-link> -->
     </div>
   </div>
 </template>
@@ -50,6 +65,8 @@ import BottomNavigationBar from "@/components/BottomNavigationBar.vue"; // @ is 
 import TopBar from "@/components/TopBar.vue"; // @ is an alias to /src
 import PopupMenu from "@/components/PopupMenu.vue";
 import PopupMenuItem from "@/components/PopupMenuItem.vue";
+import MessageBar from "@/components/MessageBar.vue";
+import MessageBarItem from "@/components/MessageBarItem.vue";
 
 @Options({
   components: {
@@ -57,6 +74,8 @@ import PopupMenuItem from "@/components/PopupMenuItem.vue";
     TopBar,
     PopupMenu,
     PopupMenuItem,
+    MessageBar,
+    MessageBarItem,
   },
 })
 export default class Users extends Vue {
@@ -85,36 +104,36 @@ export default class Users extends Vue {
     padding: 2px;
   }
   .icons {
-    margin: 0 10px;
+    margin-left: 10px;
   }
   .users-list {
     overflow-y: auto;
     flex: 1;
-    .row {
-      display: flex;
-      align-items: center;
-      margin-top: 10px;
-      padding: 0 15px;
-      height: 52px;
-      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-      background-color: #fff;
-      .headportrait {
-        width: 35px;
-        height: 35px;
-        border: 1px solid #dbdbdb;
-        border-radius: 5px;
-        img {
-          width: 32px;
-          height: 32px;
-        }
-      }
-      .name {
-        flex: 1;
-        margin-left: 10px;
-        font-size: 14px;
-        text-align: left;
-      }
-    }
+    // .row {
+    //   display: flex;
+    //   align-items: center;
+    //   margin-top: 10px;
+    //   padding: 0 15px;
+    //   height: 52px;
+    //   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    //   background-color: #fff;
+    //   .headportrait {
+    //     width: 35px;
+    //     height: 35px;
+    //     border: 1px solid #dbdbdb;
+    //     border-radius: 5px;
+    //     img {
+    //       width: 32px;
+    //       height: 32px;
+    //     }
+    //   }
+    //   .name {
+    //     flex: 1;
+    //     margin-left: 10px;
+    //     font-size: 14px;
+    //     text-align: left;
+    //   }
+    // }
   }
 }
 </style>

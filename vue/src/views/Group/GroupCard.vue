@@ -7,7 +7,7 @@
         <div class="headportrait">
           <img src="@/assets/images/group-head.svg" alt="" />
         </div>
-        <span>群1</span>
+        <div>群1</div>
       </div>
       <div class="box"></div>
     </div>

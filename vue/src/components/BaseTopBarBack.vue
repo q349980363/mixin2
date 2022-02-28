@@ -28,7 +28,7 @@ export default class BaseTopBarBack extends Vue {
 <style scoped lang="less">
 .TopBarBack {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
   height: 45px;
   line-height: 45px;
   border-bottom: 1px solid #cdcdcd;
@@ -45,8 +45,8 @@ export default class BaseTopBarBack extends Vue {
   flex:1;
 }
 .tool {
-  padding-left: 15px;
-  padding-right: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
   display: flex;
   align-items: center;
 }

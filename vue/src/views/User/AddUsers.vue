@@ -1,23 +1,26 @@
 <template>
   <!-- 添加朋友 -->
   <div class="addusers">
-    <BaseTopBarBack />
+    <BaseTopBarBack title="搜索用户" />
     <div class="searchbox">
       <img src="@/assets/images/search.svg" alt="" />
       <input type="text" placeholder="搜索联系人" v-model="username" />
-      <div class="search">搜索</div>
+      <div class="search" @click="clickSearch">搜索</div>
     </div>
 
     <div class="list">
-      <router-link to="/askusers" class="row" v-for="i in 20" :key="i">
+      <router-link
+        to="/askusers"
+        class="row"
+        v-for="(item, i) in usernameList"
+        :key="i"
+      >
         <div class="headportrait">
           <img src="@/assets/images/nan1.svg" alt="" />
         </div>
-        <div class="name">Mg2</div>
+        <div class="name">{{ item }}</div>
       </router-link>
     </div>
-
-    <!-- <router-link to="/addusersinfo"> 123 </router-link> -->
   </div>
 </template>
 
@@ -32,8 +35,15 @@ import { State, Action } from "vuex-class";
 export default class AddUsers extends Vue {
   username = "";
   @State("hub") hub!: Hub;
-  clickSearch() {
-    console.log(this.username);
+
+  usernameList: string[] = [];
+  async clickSearch() {
+    this.usernameList = await this.hub.invoke(
+      "friends",
+      "SearchUsername",
+      this.username
+    );
+    console.log(this.username, this.usernameList);
   }
 }
 </script>
@@ -44,8 +54,11 @@ export default class AddUsers extends Vue {
     position: relative;
     display: flex;
     align-items: center;
-    padding: 0 15px;
-    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #ccc;
+    // margin-top: 10px;
+    // margin-bottom: 10px;
+    border-bottom: 1px solid #cdcdcd;
     img {
       position: absolute;
       left: 22px;
@@ -60,7 +73,13 @@ export default class AddUsers extends Vue {
       border: none;
     }
     .search {
-      margin-left: 5px;
+      background-color: #fff;
+      color: #000;
+      margin-left: 10px;
+      padding-left: 8px;
+      padding-right: 8px;
+      line-height: 36px;
+
       cursor: pointer;
     }
   }
@@ -72,6 +91,8 @@ export default class AddUsers extends Vue {
       align-items: center;
       padding: 0 15px;
       height: 80px;
+      background-color: #fff;
+      color: #000;
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       .headportrait {
         width: 50px;

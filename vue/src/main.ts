@@ -9,24 +9,28 @@ store.state.connectionInitPromise = new Promise((resolve, reject) => {
 });
 router.beforeEach(async (to, from, next) => {
   await store.state.connectionInitPromise;
-  console.log(to);
+  console.log(to, store.state.loginState);
+
+  //如果已经登录 还在尝试访问登录页直接跳转至首页
+  if (to.name == "Login") {
+    if (store.state.loginState) {
+      next({ name: "HomeNav" });
+      return;
+    }
+  }
+
+  //如果当前页面不需要授权,则忽略
   if (to.meta.requiresAuth === false) {
     next();
     return;
   }
-  // console.log(to.meta);
 
+  //当前页面需要授权,如果有授权允许访问,没有授权则重定向至login
   if (store.state.loginState) {
-    if (to.name == "Default") {
-      next({ name: "HomeNav" });
-      return;
-    }
     next();
   } else {
     next({ name: "Login" });
   }
-
-  // next();
 });
 
 const app = createApp(App);
