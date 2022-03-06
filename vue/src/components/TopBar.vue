@@ -25,17 +25,18 @@ export default class TopBar extends Vue {
 .TopBar {
   display: flex;
   // justify-content: space-between;
-
   padding: 12px 15px;
   height: 45px;
-  border-bottom: 1px solid #cdcdcd;
+  @color: #fff;
+  background-color: @color;
+  border-bottom: 1px solid darken(@color, 10%);
   font-size: 18px;
   font-weight: 700;
 }
 .title-icons {
   flex: 1;
   text-align: right;
-  position:relative;
+  position: relative;
 }
 </style>
 <style lang="less">

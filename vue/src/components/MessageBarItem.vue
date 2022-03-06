@@ -1,6 +1,7 @@
 <template>
   <div class="head">
-    <img :src="src" alt="" />
+    <slot name="left" class="left"></slot>
+    <img class="headportrait" :src="src" alt="" />
     <!-- <slot></slot> -->
   </div>
   <div class="main">
@@ -31,21 +32,23 @@ export default class MessageBarItem extends Vue {}
 </script>
 
 <style lang="less" scoped>
+// 头像
 .head {
+  display: flex;
   // position: relative;
-  width: 35px;
-  height: 35px;
-  border: 1px solid #dbdbdb;
-  border-radius: 5px;
-  img {
-    width: 32px;
-    height: 32px;
+  margin: auto;
+  .headportrait {
+    width: 35px;
+    height: 35px;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
   }
 }
 .main {
   flex: 1;
   display: flex;
   justify-content: space-between;
+  margin: auto;
   margin-left: 10px;
   font-size: 14px;
   .left {
@@ -60,6 +63,7 @@ export default class MessageBarItem extends Vue {}
   }
 }
 .time {
+  margin: auto;
   width: 70px;
 }
 </style>

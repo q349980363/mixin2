@@ -1,7 +1,7 @@
 <template>
   <!-- 注册 -->
   <div class="register">
-    <div class="title">注册</div>
+    <div class="register-title">注册</div>
 
     <input
       class="username"
@@ -16,7 +16,7 @@
       v-model="password"
     />
 
-    <div class="tips">请记住您的密码</div>
+    <div class="register-tips">请记住您的密码</div>
     <!--
     <div class="clause">
       <img  src="@/assets/images/checked.svg" alt="" />
@@ -25,8 +25,8 @@
       <span>我已阅读并同意用户注册协议</span>
     </div>
  -->
-    <button class="but" @click="clickRegister()">注册</button>
-    <router-link class="reg" to="/">返回登录</router-link>
+    <button class="register-but" @click="clickRegister()">注册</button>
+    <router-link class="register-reg" to="/">返回登录</router-link>
   </div>
 </template>
 
@@ -71,14 +71,14 @@ export default class Register extends Vue {
 
 <style lang="less" scoped>
 .register {
+   padding: 15px;
+  margin: auto;
   width: 100%;
   max-width: 330px;
-  padding: 15px;
-  margin: auto;
   text-align: center;
   /* background-color: #fff; */
   padding-top: 170px;
-  .title {
+  .register-title {
     margin-bottom: 30px;
     font-size: 30px;
   }
@@ -101,23 +101,23 @@ export default class Register extends Vue {
     border: 1px solid #bbbbbb;
     border-radius: 0 0 8px 8px;
   }
-  .tips {
+  .register-tips {
     margin: 5px 0;
     text-align: left;
     font-size: 10px;
   }
-  .clause {
-    margin: 10px 0;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    height: 20px;
-    span {
-      flex: 1;
-      text-align: left;
-    }
-  }
-  .but {
+  // .clause {
+  //   margin: 10px 0;
+  //   display: flex;
+  //   align-items: center;
+  //   font-size: 14px;
+  //   height: 20px;
+  //   span {
+  //     flex: 1;
+  //     text-align: left;
+  //   }
+  // }
+  .register-but {
     margin-top: 30px;
     width: 300px;
     height: 40px;
@@ -129,16 +129,16 @@ export default class Register extends Vue {
     border: 1px solid #ced4da;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
-  .but:focus {
+  .register-but:focus {
     color: #fff;
     background-color: #199235;
     border-color: #227535;
     box-shadow: rgba(19, 82, 0, 0.25) 0px 0px 0px 4px;
   }
-  .but:active {
+  .register-but:active {
     background-color: #199235;
   }
-  .reg {
+  .register-reg {
     margin-top: 10px;
     font-size: 14px;
     text-align: left;

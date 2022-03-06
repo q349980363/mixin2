@@ -2,14 +2,17 @@
   <div class="administerusers">
     <BaseTopBarBack title="用户列表" />
     <div class="administerusers-list">
-      <div class="row" v-for="i in 15" :key="i">
-        <div class="left">
-          <div class="headportrait">
-            <img src="@/assets/images/nan.svg" alt="" />
-          </div>
-          <span>Mg</span>
+      <div class="administerusers-list-row" v-for="i in 20" :key="i">
+        <div class="row-left">
+          <img
+            class="headportrait"
+            src="@/assets/images/avatar/nan.svg"
+            alt=""
+          />
+
+          <div class="row-left-text">Mg</div>
         </div>
-        <div class="main">
+        <div class="row-main">
           <div>IP</div>
           <div>注册时间</div>
           <div>最后登录时间</div>
@@ -33,33 +36,33 @@ export default class AdministerUsers extends Vue {}
   .administerusers-list {
     overflow-y: auto;
     flex: 1;
-    .row {
+    .administerusers-list-row {
       display: flex;
-      margin-top: 10px;
       padding: 0 15px;
       height: 70px;
-      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
       background-color: #fff;
-      .left {
+      border-bottom: 1px solid #e6e6e6;
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+      .row-left {
         padding: 8px 0;
         .headportrait {
           width: 35px;
           height: 35px;
           border: 1px solid #dbdbdb;
           border-radius: 5px;
-          img {
-            width: 32px;
-            height: 32px;
-          }
+          vertical-align: middle;
+        }
+        .row-left-text {
+          font-size: 14px;
         }
       }
-      .main {
+      .row-main {
         flex: 1;
         margin-left: 10px;
-        font-size: 14px;
-        text-align: left;
         padding: 5px 0;
+        font-size: 14px;
         line-height: 1.5;
+        text-align: left;
       }
     }
   }

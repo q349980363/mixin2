@@ -70,17 +70,11 @@ export default class BottomNavigationBar extends Vue {
   text-align: center;
   display: flex;
   justify-content: space-between;
-  // position: absolute;
-  // bottom: 0;
-  // left: 0;
-  // padding: 0 5px;
-  width: 100%;
-  // height: 49px;
-  background-color: #efefef;
-  // box-shadow: rgba(231, 231, 231, 0.25) 0px 0px 0px 4px;
 
-  // 调试代码 过后删除
-  border-top: #e9e9e9 solid 1px;
+  width: 100%;
+  @color: #fff;
+  background-color: @color;
+  border-top: 1px solid darken(@color, 10%);
 }
 
 .bar-news,

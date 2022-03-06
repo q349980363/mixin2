@@ -67,5 +67,12 @@ requireComponent.keys().forEach((fileName: string) => {
     componentConfig.default || componentConfig
   );
 });
+// app.component(
+//   "Icons",
+//   // 在 `.default` 上查找组件选项。
+//   // 如果组件导出了 `export default` 的话，该选项会存在。
+//   // 否则回退到模块的根。
+//   componentConfig.default || componentConfig
+// );
 // console.log("requireComponent", requireComponent.keys());
 app.use(store).use(router).mount("#app");

@@ -3,23 +3,33 @@
   <div class="my">
     <router-link to="/userinfo" class="my-message">
       <!-- 个人信息 -->
-      <div class="portrait">
-        <img src="@/assets/images/nv.svg" alt="" />
-      </div>
-      <div class="main">
-        <div class="name">{{ userInfo.UserName }}</div>
-        <div class="account">UID:{{ userInfo.ID }}</div>
-      </div>
-      <div class="card"><img src="@/assets/images/card.svg" alt="" /></div>
-      <div class="return-right">
-        <img src="@/assets/images/return-right.svg" alt="" />
+      <img
+        class="message-headportrait"
+        src="@/assets/images/avatar/nv.svg"
+        alt=""
+      />
+      <div class="message-main">
+        <div class="main-top">
+          <div class="main-name">{{ userInfo.UserName }}</div>
+        </div>
+        <div class="main-down">
+          <div class="main-down-left">UID:{{ userInfo.ID }}</div>
+          <div class="main-down-right">
+            <img class="down-card" src="@/assets/images/card.svg" alt="" />
+            <img
+              class="return-right"
+              src="@/assets/images/return-right.svg"
+              alt=""
+            />
+          </div>
+        </div>
       </div>
     </router-link>
 
     <div class="my-list">
       <List name="用户信息">
         <ListItem to="/userinfo" name="头像">
-          <img src="@/assets/images/nv.svg" alt="" />
+          <img class="list-icon" src="@/assets/images/avatar/nv.svg" alt="" />
         </ListItem>
         <ListItem to="setmyname" name="名字">
           <div>Mg1</div>
@@ -28,40 +38,42 @@
           <div>11111111</div>
         </ListItem>
         <ListItem to="/card" name="二维码名片">
-          <img src="@/assets/images/card.svg" alt="" />
+          <img class="list-icon" src="@/assets/images/card.svg" alt="" />
         </ListItem>
       </List>
       <List name="用户信息">
         <ListItem to="/settings" name="设置">
           <template v-slot:left>
-            <img src="@/assets/images/set.svg" alt="" />
+            <img class="list-icon" src="@/assets/images/set.svg" alt="" />
           </template>
         </ListItem>
         <ListItem to="/about" name="关于">
           <template v-slot:left>
-            <img src="@/assets/images/about.svg" alt="" />
+            <img class="list-icon" src="@/assets/images/about.svg" alt="" />
           </template>
         </ListItem>
       </List>
       <List name="用户信息">
         <ListItem to="/administer" name="后台管理">
           <template v-slot:left>
-            <img src="@/assets/images/administer.svg" alt="" />
+            <img
+              class="list-icon"
+              src="@/assets/images/administer.svg"
+              alt=""
+            />
           </template>
         </ListItem>
+        <ListItem to="/demo" name="Demo"></ListItem>
       </List>
-      <div class="but" @click="clickLogin()">
-        退出登录
-        <router-link to="/login">123</router-link>
-      </div>
+      <div class="list-but" @click="clickLogin()">退出登录</div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import { State, Action } from "vuex-class";
 import { Options, Vue } from "vue-class-component";
 import BottomNavigationBar from "@/components/BottomNavigationBar.vue";
-import { State, Action } from "vuex-class";
 import ListItem from "@/components/ListItem.vue";
 import List from "@/components/List.vue";
 @Options({
@@ -77,6 +89,8 @@ export default class My extends Vue {
   clickLogin() {
     localStorage.clear();
     this.$router.push("/login");
+    this.$store.commit("LoginSuccess", null);
+    // this.$store.commit("xxx");
   }
 }
 </script>
@@ -89,39 +103,52 @@ export default class My extends Vue {
   flex-direction: column;
   .my-message {
     display: flex;
-    align-items: center;
     height: 170px;
-    background-color: #fff;
-    font-size: 18px;
-    .portrait {
-      margin-left: 30px;
-      width: 70px;
-      height: 70px;
-      border: 1px solid #f5f5f5;
-      img {
-        width: 70px;
-        height: 70px;
-      }
+    font-size: 20px;
+    padding-left: 30px;
+    padding-right: 15px;
+    border: 1px solid #cdcdcd;
+    background: url("~@/assets/images/bg1.jpg");
+    background-size: 100% auto;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    .message-headportrait {
+      margin: auto;
+      width: 60px;
+      height: 60px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
     }
-    .main {
+    .message-main {
       flex: 1;
+      display: flex;
+      flex-direction: column;
+      margin: auto;
       margin-left: 10px;
+      line-height: 30px;
       text-align: left;
-      .name {
-        font-weight: 700;
+      .main-top {
+        .main-name {
+          font-weight: 700;
+        }
       }
-      .account {
-        margin-top: 5px;
-        font-size: 16px;
+      .main-down {
+        display: flex;
+        justify-content: space-between;
+        .main-down-left {
+          font-size: 18px;
+        }
+        .main-down-right {
+          .down-card {
+            width: 13px;
+          }
+          .return-right {
+            margin-left: 20px;
+            width: 12px;
+            height: 12px;
+          }
+        }
       }
-    }
-    .card {
-      margin-right: 30px;
-    }
-    .return-right {
-      width: 12px;
-      height: 12px;
-      margin-right: 15px;
     }
   }
 
@@ -129,35 +156,13 @@ export default class My extends Vue {
     overflow-y: auto;
     flex: 1;
     text-align: left;
-    img {
+    .list-icon {
+      margin: auto;
       width: 22px;
       height: 22px;
       padding-right: 5px;
     }
-    // .row {
-    //   display: flex;
-    //   align-items: center;
-    //   height: 45px;
-    //   line-height: 45px;
-    //   padding: 0 15px;
-    //   margin: 10px 0;
-    //   background-color: #fff;
-    //   cursor: pointer;
-    //   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-    //   img {
-    //     width: 22px;
-    //     height: 22px;
-    //   }
-    //   span {
-    //     flex: 1;
-    //     margin-left: 5px;
-    //   }
-    //   .return-right {
-    //     width: 12px;
-    //     height: 12px;
-    //   }
-    // }
-    .but {
+    .list-but {
       padding: 0 15px;
       margin: 10px 0;
       text-align: center;

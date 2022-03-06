@@ -3,14 +3,14 @@
   <div class="groupchat">
     <BaseTopBarBack title="群1">
       <router-link to="/groupchatset">
-        <img src="@/assets/images/more.svg" alt=""
+        <img src="@/assets/images/more.svg" alt="" class="groupchat-icons"
       /></router-link>
     </BaseTopBarBack>
 
     <div class="groupchat-list" ref="list">
-      <div class="list-my" v-for="i in 10" :key="i">
-        <div class="time">上午9:41</div>
-        <div class="chatbox-my">
+      <div class="chatbox-my" v-for="i in 10" :key="i">
+        <div class="my-time">上午9:41</div>
+        <div class="chatbubble-my">
           <ChatBubble direction="left">
             123123123123123123123123123123
             123123123123123123123123123123123123123123
@@ -19,18 +19,22 @@
             312312312312312312312312312312312312312312
             312312312312312312312312312312312312312312312312312312312312312
           </ChatBubble>
-          <div class="headportrait">
-            <img src="@/assets/images/nv.svg" alt="" />
-          </div>
+          <img
+            class="headportrait"
+            src="@/assets/images/avatar/nv.svg"
+            alt=""
+          />
         </div>
       </div>
 
-      <div class="list-he">
-        <div class="time">上午9:41</div>
-        <div class="chatbox-he">
-          <div class="headportrait">
-            <img src="@/assets/images/nan.svg" alt="" />
-          </div>
+      <div class="chatbox-he">
+        <div class="he-time">上午9:41</div>
+        <div class="chatbubble-he">
+          <img
+            class="headportrait"
+            src="@/assets/images/avatar/nan.svg"
+            alt=""
+          />
           <ChatBubble direction="right">
             123123123123123123123123123123
             123123123123123123123123123123123123123123
@@ -99,38 +103,36 @@ export default class GroupChat extends Vue {
 </script>
 <style lang="less" scoped>
 .groupchat {
+  .groupchat-icons {
+    vertical-align: middle;
+  }
   .groupchat-list {
     overflow-y: auto;
     flex: 1;
-
-    .list-my {
+    .chatbox-my {
       text-align: center;
-      .time {
+      .my-time {
         margin: 8px;
       }
-      .chatbox-my {
+      .chatbubble-my {
         display: flex;
         justify-content: flex-end;
         .headportrait {
+          margin-left: 10px;
           width: 35px;
           height: 35px;
           border: 1px solid #dbdbdb;
           border-radius: 5px;
-          margin-left: 10px;
-          img {
-            width: 34px;
-            height: 34px;
-          }
         }
       }
     }
 
-    .list-he {
+    .chatbox-he {
       text-align: center;
-      .time {
+      .he-time {
         margin: 8px;
       }
-      .chatbox-he {
+      .chatbubble-he {
         display: flex;
         justify-content: flex-start;
         .headportrait {
@@ -139,10 +141,6 @@ export default class GroupChat extends Vue {
           border: 1px solid #dbdbdb;
           border-radius: 5px;
           margin-left: 10px;
-          img {
-            width: 34px;
-            height: 34px;
-          }
         }
       }
     }
@@ -151,18 +149,19 @@ export default class GroupChat extends Vue {
   .groupchat-bar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    padding: 0 8px;
     height: 49px;
     background-color: #efefef;
-    padding: 0 8px;
     input {
       flex: 1;
+      margin: auto;
       padding-left: 5px;
       height: 36px;
       border-radius: 5px;
       border: none;
     }
     button {
+      margin: auto;
       margin-left: 5px;
       width: 55px;
       height: 36px;

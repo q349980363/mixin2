@@ -23,9 +23,8 @@ export default class ListItem extends Vue {}
 
 <style lang="less" scoped>
 .listitem {
-  border-bottom: 1px solid #cdcdcd;
+  border-bottom: 1px solid #e6e6e6;
   display: flex;
-  align-items: center;
   height: 45px;
   line-height: 45px;
   padding: 0 15px;
@@ -43,9 +42,10 @@ export default class ListItem extends Vue {}
   //   height: 22px;
   // }
   .return-right {
+    margin: auto;
+    margin-left: 8px;
     width: 12px;
     height: 12px;
-    margin-left: 8px;
   }
 }
 </style>

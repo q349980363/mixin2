@@ -22,57 +22,17 @@
       </div> -->
 
       <SetBar to="/userinfo" name="头像">
-        <img src="@/assets/images/nv.svg" alt="" />
+        <img class="list-icon" src="@/assets/images/avatar/nv.svg" alt="" />
       </SetBar>
-      <SetBar to="setmyname" name="名字">
+      <SetBar to="/setmyname" name="名字">
         <div>Mg1</div>
       </SetBar>
       <SetBar to="/userinfo" name="账号">
         <div>11111111</div>
       </SetBar>
       <SetBar to="/card" name="二维码名片">
-        <img src="@/assets/images/card.svg" alt="" />
+        <img class="list-icon" src="@/assets/images/card.svg" alt="" />
       </SetBar>
-      <!-- <div class="info">
-        <span>头像</span>
-        <img src="@/assets/images/nv.svg" alt="" />
-        <img
-          class="return-right"
-          src="@/assets/images/return-right.svg"
-          alt=""
-        />
-      </div> -->
-
-      <!-- 
-      <router-link class="info" to="/setmyname">
-        <span>名字</span>
-        <div>Mg1</div>
-        <img
-          class="return-right"
-          src="@/assets/images/return-right.svg"
-          alt=""
-        />
-      </router-link> -->
-
-      <!-- <div class="info">
-        <span>账号</span>
-        <div>11111111</div>
-        <img
-          class="return-right"
-          src="@/assets/images/return-right.svg"
-          alt=""
-        />
-      </div> -->
-
-      <!-- <router-link to="/card" class="info">
-        <span>二维码名片</span>
-        <img src="@/assets/images/card.svg" alt="" />
-        <img
-          class="return-right"
-          src="@/assets/images/return-right.svg"
-          alt=""
-        />
-      </router-link> -->
     </div>
   </div>
 </template>
@@ -94,47 +54,11 @@ export default class UserInfo extends Vue {}
     position: relative;
     overflow-y: auto;
     flex: 1;
-    img {
+    .list-icon {
+      margin: auto;
       width: 22px;
       height: 22px;
     }
-    // .icons {
-    //   position: absolute;
-    //   top: 56px;
-    //   right: 0;
-    //   width: 180px;
-    //   height: 180px;
-    //   border: 1px solid #ccc;
-    //   img {
-    //     width: 40px;
-    //     height: 40px;
-    //   }
-    // }
-
-    // .info {
-    //   display: flex;
-    //   align-items: center;
-    //   height: 45px;
-    //   line-height: 45px;
-    //   padding: 0 15px;
-    //   margin: 10px 0;
-    //   background-color: #fff;
-    //   cursor: pointer;
-    //   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-    //   span {
-    //     flex: 1;
-    //     text-align: left;
-    //   }
-    //   img {
-    //     width: 22px;
-    //     height: 22px;
-    //   }
-    //   .return-right {
-    //     width: 12px;
-    //     height: 12px;
-    //     margin-left: 8px;
-    //   }
-    // }
   }
 }
 </style>

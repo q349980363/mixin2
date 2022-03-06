@@ -27,7 +27,7 @@ export default createStore({
         return;
       }
       state.loginState = true;
-      console.log("#############################", userInfo);
+      // console.log("#############################", userInfo);
       state.userInfo = userInfo;
       //TODO userInfo需要检查 如果登陆失败有可能 userinfo 返回空用户
     },

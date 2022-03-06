@@ -1,0 +1,37 @@
+.row {
+  display: flex;
+  flex-direction: row;
+  // width: 100%;
+}
+
+.row-cols(@row-cols) {
+  flex-flow: row wrap;
+  & > .col {
+    width: 100% / @row-cols;
+    flex: none;
+  }
+}
+
+.row.row-cols-2 {
+  .row-cols(2);
+}
+
+.row.row-cols-3 {
+  .row-cols(3);
+}
+
+.row.row-cols-4 {
+  .row-cols(4);
+}
+
+.row.row-cols-5 {
+  .row-cols(5);
+}
+
+.row.row-cols-6 {
+  .row-cols(6);
+}
+
+.col {
+  flex: 1;
+}

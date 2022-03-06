@@ -1,0 +1,93 @@
+.btnFunction(@name, @color, @font-color) {
+    .btn-@{name} {
+        color: @font-color;
+        background-color: @color;
+        border-color: @color;
+    }
+
+    .btn-outline-@{name} {
+        // extract从数组从取值
+        color: @color;
+        // background-color: @color;
+        border-color: @color;
+        background-color: transparent;
+    }
+}
+
+
+
+.btn {
+    .btn-primary;
+    border-radius: 4px;
+    color: @light-color;
+    cursor: pointer;
+    border: 1px solid #ced4da;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    padding: 6px 20px;
+    //   .btn-primary;
+    font-size: 1rem;
+    //   .btnFunction("primary",@primary,@light-color);
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.btn-lg {
+    padding: 6px 20px;
+    //   .btn-primary;
+    font-size: 1.4rem;
+}
+
+.btn-sm {
+    padding: 4px 10px;
+    //   .btn-primary;
+    font-size: 0.6rem;
+}
+
+.btnFunction(primary, @primary, @light-color);
+.btnFunction(secondary, @secondary, @light-color);
+.btnFunction(success, @success, @light-color);
+.btnFunction(danger, @danger, @light-color);
+.btnFunction(warning, @warning, @dark-color);
+.btnFunction(info, @info, @dark-color);
+.btnFunction(light, @light, @dark-color);
+.btnFunction(dark, @dark, @light-color);
+
+
+
+.btn:focus {
+    //   color: #fff;
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+    box-shadow: rgba(13, 110, 253, 0.25) 0px 0px 0px 4px;
+}
+
+.btn:active {
+    background-color: #0b5ed7;
+}
+
+// <button type="button" class="btn btn-primary">Primary</button>
+// <button type="button" class="btn btn-secondary">Secondary</button>
+// <button type="button" class="btn btn-success">Success</button>
+// <button type="button" class="btn btn-danger">Danger</button>
+// <button type="button" class="btn btn-warning">Warning</button>
+// <button type="button" class="btn btn-info">Info</button>
+// <button type="button" class="btn btn-light">Light</button>
+// <button type="button" class="btn btn-dark">Dark</button>
+
+// <button type="button" class="btn btn-outline-primary">Primary</button>
+// <button type="button" class="btn btn-outline-secondary">Secondary</button>
+// <button type="button" class="btn btn-outline-success">Success</button>
+// <button type="button" class="btn btn-outline-danger">Danger</button>
+// <button type="button" class="btn btn-outline-warning">Warning</button>
+// <button type="button" class="btn btn-outline-info">Info</button>
+// <button type="button" class="btn btn-outline-light">Light</button>
+// <button type="button" class="btn btn-outline-dark">Dark</button>
+
+// <button type="button" class="btn btn-primary btn-lg">Large button</button>
+// <button type="button" class="btn btn-primary btn-sm">Small button</button>
+
+// <button type="button" class="btn btn-secondary btn-lg" disabled>Button</button>
+// <button class="btn btn-primary" type="button">Button</button>

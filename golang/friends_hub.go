@@ -10,7 +10,7 @@ func NewFriendsHub(s *HubSession) *FriendsHub {
 	return hub
 }
 
-func (hub *FriendsHub) Add(username string) (bool, string) {
+func (hub *FriendsHub) Apply(username string) (bool, string) {
 	if db.First(&UserInfo{}, &UserInfo{UserName: username}).RecordNotFound() {
 		return false, "用户不存在"
 	}
@@ -43,7 +43,7 @@ func (hub *FriendsHub) SearchUsername(username string) []string {
 	return usernames
 }
 
-// func addFriends(userName string, target string) error {
+//  func addFriends(userName string, target string) error {
 
 // 	sendSystemChat(&SystemChat{
 // 		UserName: target,

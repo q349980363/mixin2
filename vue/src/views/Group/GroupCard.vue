@@ -2,14 +2,12 @@
   <!-- 群二维码 -->
   <div class="groupcard">
     <BaseTopBarBack title="群二维码名片" />
-    <div class="main">
-      <div class="top">
-        <div class="headportrait">
-          <img src="@/assets/images/group-head.svg" alt="" />
-        </div>
-        <div>群1</div>
+    <div class="groupcard-main">
+      <div class="main-top">
+        <img class="headportrait" src="@/assets/images/group-head.svg" alt="" />
+        <div class="top-name">群1</div>
       </div>
-      <div class="box"></div>
+      <div class="main-box"></div>
     </div>
   </div>
 </template>
@@ -25,33 +23,36 @@ export default class GroupCard extends Vue {}
 
 <style lang="less" scoped>
 .groupcard {
-  .main{
-    margin: 100px 30px;
-    height: 340px;
+  .groupcard-main {
+    margin: 90px auto;
+    padding: 0 40px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     background-color: #fff;
     border-radius: 6px;
     box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
-    .top {
+    .main-top {
       flex: 1;
       margin-top: 20px;
+      display: flex;
+      line-height: 50px;
+      font-size: 16px;
       .headportrait {
-        width: 35px;
-        height: 35px;
+        width: 50px;
+        height: 50px;
         border: 1px solid #dbdbdb;
         border-radius: 5px;
-        img {
-          width: 32px;
-          height: 32px;
-        }
+        vertical-align: middle;
+      }
+      .top-name {
+        margin-left: 10px;
       }
     }
-    .box {
-      margin: 30px;
-      width: 200px;
-      height: 200px;
+    .main-box {
+      margin-top: 30px;
+      margin-bottom: 60px;
+      width: 260px;
+      height: 260px;
       border: 1px solid #000;
     }
   }

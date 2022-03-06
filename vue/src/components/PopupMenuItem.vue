@@ -21,24 +21,15 @@ export default class PopupMenuItem extends Vue {}
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 .PopupMenuItem {
-  color: #fff;
-  cursor: pointer;
   display: flex;
   flex-direction: row;
-  // align-self: center;
-  align-items: center;
-  // margin: 0 auto;
-  // text-align: left;
   padding: 10px;
+  color: #fff;
+  cursor: pointer;
   img {
-    // padding-top: 5px;
     width: 18px;
     height: 18px;
   }
-
-  // line-height: 25px;
-  // height: 25px;
-
   border-top: 1px solid #e5e5e5;
   &:first-child {
     border-top: none;
@@ -47,7 +38,6 @@ export default class PopupMenuItem extends Vue {}
 .PopupMenuName {
   margin-left: 10px;
   flex: 1;
-  // text-align:justify;
   text-align: left;
 }
 </style>
