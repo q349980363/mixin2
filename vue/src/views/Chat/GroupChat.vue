@@ -155,7 +155,7 @@ export default class GroupChat extends Vue {
     input {
       flex: 1;
       margin: auto;
-      padding-left: 5px;
+      padding-left: 10px;
       height: 36px;
       border-radius: 5px;
       border: none;

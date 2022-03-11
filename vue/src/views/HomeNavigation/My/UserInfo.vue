@@ -31,7 +31,7 @@
         <div>11111111</div>
       </SetBar>
       <SetBar to="/card" name="二维码名片">
-        <img class="list-icon" src="@/assets/images/card.svg" alt="" />
+        <img class="list-icon" src="@/assets/images/qrCode.svg" alt="" />
       </SetBar>
     </div>
   </div>

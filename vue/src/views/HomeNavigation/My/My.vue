@@ -15,7 +15,7 @@
         <div class="main-down">
           <div class="main-down-left">UID:{{ userInfo.ID }}</div>
           <div class="main-down-right">
-            <img class="down-card" src="@/assets/images/card.svg" alt="" />
+            <img class="down-card" src="@/assets/images/qrCode.svg" alt="" />
             <img
               class="return-right"
               src="@/assets/images/return-right.svg"
@@ -27,7 +27,7 @@
     </router-link>
 
     <div class="my-list">
-      <List name="用户信息">
+      <!-- <List name="用户信息">
         <ListItem to="/userinfo" name="头像">
           <img class="list-icon" src="@/assets/images/avatar/nv.svg" alt="" />
         </ListItem>
@@ -38,9 +38,9 @@
           <div>11111111</div>
         </ListItem>
         <ListItem to="/card" name="二维码名片">
-          <img class="list-icon" src="@/assets/images/card.svg" alt="" />
+          <img class="list-icon" src="@/assets/images/qrCode.svg" alt="" />
         </ListItem>
-      </List>
+      </List> -->
       <List name="用户信息">
         <ListItem to="/settings" name="设置">
           <template v-slot:left>
@@ -107,9 +107,10 @@ export default class My extends Vue {
     font-size: 20px;
     padding-left: 30px;
     padding-right: 15px;
-    border: 1px solid #cdcdcd;
-    background: url("~@/assets/images/bg1.jpg");
+    // border: 1px solid #cdcdcd;
+    background: url("~@/assets/images/bg.png") no-repeat;
     background-size: 100% auto;
+    background-position: 0 -349px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
     .message-headportrait {
       margin: auto;
@@ -158,9 +159,9 @@ export default class My extends Vue {
     text-align: left;
     .list-icon {
       margin: auto;
+      margin-right: 10px;
       width: 22px;
       height: 22px;
-      padding-right: 5px;
     }
     .list-but {
       padding: 0 15px;

@@ -9,7 +9,7 @@
     </div>
 
     <div class="creategroup-list">
-      <MessageBar to="/userchat">
+      <MessageBar to="/creategroup">
         <div class="red-dot1"></div>
         <MessageBarItem
           :src="require('@/assets/images/avatar/nan.svg')"

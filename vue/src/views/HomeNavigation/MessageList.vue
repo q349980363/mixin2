@@ -79,6 +79,7 @@ export default class MessageList extends Vue {
   flex-direction: column;
   .messagelist-icons {
     margin-left: 10px;
+    width: 20px;
   }
   .red-dot {
     position: absolute;

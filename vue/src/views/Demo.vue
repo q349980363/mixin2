@@ -29,6 +29,23 @@
       <Icons class="col demo-icons-item" name="groupHead" />
       <Icons class="col demo-icons-item" name="logo" />
     </div>
+    <BaseTopBarBack title="素材" :showBack="false" />
+    <div class="demo-item demo-icons row row-cols-6">
+      <Icons class="col demo-icons-item" name="notice" />
+      <Icons class="col demo-icons-item" name="add" />
+      <Icons class="col demo-icons-item" name="message" />
+      <Icons class="col demo-icons-item" name="contact" />
+      <Icons class="col demo-icons-item" name="my" />
+      <Icons class="col demo-icons-item" name="groupchat" />
+      <Icons class="col demo-icons-item" name="addFriends" />
+      <Icons class="col demo-icons-item" name="qrCode" />
+      <Icons class="col demo-icons-item" name="set" />
+      <Icons class="col demo-icons-item" name="about" />
+      <Icons class="col demo-icons-item" name="administer" />
+      <Icons class="col demo-icons-item" name="return1" />
+      <Icons class="col demo-icons-item" name="return2" />
+      <Icons class="col demo-icons-item" name="more" />
+    </div>
     <BaseTopBarBack title="其他" :showBack="false" />
     <div class="demo-item">
       <TopBar title="消息">
@@ -42,6 +59,7 @@
           :show="false"
           :src="require('@/assets/images/add.svg')"
           class="icons"
+          style="width: 20px"
         >
           <PopupMenuItem
             to="/creategroup"
@@ -81,7 +99,7 @@
       <button class="btn btn-outline-primary">primary</button>
       <button class="btn btn-outline-secondary">secondary</button>
       <button class="btn btn-outline-success">success</button>
-      <button class="btn btbtn-outlinen-danger">danger</button>
+      <button class="btn btn-outline-danger">danger</button>
       <button class="btn btn-outline-warning">warning</button>
       <button class="btn btn-outline-info">info</button>
       <button class="btn btn-outline-light">light</button>
@@ -104,6 +122,9 @@
       <button class="btn btn-primary btn-block">
         block 元素不能有外边距 会撑开父元素
       </button>
+      <!-- 切换按钮 -->
+      <input type="checkbox" class="toggle-button-big" />
+      <input type="checkbox" class="toggle-button-small" />
     </div>
   </div>
 </template>
@@ -161,10 +182,88 @@ export default class Demo extends Vue {
 .demo-icons-item {
   background-color: #fff;
   border: solid 1px #ccc;
+  padding: 5px;
 }
 .demo-item {
   margin: 10px;
   border: solid 1px #ccc;
+  .icons {
+    width: 20px;
+    height: 20px;
+  }
+  // 切换按钮
+  .toggle-button-big {
+    appearance: none;
+    position: relative;
+    display: inline-block;
+    width: 36px;
+    height: 18px;
+    margin: 0;
+    background: #ffffff;
+    border: 1px solid #bbc1e1;
+    border-radius: 30px;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+    transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+  }
+  .toggle-button-big::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    width: 14px;
+    height: 14px;
+    background-color: #0d6efd;
+    border-radius: 50%;
+    transform: translateX(0);
+    transition: 0.3s;
+    transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+  }
+  .toggle-button-big:checked::after {
+    transform: translateX(calc(100% + 4px));
+    background-color: #fff;
+  }
+  .toggle-button-big:checked {
+    background-color: #0d6efd;
+  }
+  .toggle-button-small {
+    appearance: none;
+    position: relative;
+    display: inline-block;
+    width: 24px;
+    height: 12px;
+    margin: 0;
+    background: #ffffff;
+    border: 1px solid #bbc1e1;
+    border-radius: 30px;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+    transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+  }
+  .toggle-button-small::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    width: 8px;
+    height: 8px;
+    background-color: #0d6efd;
+    border-radius: 50%;
+    transform: translateX(0);
+    transition: 0.3s;
+    transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+  }
+  .toggle-button-small:checked::after {
+    transform: translateX(calc(100% + 4px));
+    background-color: #fff;
+  }
+  .toggle-button-small:checked {
+    background-color: #0d6efd;
+  }
 }
 </style>
 

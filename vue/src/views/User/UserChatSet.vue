@@ -4,7 +4,7 @@
     <BaseTopBarBack title="聊天设置" />
 
     <div class="userchatset-list">
-      <ListItem to="/setusername" name="修改备注" />
+      <ListItem to="/setusername" name="设置备注" />
       <ListItem to="/searchpage" name="查找聊天记录" />
       <ListItem to="/userchatset" name="清空聊天记录" class="list-clear" />
       <ListItem to="/userchatset" name="删除好友" class="list-del" />

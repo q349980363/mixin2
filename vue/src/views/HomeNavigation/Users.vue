@@ -99,6 +99,7 @@ export default class Users extends Vue {
   }
   .messagelist-icons {
     margin-left: 10px;
+    width: 20px;
   }
   .users-list {
     overflow-y: auto;
