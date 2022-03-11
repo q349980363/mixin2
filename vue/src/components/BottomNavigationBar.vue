@@ -1,56 +1,61 @@
 <template>
   <div class="BottomNavigationBar">
-    <div class="news-bar">
+    <div class="tabbar">
       <!-- 消息 -->
       <router-link
         :to="{ name: 'MessageList' }"
-        class="bar-news"
+        class="tabbar-item"
         active-class="bar-active"
         v-slot="{ isActive }"
         replace
       >
-        <img
-          v-if="isActive"
-          src="../assets/images/news-checked.svg"
-          alt="消息激活"
-        />
-        <img v-else src="../assets/images/news-unchecked.svg" alt="消息" />
-        <span></span>
+        <div class="item-list">
+          <img
+            v-if="isActive"
+            src="../assets/images/message-select.svg"
+            alt="消息激活"
+          />
+          <img v-else src="../assets/images/message.svg" alt="消息" />
+          <div class="bar-text">消息</div>
+          <span></span>
+        </div>
       </router-link>
       <!-- 联系人 -->
       <router-link
         :to="{ name: 'Users' }"
-        class="bar-contacts"
+        class="tabbar-item"
         active-class="bar-active"
         v-slot="{ isActive }"
         replace
       >
-        <img
-          v-if="isActive"
-          src="../assets/images/contacts-checked.svg"
-          alt="联系人激活"
-        />
-        <img
-          v-else
-          src="../assets/images/contacts-unchecked.svg"
-          alt="联系人"
-        />
-        <span></span>
+        <div class="item-list">
+          <img
+            v-if="isActive"
+            src="../assets/images/contact-select.svg"
+            alt="联系人激活"
+          />
+          <img v-else src="../assets/images/contact.svg" alt="联系人" />
+          <div class="bar-text">联系人</div>
+          <span></span>
+        </div>
       </router-link>
       <!-- 个人中心 -->
       <router-link
         :to="{ name: 'My' }"
-        class="bar-personal"
+        class="tabbar-item"
         active-class="bar-active"
         v-slot="{ isActive }"
         replace
       >
-        <img
-          v-if="isActive"
-          src="../assets/images/personal-checked.svg"
-          alt="我的激活"
-        />
-        <img v-else src="../assets/images/personal-unchecked.svg" alt="我的" />
+        <div class="item-list">
+          <img
+            v-if="isActive"
+            src="../assets/images/my-select.svg"
+            alt="我的激活"
+          />
+          <img v-else src="../assets/images/my.svg" alt="我的" />
+          <div class="bar-text">我的</div>
+        </div>
       </router-link>
     </div>
   </div>
@@ -66,39 +71,40 @@ export default class BottomNavigationBar extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
-.news-bar {
+.tabbar {
   text-align: center;
   display: flex;
   justify-content: space-between;
-
   width: 100%;
   @color: #fff;
   background-color: @color;
   border-top: 1px solid darken(@color, 10%);
+  font-size: 14px;
 }
 
-.bar-news,
-.bar-contacts,
-.bar-personal {
+.tabbar-item {
   flex: 1;
   // margin-top: 5px;
-  padding-top: 8px;
-  padding-bottom: 0px;
+  padding-top: 6px;
+  padding-bottom: 6px;
   position: relative;
-  span {
-    position: absolute;
-    left: 72px;
-    top: 8px;
-    min-width: 8px;
-    height: 8px;
-    // line-height: 10px;
-    text-align: center;
-    border: none;
-    background: #dc3545;
-    border-radius: 50%;
-    color: #fff;
-    font-size: 12px;
-    padding: 2px;
+  .item-list {
+    position: relative;
+    display: inline-block;
+    img {
+      width: 20px;
+      height: 20px;
+    }
+    span {
+      position: absolute;
+      left: 22px;
+      top: 1px;
+      min-width: 8px;
+      height: 8px;
+      border: none;
+      background: #dc3545;
+      border-radius: 50%;
+    }
   }
 }
 

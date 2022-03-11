@@ -23,8 +23,8 @@
         <img class="headportrait" src="@/assets/images/logo.svg" alt="" />
         <ChatBubble direction="right">
           <div>Mg1添加你为好友</div>
-          <button>同意</button>
-          <button>拒绝</button>
+          <button class="btn btn-primary btn-sm">同意</button>
+          <button class="btn btn-secondary btn-sm">拒绝</button>
         </ChatBubble>
       </div>
 

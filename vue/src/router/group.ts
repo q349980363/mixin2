@@ -6,22 +6,25 @@ const routes: Array<RouteRecordRaw> = [
     name: "Group",
     component: () => import("../views/Group/Group.vue"),
   },
-
+// 创建群聊
   {
     path: "/creategroup",
     name: "Creategroup",
     component: () => import("../views/Group/Creategroup.vue"),
   },
+  // 群聊设置
   {
     path: "/groupchatset",
     name: "GroupChatSet",
     component: () => import("../views/Group/GroupChatSet.vue"),
   },
+  // 设置备注 groupchatset-setgroupname
   {
     path: "/setgroupname",
     name: "SetGroupName",
     component: () => import("../views/Group/SetGroupName.vue"),
   },
+  // 群二维码 groupchatset-groupcard
   {
     path: "/groupcard",
     name: "GroupCard",

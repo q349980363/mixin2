@@ -26,8 +26,9 @@
 
 <script lang="ts">
 import Hub from "@/hub";
-import { Options, Vue } from "vue-class-component";
 import { State, Action } from "vuex-class";
+import { Options, Vue } from "vue-class-component";
+
 // import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 
 @Options({

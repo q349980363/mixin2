@@ -4,9 +4,9 @@
     <BaseTopBarBack title="群聊设置" />
 
     <div class="groupchatset-list">
-      <ListItem to="/setgroupname" name="修改备注" />
+      <ListItem to="/setgroupname" name="设置备注" />
       <ListItem to="/groupcard" name="群二维码">
-        <img class="list-icon" src="@/assets/images/card.svg" alt="" />
+        <img class="list-icon" src="@/assets/images/qrCode.svg" alt="" />
       </ListItem>
       <ListItem to="/searchpage" name="查找聊天记录" />
       <ListItem to="/groupchatset" name="清空聊天记录" class="list-clear" />
@@ -34,6 +34,7 @@ export default class GroupChatSet extends Vue {}
     color: #000;
     text-align: left;
     .list-icon {
+      margin: auto;
       width: 16px;
       height: 16px;
     }

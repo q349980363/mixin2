@@ -58,9 +58,9 @@ export default class PopupMenu extends Vue {
 .Icon {
   //   padding: 5px;
   cursor: pointer;
+  width: 20px;
 }
 .Mask {
-  
   z-index: 10;
   position: fixed;
   top: 0;
@@ -69,5 +69,4 @@ export default class PopupMenu extends Vue {
   left: 0;
   background: #00000059;
 }
-
 </style>

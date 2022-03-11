@@ -5,11 +5,10 @@
     <img src="@/assets/images/logo.svg" alt="" />
 
     <div class="about-list">
-      <ListItem to="/about" name="版本更新" />
-      <ListItem to="/about" name="功能介绍" />
+      <ListItem to="/aboutIntroduce" name="功能介绍" />
+      <ListItem to="/about" name="检查新版本" />
       <ListItem to="/about" name="官网" />
-    </div
-    >
+    </div>
     <div class="about-info">灵翼软件开发</div>
   </div>
 </template>

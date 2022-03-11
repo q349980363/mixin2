@@ -18,7 +18,7 @@ export default createStore({
       // UserName: "",
     },
     loginState: false,
-    hub: new Hub("ws://192.168.1.157:8000/ws?token=" + localStorage.token),
+    hub: new Hub("ws://192.168.1.117:8000/ws?token=" + localStorage.token),
   },
   mutations: {
     LoginSuccess(state, userInfo) {

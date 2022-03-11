@@ -71,6 +71,18 @@ const routes: Array<RouteRecordRaw> = [
     name: "SystemInforms",
     component: () => import("../views/SystemInforms.vue"),
   },
+  // 等待加载
+  {
+    path: "/waitingload",
+    name: "WaitingLoad",
+    component: () => import("../views/WaitingLoad.vue"),
+  },
+  // 二维码
+  {
+    path: "/qrcode",
+    name: "QRCode",
+    component: () => import("../views/QRCode.vue"),
+  },
   // 聊天页
   {
     path: "/userchat",
