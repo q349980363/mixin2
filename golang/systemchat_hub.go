@@ -15,3 +15,8 @@ func (hub *SystemchatHub) Get() []SystemChat {
 	db.First(&list, &SystemChat{UserName: hub.session.UserInfo.UserName})
 	return list
 }
+
+func (hub *SystemchatHub) Operation(id int, result string) []SystemChat {
+	_ = hub.session.hub.OperationSystemChat(*hub.session.UserInfo, id, result)
+	return hub.Get()
+}

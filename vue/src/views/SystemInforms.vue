@@ -9,8 +9,23 @@
         <ChatBubble direction="right">
           <!-- <div class="chatbubble-text">Mg1添加你为好友</div> -->
           <div class="chatbubble-text">{{ item.Txt }}</div>
-          <button class="btn btn-primary btn-sm btn-agree">同意</button>
-          <button class="btn btn-secondary btn-sm btn-reject">拒绝</button>
+          <div class="chatbubble-operation" v-if="!item.Result">
+            <button
+              class="btn btn-secondary btn-sm btn-reject"
+              @click="rejectClick(item.ID)"
+            >
+              拒绝
+            </button>
+            <button
+              class="btn btn-primary btn-sm btn-agree"
+              @click="agreeClick(item.ID)"
+            >
+              同意
+            </button>
+          </div>
+          <div v-else>
+            {{ item.Result }}
+          </div>
         </ChatBubble>
       </div>
     </div>
@@ -43,6 +58,16 @@ export default class SystemInforms extends Vue {
   public get Friends(): any {
     return this.dataList.filter((v: any) => v.Type == "Friends");
   }
+  //拒绝
+  async rejectClick(id: number) {
+    var response = await this.hub.invoke("Systemchat", "Operation", id, "no");
+    this.dataList = response;
+  }
+  //同意
+  async agreeClick(id: number) {
+    var response = await this.hub.invoke("Systemchat", "Operation", id, "ok");
+    this.dataList = response;
+  }
 }
 </script>
 
@@ -68,8 +93,11 @@ export default class SystemInforms extends Vue {
       .chatbubble-text {
         margin-bottom: 5px;
       }
-      .btn-agree {
-        margin-right: 5px;
+      .chatbubble-operation {
+        text-align: right;
+        .btn {
+          margin-left: 5px;
+        }
       }
     }
   }

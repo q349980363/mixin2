@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"errors"
 	"reflect"
 )
 
@@ -31,7 +31,7 @@ func (route *Route) handleMessage(s *HubSession, msgType string, json map[string
 	var controller interface{}
 	auth := false
 	switch json["hubName"].(string) {
-	case "login":
+	case "Login":
 		controller = NewLoginHub(s)
 	case "Friends":
 		controller = NewFriendsHub(s)
@@ -43,6 +43,7 @@ func (route *Route) handleMessage(s *HubSession, msgType string, json map[string
 		//TODO 未编写
 		auth = true
 	default:
+		panic(errors.New("所调用的Hub不存在,严格区分大小写"))
 		return
 	}
 
@@ -57,18 +58,30 @@ func (route *Route) handleMessage(s *HubSession, msgType string, json map[string
 	numMethod := t.NumMethod()
 	_ = numMethod
 	fn := t.MethodByName(functionName)
-	fmt.Println(fn)
-	// if fn.IsNil() {
-
-	// }
 	if !fn.IsValid() {
 		//TODO 如果指针空则会触发异常.
+		panic(errors.New("所调用的函数不存在,严格区分大小写"))
+	}
+	fnType := fn.Type()
+	fnLenth := fnType.NumIn()
+	args := json["args"].([]interface{})
+	if fnLenth != len(args) {
+		panic(errors.New("参数数量不正确"))
 	}
 
-	args := json["args"].([]interface{})
 	values := make([]reflect.Value, len(args))
 	for i := range args {
-		values[i] = reflect.ValueOf(args[i])
+		item := args[i]
+		itemValueOf := reflect.ValueOf(item)
+		// if fnType.In(i) != item.Type() {
+		// 	panic(errors.New("参数类型不正确"))
+		// }
+		if fnType.In(i).Kind() == reflect.Int {
+			values[i] = reflect.ValueOf(int(item.(float64)))
+		} else {
+			values[i] = itemValueOf
+		}
+
 	}
 	returns := fn.Call(values)
 	if len(returns) > 0 {

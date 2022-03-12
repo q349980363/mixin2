@@ -18,7 +18,9 @@ export default createStore({
       // UserName: "",
     },
     loginState: false,
-    hub: new Hub("ws://192.168.1.117:8000/ws?token=" + localStorage.token),
+    hub: new Hub(
+      "ws://" + location.hostname + ":8000/ws?token=" + localStorage.token
+    ),
   },
   mutations: {
     LoginSuccess(state, userInfo) {
@@ -96,13 +98,13 @@ export default createStore({
     async tokenLogin({ dispatch, commit, state }, token: string) {
       console.log("tokenLogin:" + token);
       localStorage.token = token;
-      const json = await this.state.hub.invoke("login", "GetMy");
+      const json = await this.state.hub.invoke("Login", "GetMy");
       console.log("json", json);
       commit("LoginSuccess", json);
       router.replace("/HomeNav");
     },
     async connectionSuccess({ dispatch, commit, state }, token: string) {
-      const json = await this.state.hub.invoke("login", "GetMy");
+      const json = await this.state.hub.invoke("Login", "GetMy");
       commit("LoginSuccess", json);
       commit("ConnectionSuccess");
     },

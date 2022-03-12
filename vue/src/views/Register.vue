@@ -49,7 +49,7 @@ export default class Register extends Vue {
       return;
     }
     var response = await this.hub.invoke(
-      "login",
+      "Login",
       "Register",
       this.username,
       this.password

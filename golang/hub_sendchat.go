@@ -118,8 +118,29 @@ func (hub *Hub) AddGroup(userName string, target string) error {
 	return nil
 }
 
-func (hub *Hub) OperationSystemChat(userInfo UserInfo, id int, json map[string]string) error {
-	result := json["result"]
+//TODO 需要记录每个s 的绑定的所有组  在退出的时候将他们全部清除掉
+func updateFriendsLastChatTime(userName string, target string, chat string) {
+	db.Model(&Friends{}).Where(&Friends{UserName: userName, Target: target}).Updates(map[string]interface{}{
+		"Unread":     gorm.Expr("Unread + 1"),
+		"LastChatAt": time.Now(),
+		"LastChat":   chat,
+	})
+
+	db.Model(&Friends{}).Where(&Friends{UserName: target, Target: userName}).Updates(map[string]interface{}{
+		"LastChat": chat,
+	})
+}
+
+//TODO 需要记录每个s 的绑定的所有组  在退出的时候将他们全部清除掉
+func updateGroupLastChatTime(target string, chat string) {
+	db.Model(&GroupRelation{}).Where(&GroupRelation{Target: target}).Updates(map[string]interface{}{
+		"Unread":     gorm.Expr("Unread + 1"),
+		"LastChatAt": time.Now(),
+		"LastChat":   chat,
+	})
+}
+
+func (hub *Hub) OperationSystemChat(userInfo UserInfo, id int, result string) error {
 
 	var systemChat SystemChat
 
@@ -192,26 +213,4 @@ func (hub *Hub) OperationSystemChat(userInfo UserInfo, id int, json map[string]s
 	}
 
 	return nil
-}
-
-//TODO 需要记录每个s 的绑定的所有组  在退出的时候将他们全部清除掉
-func updateFriendsLastChatTime(userName string, target string, chat string) {
-	db.Model(&Friends{}).Where(&Friends{UserName: userName, Target: target}).Updates(map[string]interface{}{
-		"Unread":     gorm.Expr("Unread + 1"),
-		"LastChatAt": time.Now(),
-		"LastChat":   chat,
-	})
-
-	db.Model(&Friends{}).Where(&Friends{UserName: target, Target: userName}).Updates(map[string]interface{}{
-		"LastChat": chat,
-	})
-}
-
-//TODO 需要记录每个s 的绑定的所有组  在退出的时候将他们全部清除掉
-func updateGroupLastChatTime(target string, chat string) {
-	db.Model(&GroupRelation{}).Where(&GroupRelation{Target: target}).Updates(map[string]interface{}{
-		"Unread":     gorm.Expr("Unread + 1"),
-		"LastChatAt": time.Now(),
-		"LastChat":   chat,
-	})
 }

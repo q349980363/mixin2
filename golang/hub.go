@@ -97,7 +97,8 @@ func (hub *Hub) handleMessage(s *melody.Session, bytes []byte) {
 	defer func() {
 		if err := recover(); err != nil {
 			fmt.Println("\033[1;37;41m HandleMessage err :", err)
-			hubS.WriteError(-1, err)
+
+			hubS.WriteError(-1, fmt.Sprintf("HandleMessage err :%s", err))
 		}
 	}()
 	hub.messageHandler(hubS, requestData["type"].(string), requestData)

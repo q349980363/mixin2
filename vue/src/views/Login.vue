@@ -49,7 +49,7 @@ export default class Login extends Vue {
       return;
     }
     var response = await this.hub.invoke(
-      "login",
+      "Login",
       "Login",
       this.username,
       this.password
