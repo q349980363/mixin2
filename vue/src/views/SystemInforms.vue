@@ -98,6 +98,17 @@ export default class SystemInforms extends Vue {
         .btn {
           margin-left: 5px;
         }
+        .btn-reject {
+          margin-right: 5px;
+          width: 50px;
+          height: 26px;
+          font-size: 14px;
+        }
+        .btn-agree {
+          width: 50px;
+          height: 26px;
+          font-size: 14px;
+        }
       }
     }
   }
