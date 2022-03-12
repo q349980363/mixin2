@@ -23,7 +23,7 @@
           <div class="content-name">{{ item }}</div>
           <div class="content-number">UID:0</div>
         </div>
-        <div class="row-but" @click="clickSend()">添加</div>
+        <div class="row-but" @click="clickSend(item)">添加</div>
       </div>
     </div>
   </div>
@@ -62,8 +62,8 @@ export default class AddUsers extends Vue {
       });
     }
   }
-  async clickSend() {
-    var response = await this.hub.invoke("Friends", "Apply", this.username);
+  async clickSend(username: string) {
+    var response = await this.hub.invoke("Friends", "Apply", username);
     //response[0] 请求是否成功
     this.tips(response[1]);
     if (response[0]) {

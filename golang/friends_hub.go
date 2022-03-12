@@ -29,7 +29,7 @@ func (hub *FriendsHub) Apply(username string) (bool, string) {
 		Type:      "Friends",
 		Operation: "ok_no",
 	})
-	return true, "添加成功"
+	return true, "好友申请已发送至对方"
 }
 
 //添加好友前,搜索用户名称,可全网搜索.
