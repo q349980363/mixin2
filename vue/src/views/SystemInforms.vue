@@ -5,7 +5,7 @@
 
     <div class="systeminforms-list">
       <template v-for="(item, i) in dataList" :key="i">
-        <div class="chatbubble">
+        <div class="chatbubble" v-if="item.Type == 'Friends'">
           <img class="headportrait" src="@/assets/images/logo.svg" alt="" />
           <ChatBubble direction="right">
             <div class="chatbubble-tiem">上午9:41</div>
@@ -27,6 +27,14 @@
             <div v-else>
               {{ item.Result }}
             </div>
+            {{ item.CreatedAt }}
+          </ChatBubble>
+        </div>
+        <div class="chatbubble" v-else>
+          <img class="headportrait" src="@/assets/images/logo.svg" alt="" />
+          <ChatBubble direction="right">
+            <div class="chatbubble-tiem">上午9:41</div>
+            <div class="chatbubble-text">{{ item.Txt }}</div>
             {{ item.CreatedAt }}
           </ChatBubble>
         </div>
