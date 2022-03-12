@@ -193,7 +193,7 @@ func (hub *Hub) OperationSystemChat(userInfo UserInfo, id int, result string) er
 				UserName: systemChat.Data,
 				Data:     userInfo.UserName,
 				ExInt:    int(systemChat.ID),
-				Type:     "FriendsOk",
+				Type:     "FriendsNo",
 				Txt:      "申请加好友[" + systemChat.Data + "],拒绝",
 			})
 			return nil
