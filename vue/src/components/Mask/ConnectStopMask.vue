@@ -1,7 +1,10 @@
 <template>
   <BaseMask>
-    <div>连接失败,服务器异常.</div>
-    <div><small>请刷新页面后重试.</small></div>
+    <div>
+      <img src="@/assets/images/nonetwork.svg" alt="" />
+      <div>连接失败,服务器异常.</div>
+      <div><small>请刷新页面后重试.</small></div>
+    </div>
   </BaseMask>
 </template>
 
@@ -17,4 +20,15 @@ import { Action } from "vuex-class";
 })
 export default class ConnectStopMask extends Vue {}
 </script>
-<style scoped lang="less"></style>
+<style scoped lang="less">
+img {
+  width: 280px;
+  height: 246px;
+}
+div {
+  margin-top: 5px;
+}
+div:last-child {
+  margin-top: 0;
+}
+</style>

@@ -16,6 +16,9 @@
           <div>群主</div>
           <div>群人数</div>
         </div>
+        <div class="row-right">
+          <input type="checkbox" class="toggle-button-big" />
+        </div>
       </div>
     </div>
   </div>
@@ -62,6 +65,45 @@ export default class AdministerGroup extends Vue {}
         font-size: 14px;
         line-height: 1.5;
         text-align: left;
+      }
+      .row-right {
+        margin: auto;
+        .toggle-button-big {
+          appearance: none;
+          position: relative;
+          display: inline-block;
+          width: 36px;
+          height: 18px;
+          margin: 0;
+          background: #ffffff;
+          border: 1px solid #bbc1e1;
+          border-radius: 30px;
+          outline: none;
+          cursor: pointer;
+          transition: 0.3s;
+          transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+        }
+        .toggle-button-big::after {
+          content: "";
+          display: inline-block;
+          position: absolute;
+          left: 1px;
+          top: 1px;
+          width: 14px;
+          height: 14px;
+          background-color: #0d6efd;
+          border-radius: 50%;
+          transform: translateX(0);
+          transition: 0.3s;
+          transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+        }
+        .toggle-button-big:checked::after {
+          transform: translateX(calc(100% + 4px));
+          background-color: #fff;
+        }
+        .toggle-button-big:checked {
+          background-color: #0d6efd;
+        }
       }
     }
   }

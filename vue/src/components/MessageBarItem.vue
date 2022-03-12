@@ -63,7 +63,8 @@ export default class MessageBarItem extends Vue {}
   }
 }
 .time {
-  margin: auto;
+  padding-top: 10px;
   width: 70px;
+  font-size: 14px;
 }
 </style>

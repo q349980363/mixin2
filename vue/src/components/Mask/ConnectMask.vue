@@ -1,5 +1,10 @@
 <template>
-  <BaseMask>正在连接....</BaseMask>
+  <BaseMask>
+    <div>
+      <img src="@/assets/images/loading.svg" alt="" />
+      <div>正在连接...</div>
+    </div>
+  </BaseMask>
 </template>
 
 <script lang="ts">
@@ -15,5 +20,11 @@ import { Action } from "vuex-class";
 export default class ConnectMask extends Vue {}
 </script>
 <style scoped lang="less">
-
+img {
+  width: 280px;
+  height: 246px;
+}
+div {
+  margin-top: 5px;
+}
 </style>

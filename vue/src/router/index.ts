@@ -59,17 +59,23 @@ const routes: Array<RouteRecordRaw> = [
       },
     ],
   },
-// 搜索页
+  // 临时 用完删除
   {
-    path: "/searchpage",
-    name: "SearchPage",
-    component: () => import("../views/SearchPage.vue"),
+    path: "/selectprompt",
+    name: "SelectPrompt",
+    component: () => import("../components/SelectPrompt.vue"),
   },
 // 系统通知
   {
     path: "/systeminforms",
     name: "SystemInforms",
     component: () => import("../views/SystemInforms.vue"),
+  },
+// 无系统通知
+  {
+    path: "/nosysteminforms",
+    name: "NoSystemInforms",
+    component: () => import("../views/NoSystemInforms.vue"),
   },
   // 等待加载
   {

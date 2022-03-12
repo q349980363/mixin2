@@ -106,6 +106,9 @@ export default class UserChat extends Vue {
 
 <style lang="less" scoped>
 .userchat {
+  a {
+    display: inline-block;
+  }
   .userchat-icons {
     vertical-align: middle;
   }

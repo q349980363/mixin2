@@ -30,6 +30,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "GroupCard",
     component: () => import("../views/Group/GroupCard.vue"),
   },
+  {
+    path: "/searchpagegroup",
+    name: "SearchPageGroup",
+    component: () => import("../views/Group/SearchPageGroup.vue"),
+  },
 ];
 
 export default routes;

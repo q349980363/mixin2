@@ -4,35 +4,15 @@
     <BaseTopBarBack title="通知" />
 
     <div class="systeminforms-list">
-      <!-- <div class="friends-notice">好友通知</div> -->
-      <MessageBar
-        to="/homenav/messagelist"
-        v-for="(item, i) in Friends"
-        :key="i"
-      >
-        <MessageBarItem
-          :src="require('@/assets/images/group-head.svg')"
-          :name="item.Txt"
-        >
-          <button>同意</button>
-        </MessageBarItem>
-      </MessageBar>
-
-      <!-- <div class="group-notice">群通知</div> -->
-      <div class="chatbubble">
+      <div class="chatbubble" v-for="(item, i) in Friends" :key="i">
         <img class="headportrait" src="@/assets/images/logo.svg" alt="" />
         <ChatBubble direction="right">
-          <div>Mg1添加你为好友</div>
-          <button class="btn btn-primary btn-sm">同意</button>
-          <button class="btn btn-secondary btn-sm">拒绝</button>
+          <!-- <div class="chatbubble-text">Mg1添加你为好友</div> -->
+          <div class="chatbubble-text">{{ item.Txt }}</div>
+          <button class="btn btn-primary btn-sm btn-agree">同意</button>
+          <button class="btn btn-secondary btn-sm btn-reject">拒绝</button>
         </ChatBubble>
       </div>
-
-      <!-- <MessageBar to="/homenav/messagelist">
-        <MessageBarItem :src="require('@/assets/images/logo.svg')" name="群10">
-          <button>同意</button>
-        </MessageBarItem>
-      </MessageBar> -->
     </div>
   </div>
 </template>
@@ -78,13 +58,18 @@ export default class SystemInforms extends Vue {
     }
     .chatbubble {
       display: flex;
-      justify-content: flex-start;
+      padding: 5px 15px;
       .headportrait {
         width: 35px;
         height: 35px;
         border: 1px solid #dbdbdb;
         border-radius: 5px;
-        margin-left: 10px;
+      }
+      .chatbubble-text {
+        margin-bottom: 5px;
+      }
+      .btn-agree {
+        margin-right: 5px;
       }
     }
   }

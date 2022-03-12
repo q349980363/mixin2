@@ -8,7 +8,7 @@
       <ListItem to="/groupcard" name="群二维码">
         <img class="list-icon" src="@/assets/images/qrCode.svg" alt="" />
       </ListItem>
-      <ListItem to="/searchpage" name="查找聊天记录" />
+      <ListItem to="/searchpagegroup" name="查找聊天记录" />
       <ListItem to="/groupchatset" name="清空聊天记录" class="list-clear" />
       <ListItem to="/groupchatset" name="删除并退出" class="list-del" />
     </div>

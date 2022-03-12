@@ -103,6 +103,9 @@ export default class GroupChat extends Vue {
 </script>
 <style lang="less" scoped>
 .groupchat {
+  a {
+    display: inline-block;
+  }
   .groupchat-icons {
     vertical-align: middle;
   }

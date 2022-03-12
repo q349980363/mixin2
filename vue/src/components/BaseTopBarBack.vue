@@ -54,13 +54,14 @@ export default class BaseTopBarBack extends Vue {
   font-weight: 700;
 }
 .back {
+  flex: 1;
+  text-align: left;
   cursor: pointer;
   padding-left: 15px;
   padding-right: 15px;
-  display: block;
-  flex: 1;
-  justify-content: flex-start;
-  display: flex;
+  // display: block;
+  // justify-content: flex-start;
+  // display: flex;
   img {
     height: 16px;
     margin: auto 0;
@@ -69,12 +70,11 @@ export default class BaseTopBarBack extends Vue {
 .title-name {
 }
 .tool {
-  text-align: right;
   flex: 1;
-  margin-left: 15px;
-  margin-right: 15px;
-  display: flex;
-  // align-items: center;
-  justify-content: flex-end;
+  text-align: right;
+  padding-left: 15px;
+  padding-right: 15px;
+  // display: flex;
+  // justify-content: flex-end;
 }
 </style>

@@ -19,7 +19,7 @@ export default class BaseMask extends Vue {}
   top: 0;
   bottom: 0;
   background-color: #fff;
-  padding-top: 200px;
+  padding-top: 170px;
   font-size: 20px;
   font-weight: bold;
 }

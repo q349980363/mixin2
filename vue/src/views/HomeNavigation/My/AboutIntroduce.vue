@@ -44,6 +44,7 @@ export default class MessageList extends Vue {}
         .left-time {
           padding-top: 5px;
           font-size: 14px;
+          color: #727272;
         }
       }
       .list-right {

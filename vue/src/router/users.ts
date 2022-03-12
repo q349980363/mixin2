@@ -19,6 +19,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "SetUserName",
     component: () => import("../views/User/SetUserName.vue"),
   },
+  {
+    path: "/searchpageuser",
+    name: "SearchPageUser",
+    component: () => import("../views/User/SearchPageUser.vue"),
+  },
   
 ];
 
