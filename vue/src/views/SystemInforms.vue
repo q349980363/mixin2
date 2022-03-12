@@ -26,6 +26,7 @@
           <div v-else>
             {{ item.Result }}
           </div>
+          {{item.CreatedAt}}
         </ChatBubble>
       </div>
     </div>
