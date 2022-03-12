@@ -1,14 +1,11 @@
 <template>
   <div class="selectprompt">
     <div class="selectprompt-main">
-      <div class="main-title">删除联系人</div>
-      <!-- <div class="main-text">确定删除和Mg的聊天记录吗?</div> -->
-      <div class="main-text">
-        将联系人"Mg"删除,将同时删除与该联系人的聊天记录
-      </div>
+      <div class="main-title">{{ title }}</div>
+      <div class="main-text">{{ text }}</div>
       <div class="main-btn">
-        <div class="btn-cancel">取消</div>
-        <div class="btn-empty">清空</div>
+        <div class="btn-cancel">{{ cancel }}</div>
+        <div class="btn-empty">{{ empty }}</div>
       </div>
     </div>
   </div>
@@ -19,6 +16,12 @@ import { Options, Vue } from "vue-class-component";
 
 @Options({
   components: {},
+  props: {
+    title: String,
+    text: String,
+    cancel: String,
+    empty: String,
+  },
 })
 export default class SelectPrompt extends Vue {}
 </script>
@@ -55,11 +58,13 @@ export default class SelectPrompt extends Vue {}
       flex: 1;
       padding: 15px 0;
       border-right: 1px solid rgba(0, 0, 0, 0.1);
+      cursor: pointer;
     }
     .btn-empty {
       flex: 1;
       padding: 15px 0;
       color: #dc3545;
+      cursor: pointer;
     }
   }
 }

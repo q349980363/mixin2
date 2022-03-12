@@ -8,6 +8,11 @@
       <ListItem to="/searchpageuser" name="查找聊天记录" />
       <ListItem to="/userchatset" name="清空聊天记录" class="list-clear" />
       <ListItem to="/userchatset" name="删除好友" class="list-del" />
+      <SelectPrompt
+        text="确定删除和Mg的聊天记录吗?"
+        cancel="取消"
+        empty="清空"
+      />
     </div>
   </div>
 </template>
@@ -15,9 +20,11 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import ListItem from "@/components/ListItem.vue";
+import SelectPrompt from "@/components/SelectPrompt.vue";
 @Options({
   components: {
     ListItem,
+    SelectPrompt,
   },
 })
 export default class UserChatSet extends Vue {}
