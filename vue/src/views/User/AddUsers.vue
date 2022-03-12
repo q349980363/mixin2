@@ -68,7 +68,7 @@ export default class AddUsers extends Vue {
 
     if (response[0]) {
       this.tips(response[1]);
-      this.$router.go(-2);
+      // this.$router.go(-2);
     }
   }
 }

@@ -163,11 +163,19 @@ func (hub *Hub) OperationSystemChat(userInfo UserInfo, id int, result string) er
 	if error != nil {
 		return error
 	}
-	if result != "ok" {
-		return nil
-	}
+
 	switch systemChat.Type {
 	case "Friends":
+		if result != "ok" {
+			hub.SendSystemChat(&SystemChat{
+				UserName: systemChat.Data,
+				Data:     userInfo.UserName,
+				ExInt:    int(systemChat.ID),
+				Type:     "FriendsOk",
+				Txt:      "申请加好友[" + systemChat.Data + "],拒绝",
+			})
+			return nil
+		}
 		if !db.First(&Friends{}, &Friends{UserName: userInfo.UserName, Target: systemChat.Data}).RecordNotFound() {
 			return errors.New("添加失败,已添加该用户为好友")
 		}
@@ -186,9 +194,12 @@ func (hub *Hub) OperationSystemChat(userInfo UserInfo, id int, result string) er
 			Data:     userInfo.UserName,
 			ExInt:    int(systemChat.ID),
 			Type:     "FriendsOk",
-			Txt:      "申请加好友[" + systemChat.Data + "]申请通过",
+			Txt:      "申请加好友[" + systemChat.Data + "],通过",
 		}) //应该是双向通知
 	case "GroupRelation":
+		if result != "ok" {
+			return nil
+		}
 		if !db.First(&GroupRelation{}, &GroupRelation{UserName: systemChat.ExString, Target: systemChat.Data}).RecordNotFound() {
 			return errors.New("添加失败,已添加该群")
 		}
