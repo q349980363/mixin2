@@ -17,7 +17,9 @@ func (hub *FriendsHub) Apply(username string) (bool, string) {
 	if username == "" {
 		return false, "请输入好友名称"
 	}
-
+	if username == hub.session.UserInfo.UserName {
+		return false, "不能添加自己为好友"
+	}
 	if !db.First(&Friends{}, &Friends{UserName: hub.session.UserInfo.UserName, Target: username}).RecordNotFound() {
 		return false, "已添加该用户为好友"
 	}
