@@ -5,9 +5,9 @@
 
     <div class="systeminforms-list">
       <template v-for="(item, i) in dataList" :key="i">
-        
+
       </template>
-      <div class="chatbubble" v-for="(item, i) in dataList" :key="i">
+      <div class="chatbubble">
         <img class="headportrait" src="@/assets/images/logo.svg" alt="" />
         <ChatBubble direction="right">
           <div class="chatbubble-tiem">上午9:41</div>
