@@ -4,7 +4,10 @@
     <BaseTopBarBack title="通知" />
 
     <div class="systeminforms-list">
-      <div class="chatbubble" v-for="(item, i) in Friends" :key="i">
+      <template v-for="(item, i) in dataList" :key="i">
+
+      </template>
+      <div class="chatbubble">
         <img class="headportrait" src="@/assets/images/logo.svg" alt="" />
         <ChatBubble direction="right">
           <div class="chatbubble-tiem">上午9:41</div>
