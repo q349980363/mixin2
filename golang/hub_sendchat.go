@@ -9,6 +9,28 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
+func (hub *Hub) SendSystem(chat *SystemChat) {
+	d := db.First(&Friends{}, &Friends{
+		UserName: chat.UserName,
+		Target:   "系统消息",
+	})
+
+	if d.RecordNotFound() {
+		db.Create(&Friends{
+			UserName: chat.UserName,
+			Target:   "系统消息",
+			Path:     "/system_session",
+		})
+	}
+
+	db.Create(&chat)
+	updateFriendsLastChatTime(chat.UserName, "系统消息", chat.Txt)
+	hub.broadcastGroupJson("user_"+chat.UserName, gin.H{
+		"type": "system",
+		"data": chat,
+	})
+}
+
 func (hub *Hub) SendSystemChat(chat *SystemChat) {
 	d := db.First(&Friends{}, &Friends{
 		UserName: chat.UserName,

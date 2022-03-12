@@ -12,7 +12,7 @@ func NewSystemchatHub(s *HubSession) *SystemchatHub {
 
 func (hub *SystemchatHub) Get() []SystemChat {
 	var list []SystemChat
-	db.First(&list, &SystemChat{UserName: hub.session.UserInfo.UserName})
+	db.Find(&list, &SystemChat{UserName: hub.session.UserInfo.UserName})
 	return list
 }
 
