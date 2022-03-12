@@ -65,9 +65,8 @@ export default class AddUsers extends Vue {
   async clickSend() {
     var response = await this.hub.invoke("Friends", "Apply", this.username);
     //response[0] 请求是否成功
-
+    this.tips(response[1]);
     if (response[0]) {
-      this.tips(response[1]);
       // this.$router.go(-2);
     }
   }
