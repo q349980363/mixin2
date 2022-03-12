@@ -5,33 +5,32 @@
 
     <div class="systeminforms-list">
       <template v-for="(item, i) in dataList" :key="i">
-
+        <div class="chatbubble">
+          <img class="headportrait" src="@/assets/images/logo.svg" alt="" />
+          <ChatBubble direction="right">
+            <div class="chatbubble-tiem">上午9:41</div>
+            <div class="chatbubble-text">{{ item.Txt }}</div>
+            <div class="chatbubble-operation" v-if="!item.Result">
+              <button
+                class="btn btn-secondary btn-sm btn-reject"
+                @click="rejectClick(item.ID)"
+              >
+                拒绝
+              </button>
+              <button
+                class="btn btn-primary btn-sm btn-agree"
+                @click="agreeClick(item.ID)"
+              >
+                同意
+              </button>
+            </div>
+            <div v-else>
+              {{ item.Result }}
+            </div>
+            {{ item.CreatedAt }}
+          </ChatBubble>
+        </div>
       </template>
-      <div class="chatbubble">
-        <img class="headportrait" src="@/assets/images/logo.svg" alt="" />
-        <ChatBubble direction="right">
-          <div class="chatbubble-tiem">上午9:41</div>
-          <div class="chatbubble-text">{{ item.Txt }}</div>
-          <div class="chatbubble-operation" v-if="!item.Result">
-            <button
-              class="btn btn-secondary btn-sm btn-reject"
-              @click="rejectClick(item.ID)"
-            >
-              拒绝
-            </button>
-            <button
-              class="btn btn-primary btn-sm btn-agree"
-              @click="agreeClick(item.ID)"
-            >
-              同意
-            </button>
-          </div>
-          <div v-else>
-            {{ item.Result }}
-          </div>
-          {{item.CreatedAt}}
-        </ChatBubble>
-      </div>
     </div>
   </div>
 </template>
