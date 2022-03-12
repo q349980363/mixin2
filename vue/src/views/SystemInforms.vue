@@ -9,8 +9,8 @@
         <ChatBubble direction="right">
           <!-- <div class="chatbubble-text">Mg1添加你为好友</div> -->
           <div class="chatbubble-text">{{ item.Txt }}</div>
-          <button class="btn btn-primary btn-sm btn-agree">同意</button>
           <button class="btn btn-secondary btn-sm btn-reject">拒绝</button>
+          <button class="btn btn-primary btn-sm btn-agree">同意</button>
         </ChatBubble>
       </div>
     </div>
@@ -68,8 +68,16 @@ export default class SystemInforms extends Vue {
       .chatbubble-text {
         margin-bottom: 5px;
       }
-      .btn-agree {
+      .btn-reject {
         margin-right: 5px;
+        width: 50px;
+        height: 26px;
+        font-size: 14px;
+      }
+      .btn-agree {
+        width: 50px;
+        height: 26px;
+        font-size: 14px;
       }
     }
   }
