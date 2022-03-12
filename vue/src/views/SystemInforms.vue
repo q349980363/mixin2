@@ -10,7 +10,7 @@
       <div class="chatbubble" v-for="(item, i) in dataList" :key="i">
         <img class="headportrait" src="@/assets/images/logo.svg" alt="" />
         <ChatBubble direction="right">
-          <!-- <div class="chatbubble-text">Mg1添加你为好友</div> -->
+          <div class="chatbubble-tiem">上午9:41</div>
           <div class="chatbubble-text">{{ item.Txt }}</div>
           <div class="chatbubble-operation" v-if="!item.Result">
             <button
@@ -94,6 +94,7 @@ export default class SystemInforms extends Vue {
         border: 1px solid #dbdbdb;
         border-radius: 5px;
       }
+
       .chatbubble-text {
         margin-bottom: 5px;
       }
