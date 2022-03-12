@@ -45,7 +45,7 @@ export default class AddUsers extends Vue {
 
   usernameList: string[] = [];
   async clickSearch() {
-    // this.usernameList = [];
+    this.usernameList = [];
     const data = await this.hub.invoke<string[]>(
       "Friends",
       "SearchUsername",

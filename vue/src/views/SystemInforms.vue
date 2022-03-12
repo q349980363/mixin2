@@ -4,7 +4,10 @@
     <BaseTopBarBack title="通知" />
 
     <div class="systeminforms-list">
-      <div class="chatbubble" v-for="(item, i) in Friends" :key="i">
+      <template v-for="(item, i) in dataList" :key="i">
+        
+      </template>
+      <div class="chatbubble" v-for="(item, i) in dataList" :key="i">
         <img class="headportrait" src="@/assets/images/logo.svg" alt="" />
         <ChatBubble direction="right">
           <!-- <div class="chatbubble-text">Mg1添加你为好友</div> -->
