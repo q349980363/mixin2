@@ -42,8 +42,8 @@ export default class ListItem extends Vue {}
   //   height: 22px;
   // }
   .return-right {
-    margin: auto;
-    margin-left: 8px;
+    margin-top: 16px;
+    margin-left: 10px;
     width: 12px;
     height: 12px;
   }

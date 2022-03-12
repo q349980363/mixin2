@@ -4,7 +4,7 @@
     <BaseTopBarBack title="账号与安全" />
 
     <div class="settingsnumber-list">
-      <ListItem to="/settingsnumber" name="账号">
+      <ListItem to="/settingsnumber" name="账号" class="list-bar">
         <div>11111111</div>
       </ListItem>
     </div>
@@ -27,6 +27,9 @@ export default class UserChatSet extends Vue {}
   .settingsnumber-list {
     overflow-y: auto;
     flex: 1;
+    .list-bar {
+      border-bottom: 1px solid #e6e6e6;
+    }
   }
 }
 </style>
