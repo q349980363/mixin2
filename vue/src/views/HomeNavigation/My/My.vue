@@ -160,8 +160,8 @@ export default class My extends Vue {
     .list-icon {
       margin: auto;
       margin-right: 10px;
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
     }
     .list-but {
       padding: 0 15px;
