@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="390" height="844" viewBox="0 0 390 844">
+  <defs>
+    <filter id="注册" x="30" y="324" width="318" height="58" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-注册页">
+      <rect width="390" height="844"/>
+    </clipPath>
+  </defs>
+  <g id="注册页" clip-path="url(#clip-注册页)">
+    <rect width="390" height="844" fill="#f5f5f5"/>
+    <rect id="矩形-登录" width="390" height="140" transform="translate(0 30)" fill="none"/>
+    <text id="注册-2" data-name="注册" transform="translate(164 112)" font-size="30" font-family="MicrosoftYaHei-Bold, Microsoft YaHei" font-weight="700" letter-spacing="0.1em"><tspan x="0" y="0">注册</tspan></text>
+    <text id="请记住您的密码" transform="translate(42 266)" fill="#707070" font-size="10" font-family="MicrosoftYaHei, Microsoft YaHei" letter-spacing="0.01em"><tspan x="0" y="0">请记住您的密码</tspan></text>
+    <rect id="矩形-协议" width="390" height="30" transform="translate(0 279)" fill="none"/>
+    <g id="unchecked" transform="translate(39 287)" fill="#fff" stroke="#707070" stroke-width="1">
+      <circle cx="7.5" cy="7.5" r="7.5" stroke="none"/>
+      <circle cx="7.5" cy="7.5" r="7" fill="none"/>
+    </g>
+    <text id="我已阅读并同意用户注册协议" transform="translate(137 299)" font-size="12" font-family="MicrosoftYaHei, Microsoft YaHei"><tspan x="-78" y="0">我已阅读并同意用户注册协议</tspan></text>
+    <rect id="矩形-注册" width="375" height="70" transform="translate(1 332)" fill="none"/>
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#注册)">
+      <rect id="注册-3" data-name="注册" width="300" height="40" rx="10" transform="translate(39 332)" fill="#28a745"/>
+    </g>
+    <text id="注册-4" data-name="注册" transform="translate(189 359)" fill="#fff" font-size="18" font-family="MicrosoftYaHei, Microsoft YaHei" letter-spacing="0.2em"><tspan x="-19.8" y="0">注册</tspan></text>
+    <text id="返回登录" transform="translate(39 395)" fill="#707070" font-size="12" font-family="MicrosoftYaHei, Microsoft YaHei" letter-spacing="0.01em"><tspan x="0" y="0">返回登录</tspan></text>
+    <path id="checked" d="M71.1,63.6a7.5,7.5,0,1,0,7.5,7.5A7.512,7.512,0,0,0,71.1,63.6Zm4.351,5.332-4.97,5.31a.621.621,0,0,1-.917,0l-2.809-3a.712.712,0,0,1-.193-.492.672.672,0,0,1,.651-.693.635.635,0,0,1,.459.2l2.355,2.509,4.52-4.818a.632.632,0,0,1,.459-.2.67.67,0,0,1,.651.693.79.79,0,0,1-.206.492Zm0,0" transform="translate(-24.6 243.4)" fill="#007bff"/>
+    <g id="输入框-用户名" transform="translate(42 170)">
+      <g id="用户名框" fill="#fff" stroke="#bbb" stroke-width="1">
+        <rect width="300" height="40" rx="6" stroke="none"/>
+        <rect x="0.5" y="0.5" width="299" height="39" rx="5.5" fill="none"/>
+      </g>
+      <text id="用户名" transform="translate(15 27)" fill="#828282" font-size="16" font-family="MicrosoftYaHei, Microsoft YaHei" letter-spacing="0.01em"><tspan x="0" y="0">用户名</tspan></text>
+    </g>
+    <g id="输入框-密码" transform="translate(42 210)">
+      <g id="密码框" fill="#fff" stroke="#bbb" stroke-width="1">
+        <rect width="300" height="40" rx="6" stroke="none"/>
+        <rect x="0.5" y="0.5" width="299" height="39" rx="5.5" fill="none"/>
+      </g>
+      <text id="密码" transform="translate(15 27)" fill="#828282" font-size="16" font-family="MicrosoftYaHei, Microsoft YaHei" letter-spacing="0.01em"><tspan x="0" y="0">密码</tspan></text>
+    </g>
+    <g id="状态栏_白" data-name="状态栏/白">
+      <rect id="状态栏_白_background" data-name="状态栏/白 background" width="390" height="30"/>
+      <path id="矩形" d="M0,0H390V30H0Z" fill="#fff"/>
+      <g id="Right_Detail" data-name="Right Detail" transform="translate(350 11.211)">
+        <g id="Battery">
+          <path id="Rectangle_3" data-name="Rectangle 3" d="M0,2.5A2.5,2.5,0,0,1,2.5,0h17A2.5,2.5,0,0,1,22,2.5V8.734A1.766,1.766,0,0,1,20.234,10.5H2.5A2.5,2.5,0,0,1,0,8Z"/>
+          <path id="Combined_Shape" data-name="Combined Shape" d="M0,3.874H0V0A2,2,0,0,1,1.5,1.937,2,2,0,0,1,0,3.873Z" transform="translate(23 3.5)"/>
+          <rect id="Rectangle_Copy_4" data-name="Rectangle Copy 4" width="18" height="6.5" rx="1" transform="translate(2 2)"/>
+        </g>
+      </g>
+      <text id="Time" transform="translate(26 20)" font-size="12" font-family="SegoeUI, Segoe UI"><tspan x="-11.004" y="0">9:41</tspan></text>
+      <g id="Left_Detail" data-name="Left Detail" transform="translate(312 10.81)">
+        <path id="Wifi" d="M4.361,6.906a2.884,2.884,0,0,1,4.284.032L6.522,9ZM6.487,4.477A4.419,4.419,0,0,0,3.27,5.848L2.179,4.793a6.037,6.037,0,0,1,8.645.029L9.734,5.88A4.416,4.416,0,0,0,6.487,4.477Zm0-2.984a7.54,7.54,0,0,0-5.4,2.245L0,2.682A9.1,9.1,0,0,1,6.487,0,9.1,9.1,0,0,1,13,2.707L11.911,3.764A7.537,7.537,0,0,0,6.487,1.492Z" transform="translate(19.5 0.5)"/>
+        <path id="Mobile_Signal" data-name="Mobile Signal" d="M12.5,9.5A.5.5,0,0,1,12,9V.5a.5.5,0,0,1,.5-.5H14a.5.5,0,0,1,.5.5V9a.5.5,0,0,1-.5.5Zm-4,0A.5.5,0,0,1,8,9V3a.5.5,0,0,1,.5-.5H10a.5.5,0,0,1,.5.5V9a.5.5,0,0,1-.5.5Zm-4,0A.5.5,0,0,1,4,9V5a.5.5,0,0,1,.5-.5H6a.5.5,0,0,1,.5.5V9a.5.5,0,0,1-.5.5Zm-4,0A.5.5,0,0,1,0,9V7a.5.5,0,0,1,.5-.5H2a.5.5,0,0,1,.5.5V9a.5.5,0,0,1-.5.5Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

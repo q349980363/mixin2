@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="390" height="844" viewBox="0 0 390 844">
+  <defs>
+    <filter id="登录" x="29" y="302" width="333" height="58" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-登录页">
+      <rect width="390" height="844"/>
+    </clipPath>
+  </defs>
+  <g id="登录页" clip-path="url(#clip-登录页)">
+    <rect width="390" height="844" fill="#f5f5f5"/>
+    <rect id="矩形-登录" width="390" height="140" transform="translate(0 30)" fill="none"/>
+    <g id="输入框-用户名" transform="translate(38 170)">
+      <g id="用户名框" fill="#fff" stroke="#bbb" stroke-width="1">
+        <rect width="315" height="40" rx="6" stroke="none"/>
+        <rect x="0.5" y="0.5" width="314" height="39" rx="5.5" fill="none"/>
+      </g>
+      <text id="用户名" transform="translate(15 27)" fill="#828282" font-size="16" font-family="MicrosoftYaHei, Microsoft YaHei" letter-spacing="0.01em"><tspan x="0" y="0">用户名</tspan></text>
+    </g>
+    <g id="输入框-密码" transform="translate(38 210)">
+      <g id="密码框" fill="#fff" stroke="#bbb" stroke-width="1">
+        <rect width="315" height="40" rx="6" stroke="none"/>
+        <rect x="0.5" y="0.5" width="314" height="39" rx="5.5" fill="none"/>
+      </g>
+      <text id="密码" transform="translate(15 27)" fill="#828282" font-size="16" font-family="MicrosoftYaHei, Microsoft YaHei" letter-spacing="0.01em"><tspan x="0" y="0">密码</tspan></text>
+    </g>
+    <rect id="矩形-登录框" width="390" height="70" transform="translate(0 310)" fill="none"/>
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#登录)">
+      <rect id="登录-2" data-name="登录" width="315" height="40" rx="10" transform="translate(38 310)" fill="#007bff"/>
+    </g>
+    <text id="登录-3" data-name="登录" transform="translate(196 337)" fill="#fff" font-size="18" font-family="MicrosoftYaHei, Microsoft YaHei" letter-spacing="0.2em"><tspan x="-19.8" y="0">登录</tspan></text>
+    <text id="注册新用户" transform="translate(38 373)" font-size="12" font-family="MicrosoftYaHei, Microsoft YaHei" letter-spacing="0.01em"><tspan x="0" y="0">注册新用户</tspan></text>
+    <g id="矩形_168" data-name="矩形 168" transform="translate(170 75)" fill="#fff" stroke="#cecece" stroke-width="1">
+      <rect width="50" height="50" rx="6" stroke="none"/>
+      <rect x="0.5" y="0.5" width="49" height="49" rx="5.5" fill="none"/>
+    </g>
+    <g id="Delivery_递送_发送_纸飞机_1_" data-name="Delivery，递送，发送，纸飞机 (1)" transform="translate(171 76)">
+      <path id="路径_158" data-name="路径 158" d="M417.016,107.342H430.21L444.4,61.327Z" transform="translate(-398.028 -58.989)" fill="#6e6e96" opacity="0.2"/>
+      <path id="路径_159" data-name="路径 159" d="M318.168,66.265l5.286,15.227,27.7-46.518Z" transform="translate(-304.069 -33.94)" fill="#e5c0a8"/>
+      <path id="路径_160" data-name="路径 160" d="M306.17,65.093a.9.9,0,0,1-.85-.6l-5.286-15.227a.9.9,0,0,1,.231-.948l32.982-31.291a.9.9,0,0,1,1.392,1.113l-27.7,46.518a.9.9,0,0,1-.773.439Zm-4.246-15.874,4.462,12.853,23.377-39.264L301.924,49.219Z" transform="translate(-286.784 -16.641)" fill="#6e6e96"/>
+      <path id="路径_161" data-name="路径 161" d="M51.287,60.4,97.469,34.974,64.487,66.265Z" transform="translate(-50.388 -33.94)" fill="#ffdac1"/>
+      <path id="路径_162" data-name="路径 162" d="M47.2,47.279a.9.9,0,0,1-.365-.078l-13.2-5.867a.9.9,0,0,1-.068-1.61L79.75,14.3A.9.9,0,1,1,80.8,15.741L47.821,47.032a.9.9,0,0,1-.62.247ZM36.023,40.426l11,4.887L74.491,19.249,36.023,40.426Z" transform="translate(-33.102 -14.054)" fill="#6e6e96"/>
+      <path id="路径_163" data-name="路径 163" d="M452.966,34.974,425.282,68.443l21.242,8.248Z" transform="translate(-405.885 -33.94)" fill="#ffdac1"/>
+      <path id="路径_164" data-name="路径 164" d="M429.227,60.313a.9.9,0,0,1-.326-.061L407.659,52a.9.9,0,0,1-.367-1.412l27.684-33.468a.9.9,0,0,1,1.582.711l-6.442,41.717a.9.9,0,0,1-.889.762Zm-19.755-9.535,19.036,7.392,5.773-37.384Z" transform="translate(-388.587 -16.662)" fill="#6e6e96"/>
+      <path id="路径_165" data-name="路径 165" d="M407.993,708.317a.9.9,0,0,1-.9-.9V694.368a.9.9,0,1,1,1.8,0v13.049A.9.9,0,0,1,407.993,708.317Z" transform="translate(-388.596 -659.865)" fill="#6e6e96"/>
+      <path id="路径_166" data-name="路径 166" d="M445.109,34.974,422.018,69.261l-3.105-1.206ZM417.016,68.443l3.9,5.4,1.608-2.7Z" transform="translate(-398.028 -33.94)" fill="#6e6e96" opacity="0.2"/>
+    </g>
+    <g id="状态栏_白" data-name="状态栏/白">
+      <rect id="状态栏_白_background" data-name="状态栏/白 background" width="390" height="30"/>
+      <path id="矩形" d="M0,0H390V30H0Z" fill="#fff"/>
+      <g id="Right_Detail" data-name="Right Detail" transform="translate(350 11.211)">
+        <g id="Battery">
+          <path id="Rectangle_3" data-name="Rectangle 3" d="M0,2.5A2.5,2.5,0,0,1,2.5,0h17A2.5,2.5,0,0,1,22,2.5V8.734A1.766,1.766,0,0,1,20.234,10.5H2.5A2.5,2.5,0,0,1,0,8Z"/>
+          <path id="Combined_Shape" data-name="Combined Shape" d="M0,3.874H0V0A2,2,0,0,1,1.5,1.937,2,2,0,0,1,0,3.873Z" transform="translate(23 3.5)"/>
+          <rect id="Rectangle_Copy_4" data-name="Rectangle Copy 4" width="18" height="6.5" rx="1" transform="translate(2 2)"/>
+        </g>
+      </g>
+      <text id="Time" transform="translate(26 20)" font-size="12" font-family="SegoeUI, Segoe UI"><tspan x="-11.004" y="0">9:41</tspan></text>
+      <g id="Left_Detail" data-name="Left Detail" transform="translate(312 10.81)">
+        <path id="Wifi" d="M4.361,6.906a2.884,2.884,0,0,1,4.284.032L6.522,9ZM6.487,4.477A4.419,4.419,0,0,0,3.27,5.848L2.179,4.793a6.037,6.037,0,0,1,8.645.029L9.734,5.88A4.416,4.416,0,0,0,6.487,4.477Zm0-2.984a7.54,7.54,0,0,0-5.4,2.245L0,2.682A9.1,9.1,0,0,1,6.487,0,9.1,9.1,0,0,1,13,2.707L11.911,3.764A7.537,7.537,0,0,0,6.487,1.492Z" transform="translate(19.5 0.5)"/>
+        <path id="Mobile_Signal" data-name="Mobile Signal" d="M12.5,9.5A.5.5,0,0,1,12,9V.5a.5.5,0,0,1,.5-.5H14a.5.5,0,0,1,.5.5V9a.5.5,0,0,1-.5.5Zm-4,0A.5.5,0,0,1,8,9V3a.5.5,0,0,1,.5-.5H10a.5.5,0,0,1,.5.5V9a.5.5,0,0,1-.5.5Zm-4,0A.5.5,0,0,1,4,9V5a.5.5,0,0,1,.5-.5H6a.5.5,0,0,1,.5.5V9a.5.5,0,0,1-.5.5Zm-4,0A.5.5,0,0,1,0,9V7a.5.5,0,0,1,.5-.5H2a.5.5,0,0,1,.5.5V9a.5.5,0,0,1-.5.5Z"/>
+      </g>
+    </g>
+  </g>
+</svg>
