@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="390" height="844" viewBox="0 0 390 844">
+  <defs>
+    <clipPath id="clip-我的_-_关于_-_功能介绍">
+      <rect width="390" height="844"/>
+    </clipPath>
+  </defs>
+  <g id="我的_-_关于_-_功能介绍" data-name="我的 - 关于 - 功能介绍" clip-path="url(#clip-我的_-_关于_-_功能介绍)">
+    <rect width="390" height="844" fill="#f5f5f5"/>
+    <rect id="矩形_152" data-name="矩形 152" width="390" height="45" transform="translate(0 30)" fill="#fff"/>
+    <line id="直线_23" data-name="直线 23" x2="390" transform="translate(1 75)" fill="none" stroke="#c5c5c5" stroke-width="1"/>
+    <path id="路径" d="M-8.817,7.16a.913.913,0,0,0-.322.679.9.9,0,0,0,.2.569l.108.115,7.984,7.212a1.061,1.061,0,0,0,1.425-.02A.891.891,0,0,0,.663,14.5l-.108-.115L-6.668,7.862.543,1.613A.892.892,0,0,0,.68.417L.579.3A1.062,1.062,0,0,0-.7.149l-.13.092Z" transform="translate(24.639 45)" fill="#707070"/>
+    <text id="系统通知" transform="translate(188 60)" font-size="18" font-family="MicrosoftYaHei-Bold, Microsoft YaHei" font-weight="700" letter-spacing="0.1em"><tspan x="-38.7" y="0">系统通知</tspan></text>
+    <g id="组_231" data-name="组 231">
+      <g id="组_218" data-name="组 218" transform="translate(0 75)">
+        <rect id="矩形_157" data-name="矩形 157" width="389" height="52" fill="#fff"/>
+        <text id="纸飞机1.1主要更新" transform="translate(75 21)" font-size="14" font-family="MicrosoftYaHei, Microsoft YaHei"><tspan x="-58.895" y="0">纸飞机1.1主要更新</tspan></text>
+        <text id="_03月11日" data-name="03月11日" transform="translate(41 43)" font-size="12" font-family="MicrosoftYaHei, Microsoft YaHei"><tspan x="-26.074" y="0">03月11日</tspan></text>
+        <path id="return-right" d="M.209,4.475A.563.563,0,0,0,0,4.9a.548.548,0,0,0,.128.355l.07.072L5.375,9.834A.707.707,0,0,0,6.3,9.822a.543.543,0,0,0,.056-.758l-.07-.072L1.6,4.914,6.277,1.008A.544.544,0,0,0,6.365.261L6.3.187A.708.708,0,0,0,5.469.093L5.385.151Z" transform="translate(373.941 31) rotate(180)" fill="#707070"/>
+        <line id="直线_24" data-name="直线 24" x2="389" transform="translate(1 52)" fill="none" stroke="#c5c5c5" stroke-width="1"/>
+      </g>
+    </g>
+    <g id="组_232" data-name="组 232" transform="translate(0 127)">
+      <rect id="矩形_157-2" data-name="矩形 157" width="389" height="52" fill="#fff"/>
+      <text id="纸飞机1.1主要更新-2" data-name="纸飞机1.1主要更新" transform="translate(75 21)" font-size="14" font-family="MicrosoftYaHei, Microsoft YaHei"><tspan x="-58.895" y="0">纸飞机1.1主要更新</tspan></text>
+      <text id="_03月11日-2" data-name="03月11日" transform="translate(41 43)" font-size="12" font-family="MicrosoftYaHei, Microsoft YaHei"><tspan x="-26.074" y="0">03月11日</tspan></text>
+      <path id="return-right-2" data-name="return-right" d="M.209,4.475A.563.563,0,0,0,0,4.9a.548.548,0,0,0,.128.355l.07.072L5.375,9.834A.707.707,0,0,0,6.3,9.822a.543.543,0,0,0,.056-.758l-.07-.072L1.6,4.914,6.277,1.008A.544.544,0,0,0,6.365.261L6.3.187A.708.708,0,0,0,5.469.093L5.385.151Z" transform="translate(373.941 31) rotate(180)" fill="#707070"/>
+      <line id="直线_24-2" data-name="直线 24" x2="389" transform="translate(1 52)" fill="none" stroke="#c5c5c5" stroke-width="1"/>
+    </g>
+    <g id="状态栏_白" data-name="状态栏/白">
+      <rect id="状态栏_白_background" data-name="状态栏/白 background" width="390" height="30"/>
+      <path id="矩形" d="M0,0H390V30H0Z" fill="#fff"/>
+      <g id="Right_Detail" data-name="Right Detail" transform="translate(350 11.211)">
+        <g id="Battery">
+          <path id="Rectangle_3" data-name="Rectangle 3" d="M0,2.5A2.5,2.5,0,0,1,2.5,0h17A2.5,2.5,0,0,1,22,2.5V8.734A1.766,1.766,0,0,1,20.234,10.5H2.5A2.5,2.5,0,0,1,0,8Z"/>
+          <path id="Combined_Shape" data-name="Combined Shape" d="M0,3.874H0V0A2,2,0,0,1,1.5,1.937,2,2,0,0,1,0,3.873Z" transform="translate(23 3.5)"/>
+          <rect id="Rectangle_Copy_4" data-name="Rectangle Copy 4" width="18" height="6.5" rx="1" transform="translate(2 2)"/>
+        </g>
+      </g>
+      <text id="Time" transform="translate(26 20)" font-size="12" font-family="SegoeUI, Segoe UI"><tspan x="-11.004" y="0">9:41</tspan></text>
+      <g id="Left_Detail" data-name="Left Detail" transform="translate(312 10.81)">
+        <path id="Wifi" d="M4.361,6.906a2.884,2.884,0,0,1,4.284.032L6.522,9ZM6.487,4.477A4.419,4.419,0,0,0,3.27,5.848L2.179,4.793a6.037,6.037,0,0,1,8.645.029L9.734,5.88A4.416,4.416,0,0,0,6.487,4.477Zm0-2.984a7.54,7.54,0,0,0-5.4,2.245L0,2.682A9.1,9.1,0,0,1,6.487,0,9.1,9.1,0,0,1,13,2.707L11.911,3.764A7.537,7.537,0,0,0,6.487,1.492Z" transform="translate(19.5 0.5)"/>
+        <path id="Mobile_Signal" data-name="Mobile Signal" d="M12.5,9.5A.5.5,0,0,1,12,9V.5a.5.5,0,0,1,.5-.5H14a.5.5,0,0,1,.5.5V9a.5.5,0,0,1-.5.5Zm-4,0A.5.5,0,0,1,8,9V3a.5.5,0,0,1,.5-.5H10a.5.5,0,0,1,.5.5V9a.5.5,0,0,1-.5.5Zm-4,0A.5.5,0,0,1,4,9V5a.5.5,0,0,1,.5-.5H6a.5.5,0,0,1,.5.5V9a.5.5,0,0,1-.5.5Zm-4,0A.5.5,0,0,1,0,9V7a.5.5,0,0,1,.5-.5H2a.5.5,0,0,1,.5.5V9a.5.5,0,0,1-.5.5Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

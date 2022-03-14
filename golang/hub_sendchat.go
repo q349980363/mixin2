@@ -163,7 +163,6 @@ func updateGroupLastChatTime(target string, chat string) {
 }
 
 func (hub *Hub) OperationSystemChat(userInfo UserInfo, id int, result string) error {
-
 	var systemChat SystemChat
 
 	if db.First(&systemChat, id).RecordNotFound() {
@@ -188,6 +187,8 @@ func (hub *Hub) OperationSystemChat(userInfo UserInfo, id int, result string) er
 
 	switch systemChat.Type {
 	case "Friends":
+		vm.Run(getJavaScriptFile("OperationSystemChat.js"))
+		vm.Call("OperationSystemChat_Friends_No", userInfo.UserName, systemChat.Data)
 		if result != "ok" {
 			hub.SendSystemChat(&SystemChat{
 				UserName: systemChat.Data,
@@ -220,6 +221,7 @@ func (hub *Hub) OperationSystemChat(userInfo UserInfo, id int, result string) er
 		}) //应该是双向通知
 	case "GroupRelation":
 		if result != "ok" {
+			vm.Run(getJavaScriptFile("OperationSystemChat.js"))
 			return nil
 		}
 		if !db.First(&GroupRelation{}, &GroupRelation{UserName: systemChat.ExString, Target: systemChat.Data}).RecordNotFound() {

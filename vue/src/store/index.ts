@@ -1,6 +1,7 @@
 import { createStore } from "vuex";
 import router from "../router";
 import Hub from "../hub";
+import { EventEmitter2 } from "eventemitter2";
 
 export default createStore({
   state: {
@@ -14,6 +15,7 @@ export default createStore({
     hubConnection: 0,
     reconnectCount: 0,
     tipsList: Array<string>(),
+    emitter: new EventEmitter2(),
     userInfo: <any>{
       // UserName: "",
     },
@@ -72,7 +74,9 @@ export default createStore({
           dispatch("reconnect");
         }, 1000);
       };
-
+      state.hub.emitter.on("MessageEvent.tips", (json: any) => {
+        dispatch("tips", json.message);
+      });
       try {
         await state.hub.open();
         // commit("ConnectionSuccess");
