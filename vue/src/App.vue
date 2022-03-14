@@ -80,7 +80,7 @@ export default class App extends Vue {
 }
 </style>
 
-<style scoped lang="less">
+<style lang="less">
 .views {
   // position: absolute;
   width: 100%;

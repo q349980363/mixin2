@@ -5,21 +5,26 @@
       <div class="setmyname-submit" @click="back">提交</div>
     </BaseTopBarBack>
     <div class="setmyname-main">
-      <input type="text" value="" placeholder="1" />
+      <input type="text" v-model="UserName" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import { Action } from "vuex-class";
+import { State, Action } from "vuex-class";
 @Options({
   components: {},
 })
 export default class SetMyName extends Vue {
+  @State("userInfo") userInfo!: any;
   msg!: string;
   @Action("back")
   back?: () => void;
+  UserName = "";
+  async created() {
+    this.UserName = this.userInfo.UserName;
+  }
 }
 </script>
 
