@@ -14,11 +14,18 @@ type Route struct {
 func NewRoute(hub *Hub) *Route {
 	route := &Route{hub}
 	hub.HandleMessage(route.handleMessage)
-	hub.HandleAuthorization(func(token string) (*UserInfo, bool) {
+	hub.HandleAuthorization(func(token string, s *HubSession) (*UserInfo, bool) {
 		var userInfo UserInfo
 		if db.First(&userInfo, &UserInfo{ToKen: token}).RecordNotFound() {
 			return nil, true
 		}
+		//TODO 还需要登陆上所有群组
+
+		vm.Run(getJavaScriptFile("Login.js"))
+		vm.Call("Authorization_Before", s, userInfo.UserName, s)
+		s.AddGroup("user_" + userInfo.UserName)
+		vm.Call("Authorization", s, userInfo.UserName, s)
+
 		return &userInfo, true
 	})
 	return route
@@ -32,15 +39,23 @@ func (route *Route) handleMessage(s *HubSession, msgType string, json map[string
 	auth := false
 	switch json["hubName"].(string) {
 	case "Login":
-		controller = NewLoginHub(s)
+		controller = &LoginHub{
+			session: s,
+		}
 	case "Friends":
-		controller = NewFriendsHub(s)
+		controller = &FriendsHub{
+			session: s,
+		}
 		auth = true
 	case "Systemchat":
-		controller = NewSystemchatHub(s)
+		controller = &SystemchatHub{
+			session: s,
+		}
 		auth = true
 	case "User":
-		//TODO 未编写
+		controller = &UserHub{
+			session: s,
+		}
 		auth = true
 	default:
 		panic(errors.New("所调用的Hub不存在,严格区分大小写"))

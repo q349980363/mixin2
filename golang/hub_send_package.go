@@ -1,6 +1,10 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"fmt"
+
+	"github.com/gin-gonic/gin"
+)
 
 func (hub *Hub) SendSystemTxt(username string, txt string) {
 	hub.SendSystemChat(&SystemChat{
@@ -54,8 +58,16 @@ func (hub *Hub) SendUserEval(receive_user string, message string) {
 	})
 }
 func (hub *Hub) SendUserTips(receive_user string, message string) {
+	fmt.Println("SendUserTips:", receive_user, message)
 	hub.broadcastGroupJson("user_"+receive_user, gin.H{
 		"type":    "tips",
 		"message": message,
+	})
+}
+func (hub *Hub) SendUserEvent(receive_user string, name string) {
+	fmt.Println("SendUserEvent:", receive_user, name)
+	hub.broadcastGroupJson("user_"+receive_user, gin.H{
+		"type": "event",
+		"name": name,
 	})
 }

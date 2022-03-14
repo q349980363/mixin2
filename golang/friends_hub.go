@@ -4,12 +4,6 @@ type FriendsHub struct {
 	session *HubSession
 }
 
-func NewFriendsHub(s *HubSession) *FriendsHub {
-	hub := &FriendsHub{}
-	hub.session = s
-	return hub
-}
-
 func (hub *FriendsHub) Apply(username string) (bool, string) {
 	if db.First(&UserInfo{}, &UserInfo{UserName: username}).RecordNotFound() {
 		return false, "用户不存在"

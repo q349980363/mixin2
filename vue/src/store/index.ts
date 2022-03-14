@@ -77,6 +77,15 @@ export default createStore({
       state.hub.emitter.on("MessageEvent.tips", (json: any) => {
         dispatch("tips", json.message);
       });
+      state.hub.emitter.on("MessageEvent.event", (json: any) => {
+        state.emitter.emit("event." + json.name);
+      });
+      state.hub.emitter.onAny(function (
+        event: string | string[],
+        ...values: any[]
+      ) {
+        state.emitter.emit(event, ...values);
+      });
       try {
         await state.hub.open();
         // commit("ConnectionSuccess");
