@@ -6,15 +6,17 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/robertkrimen/otto"
 )
 
 var r *gin.Engine
 var hub *Hub
 var route *Route
+var vm *otto.Otto = otto.New()
 
 func main() {
-	rand.Seed(time.Now().UnixNano())
 
+	rand.Seed(time.Now().UnixNano())
 	r = gin.Default()
 	r.Use(Cors())
 	// m = melody.New()
@@ -33,6 +35,10 @@ func main() {
 	})
 
 	init_ip()
+
+	vm.Run(getJavaScriptFile("Init.js"))
+	vm.Set("hub", hub)
+
 	r.Run(":8000") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 
 	for i := 0; i < 10; i++ {

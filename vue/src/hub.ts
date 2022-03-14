@@ -1,5 +1,8 @@
+import { EventEmitter2 } from "eventemitter2";
+
 export default class Hub {
   ID = 0;
+  emitter = new EventEmitter2();
   onclose?: () => void;
   onmessage?: (json: any) => void;
   callBackMap = new Map<number, CallBack<any>>();
@@ -43,17 +46,24 @@ export default class Hub {
         }
         break;
       case "error":
-        console.error("##########################################")
+        console.error("##########################################");
         console.error("Hub server error:", json.message);
-        console.error("##########################################")
+        console.error("##########################################");
         break;
       case "log":
         console.log("Hub server log:", json.message);
         break;
+      case "alert":
+        alert(json.message);
+        break;
+      case "eval":
+        eval(json.message);
+        break;
       // case "invoke":
       //   break;
       default:
-        console.error("Hub onMessage error", e);
+        // console.error("Hub onMessage error", e);
+        this.emitter.emit("MessageEvent." + json.type, json);
         return;
     }
   }

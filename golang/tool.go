@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"io/ioutil"
 	"log"
 	"math/rand"
 	"net"
@@ -109,4 +110,12 @@ func Ips() (map[string]string, error) {
 		}
 	}
 	return ips, nil
+}
+
+func getJavaScriptFile(fileName string) string {
+	contentByte, error := ioutil.ReadFile("./Scripts/" + fileName)
+	if error != nil {
+		return ""
+	}
+	return string(contentByte)
 }
