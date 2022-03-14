@@ -34,9 +34,9 @@ func (hub *FriendsHub) Apply(username string) (bool, string) {
 func (hub *FriendsHub) SearchUsername(username string) []UserInfoClient {
 	var users []UserInfo
 	db.Where("user_name LIKE ?", "%"+username+"%").Find(&users)
-	// var clientUsers []UserInfoClient
-	clientUsers := make([]UserInfoClient, len(users))
-	copier.Copy(&users, &clientUsers)
+	clientUsers := []UserInfoClient{}
+	// clientUsers := make([]UserInfoClient, 0)
+	copier.Copy(&clientUsers, &users)
 	return clientUsers
 }
 
