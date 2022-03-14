@@ -6,6 +6,7 @@ function Authorization_Before(username, session) {
 }
 function Authorization(username, session) {
   this.SendTips("欢迎回来");
+  console.log("Token登陆成功");
 }
 //注册会先触发Register然后触发LoginSuccess
 function Register(username) {
@@ -16,5 +17,5 @@ function LoginSuccess_Before(username) {
   hub.SendUserTips(username, "在其他地方登录");
 }
 function LoginSuccess(username) {
-  console.log("新用户注册!");
+  console.log("账号密码登陆成功!");
 }

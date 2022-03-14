@@ -111,13 +111,13 @@ export default createStore({
     async tokenLogin({ dispatch, commit, state }, token: string) {
       console.log("tokenLogin:" + token);
       localStorage.token = token;
-      const json = await this.state.hub.invoke("Login", "GetMy");
+      const json = await this.state.hub.invoke("User", "GetMy");
       console.log("json", json);
       commit("LoginSuccess", json);
       router.replace("/HomeNav");
     },
     async connectionSuccess({ dispatch, commit, state }, token: string) {
-      const json = await this.state.hub.invoke("Login", "GetMy");
+      const json = await this.state.hub.invoke("User", "GetMy");
       commit("LoginSuccess", json);
       commit("ConnectionSuccess");
     },

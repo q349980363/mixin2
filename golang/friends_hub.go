@@ -1,5 +1,7 @@
 package main
 
+import "github.com/jinzhu/copier"
+
 type FriendsHub struct {
 	session *HubSession
 }
@@ -29,15 +31,24 @@ func (hub *FriendsHub) Apply(username string) (bool, string) {
 }
 
 //添加好友前,搜索用户名称,可全网搜索.
-func (hub *FriendsHub) SearchUsername(username string) []string {
+func (hub *FriendsHub) SearchUsername(username string) []UserInfoClient {
 	var users []UserInfo
 	db.Where("user_name LIKE ?", "%"+username+"%").Find(&users)
-	var usernames []string
-	for _, user := range users {
-		usernames = append(usernames, user.UserName)
-	}
-	return usernames
+	// var clientUsers []UserInfoClient
+	clientUsers := make([]UserInfoClient, len(users))
+	copier.Copy(&users, &clientUsers)
+	return clientUsers
 }
+
+// func (hub *FriendsHub) Get() []UserInfoClient {
+// 	var users []UserInfo
+// 	// db.Where("user_name LIKE ?", "%"+username+"%").Find(&users)
+// 	// var usernames []string
+// 	// for _, user := range users {
+// 	// 	usernames = append(usernames, user.UserName)
+// 	// }
+// 	return usernames
+// }
 
 //  func addFriends(userName string, target string) error {
 
