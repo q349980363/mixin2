@@ -64,10 +64,13 @@ func (route *Route) handleMessage(s *HubSession, msgType string, json map[string
 
 	if auth {
 		if s.UserInfo == nil {
+			s.functionReturnErrorCode(json, "无效登录", -1)
+			// panic(errors.New("未授权的访问"))
 			//TODO 错误
 			return
 		}
 	}
+
 	t := reflect.ValueOf(controller)
 	functionName := json["functionName"].(string)
 	numMethod := t.NumMethod()

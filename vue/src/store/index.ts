@@ -130,9 +130,14 @@ export default createStore({
       router.replace("/HomeNav");
     },
     async connectionSuccess({ dispatch, commit, state }, token: string) {
-      const json = await this.state.hub.invoke("User", "GetMy");
-      commit("LoginSuccess", json);
-      commit("ConnectionSuccess");
+      try {
+        const json = await this.state.hub.invoke("User", "GetMy");
+        commit("LoginSuccess", json);
+        commit("ConnectionSuccess");
+      } catch (error) {
+        // commit("LoginSuccess", json);
+        commit("ConnectionSuccess");
+      }
     },
     async tips({ dispatch, commit, state }, msg: string) {
       console.log("Tips:" + msg);
