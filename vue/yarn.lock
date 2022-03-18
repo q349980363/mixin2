@@ -971,6 +971,11 @@
   dependencies:
     "tslib" "^2.1.0"
 
+"@capacitor/status-bar@^1.0.8":
+  "integrity" "sha512-lhxa70K6vg0QjdddbT9RqFLfQ9a0Fk1OVE54MhUH30DWymv4h2LrC+mJgH6JS46WQbR2UCHRymfmVCq1PS2Qiw=="
+  "resolved" "https://registry.npmjs.org/@capacitor/status-bar/-/status-bar-1.0.8.tgz"
+  "version" "1.0.8"
+
 "@hapi/address@2.x.x":
   "integrity" "sha512-QD1PhQk+s31P1ixsX0H0Suoupp3VMXzIVMSwobR3F3MSUO2YCV0B7xqLcUw/Bh8yuvd3LhpyqLQWTNcRmp6IdQ=="
   "resolved" "https://registry.npmmirror.com/@hapi/address/-/address-2.1.4.tgz"
