@@ -4,12 +4,6 @@ type LoginHub struct {
 	session *HubSession
 }
 
-func NewLoginHub(s *HubSession) *LoginHub {
-	login := &LoginHub{}
-	login.session = s
-	return login
-}
-
 func (hub *LoginHub) Login(username string, password string) (bool, string) {
 	if username == "" || password == "" {
 		return false, "用户名或密码不能为空"
@@ -39,19 +33,17 @@ func (hub *LoginHub) Register(username string, password string) (bool, string) {
 		ToKen:    randomString(32),
 	}
 	db.Create(&userInfo)
+
+	vm.Run(getJavaScriptFile("Login.js"))
+	vm.Call("Register", hub, userInfo.UserName)
 	hub.loginSuccess(&userInfo)
 	return true, userInfo.ToKen
 }
 
-func (hub *LoginHub) GetMy() *UserInfo {
-	// if hub.session.UserInfo == nil {
-	// 	return UserInfo{}
-	// }
-	return hub.session.UserInfo
-}
-
 func (hub *LoginHub) loginSuccess(userInfo *UserInfo) {
+	vm.Run(getJavaScriptFile("Login.js"))
 	hub.session.UserInfo = userInfo
+	vm.Call("LoginSuccess_Before", hub, userInfo.UserName)
 	hub.session.AddGroup("user_" + userInfo.UserName)
-	// hub.session.AddGroup("World Channel")
+	vm.Call("LoginSuccess", hub, userInfo.UserName)
 }

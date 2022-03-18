@@ -14,6 +14,7 @@ type UserInfo struct {
 	ToKen    string
 	Tags     string
 	Avatars  string //用户头像
+	Nickname string
 }
 
 //系统消息       [加好用申请|加群申请] 等

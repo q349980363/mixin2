@@ -30,6 +30,7 @@ require (
 require (
 	github.com/gin-gonic/gin v1.7.7
 	github.com/gorilla/websocket v1.4.2 // indirect
+	github.com/jinzhu/copier v0.3.5
 	github.com/jinzhu/gorm v1.9.16
 	github.com/robertkrimen/otto v0.0.0-20211024170158-b87d35c0b86f
 )

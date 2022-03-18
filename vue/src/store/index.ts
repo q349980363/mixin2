@@ -77,6 +77,15 @@ export default createStore({
       state.hub.emitter.on("MessageEvent.tips", (json: any) => {
         dispatch("tips", json.message);
       });
+      state.hub.emitter.on("MessageEvent.event", (json: any) => {
+        state.emitter.emit("event." + json.name);
+      });
+      state.hub.emitter.onAny(function (
+        event: string | string[],
+        ...values: any[]
+      ) {
+        state.emitter.emit(event, ...values);
+      });
       try {
         await state.hub.open();
         // commit("ConnectionSuccess");
@@ -102,13 +111,13 @@ export default createStore({
     async tokenLogin({ dispatch, commit, state }, token: string) {
       console.log("tokenLogin:" + token);
       localStorage.token = token;
-      const json = await this.state.hub.invoke("Login", "GetMy");
+      const json = await this.state.hub.invoke("User", "GetMy");
       console.log("json", json);
       commit("LoginSuccess", json);
       router.replace("/HomeNav");
     },
     async connectionSuccess({ dispatch, commit, state }, token: string) {
-      const json = await this.state.hub.invoke("Login", "GetMy");
+      const json = await this.state.hub.invoke("User", "GetMy");
       commit("LoginSuccess", json);
       commit("ConnectionSuccess");
     },

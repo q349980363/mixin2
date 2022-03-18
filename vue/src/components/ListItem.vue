@@ -14,7 +14,10 @@ import { Options, Vue } from "vue-class-component";
 @Options({
   components: {},
   props: {
-    to: String,
+    to: {
+      type: String,
+      default: "",
+    },
     name: String,
   },
 })

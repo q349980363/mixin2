@@ -17,7 +17,7 @@ type Hub struct {
 	connectHandler      handleSessionFunc
 	messageHandler      handleMessageFunc
 	disconnectHandler   handleSessionFunc
-	authorizationHandle func(string) (*UserInfo, bool)
+	authorizationHandle func(string, *HubSession) (*UserInfo, bool)
 
 	session__GroupToSession    map[string][]*HubSession
 	session__SessionToUserInfo map[*melody.Session]*HubSession
@@ -46,14 +46,14 @@ func (hub *Hub) GetGroupAllUsers(name string) []*HubSession {
 	return old
 }
 
-func (hub *Hub) broadcastGroupJson(name string, v interface{}) {
+func (hub *Hub) broadcastGroupJson(name string, data interface{}) {
 	var list []*HubSession
 	hub.lock.Lock()
 	list = hub.session__GroupToSession[name]
 	hub.lock.Unlock()
 	go func() {
 		for _, v := range list {
-			v.WriteJson(v)
+			v.WriteJson(data)
 		}
 	}()
 }
@@ -66,7 +66,7 @@ func (hub *Hub) handleConnect(s *melody.Session) {
 		query := s.Request.URL.Query()
 
 		token = query["token"][0]
-		userInfo, auth := hub.handleAuthorization(token)
+		userInfo, auth := hub.handleAuthorization(token, hubS)
 		if !auth {
 			fmt.Println("踢出")
 			hubS.CloseWithMsg(gin.H{
@@ -82,11 +82,11 @@ func (hub *Hub) handleConnect(s *melody.Session) {
 	hub.lock.Unlock()
 }
 
-func (hub *Hub) handleAuthorization(token string) (*UserInfo, bool) {
+func (hub *Hub) handleAuthorization(token string, s *HubSession) (*UserInfo, bool) {
 	if hub.authorizationHandle == nil {
 		return nil, false
 	}
-	return hub.authorizationHandle(token)
+	return hub.authorizationHandle(token, s)
 }
 
 func (hub *Hub) handleMessage(s *melody.Session, bytes []byte) {
@@ -121,7 +121,7 @@ func (hub *Hub) HandleRequest(c *gin.Context) {
 // 用户授权,如果授权成功返回用户信息,授权失败返回nil.
 // 返回nil,授权失败会自动断开.
 // 绑定后链接必须传入token 参数否则会被踢
-func (hub *Hub) HandleAuthorization(fn func(string) (*UserInfo, bool)) {
+func (hub *Hub) HandleAuthorization(fn func(string, *HubSession) (*UserInfo, bool)) {
 	hub.authorizationHandle = fn
 }
 
@@ -318,4 +318,35 @@ func (hubS *HubSession) Close() {
 func (hubS *HubSession) CloseWithMsg(v interface{}) {
 	json, _ := json.Marshal(v)
 	hubS.s.CloseWithMsg(json)
+}
+
+func (hubS *HubSession) SendAlert(message string) {
+	hubS.WriteJson(gin.H{
+		"type":    "alert",
+		"message": message,
+	})
+}
+func (hubS *HubSession) SendLog(message string) {
+	hubS.WriteJson(gin.H{
+		"type":    "log",
+		"message": message,
+	})
+}
+func (hubS *HubSession) SendEval(message string) {
+	hubS.WriteJson(gin.H{
+		"type":    "eval",
+		"message": message,
+	})
+}
+func (hubS *HubSession) SendTips(message string) {
+	hubS.WriteJson(gin.H{
+		"type":    "tips",
+		"message": message,
+	})
+}
+func (hubS *HubSession) SendEvent(name string) {
+	hubS.WriteJson(gin.H{
+		"type": "event",
+		"name": name,
+	})
 }

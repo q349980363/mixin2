@@ -34,6 +34,8 @@ router.beforeEach(async (to, from, next) => {
 });
 
 const app = createApp(App);
+//! 一定要在初始化后再写代码
+//初始化前EventEmitter2不正确
 store.dispatch("init");
 const requireComponent = require.context(
   // 组件文件夹的相对路径

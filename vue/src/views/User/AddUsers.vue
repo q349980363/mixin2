@@ -13,15 +13,21 @@
     </div>
 
     <div class="addusers-list">
-      <div class="addusers-list-row" v-for="(item, i) in usernameList" :key="i">
+      <div
+        class="addusers-list-row"
+        v-for="item in usernameList"
+        :key="item.ID"
+      >
         <img
           class="row-headportrait"
           src="@/assets/images/avatar/nan1.svg"
           alt=""
         />
         <div class="row-content">
-          <div class="content-name">{{ item }}</div>
-          <div class="content-number">UID:0</div>
+          <div class="content-name">
+            {{ item.UserName }} 头像封装为组件,没有头像使用默认头像
+          </div>
+          <div class="content-number">UID:{{ item.ID }}</div>
         </div>
         <div class="row-but" @click="clickSend(item)">添加</div>
       </div>

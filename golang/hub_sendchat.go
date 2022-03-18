@@ -9,28 +9,6 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-func (hub *Hub) SendSystem(chat *SystemChat) {
-	d := db.First(&Friends{}, &Friends{
-		UserName: chat.UserName,
-		Target:   "系统消息",
-	})
-
-	if d.RecordNotFound() {
-		db.Create(&Friends{
-			UserName: chat.UserName,
-			Target:   "系统消息",
-			Path:     "/system_session",
-		})
-	}
-
-	db.Create(&chat)
-	updateFriendsLastChatTime(chat.UserName, "系统消息", chat.Txt)
-	hub.broadcastGroupJson("user_"+chat.UserName, gin.H{
-		"type": "system",
-		"data": chat,
-	})
-}
-
 func (hub *Hub) SendSystemChat(chat *SystemChat) {
 	d := db.First(&Friends{}, &Friends{
 		UserName: chat.UserName,
@@ -43,15 +21,15 @@ func (hub *Hub) SendSystemChat(chat *SystemChat) {
 			Target:   "系统消息",
 			Path:     "/system_session",
 		})
-
 	}
 
 	db.Create(&chat)
 	updateFriendsLastChatTime(chat.UserName, "系统消息", chat.Txt)
-	hub.broadcastGroupJson("user_"+chat.UserName, gin.H{
-		"type": "system",
-		"data": chat,
-	})
+	// hub.broadcastGroupJson("user_"+chat.UserName, gin.H{
+	// 	"type": "system",
+	// 	"data": chat,
+	// })
+	hub.SendUserEvent(chat.UserName, "SystemChat")
 }
 
 func (hub *Hub) SendFriendsChat(chat *FriendsChat) {
@@ -187,8 +165,6 @@ func (hub *Hub) OperationSystemChat(userInfo UserInfo, id int, result string) er
 
 	switch systemChat.Type {
 	case "Friends":
-		vm.Run(getJavaScriptFile("OperationSystemChat.js"))
-		vm.Call("OperationSystemChat_Friends_No", userInfo.UserName, systemChat.Data)
 		if result != "ok" {
 			hub.SendSystemChat(&SystemChat{
 				UserName: systemChat.Data,
@@ -197,6 +173,8 @@ func (hub *Hub) OperationSystemChat(userInfo UserInfo, id int, result string) er
 				Type:     "FriendsNo",
 				Txt:      "申请加好友[" + userInfo.UserName + "],拒绝",
 			})
+			vm.Run(getJavaScriptFile("OperationSystemChat.js"))
+			vm.Call("OperationSystemChat_Friends_No", hub, systemChat.Data, userInfo.UserName)
 			return nil
 		}
 		if !db.First(&Friends{}, &Friends{UserName: userInfo.UserName, Target: systemChat.Data}).RecordNotFound() {
@@ -219,6 +197,9 @@ func (hub *Hub) OperationSystemChat(userInfo UserInfo, id int, result string) er
 			Type:     "FriendsOk",
 			Txt:      "申请加好友[" + systemChat.Data + "],通过",
 		}) //应该是双向通知
+
+		vm.Run(getJavaScriptFile("OperationSystemChat.js"))
+		vm.Call("OperationSystemChat_Friends_Ok", hub, systemChat.Data, userInfo.UserName)
 	case "GroupRelation":
 		if result != "ok" {
 			vm.Run(getJavaScriptFile("OperationSystemChat.js"))

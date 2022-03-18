@@ -43,6 +43,7 @@
 
 <script lang="ts">
 import Hub from "@/hub";
+import { EventEmitter2 } from "eventemitter2";
 import { State, Action } from "vuex-class";
 import { Options, Vue } from "vue-class-component";
 import MessageBar from "@/components/MessageBar.vue";
@@ -57,9 +58,19 @@ import ChatBubble from "@/components/ChatBubble.vue";
 })
 export default class SystemInforms extends Vue {
   @State("hub") hub!: Hub;
+  @State("emitter") emitter!: EventEmitter2;
   @Action("tips") tips!: (msg: string) => void;
   dataList = [];
   async created() {
+    this.loadData();
+    this.emitter.on("event.SystemChat", this.loadData.bind(this));
+  }
+
+  async destroyed() {
+    this.emitter.off("event.SystemChat", this.loadData);
+  }
+
+  async loadData() {
     var response = await this.hub.invoke("Systemchat", "Get");
     this.dataList = response;
   }
