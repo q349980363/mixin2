@@ -30,12 +30,12 @@ const routes: Array<RouteRecordRaw> = [
       requiresAuth: false,
     },
   },
-  
+
   // 主页导航
   {
     path: "/homenav/",
     name: "HomeNav",
-    component: import("../views/HomeNavigation/HomeNavigation.vue"),
+    component: () => import("../views/HomeNavigation/HomeNavigation.vue"),
     redirect: "/homenav/messagelist",
     children: [
       // 消息列表
@@ -43,35 +43,35 @@ const routes: Array<RouteRecordRaw> = [
         path: "messagelist",
         name: "MessageList",
         alias: ["/homenav"],
-        component: import("../views/HomeNavigation/MessageList.vue"),
+        component: () => import("../views/HomeNavigation/MessageList.vue"),
       },
       // 用户列表
       {
         path: "users",
         name: "Users",
-        component: import("../views/HomeNavigation/Users.vue"),
+        component: () => import("../views/HomeNavigation/Users.vue"),
       },
       // 我的
       {
         path: "my",
         name: "My",
-        component: import("../views/HomeNavigation/My/My.vue"),
+        component: () => import("../views/HomeNavigation/My/My.vue"),
       },
     ],
   },
   // 临时 用完删除
-  {
-    path: "/material",
-    name: "Material",
-    component: () => import("../components/Material.vue"),
-  },
-// 系统通知
+  // {
+  //   path: "/selectprompt",
+  //   name: "SelectPrompt",
+  //   component: () => import("../components/SelectPrompt.vue"),
+  // },
+  // 系统通知
   {
     path: "/systeminforms",
     name: "SystemInforms",
     component: () => import("../views/SystemInforms.vue"),
   },
-// 无系统通知
+  // 无系统通知
   {
     path: "/nosysteminforms",
     name: "NoSystemInforms",

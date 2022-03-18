@@ -1,0 +1,6 @@
+{
+	"appId": "com.lingy.app",
+	"appName": "mixin",
+	"webDir": "dist",
+	"bundledWebRuntime": false
+}

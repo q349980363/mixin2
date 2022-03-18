@@ -2,6 +2,21 @@ import { createStore } from "vuex";
 import router from "../router";
 import Hub from "../hub";
 import { EventEmitter2 } from "eventemitter2";
+import { Capacitor } from "@capacitor/core";
+console.log(process.env.NODE_ENV);
+let serverHost = location.hostname;
+
+const isNativePlatform = Capacitor.isNativePlatform();
+// alert(isNativePlatform)
+var isDevelopment = process.env.NODE_ENV === "development";
+
+//如果是app环境则没有host,需要手动指定服务器地址.
+if (isNativePlatform) {
+  serverHost = "192.168.1.157";
+} else {
+  //web环境
+  serverHost = "192.168.1.157";
+}
 
 export default createStore({
   state: {
@@ -20,9 +35,7 @@ export default createStore({
       // UserName: "",
     },
     loginState: false,
-    hub: new Hub(
-      "ws://" + location.hostname + ":8000/ws?token=" + localStorage.token
-    ),
+    hub: new Hub("ws://" + serverHost + ":8000/ws?token=" + localStorage.token),
   },
   mutations: {
     LoginSuccess(state, userInfo) {
@@ -117,9 +130,14 @@ export default createStore({
       router.replace("/HomeNav");
     },
     async connectionSuccess({ dispatch, commit, state }, token: string) {
-      const json = await this.state.hub.invoke("User", "GetMy");
-      commit("LoginSuccess", json);
-      commit("ConnectionSuccess");
+      try {
+        const json = await this.state.hub.invoke("User", "GetMy");
+        commit("LoginSuccess", json);
+        commit("ConnectionSuccess");
+      } catch (error) {
+        // commit("LoginSuccess", json);
+        commit("ConnectionSuccess");
+      }
     },
     async tips({ dispatch, commit, state }, msg: string) {
       console.log("Tips:" + msg);

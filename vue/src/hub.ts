@@ -23,6 +23,7 @@ export default class Hub {
         console.log("websocket open");
       };
       this.websocket.onclose = (e) => {
+        console.log("websocket open error");
         reject();
       };
     });
