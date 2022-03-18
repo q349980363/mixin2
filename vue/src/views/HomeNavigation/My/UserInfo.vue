@@ -3,20 +3,12 @@
     <BaseTopBarBack title="个人信息" />
     <div class="userinfo-list">
       <SetBar name="头像" @click="IsShowHeadEject = !IsShowHeadEject">
-<<<<<<< HEAD
         <Icons
-          class="list-icon"
+          class="list-icon-head"
           :name="userInfo.Avatars"
           default="defaultAvatar"
         />
         <!-- <img class="list-icon" src="@/assets/images/avatar/nv.svg" alt="" /> -->
-=======
-        <img
-          class="list-icon-head"
-          src="@/assets/images/avatar/nv.svg"
-          alt=""
-        />
->>>>>>> f39b41822fc6ae698ceab7aa86b19e39a444cd01
       </SetBar>
       <SetBar to="/setmyname" name="昵称">
         <div>{{ userInfo.Nickname }}</div>
