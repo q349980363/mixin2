@@ -91,15 +91,17 @@ export default class BottomNavigationBar extends Vue {
   .item-list {
     position: relative;
     display: inline-block;
-    padding: 5px 0;
+    padding-top: 8px;
+    padding-bottom: 5px;
     img {
+      margin-bottom: 3px;
       width: 20px;
       height: 20px;
     }
     span {
       position: absolute;
       left: 20px;
-      top: 6px;
+      top: 8px;
       min-width: 8px;
       height: 8px;
       border: none;

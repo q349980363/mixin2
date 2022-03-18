@@ -4,7 +4,7 @@
     <BaseTopBarBack title="账号与安全" />
 
     <div class="settingsnumber-list">
-      <ListItem to="/settingsnumber" name="账号" class="list-bar">
+      <ListItem to="/settingsnumberlist" name="账号" class="list-bar">
         <div>11111111</div>
       </ListItem>
     </div>

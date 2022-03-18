@@ -15,7 +15,7 @@ if (isNativePlatform) {
   serverHost = "192.168.1.157";
 } else {
   //web环境
-  serverHost = "192.168.1.157";
+  // serverHost = "192.168.1.157";
 }
 
 export default createStore({
