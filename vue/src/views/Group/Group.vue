@@ -5,10 +5,12 @@
 
     <div class="group-list">
       <MessageBar to="/groupchat">
-        <MessageBarItem :src="require('@/assets/images/avatar/nv1.svg')" name="群1">
+        <MessageBarItem
+          :src="require('@/assets/images/group-head.svg')"
+          name="群1"
+        >
         </MessageBarItem>
       </MessageBar>
-
     </div>
   </div>
 </template>

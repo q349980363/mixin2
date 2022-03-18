@@ -8,6 +8,7 @@
         <div class="top-name">群1</div>
       </div>
       <div class="main-box"></div>
+      <div>扫一扫上面的二维码图案,进入群聊</div>
     </div>
   </div>
 </template>

@@ -50,7 +50,9 @@
     </div>
     <div class="userchat-bar">
       <input type="text" />
-      <button @click="chatListToEnd('smooth')">发送</button>
+      <div>
+        <div class="bar-btn" @click="chatListToEnd('smooth')">发送</div>
+      </div>
     </div>
   </div>
   <!-- </transition> -->
@@ -119,13 +121,13 @@ export default class UserChat extends Vue {
     .chatbox-my {
       text-align: center;
       .my-time {
-        margin: 8px;
+        margin: 10px 0;
       }
       .chatbubble-my {
         display: flex;
         justify-content: flex-end;
         .headportrait {
-          margin-left: 10px;
+          margin-right: 15px;
           width: 35px;
           height: 35px;
           border: 1px solid #dbdbdb;
@@ -137,13 +139,13 @@ export default class UserChat extends Vue {
     .chatbox-he {
       text-align: center;
       .he-time {
-        margin: 8px;
+        margin: 10px 0;
       }
       .chatbubble-he {
         display: flex;
         justify-content: flex-start;
         .headportrait {
-          margin-left: 10px;
+          margin-left: 15px;
           width: 35px;
           height: 35px;
           border: 1px solid #dbdbdb;
@@ -155,30 +157,22 @@ export default class UserChat extends Vue {
 
   .userchat-bar {
     display: flex;
-    justify-content: space-between;
-    padding: 0 8px;
-    height: 49px;
     background-color: #efefef;
-
     input {
       flex: 1;
-      margin: auto;
-      padding-left: 10px;
-      height: 36px;
-      border-radius: 5px;
+      margin: 5px 10px;
+      height: 35px;
+      border-radius: 3px;
       border: none;
     }
-    button {
-      margin: auto;
-      margin-left: 5px;
-      width: 55px;
-      height: 36px;
-      line-height: 36px;
-      border-radius: 5px;
-      border: none;
+    .bar-btn {
+      padding: 5px 10px;
+      margin-top: 10px;
+      margin-right: 10px;
       background-color: #007bff;
       color: #ffffff;
-      font-size: 16px;
+      cursor: pointer;
+      border-radius: 3px;
     }
   }
 }

@@ -60,11 +60,11 @@ const routes: Array<RouteRecordRaw> = [
     ],
   },
   // 临时 用完删除
-  // {
-  //   path: "/selectprompt",
-  //   name: "SelectPrompt",
-  //   component: () => import("../components/SelectPrompt.vue"),
-  // },
+  {
+    path: "/material",
+    name: "Material",
+    component: () => import("../components/Material.vue"),
+  },
 // 系统通知
   {
     path: "/systeminforms",

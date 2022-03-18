@@ -3,7 +3,7 @@
   <div class="messagelist">
     <TopBar title="消息">
       <!-- 系统中心 -->
-      <router-link to="/systeminforms">
+      <router-link to="/systeminforms" class="messagelist-notice">
         <img
           src="@/assets/images/notice.svg"
           alt=""
@@ -12,11 +12,7 @@
         <div class="red-dot"></div>
       </router-link>
       <!-- 添加 -->
-      <PopupMenu
-        :show="false"
-        :src="require('@/assets/images/add.svg')"
-        class="messagelist-icons"
-      >
+      <PopupMenu :show="false" :src="require('@/assets/images/add.svg')">
         <PopupMenuItem
           to="/creategroup"
           :src="require('@/assets/images/group.svg')"
@@ -77,24 +73,24 @@ export default class MessageList extends Vue {
   // flex: 1;
   display: flex;
   flex-direction: column;
-  .messagelist-icons {
-    margin-left: 10px;
-    width: 20px;
+  .messagelist-notice {
+    position: relative;
+    .messagelist-icons {
+      width: 20px;
+      margin-right: 15px;
+    }
+    .red-dot {
+      position: absolute;
+      left: 10px;
+      top: 0;
+      min-width: 10px;
+      height: 10px;
+      color: #fff;
+      background: #dc3545;
+      border-radius: 50%;
+    }
   }
-  .red-dot {
-    position: absolute;
-    right: 30px;
-    top: 0;
-    padding: 2px;
-    min-width: 10px;
-    height: 10px;
-    font-size: 12px;
-    border: none;
-    color: #fff;
-    background: #dc3545;
-    text-align: center;
-    border-radius: 50%;
-  }
+
   .messagelist-list {
     /* 父元素必须也有边框自动,子元素才能生效,不知道是为什么 */
     overflow-y: auto;

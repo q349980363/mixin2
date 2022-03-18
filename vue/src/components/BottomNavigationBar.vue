@@ -16,7 +16,9 @@
             alt="消息激活"
           />
           <img v-else src="../assets/images/message.svg" alt="消息" />
-          <div class="bar-text">消息</div>
+          <div class="bar-text">
+            <div>消息</div>
+          </div>
           <span></span>
         </div>
       </router-link>
@@ -35,7 +37,9 @@
             alt="联系人激活"
           />
           <img v-else src="../assets/images/contact.svg" alt="联系人" />
-          <div class="bar-text">联系人</div>
+          <div class="bar-text">
+            <div>联系人</div>
+          </div>
           <span></span>
         </div>
       </router-link>
@@ -54,7 +58,9 @@
             alt="我的激活"
           />
           <img v-else src="../assets/images/my.svg" alt="我的" />
-          <div class="bar-text">我的</div>
+          <div class="bar-text">
+            <div>我的</div>
+          </div>
         </div>
       </router-link>
     </div>
@@ -72,33 +78,28 @@ export default class BottomNavigationBar extends Vue {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 .tabbar {
-  text-align: center;
   display: flex;
-  justify-content: space-between;
   width: 100%;
   @color: #fff;
   background-color: @color;
   border-top: 1px solid darken(@color, 10%);
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .tabbar-item {
   flex: 1;
-  // margin-top: 5px;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  position: relative;
   .item-list {
     position: relative;
     display: inline-block;
+    padding: 5px 0;
     img {
       width: 20px;
       height: 20px;
     }
     span {
       position: absolute;
-      left: 22px;
-      top: 1px;
+      left: 20px;
+      top: 6px;
       min-width: 8px;
       height: 8px;
       border: none;
