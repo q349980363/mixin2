@@ -3,12 +3,20 @@
     <BaseTopBarBack title="个人信息" />
     <div class="userinfo-list">
       <SetBar name="头像" @click="IsShowHeadEject = !IsShowHeadEject">
+<<<<<<< HEAD
         <Icons
           class="list-icon"
           :name="userInfo.Avatars"
           default="defaultAvatar"
         />
         <!-- <img class="list-icon" src="@/assets/images/avatar/nv.svg" alt="" /> -->
+=======
+        <img
+          class="list-icon-head"
+          src="@/assets/images/avatar/nv.svg"
+          alt=""
+        />
+>>>>>>> f39b41822fc6ae698ceab7aa86b19e39a444cd01
       </SetBar>
       <SetBar to="/setmyname" name="昵称">
         <div>{{ userInfo.Nickname }}</div>
@@ -20,7 +28,7 @@
         <div>{{ userInfo.ID }}</div>
       </SetBar>
       <SetBar to="/card" name="二维码名片">
-        <img class="list-icon" src="@/assets/images/qrCode.svg" alt="" />
+        <img class="list-icon-qr" src="@/assets/images/qrCode.svg" alt="" />
       </SetBar>
     </div>
   </div>
@@ -86,10 +94,15 @@ export default class UserInfo extends Vue {
     position: relative;
     overflow-y: auto;
     flex: 1;
-    .list-icon {
-      margin: auto;
-      width: 22px;
-      height: 22px;
+    .list-icon-head {
+      margin-top: 10px;
+      width: 25px;
+      height: 25px;
+    }
+    .list-icon-qr {
+      margin-top: 15px;
+      width: 15px;
+      height: 15px;
     }
   }
 }
