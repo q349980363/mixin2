@@ -26,6 +26,7 @@
     <div class="demo-item demo-icons row row-cols-6">
       <Icons class="col demo-icons-item" name="defaultSvg" />
       <Icons class="col demo-icons-item" name="defaultAvatar" />
+      <Icons class="col demo-icons-item" name="defaultAvatar1" />
       <Icons class="col demo-icons-item" name="groupHead" />
       <Icons class="col demo-icons-item" name="logo" />
     </div>
@@ -153,7 +154,7 @@ export default class Demo extends Vue {
       document.getElementById("app")!.style.maxHeight = "none";
       document.getElementById("iphoneX")!.style.display = "none !important";
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   }
   beforeUnmount() {
@@ -161,7 +162,7 @@ export default class Demo extends Vue {
       document.getElementById("app")!.style.maxHeight = this.maxHeight;
       document.getElementById("iphoneX")!.style.display = "block !important";
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   }
 }
