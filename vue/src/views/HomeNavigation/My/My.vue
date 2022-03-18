@@ -103,17 +103,18 @@ export default class My extends Vue {
   flex-direction: column;
   .my-message {
     display: flex;
-    height: 170px;
-    font-size: 20px;
-    padding-left: 30px;
-    padding-right: 15px;
+    padding: 50px 15px;
+    // height: 170px;
+    // font-size: 20px;
+    // padding-left: 30px;
+    // padding-right: 15px;
     // border: 1px solid #cdcdcd;
     background: url("~@/assets/images/bg.png") no-repeat;
     background-size: 100% auto;
     background-position: 0 -349px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
     .message-headportrait {
-      margin: auto;
+      margin: 0 auto;
       width: 60px;
       height: 60px;
       border: 1px solid rgba(0, 0, 0, 0.1);
@@ -124,7 +125,7 @@ export default class My extends Vue {
       flex: 1;
       display: flex;
       flex-direction: column;
-      margin: auto;
+      margin: 0 auto;
       margin-left: 10px;
       line-height: 30px;
       text-align: left;
@@ -135,8 +136,9 @@ export default class My extends Vue {
       }
       .main-down {
         display: flex;
-        justify-content: space-between;
+        // justify-content: space-between;
         .main-down-left {
+          flex: 1;
           font-size: 18px;
         }
         .main-down-right {
@@ -158,10 +160,10 @@ export default class My extends Vue {
     flex: 1;
     text-align: left;
     .list-icon {
-      margin: auto;
+      margin-top: 14px;
       margin-right: 10px;
-      width: 20px;
-      height: 20px;
+      width: 17px;
+      height: 17px;
     }
     .list-but {
       padding: 0 15px;

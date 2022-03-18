@@ -74,12 +74,13 @@ export default class ChatBubble extends Vue {
 
 .my-left {
   .Bubble;
+  margin-right: 15px;
 }
 
 .he-left {
   .Bubble;
 
-  margin-left: 10px;
+  margin-left: 15px;
   background-color: rgb(255, 255, 255);
   color: #000;
 

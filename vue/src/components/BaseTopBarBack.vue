@@ -44,8 +44,9 @@ export default class BaseTopBarBack extends Vue {
 .BaseTopBarBack {
   display: flex;
   // justify-content: space-between;
-  height: 45px;
-  line-height: 45px;
+  // height: 45px;
+  // line-height: 45px;
+  padding: 12px 0;
   @color: #fff;
   background-color: @color;
   border-bottom: 1px solid darken(@color, 10%);

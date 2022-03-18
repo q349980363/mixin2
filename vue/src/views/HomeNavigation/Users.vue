@@ -3,7 +3,7 @@
   <div class="users">
     <TopBar title="联系人">
       <!-- 系统中心 -->
-      <router-link to="/systeminforms">
+      <router-link to="/systeminforms" class="messagelist-notice">
         <img
           src="@/assets/images/notice.svg"
           alt=""
@@ -16,11 +16,7 @@
       <!-- <img src="@/assets/images/search.svg" alt="" class="icons" /> -->
       <!-- </router-link> -->
       <!-- 添加 -->
-      <PopupMenu
-        :show="false"
-        :src="require('@/assets/images/add.svg')"
-        class="messagelist-icons"
-      >
+      <PopupMenu :show="false" :src="require('@/assets/images/add.svg')">
         <PopupMenuItem
           to="/creategroup"
           :src="require('@/assets/images/group.svg')"
@@ -83,23 +79,22 @@ export default class Users extends Vue {
   // flex: 1;
   display: flex;
   flex-direction: column;
-  .red-dot {
-    position: absolute;
-    right: 30px;
-    top: 0;
-    min-width: 10px;
-    height: 10px;
-    padding: 2px;
-    font-size: 12px;
-    border: none;
-    background: #dc3545;
-    color: #fff;
-    text-align: center;
-    border-radius: 50%;
-  }
-  .messagelist-icons {
-    margin-left: 10px;
-    width: 20px;
+  .messagelist-notice {
+    position: relative;
+    .messagelist-icons {
+      margin-right: 15px;
+      width: 20px;
+    }
+    .red-dot {
+      position: absolute;
+      left: 10px;
+      top: 0;
+      min-width: 10px;
+      height: 10px;
+      color: #fff;
+      background: #dc3545;
+      border-radius: 50%;
+    }
   }
   .users-list {
     overflow-y: auto;

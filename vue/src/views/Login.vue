@@ -71,22 +71,22 @@ export default class Login extends Vue {
 <style lang="less" scoped>
 .login {
   padding: 15px;
-  margin: auto;
+  margin: 0 auto;
   width: 100%;
   max-width: 330px;
   text-align: center;
   padding-top: 170px;
   .login-icon {
-    margin: 30px auto;
+    margin: 0 auto;
+    margin-bottom: 30px;
     width: 60px;
     height: 60px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 10px;
   }
   .username {
-    padding-left: 10px;
+    padding: 10px;
     width: 300px;
-    height: 40px;
     border: 1px solid #bbbbbb;
     border-bottom: none;
     border-radius: 8px 8px 0 0;
@@ -96,19 +96,19 @@ export default class Login extends Vue {
     position: relative;
   }
   .password {
-    padding-left: 10px;
+    padding: 10px;
     width: 300px;
-    height: 40px;
     border: 1px solid #bbbbbb;
     border-radius: 0 0 8px 8px;
   }
   .login-but {
     margin-top: 30px;
+    padding: 8px 0;
     width: 300px;
-    height: 40px;
     border: none;
     background-color: #007bff;
     color: #fff;
+    font-size: 18px;
     border: 1px solid #ced4da;
     border-radius: 8px;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -124,7 +124,7 @@ export default class Login extends Vue {
     background-color: #0b5ed7;
   }
   .login-reg {
-    margin-top: 10px;
+    padding-top: 10px;
     font-size: 14px;
     text-align: left;
   }

@@ -4,7 +4,7 @@ type UserHub struct {
 	session *HubSession
 }
 
-func (hub *LoginHub) GetMy() *UserInfo {
+func (hub *UserHub) GetMy() *UserInfo {
 	// if hub.session.UserInfo == nil {
 	// 	return UserInfo{}
 	// }

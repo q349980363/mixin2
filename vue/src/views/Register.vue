@@ -17,14 +17,12 @@
     />
 
     <div class="register-tips">请记住您的密码</div>
-    <!--
-    <div class="clause">
-      <img  src="@/assets/images/checked.svg" alt="" />
-      <img src="@/assets/images/unchecked.svg" alt="" />
 
+    <!-- <div class="clause">
+      <input type="checkbox" />
       <span>我已阅读并同意用户注册协议</span>
-    </div>
- -->
+    </div> -->
+
     <button class="register-but" @click="clickRegister()">注册</button>
     <router-link class="register-reg" to="/">返回登录</router-link>
   </div>
@@ -71,21 +69,19 @@ export default class Register extends Vue {
 
 <style lang="less" scoped>
 .register {
-   padding: 15px;
-  margin: auto;
+  padding: 15px;
+  margin: 0 auto;
   width: 100%;
   max-width: 330px;
   text-align: center;
-  /* background-color: #fff; */
   padding-top: 170px;
   .register-title {
     margin-bottom: 30px;
     font-size: 30px;
   }
   .username {
-    padding-left: 10px;
+    padding: 10px;
     width: 300px;
-    height: 40px;
     border: 1px solid #bbbbbb;
     border-bottom: none;
     border-radius: 8px 8px 0 0;
@@ -95,35 +91,29 @@ export default class Register extends Vue {
     position: relative;
   }
   .password {
-    padding-left: 10px;
+    padding: 10px;
     width: 300px;
-    height: 40px;
     border: 1px solid #bbbbbb;
     border-radius: 0 0 8px 8px;
   }
   .register-tips {
-    margin: 5px 0;
+    padding-top: 10px;
     text-align: left;
     font-size: 10px;
   }
   // .clause {
-  //   margin: 10px 0;
-  //   display: flex;
-  //   align-items: center;
+  //   padding-top: 30px;
   //   font-size: 14px;
-  //   height: 20px;
-  //   span {
-  //     flex: 1;
-  //     text-align: left;
-  //   }
+  //   text-align: left;
   // }
   .register-but {
     margin-top: 30px;
+    padding: 8px 0;
     width: 300px;
-    height: 40px;
     border: none;
     border-radius: 8px;
     color: #fff;
+    font-size: 18px;
     cursor: pointer;
     background-color: #28a745;
     border: 1px solid #ced4da;
