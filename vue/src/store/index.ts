@@ -3,6 +3,7 @@ import router from "../router";
 import Hub from "../hub";
 import { EventEmitter2 } from "eventemitter2";
 import { Capacitor } from "@capacitor/core";
+
 console.log(process.env.NODE_ENV);
 let serverHost = location.hostname;
 

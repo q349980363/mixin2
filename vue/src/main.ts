@@ -4,6 +4,36 @@ import camelCase from "lodash/camelCase";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import { StatusBar, Style } from '@capacitor/status-bar';
+
+
+
+
+
+
+
+
+// Display content under transparent status bar (Android only)
+// StatusBar.setOverlaysWebView({ overlay: true });
+
+// const setStatusBarStyleDark = async () => {
+//   await StatusBar.setStyle({ style: Style.Dark });
+// };
+
+// const setStatusBarStyleLight = async () => {
+//   await StatusBar.setStyle({ style: Style.Light });
+// };
+
+// const hideStatusBar = async () => {
+//   await StatusBar.hide();
+// };
+
+// const showStatusBar = async () => {
+//   await StatusBar.show();
+// };
+
+// setStatusBarStyleDark();
+
 store.state.connectionInitPromise = new Promise((resolve, reject) => {
   store.state.connectionInitPromiseResolve = resolve;
 });
