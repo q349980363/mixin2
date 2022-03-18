@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from "vue-router";
 // import Home from "../views/Home.vue";
 import my from "./my";
 import users from "./users";
@@ -114,7 +114,7 @@ const routes: Array<RouteRecordRaw> = [
 ];
 const routesList = routes.concat(my).concat(users).concat(group);
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(process.env.BASE_URL),
   routes: routesList,
 });
 
