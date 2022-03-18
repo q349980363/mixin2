@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"fmt"
 	"reflect"
 )
 
@@ -58,6 +59,7 @@ func (route *Route) handleMessage(s *HubSession, msgType string, json map[string
 		}
 		auth = true
 	default:
+		fmt.Println("Call", json["hubName"])
 		panic(errors.New("所调用的Hub不存在,严格区分大小写"))
 		return
 	}
@@ -70,12 +72,13 @@ func (route *Route) handleMessage(s *HubSession, msgType string, json map[string
 			return
 		}
 	}
-
 	t := reflect.ValueOf(controller)
 	functionName := json["functionName"].(string)
 	numMethod := t.NumMethod()
 	_ = numMethod
 	fn := t.MethodByName(functionName)
+
+	fmt.Println("Call", json["hubName"], functionName)
 	if !fn.IsValid() {
 		//TODO 如果指针空则会触发异常.
 		panic(errors.New("所调用的函数不存在,严格区分大小写"))

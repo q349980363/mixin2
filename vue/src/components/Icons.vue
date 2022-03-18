@@ -83,16 +83,25 @@ const iconPathList: { [key: string]: string } = {
   props: {
     class: String,
     name: String,
+    default: {
+      type: String,
+      default: "",
+    },
   },
 })
 export default class Icons extends Vue {
   class!: string;
   name!: string;
+  default!: string;
   public get path(): string {
     const path = iconPathList[this.name];
     // console.log(path);
     if (!path) {
-      return defaultSvg;
+      if (this.default != "") {
+        return iconPathList[this.default];
+      } else {
+        return defaultSvg;
+      }
     }
     return path;
   }

@@ -3,17 +3,24 @@
   <div class="my">
     <router-link to="/userinfo" class="my-message">
       <!-- 个人信息 -->
-      <img
+      <!-- <img
         class="message-headportrait"
         src="@/assets/images/avatar/nv.svg"
         alt=""
-      />
+      /> -->
+       <Icons
+          class="message-headportrait"
+          :name="userInfo.Avatars"
+          default="defaultAvatar"
+        />
       <div class="message-main">
         <div class="main-top">
-          <div class="main-name">{{ userInfo.UserName }}</div>
+          <div class="main-name">{{ userInfo.Nickname }}</div>
         </div>
         <div class="main-down">
-          <div class="main-down-left">UID:{{ userInfo.ID }}</div>
+          <div class="main-down-left">
+            UID:{{ userInfo.ID }} 账号:{{ userInfo.UserName }}
+          </div>
           <div class="main-down-right">
             <img class="down-card" src="@/assets/images/qrCode.svg" alt="" />
             <img
@@ -76,16 +83,22 @@ import { Options, Vue } from "vue-class-component";
 import BottomNavigationBar from "@/components/BottomNavigationBar.vue";
 import ListItem from "@/components/ListItem.vue";
 import List from "@/components/List.vue";
+import Icons from "@/components/Icons.vue";
 @Options({
   components: {
     BottomNavigationBar,
     List,
     ListItem,
+    Icons,
   },
 })
 export default class My extends Vue {
   msg!: string;
   @State("userInfo") userInfo!: any;
+  @Action("getMyUserInfo") getMyUserInfo!: () => void;
+  created() {
+    this.getMyUserInfo();
+  }
   clickLogin() {
     localStorage.clear();
     this.$router.push("/login");

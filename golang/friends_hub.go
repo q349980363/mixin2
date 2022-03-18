@@ -33,10 +33,23 @@ func (hub *FriendsHub) Apply(username string) (bool, string) {
 //添加好友前,搜索用户名称,可全网搜索.
 func (hub *FriendsHub) SearchUsername(username string) []UserInfoClient {
 	var users []UserInfo
-	db.Where("user_name LIKE ?", "%"+username+"%").Find(&users)
+	db.Where("user_name LIKE ?", "%"+username+"%").Or("nickname LIKE ?", "%"+username+"%").Find(&users)
 	clientUsers := []UserInfoClient{}
 	// clientUsers := make([]UserInfoClient, 0)
 	copier.Copy(&clientUsers, &users)
+	return clientUsers
+}
+
+func (hub *FriendsHub) GetMyFriends() []UserInfoClient {
+	// var users []Friends
+	clientUsers := []UserInfoClient{}
+	//
+	where := db.Model(&Friends{}).Select("user_infos.*,friends.*").Where(&Friends{Target: hub.session.UserInfo.UserName})
+	where.Joins("left join user_infos on user_infos.user_name = friends.user_name").Scan(&clientUsers)
+
+	// .Find(&users)
+	// clientUsers := make([]UserInfoClient, 0)
+	// copier.Copy(&clientUsers, &users)
 	return clientUsers
 }
 

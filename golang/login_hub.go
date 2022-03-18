@@ -30,6 +30,7 @@ func (hub *LoginHub) Register(username string, password string) (bool, string) {
 	userInfo := UserInfo{
 		UserName: username,
 		PassWord: password,
+		Nickname: username,
 		ToKen:    randomString(32),
 	}
 	db.Create(&userInfo)

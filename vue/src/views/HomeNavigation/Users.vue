@@ -39,10 +39,10 @@
         </MessageBarItem>
       </MessageBar>
 
-      <MessageBar to="/userchat">
+      <MessageBar to="/userchat" v-for="item in users" :key="item.ID">
         <MessageBarItem
-          :src="require('@/assets/images/avatar/nan.svg')"
-          name="Mg"
+          :src="item.Avatars"
+          :name="item.Nickname"
         />
       </MessageBar>
     </div>
@@ -57,6 +57,8 @@ import PopupMenu from "@/components/PopupMenu.vue";
 import PopupMenuItem from "@/components/PopupMenuItem.vue";
 import MessageBar from "@/components/MessageBar.vue";
 import MessageBarItem from "@/components/MessageBarItem.vue";
+import { State } from "vuex-class";
+import Hub from "@/hub";
 
 @Options({
   components: {
@@ -69,7 +71,16 @@ import MessageBarItem from "@/components/MessageBarItem.vue";
   },
 })
 export default class Users extends Vue {
+  @State("hub") hub!: Hub;
+  users = [];
   msg!: string;
+  async created() {
+    // this.users.length = 0;
+    var response = await this.hub.invoke<[]>("Friends", "GetMyFriends");
+    response.forEach((item) => {
+      this.users.push(item);
+    });
+  }
 }
 </script>
 <style lang="less" scoped>

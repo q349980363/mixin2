@@ -4,7 +4,12 @@
     <slot name="left" class="left"></slot>
     <div class="info">{{ name }}</div>
     <slot></slot>
-    <img class="return-right" src="@/assets/images/return-right.svg" alt="" />
+    <img
+      v-if="to != ''"
+      class="return-right"
+      src="@/assets/images/return-right.svg"
+      alt=""
+    />
   </router-link>
 </template>
 

@@ -2,7 +2,7 @@
   <!-- 修改群名称 -->
   <div class="setmyname">
     <BaseTopBarBack title="设置名字">
-      <div class="setmyname-submit" @click="back">提交</div>
+      <div class="setmyname-submit" @click="SetNickname()">提交</div>
     </BaseTopBarBack>
     <div class="setmyname-main">
       <input type="text" v-model="UserName" />
@@ -11,6 +11,7 @@
 </template>
 
 <script lang="ts">
+import Hub from "@/hub";
 import { Options, Vue } from "vue-class-component";
 import { State, Action } from "vuex-class";
 @Options({
@@ -21,9 +22,17 @@ export default class SetMyName extends Vue {
   msg!: string;
   @Action("back")
   back?: () => void;
+  @State("hub") hub!: Hub;
+  @Action("getMyUserInfo") getMyUserInfo!: () => void;
+  @Action("tips") tips!: (msg: string) => void;
   UserName = "";
   async created() {
-    this.UserName = this.userInfo.UserName;
+    this.UserName = this.userInfo.Nickname;
+  }
+  async SetNickname(name: string) {
+    var response = await this.hub.invoke("User", "SetNickname", this.UserName);
+    this.tips(response);
+    await this.getMyUserInfo();
   }
 }
 </script>

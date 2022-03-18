@@ -1,7 +1,8 @@
 <template>
   <div class="head">
     <slot name="left" class="left"></slot>
-    <img class="headportrait" :src="src" alt="" />
+    <!-- <img :src="src" alt="" /> -->
+    <Icons class="headportrait" default="defaultAvatar" :name="src" />
   </div>
   <div class="main">
     <div class="left">
@@ -17,9 +18,10 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import Icons from "@/components/Icons.vue";
 
 @Options({
-  components: {},
+  components: { Icons },
   props: {
     src: String,
     name: String,
