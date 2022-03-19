@@ -1,9 +1,16 @@
 <template>
   <!-- 系统通知 -->
   <div class="systeminforms">
-    <BaseTopBarBack title="通知" />
-
+    <BaseTopBarBack title="通知">
+      <div class="systeminforms-submit" @click="clickClear()">清空通知</div>
+    </BaseTopBarBack>
     <div class="systeminforms-list">
+      <!-- 暂无通知 -->
+      <div class="systeminforms-noNotice" v-if="dataList.length == 0">
+        <img src="@/assets/images/nonotice.svg" alt="" />
+        <div class="main-text">暂无通知</div>
+      </div>
+      <!-- 通知 -->
       <template v-for="(item, i) in dataList" :key="i">
         <div class="chatbubble" v-if="item.Type == 'Friends'">
           <img class="headportrait" src="@/assets/images/logo.svg" alt="" />
@@ -49,6 +56,7 @@ import { Options, Vue } from "vue-class-component";
 import MessageBar from "@/components/MessageBar.vue";
 import MessageBarItem from "@/components/MessageBarItem.vue";
 import ChatBubble from "@/components/ChatBubble.vue";
+
 @Options({
   components: {
     MessageBar,
@@ -88,18 +96,37 @@ export default class SystemInforms extends Vue {
     var response = await this.hub.invoke("Systemchat", "Operation", id, "ok");
     this.dataList = response;
   }
+  async clickClear() {
+    var response = await this.hub.invoke("Systemchat", "Clear");
+    this.tips(response);
+    this.loadData();
+  }
 }
 </script>
 
 <style lang="less" scoped>
 .systeminforms {
+  .systeminforms-submit {
+    display: inline-block;
+    margin-right: 15px;
+    font-weight: 400;
+    font-size: 16px;
+    color: #515151;
+    cursor: pointer;
+  }
   .systeminforms-list {
     overflow-y: auto;
     flex: 1;
-    .list-notice {
-      margin-top: 10px;
-      text-align: left;
-      padding: 0 15px;
+    .systeminforms-noNotice {
+      img {
+        width: 280px;
+        height: 246px;
+        margin: 0 auto;
+        margin-top: 120px;
+      }
+      .main-text {
+        margin-top: 5px;
+      }
     }
     .chatbubble {
       display: flex;

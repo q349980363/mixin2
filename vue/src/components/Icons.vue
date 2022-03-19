@@ -6,6 +6,12 @@
 import { Options, Vue } from "vue-class-component";
 import defaultSvg from "@/assets/images/avatar/default.svg";
 import defaultAvatar from "@/assets/images/avatar/defaultAvatar2.svg";
+import defaultAvatar1 from "@/assets/images/avatar/defaultAvatar3.svg";
+import defaultAvatar2 from "@/assets/images/avatar/defaultAvatar4.svg";
+import defaultAvatar3 from "@/assets/images/avatar/defaultAvatar5.svg";
+import defaultAvatar4 from "@/assets/images/avatar/defaultAvatar6.svg";
+import defaultAvatar5 from "@/assets/images/avatar/defaultAvatar6.svg";
+import defaultAvatar6 from "@/assets/images/avatar/defaultAvatar6.svg";
 import groupHead from "@/assets/images/group-head.svg";
 import logo from "@/assets/images/logo.svg";
 import nv from "@/assets/images/avatar/nv.svg";
@@ -42,6 +48,12 @@ import more from "@/assets/images/more.svg";
 const iconPathList: { [key: string]: string } = {
   defaultSvg,
   defaultAvatar,
+  defaultAvatar1,
+  defaultAvatar2,
+  defaultAvatar3,
+  defaultAvatar4,
+  defaultAvatar5,
+  defaultAvatar6,
   groupHead,
   logo,
   nv,
@@ -83,16 +95,25 @@ const iconPathList: { [key: string]: string } = {
   props: {
     class: String,
     name: String,
+    default: {
+      type: String,
+      default: "",
+    },
   },
 })
 export default class Icons extends Vue {
   class!: string;
   name!: string;
+  default!: string;
   public get path(): string {
     const path = iconPathList[this.name];
     // console.log(path);
     if (!path) {
-      return defaultSvg;
+      if (this.default != "") {
+        return iconPathList[this.default];
+      } else {
+        return defaultSvg;
+      }
     }
     return path;
   }

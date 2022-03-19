@@ -122,6 +122,12 @@ export default createStore({
         }, 1000);
       }
     },
+    async getMyUserInfo({ dispatch, commit, state }) {
+      const json = await this.state.hub.invoke("User", "GetMy");
+      commit("LoginSuccess", json);
+      console.log(json);
+      // commit("LoginSuccess", {});
+    },
     async tokenLogin({ dispatch, commit, state }, token: string) {
       console.log("tokenLogin:" + token);
       localStorage.token = token;

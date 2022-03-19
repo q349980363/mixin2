@@ -18,18 +18,20 @@
         v-for="item in usernameList"
         :key="item.ID"
       >
-        <img
+        <Icons
           class="row-headportrait"
-          src="@/assets/images/avatar/nan1.svg"
-          alt=""
+          :name="item.Avatars"
+          default="defaultAvatar"
         />
         <div class="row-content">
           <div class="content-name">
-            {{ item.UserName }} 头像封装为组件,没有头像使用默认头像
+            {{ item.Nickname }}
           </div>
-          <div class="content-number">UID:{{ item.ID }}</div>
+          <div class="content-number">
+            UID:{{ item.ID }} 账号:{{ item.UserName }}
+          </div>
         </div>
-        <div class="row-but" @click="clickSend(item)">添加</div>
+        <div class="row-but" @click="clickSend(item.UserName)">添加</div>
       </div>
     </div>
   </div>
@@ -39,9 +41,10 @@
 import Hub from "@/hub";
 import { Options, Vue } from "vue-class-component";
 import { State, Action } from "vuex-class";
+import Icons from "@/components/Icons.vue";
 
 @Options({
-  components: {},
+  components: { Icons },
 })
 export default class AddUsers extends Vue {
   username = "";
@@ -69,6 +72,7 @@ export default class AddUsers extends Vue {
     }
   }
   async clickSend(username: string) {
+    console.log(username);
     var response = await this.hub.invoke("Friends", "Apply", username);
     //response[0] 请求是否成功
     this.tips(response[1]);

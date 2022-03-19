@@ -1,12 +1,9 @@
 <template>
   <div class="BaseTopBarBack">
     <div class="back">
-      <img
-        v-if="showBack"
-        src="@/assets/images/return.svg"
-        @click="back()"
-        alt=""
-      />
+      <div @click="back()" class="back-trigger">
+        <img v-if="showBack" src="@/assets/images/return.svg" alt="" />
+      </div>
     </div>
     <div class="title-name">{{ title }}</div>
     <div class="tool">
@@ -44,9 +41,9 @@ export default class BaseTopBarBack extends Vue {
 .BaseTopBarBack {
   display: flex;
   // justify-content: space-between;
-  // height: 45px;
-  // line-height: 45px;
-  padding: 12px 0;
+  height: 48px;
+  line-height: 48px;
+  // padding: 12px 0;
   @color: #fff;
   background-color: @color;
   border-bottom: 1px solid darken(@color, 10%);
@@ -58,23 +55,24 @@ export default class BaseTopBarBack extends Vue {
   flex: 1;
   text-align: left;
   cursor: pointer;
-  padding-left: 15px;
-  padding-right: 15px;
-  // display: block;
-  // justify-content: flex-start;
-  // display: flex;
   img {
     height: 16px;
     margin: auto 0;
+    // padding: 5px;
+  }
+  .back-trigger {
+    display: inline-block;
+    padding: 0 15px;
   }
 }
 .title-name {
 }
+
 .tool {
   flex: 1;
   text-align: right;
-  padding-left: 15px;
-  padding-right: 15px;
+  // padding-left: 15px;
+  // padding-right: 15px;
   // display: flex;
   // justify-content: flex-end;
 }

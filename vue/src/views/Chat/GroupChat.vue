@@ -19,22 +19,24 @@
             312312312312312312312312312312312312312312
             312312312312312312312312312312312312312312312312312312312312312
           </ChatBubble>
-          <img
+          <!-- <img
             class="headportrait"
             src="@/assets/images/avatar/nv.svg"
             alt=""
-          />
+          /> -->
+            <Icons class="headportrait" name="defaultAvatar" />
         </div>
       </div>
 
       <div class="chatbox-he">
         <div class="he-time">上午9:41</div>
         <div class="chatbubble-he">
-          <img
+          <!-- <img
             class="headportrait"
             src="@/assets/images/avatar/nan.svg"
             alt=""
-          />
+          /> -->
+           <Icons class="headportrait" name="defaultAvatar" />
           <ChatBubble direction="right">
             123123123123123123123123123123
             123123123123123123123123123123123123123123
@@ -59,6 +61,7 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import ChatBubble from "@/components/ChatBubble.vue"; // @ is an alias to /src
+import Icons from "@/components/Icons.vue";
 
 /**
  * 
@@ -74,6 +77,7 @@ window.scrollTo({
 @Options({
   components: {
     ChatBubble,
+    Icons,
   },
 })
 export default class GroupChat extends Vue {
