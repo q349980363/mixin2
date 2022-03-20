@@ -52,6 +52,7 @@ import Hub from "@/hub";
 import { State } from "vuex-class";
 import { EventEmitter2 } from "eventemitter2";
 
+import Icons from "@/components/Icons.vue";
 /**
  *
  *
