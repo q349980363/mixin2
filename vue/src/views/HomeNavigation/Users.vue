@@ -39,11 +39,12 @@
         </MessageBarItem>
       </MessageBar>
 
-      <MessageBar to="/userchat" v-for="item in users" :key="item.ID">
-        <MessageBarItem
-          :src="item.Avatars"
-          :name="item.Nickname"
-        />
+      <MessageBar
+        :to="{ path: '/userchat', query: item }"
+        v-for="item in users"
+        :key="item.ID"
+      >
+        <MessageBarItem :src="item.Avatars" :name="item.Nickname" />
       </MessageBar>
     </div>
   </div>
