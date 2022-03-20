@@ -6,7 +6,7 @@
     </BaseTopBarBack>
     <!-- 设置备注 -->
     <div class="setmyname-main">
-      <input type="text" value="" placeholder="Mg" />
+      <input type="text" v-model="UserName" />
       <div class="main-tips">好名字可以让你的朋友更容易记住你</div>
     </div>
   </div>
@@ -31,7 +31,7 @@ export default class SetMyName extends Vue {
   async created() {
     this.UserName = this.userInfo.Nickname;
   }
-  async SetNickname(name: string) {
+  async SetNickname() {
     var response = await this.hub.invoke("User", "SetNickname", this.UserName);
     this.tips(response);
     await this.getMyUserInfo();

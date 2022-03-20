@@ -28,6 +28,8 @@ export default class SetUserName extends Vue {
 <style lang="less" scoped>
 .setusername {
   .setusername-submit {
+    display: inline-block;
+    margin-right: 15px;
     font-weight: 400;
     font-size: 16px;
     color: #515151;

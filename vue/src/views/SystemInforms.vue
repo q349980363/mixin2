@@ -12,8 +12,9 @@
       </div>
       <!-- 通知 -->
       <template v-for="(item, i) in dataList" :key="i">
+        <div class="systeminforms-time">{{ item.CreatedAt }}</div>
         <div class="chatbubble" v-if="item.Type == 'Friends'">
-          <img class="headportrait" src="@/assets/images/logo.svg" alt="" />
+          <Icons class="headportrait" name="logo" />
           <ChatBubble direction="right">
             <div class="chatbubble-text">{{ item.Txt }}</div>
             <div class="chatbubble-operation" v-if="!item.Result">
@@ -33,11 +34,10 @@
             <div v-else>
               {{ item.Result }}
             </div>
-            {{ item.CreatedAt }}
           </ChatBubble>
         </div>
         <div class="chatbubble" v-else>
-          <img class="headportrait" src="@/assets/images/logo.svg" alt="" />
+          <Icons class="headportrait" name="logo" />
           <ChatBubble direction="right">
             <div class="chatbubble-text">{{ item.Txt }}</div>
             {{ item.CreatedAt }}
@@ -56,12 +56,14 @@ import { Options, Vue } from "vue-class-component";
 import MessageBar from "@/components/MessageBar.vue";
 import MessageBarItem from "@/components/MessageBarItem.vue";
 import ChatBubble from "@/components/ChatBubble.vue";
+import Icons from "@/components/Icons.vue";
 
 @Options({
   components: {
     MessageBar,
     MessageBarItem,
     ChatBubble,
+    Icons,
   },
 })
 export default class SystemInforms extends Vue {
@@ -128,9 +130,13 @@ export default class SystemInforms extends Vue {
         margin-top: 5px;
       }
     }
+    .systeminforms-time{
+      padding: 10px 0;
+      font-size: 14px;
+    }
     .chatbubble {
       display: flex;
-      padding: 5px 15px;
+      padding: 0 15px;
       .headportrait {
         width: 35px;
         height: 35px;

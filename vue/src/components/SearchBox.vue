@@ -19,7 +19,7 @@
 
   .searchbox-ico {
     position: absolute;
-    top: 13px;
+    top: 15px;
     left: 15px;
     width: 16px;
   }

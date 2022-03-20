@@ -16,7 +16,11 @@
 import { Options, Vue } from "vue-class-component";
 // import { State, Getter, Action, Mutation, namespace } from "vuex-class";
 import { Action } from "vuex-class";
+import Icons from "@/components/Icons.vue";
 @Options({
+   components: {
+    Icons,
+  },
   props: {
     title: {
       type: String,

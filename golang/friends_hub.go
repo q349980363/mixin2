@@ -65,6 +65,16 @@ func (hub *FriendsHub) GetChat(username string) []FriendsChat {
 	hub.Read(username)
 	return list
 }
+func (hub *FriendsHub) ClearChat(username string) string {
+	db.Where(&FriendsChat{
+		UserName: hub.session.UserInfo.UserName,
+		Target:   username,
+	}).Or(&FriendsChat{
+		UserName: username,
+		Target:   hub.session.UserInfo.UserName,
+	}).Delete(&FriendsChat{})
+	return "清除成功"
+}
 
 func (hub *FriendsHub) Read(username string) string {
 	db.Model(&Friends{}).Where(&Friends{
@@ -77,6 +87,12 @@ func (hub *FriendsHub) Read(username string) string {
 func (hub *FriendsHub) SendChat(username string, txt string) string {
 	hub.session.hub.SendFriendsTxt(hub.session.UserInfo.UserName, username, txt)
 	return ""
+}
+func (hub *FriendsHub) Delete(username string) string {
+	hub.ClearChat(username)
+	db.Where(&Friends{Target: hub.session.UserInfo.UserName, UserName: username}).Delete(&Friends{})
+	db.Where(&Friends{UserName: hub.session.UserInfo.UserName, Target: username}).Delete(&Friends{})
+	return "删除成功"
 }
 
 // func (hub *FriendsHub) Get() []UserInfoClient {

@@ -3,9 +3,12 @@
   <!-- 聊天页 -->
   <div class="userchat">
     <BaseTopBarBack :title="UserInfo.Nickname">
-      <router-link to="/userchatset">
-        <img src="@/assets/images/more.svg" alt="" class="userchat-icons"
-      /></router-link>
+      <router-link
+        :to="{ path: '/userchatset', query: UserInfo }"
+        class="tool-trigger"
+      >
+        <img src="@/assets/images/more.svg" alt="" />
+      </router-link>
     </BaseTopBarBack>
 
     <div class="userchat-list" ref="list">
@@ -14,10 +17,10 @@
           <div class="my-time">{{ item.CreatedAt }}</div>
           <div class="chatbubble-my">
             <ChatBubble direction="left">{{ item.Data }} </ChatBubble>
-            <img
+            <Icons
               class="headportrait"
-              src="@/assets/images/avatar/nv.svg"
-              alt=""
+              default="defaultAvatar"
+              :name="MyUserInfo.Avatars"
             />
           </div>
         </div>
@@ -25,10 +28,10 @@
         <div class="chatbox-he" v-else>
           <div class="he-time">{{ item.CreatedAt }}</div>
           <div class="chatbubble-he">
-            <img
+            <Icons
               class="headportrait"
-              src="@/assets/images/avatar/nan.svg"
-              alt=""
+              default="defaultAvatar"
+              :name="UserInfo.Avatars"
             />
             <ChatBubble direction="right">{{ item.Data }}</ChatBubble>
           </div>
@@ -51,7 +54,6 @@ import ChatBubble from "@/components/ChatBubble.vue"; // @ is an alias to /src
 import Hub from "@/hub";
 import { State } from "vuex-class";
 import { EventEmitter2 } from "eventemitter2";
-
 import Icons from "@/components/Icons.vue";
 /**
  *
@@ -67,12 +69,16 @@ window.scrollTo({
 @Options({
   components: {
     ChatBubble,
+    Icons,
   },
 })
 export default class UserChat extends Vue {
   @State("hub") hub!: Hub;
   @State("emitter") emitter!: EventEmitter2;
+
+  //自身用户信息
   @State("userInfo") MyUserInfo!: any;
+  //好友用户信息
   UserInfo!: any;
   dataList: any[] = [];
   txt = "";
@@ -160,11 +166,12 @@ export default class UserChat extends Vue {
 
 <style lang="less" scoped>
 .userchat {
-  a {
+  .tool-trigger {
     display: inline-block;
-  }
-  .userchat-icons {
-    vertical-align: middle;
+    padding: 0 15px;
+    img {
+      vertical-align: middle;
+    }
   }
   .userchat-list {
     overflow-y: auto;

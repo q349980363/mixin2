@@ -2,9 +2,9 @@
   <!-- 群聊聊天页 -->
   <div class="groupchat">
     <BaseTopBarBack title="群1">
-      <router-link to="/groupchatset">
-        <img src="@/assets/images/more.svg" alt="" class="groupchat-icons"
-      /></router-link>
+      <router-link to="/groupchatset" class="tool-trigger">
+        <img src="@/assets/images/more.svg" alt="" />
+      </router-link>
     </BaseTopBarBack>
 
     <div class="groupchat-list" ref="list">
@@ -19,24 +19,14 @@
             312312312312312312312312312312312312312312
             312312312312312312312312312312312312312312312312312312312312312
           </ChatBubble>
-          <!-- <img
-            class="headportrait"
-            src="@/assets/images/avatar/nv.svg"
-            alt=""
-          /> -->
-            <Icons class="headportrait" name="defaultAvatar" />
+          <Icons class="headportrait" name="groupHead" />
         </div>
       </div>
 
       <div class="chatbox-he">
         <div class="he-time">上午9:41</div>
         <div class="chatbubble-he">
-          <!-- <img
-            class="headportrait"
-            src="@/assets/images/avatar/nan.svg"
-            alt=""
-          /> -->
-           <Icons class="headportrait" name="defaultAvatar" />
+          <Icons class="headportrait" name="groupHead" />
           <ChatBubble direction="right">
             123123123123123123123123123123
             123123123123123123123123123123123123123123
@@ -109,11 +99,12 @@ export default class GroupChat extends Vue {
 </script>
 <style lang="less" scoped>
 .groupchat {
-  a {
+  .tool-trigger {
     display: inline-block;
-  }
-  .groupchat-icons {
-    vertical-align: middle;
+    padding: 0 15px;
+    img {
+      vertical-align: middle;
+    }
   }
   .groupchat-list {
     overflow-y: auto;

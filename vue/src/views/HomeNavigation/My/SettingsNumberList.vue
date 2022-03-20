@@ -34,6 +34,8 @@ export default class SettingsNumberList extends Vue {
 <style lang="less" scoped>
 .settingsnumberlist {
   .settingsnumberlist-submit {
+    display: inline-block;
+    margin-right: 15px;
     font-size: 16px;
     font-weight: 400;
     color: #515151;

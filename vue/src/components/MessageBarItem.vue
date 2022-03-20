@@ -2,7 +2,7 @@
   <div class="head">
     <slot name="left" class="left"></slot>
     <!-- <img :src="src" alt="" /> -->
-    <Icons class="headportrait" default="defaultAvatar" :name="src" />
+    <Icons class="headportrait" default="groupHead" :name="src" />
   </div>
   <div class="main">
     <div class="left">
