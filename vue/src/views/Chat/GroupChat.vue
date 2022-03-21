@@ -20,12 +20,16 @@
             312312312312312312312312312312312312312312312312312312312312312
           </ChatBubble>
 <<<<<<< HEAD
+<<<<<<< HEAD
           <!-- <img
             class="headportrait"
             src="@/assets/images/avatar/nv.svg"
             alt=""
           /> -->
           <Icons class="headportrait" default="defaultAvatar" />
+=======
+          <Icons class="headportrait" name="groupHead" />
+>>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
 =======
           <Icons class="headportrait" name="groupHead" />
 >>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
@@ -36,12 +40,16 @@
         <div class="he-time">上午9:41</div>
         <div class="chatbubble-he">
 <<<<<<< HEAD
+<<<<<<< HEAD
           <!-- <img
             class="headportrait"
             src="@/assets/images/avatar/nan.svg"
             alt=""
           /> -->
           <Icons class="headportrait" default="defaultAvatar" />
+=======
+          <Icons class="headportrait" name="groupHead" />
+>>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
 =======
           <Icons class="headportrait" name="groupHead" />
 >>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7

@@ -35,7 +35,10 @@
               {{ item.Result }}
             </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <div class="chatbubble-time">{{ timenow(item.CreatedAt) }}</div>
+=======
+>>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
 =======
 >>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
           </ChatBubble>
@@ -61,6 +64,10 @@ import MessageBar from "@/components/MessageBar.vue";
 import MessageBarItem from "@/components/MessageBarItem.vue";
 import ChatBubble from "@/components/ChatBubble.vue";
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+import Icons from "@/components/Icons.vue";
+>>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
 =======
 import Icons from "@/components/Icons.vue";
 >>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
@@ -152,7 +159,11 @@ export default class SystemInforms extends Vue {
     .chatbubble {
       display: flex;
 <<<<<<< HEAD
+<<<<<<< HEAD
       padding: 10px 15px 0 15px;
+=======
+      padding: 0 15px;
+>>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
 =======
       padding: 0 15px;
 >>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7

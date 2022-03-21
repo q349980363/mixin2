@@ -3,6 +3,7 @@
   <!-- 聊天页 -->
   <div class="userchat">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <BaseTopBarBack title="Mg">
       <router-link to="/userchatset" class="userchat-icons">
         <img src="@/assets/images/more.svg" alt=""
@@ -66,6 +67,31 @@
             12312312312312312312312312312312
           </ChatBubble>
 =======
+=======
+    <BaseTopBarBack :title="UserInfo.Nickname">
+      <router-link
+        :to="{ path: '/userchatset', query: UserInfo }"
+        class="tool-trigger"
+      >
+        <img src="@/assets/images/more.svg" alt="" />
+      </router-link>
+    </BaseTopBarBack>
+
+    <div class="userchat-list" ref="list">
+      <templete v-for="item in dataList" :key="item.ID">
+        <div class="chatbox-my" v-if="item.UserName == MyUserInfo.UserName">
+          <div class="my-time">{{ item.CreatedAt }}</div>
+          <div class="chatbubble-my">
+            <ChatBubble direction="left">{{ item.Data }} </ChatBubble>
+            <Icons
+              class="headportrait"
+              default="defaultAvatar"
+              :name="MyUserInfo.Avatars"
+            />
+          </div>
+        </div>
+
+>>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
         <div class="chatbox-he" v-else>
           <div class="he-time">{{ item.CreatedAt }}</div>
           <div class="chatbubble-he">
@@ -76,6 +102,9 @@
             />
             <ChatBubble direction="right">{{ item.Data }}</ChatBubble>
           </div>
+<<<<<<< HEAD
+>>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
+=======
 >>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
         </div>
       </templete>
@@ -118,8 +147,11 @@ window.scrollTo({
 })
 export default class UserChat extends Vue {
 <<<<<<< HEAD
+<<<<<<< HEAD
   @State("userInfo") userInfo!: any;
 =======
+=======
+>>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
   @State("hub") hub!: Hub;
   @State("emitter") emitter!: EventEmitter2;
 
@@ -129,6 +161,9 @@ export default class UserChat extends Vue {
   UserInfo!: any;
   dataList: any[] = [];
   txt = "";
+<<<<<<< HEAD
+>>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
+=======
 >>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
   declare $refs: {
     list: HTMLDivElement;
@@ -195,9 +230,12 @@ export default class UserChat extends Vue {
     return top >= dom.scrollHeight;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
   timenow(txt: string) {
     return dayjs(txt).format("YYYY/MM/DD HH:mm:ss");
 =======
+=======
+>>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
   async clickSend() {
     var txt = this.txt;
     this.txt = "";
@@ -212,6 +250,9 @@ export default class UserChat extends Vue {
     //   this.chatListToEnd("smooth");
     // });
     // thischatListToEnd("smooth");
+<<<<<<< HEAD
+>>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
+=======
 >>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
   }
 }
@@ -220,9 +261,15 @@ export default class UserChat extends Vue {
 <style lang="less" scoped>
 .userchat {
 <<<<<<< HEAD
+<<<<<<< HEAD
   .userchat-icons {
     display: inline-block;
     margin: 0 15px;
+=======
+  .tool-trigger {
+    display: inline-block;
+    padding: 0 15px;
+>>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
 =======
   .tool-trigger {
     display: inline-block;
