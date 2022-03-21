@@ -88,18 +88,8 @@ export default createStore({
           dispatch("reconnect");
         }, 1000);
       };
-      state.hub.emitter.on("MessageEvent.tips", (json: any) => {
-        dispatch("tips", json.message);
-      });
-      state.hub.emitter.on("MessageEvent.event", (json: any) => {
-        state.emitter.emit("event." + json.name);
-      });
-      state.hub.emitter.onAny(function (
-        event: string | string[],
-        ...values: any[]
-      ) {
-        state.emitter.emit(event, ...values);
-      });
+
+      dispatch("emitterOn");
       try {
         await state.hub.open();
         // commit("ConnectionSuccess");
@@ -107,6 +97,30 @@ export default createStore({
       } catch (error) {
         dispatch("reconnect");
       }
+    },
+    emitterOn({ dispatch, commit, state }) {
+      state.hub.emitter.on("MessageEvent.tips", (json: any) => {
+        dispatch("tips", json.message);
+      });
+      state.hub.emitter.on("MessageEvent.event", (json: any) => {
+        state.emitter.emit("event." + json.name);
+      });
+      state.hub.emitter.on("MessageEvent.event", (json: any) => {
+        state.emitter.emit("event." + json.name);
+      });
+      state.hub.emitter.on("MessageEvent.friends", (json: any) => {
+        console.log(  "friends." + json.data.UserName + "-" + json.data.Target)
+        state.emitter.emit(
+          "friends." + json.data.UserName + "-" + json.data.Target,
+          json.data
+        );
+      });
+      state.hub.emitter.onAny(function (
+        event: string | string[],
+        ...values: any[]
+      ) {
+        state.emitter.emit(event, ...values);
+      });
     },
     //连接错误 重连,重连次数无限.
     async reconnect({ dispatch, commit, state }) {

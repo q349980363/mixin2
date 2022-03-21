@@ -2,26 +2,26 @@
   <div class="userinfo views">
     <BaseTopBarBack title="个人信息" />
     <div class="userinfo-list">
-      <SetBar name="头像" @click="IsShowHeadEject = !IsShowHeadEject">
+      <ListItem name="头像" @click="IsShowHeadEject = !IsShowHeadEject">
         <Icons
           class="list-icon-head"
           :name="userInfo.Avatars"
           default="defaultAvatar"
         />
         <!-- <img class="list-icon" src="@/assets/images/avatar/nv.svg" alt="" /> -->
-      </SetBar>
-      <SetBar to="/setmyname" name="昵称">
+      </ListItem>
+      <ListItem to="/setmyname" name="昵称">
         <div>{{ userInfo.Nickname }}</div>
-      </SetBar>
-      <SetBar name="账号">
+      </ListItem>
+      <ListItem name="账号">
         <div>{{ userInfo.UserName }}</div>
-      </SetBar>
-      <SetBar name="UID">
+      </ListItem>
+      <ListItem name="UID">
         <div>{{ userInfo.ID }}</div>
-      </SetBar>
-      <SetBar to="/card" name="二维码名片">
+      </ListItem>
+      <ListItem to="/card" name="二维码名片">
         <img class="list-icon-qr" src="@/assets/images/qrCode.svg" alt="" />
-      </SetBar>
+      </ListItem>
     </div>
   </div>
   <div
@@ -56,12 +56,12 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import Icons from "@/components/Icons.vue";
-import SetBar from "@/components/ListItem.vue";
+import ListItem from "@/components/ListItem.vue";
 import { State, Action } from "vuex-class";
 import Hub from "@/hub";
 @Options({
   components: {
-    SetBar,
+    ListItem,
     Icons,
   },
 })

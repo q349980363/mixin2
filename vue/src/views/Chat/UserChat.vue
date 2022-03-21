@@ -2,6 +2,7 @@
   <!-- <transition name=""> -->
   <!-- 聊天页 -->
   <div class="userchat">
+<<<<<<< HEAD
     <BaseTopBarBack title="Mg">
       <router-link to="/userchatset" class="userchat-icons">
         <img src="@/assets/images/more.svg" alt=""
@@ -25,9 +26,32 @@
             default="defaultAvatar"
             :name="userInfo.Avatars"
           />
-        </div>
-      </div>
+=======
+    <BaseTopBarBack :title="UserInfo.Nickname">
+      <router-link
+        :to="{ path: '/userchatset', query: UserInfo }"
+        class="tool-trigger"
+      >
+        <img src="@/assets/images/more.svg" alt="" />
+      </router-link>
+    </BaseTopBarBack>
 
+    <div class="userchat-list" ref="list">
+      <templete v-for="item in dataList" :key="item.ID">
+        <div class="chatbox-my" v-if="item.UserName == MyUserInfo.UserName">
+          <div class="my-time">{{ item.CreatedAt }}</div>
+          <div class="chatbubble-my">
+            <ChatBubble direction="left">{{ item.Data }} </ChatBubble>
+            <Icons
+              class="headportrait"
+              default="defaultAvatar"
+              :name="MyUserInfo.Avatars"
+            />
+          </div>
+>>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
+        </div>
+
+<<<<<<< HEAD
       <div class="chatbox-he">
         <div class="he-time">上午9:41</div>
         <div class="chatbubble-he">
@@ -41,13 +65,25 @@
             3123123123123123123123123123123123123123123
             12312312312312312312312312312312
           </ChatBubble>
+=======
+        <div class="chatbox-he" v-else>
+          <div class="he-time">{{ item.CreatedAt }}</div>
+          <div class="chatbubble-he">
+            <Icons
+              class="headportrait"
+              default="defaultAvatar"
+              :name="UserInfo.Avatars"
+            />
+            <ChatBubble direction="right">{{ item.Data }}</ChatBubble>
+          </div>
+>>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
         </div>
-      </div>
+      </templete>
     </div>
     <div class="userchat-bar">
-      <input type="text" />
+      <input type="text" v-model="txt" @keyup.enter="clickSend" />
       <div>
-        <div class="bar-btn" @click="chatListToEnd('smooth')">发送</div>
+        <div class="bar-btn" @click="clickSend">发送</div>
       </div>
     </div>
   </div>
@@ -57,19 +93,22 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import ChatBubble from "@/components/ChatBubble.vue"; // @ is an alias to /src
+import Hub from "@/hub";
+import { State } from "vuex-class";
+import { EventEmitter2 } from "eventemitter2";
 import Icons from "@/components/Icons.vue";
 import { State, Action } from "vuex-class";
 import dayjs from "dayjs";
 /**
- * 
- * 
- * 
+ *
+ *
+ *
  * https://blog.csdn.net/fifteen718/article/details/102544541
-window.scrollTo({ 
-    top: 0, 
-    behavior: "smooth" 
+window.scrollTo({
+    top: 0,
+    behavior: "smooth"
 });
- * 
+ *
  */
 @Options({
   components: {
@@ -78,11 +117,63 @@ window.scrollTo({
   },
 })
 export default class UserChat extends Vue {
+<<<<<<< HEAD
   @State("userInfo") userInfo!: any;
+=======
+  @State("hub") hub!: Hub;
+  @State("emitter") emitter!: EventEmitter2;
+
+  //自身用户信息
+  @State("userInfo") MyUserInfo!: any;
+  //好友用户信息
+  UserInfo!: any;
+  dataList: any[] = [];
+  txt = "";
+>>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
   declare $refs: {
     list: HTMLDivElement;
   };
   created() {
+    this.UserInfo = this.$route.query;
+    this.loadData();
+    this.emitter.on(
+      "friends." + this.UserInfo.UserName + "-" + this.MyUserInfo.UserName,
+      this.addChat.bind(this)
+    );
+    this.emitter.on(
+      "friends." + this.MyUserInfo.UserName + "-" + this.UserInfo.UserName,
+      this.addChat.bind(this)
+    );
+  }
+  async destroyed() {
+    this.emitter.off(
+      "friends." + this.UserInfo.UserName + "-" + this.MyUserInfo.UserName,
+      this.addChat
+    );
+    this.emitter.off(
+      "friends." + this.MyUserInfo.UserName + "-" + this.UserInfo.UserName,
+      this.addChat
+    );
+  }
+
+  async addChat(data: any) {
+    this.dataList.push(data);
+    this.$nextTick(function () {
+      //  仅在整个视图都被重新渲染之后才会运行的代码
+      this.chatListToEnd();
+    });
+  }
+
+  async loadData() {
+    var response = await this.hub.invoke<[]>(
+      "Friends",
+      "GetChat",
+      this.UserInfo.UserName
+    );
+    // this.dataList = response;
+    response.forEach((item) => {
+      this.dataList.push(item);
+    });
     this.$nextTick(function () {
       //  仅在整个视图都被重新渲染之后才会运行的代码
       this.chatListToEnd();
@@ -91,7 +182,7 @@ export default class UserChat extends Vue {
   chatListToEnd(behavior: any = "auto") {
     var dom = this.$refs.list;
     // (<any>window)["asd"] = dom;
-    console.log(dom);
+    // console.log(dom);
     dom.scrollTo({
       top: dom.scrollHeight,
       behavior: behavior,
@@ -103,17 +194,40 @@ export default class UserChat extends Vue {
     var top = dom.clientHeight + dom.scrollTop;
     return top >= dom.scrollHeight;
   }
+<<<<<<< HEAD
   timenow(txt: string) {
     return dayjs(txt).format("YYYY/MM/DD HH:mm:ss");
+=======
+  async clickSend() {
+    var txt = this.txt;
+    this.txt = "";
+    var response = await this.hub.invoke<[]>(
+      "Friends",
+      "SendChat",
+      this.UserInfo.UserName,
+      txt
+    );
+    // this.$nextTick(function () {
+    //   //  仅在整个视图都被重新渲染之后才会运行的代码
+    //   this.chatListToEnd("smooth");
+    // });
+    // thischatListToEnd("smooth");
+>>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
   }
 }
 </script>
 
 <style lang="less" scoped>
 .userchat {
+<<<<<<< HEAD
   .userchat-icons {
     display: inline-block;
     margin: 0 15px;
+=======
+  .tool-trigger {
+    display: inline-block;
+    padding: 0 15px;
+>>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
     img {
       vertical-align: middle;
     }

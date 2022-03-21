@@ -1,38 +1,35 @@
 <template>
   <!-- 我的页 -->
   <div class="my">
-    <router-link to="/userinfo" class="my-message">
-      <!-- 个人信息 -->
-      <!-- <img
-        class="message-headportrait"
-        src="@/assets/images/avatar/nv.svg"
-        alt=""
-      /> -->
-       <Icons
+    <div class="my-title">
+      <router-link to="/userinfo" class="my-message">
+        <!-- 个人信息 -->
+        <Icons
           class="message-headportrait"
           :name="userInfo.Avatars"
           default="defaultAvatar"
         />
-      <div class="message-main">
-        <div class="main-top">
-          <div class="main-name">{{ userInfo.Nickname }}</div>
-        </div>
-        <div class="main-down">
-          <div class="main-down-left">
-            UID:{{ userInfo.ID }} 账号:{{ userInfo.UserName }}
+        <div class="message-main">
+          <div class="main-top">
+            <div class="main-name">{{ userInfo.Nickname }}</div>
           </div>
-          <div class="main-down-right">
-            <img class="down-card" src="@/assets/images/qrCode.svg" alt="" />
-            <img
-              class="return-right"
-              src="@/assets/images/return-right.svg"
-              alt=""
-            />
+          <div class="main-down">
+            <div class="main-down-left">
+              UID:{{ userInfo.ID }} 账号:{{ userInfo.UserName }}
+            </div>
+            <div class="main-down-right">
+              <img class="down-card" src="@/assets/images/qrCode.svg" alt="" />
+              <img
+                class="return-right"
+                src="@/assets/images/return-right.svg"
+                alt=""
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </router-link>
-
+      </router-link>
+      <div>点击编辑头像</div>
+    </div>
     <div class="my-list">
       <!-- <List name="用户信息">
         <ListItem to="/userinfo" name="头像">
@@ -114,54 +111,60 @@ export default class My extends Vue {
   // flex: 1;
   display: flex;
   flex-direction: column;
-  .my-message {
+  .my-title {
     display: flex;
-    padding: 50px 15px;
-    // height: 170px;
-    // font-size: 20px;
-    // padding-left: 30px;
-    // padding-right: 15px;
-    // border: 1px solid #cdcdcd;
     background: url("~@/assets/images/bg.png") no-repeat;
     background-size: 100% auto;
     background-position: 0 -349px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-    .message-headportrait {
-      margin: 0 auto;
-      width: 60px;
-      height: 60px;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      background-color: rgba(0, 0, 0, 0.1);
-      border-radius: 4px;
-    }
-    .message-main {
+    .my-message {
       flex: 1;
       display: flex;
-      flex-direction: column;
-      margin: 0 auto;
-      margin-left: 10px;
-      line-height: 30px;
-      text-align: left;
-      .main-top {
-        .main-name {
-          font-weight: 700;
-        }
+      padding: 50px 15px;
+      // height: 170px;
+      // font-size: 20px;
+      // padding-left: 30px;
+      // padding-right: 15px;
+      // border: 1px solid #cdcdcd;
+
+      .message-headportrait {
+        margin: 0 auto;
+        width: 60px;
+        height: 60px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
       }
-      .main-down {
+      .message-main {
+        flex: 1;
         display: flex;
-        // justify-content: space-between;
-        .main-down-left {
-          flex: 1;
-          font-size: 18px;
-        }
-        .main-down-right {
-          .down-card {
-            width: 13px;
+        flex-direction: column;
+        margin: 0 auto;
+        margin-left: 10px;
+        line-height: 30px;
+        text-align: left;
+        .main-top {
+          .main-name {
+            font-size: 20px;
+            font-weight: 700;
           }
-          .return-right {
-            margin-left: 20px;
-            width: 12px;
-            height: 12px;
+        }
+        .main-down {
+          display: flex;
+          // justify-content: space-between;
+          .main-down-left {
+            flex: 1;
+            font-size: 18px;
+          }
+          .main-down-right {
+            .down-card {
+              width: 13px;
+            }
+            .return-right {
+              margin-left: 20px;
+              width: 12px;
+              height: 12px;
+            }
           }
         }
       }

@@ -1,6 +1,6 @@
 <template>
   <!-- 列表框 -->
-  <router-link :to="to" class="listitem">
+  <router-link :to="to" class="listitem" v-if="to">
     <slot name="left" class="left"></slot>
     <div class="info">{{ name }}</div>
     <slot></slot>
@@ -11,6 +11,17 @@
       alt=""
     />
   </router-link>
+  <div class="listitem" v-else>
+    <slot name="left" class="left"></slot>
+    <div class="info">{{ name }}</div>
+    <slot></slot>
+    <img
+      v-if="to != ''"
+      class="return-right"
+      src="@/assets/images/return-right.svg"
+      alt=""
+    />
+  </div>
 </template>
 
 <script lang="ts">

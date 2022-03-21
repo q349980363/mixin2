@@ -71,12 +71,6 @@ const routes: Array<RouteRecordRaw> = [
     name: "SystemInforms",
     component: () => import("../views/SystemInforms.vue"),
   },
-  // 无系统通知
-  {
-    path: "/nosysteminforms",
-    name: "NoSystemInforms",
-    component: () => import("../views/NoSystemInforms.vue"),
-  },
   // 等待加载
   {
     path: "/waitingload",

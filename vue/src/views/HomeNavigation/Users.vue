@@ -39,11 +39,12 @@
         </MessageBarItem>
       </MessageBar>
 
-      <MessageBar to="/userchat" v-for="item in users" :key="item.ID">
-        <MessageBarItem
-          :src="item.Avatars"
-          :name="item.Nickname"
-        />
+      <MessageBar
+        :to="{ path: '/userchat', query: item }"
+        v-for="item in users"
+        :key="item.ID"
+      >
+        <MessageBarItem :src="item.Avatars" :name="item.Nickname" />
       </MessageBar>
     </div>
   </div>
@@ -59,7 +60,7 @@ import MessageBar from "@/components/MessageBar.vue";
 import MessageBarItem from "@/components/MessageBarItem.vue";
 import { State } from "vuex-class";
 import Hub from "@/hub";
-
+import Icons from "@/components/Icons.vue";
 @Options({
   components: {
     BottomNavigationBar,
@@ -68,6 +69,7 @@ import Hub from "@/hub";
     PopupMenuItem,
     MessageBar,
     MessageBarItem,
+    Icons,
   },
 })
 export default class Users extends Vue {

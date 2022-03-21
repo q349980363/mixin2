@@ -12,8 +12,9 @@
       </div>
       <!-- 通知 -->
       <template v-for="(item, i) in dataList" :key="i">
+        <div class="systeminforms-time">{{ a(item.CreatedAt) }}</div>
         <div class="chatbubble" v-if="item.Type == 'Friends'">
-          <img class="headportrait" src="@/assets/images/logo.svg" alt="" />
+          <Icons class="headportrait" name="logo" />
           <ChatBubble direction="right">
             <div class="chatbubble-text">{{ item.Txt }}</div>
             <div class="chatbubble-operation" v-if="!item.Result">
@@ -33,11 +34,14 @@
             <div v-else>
               {{ item.Result }}
             </div>
+<<<<<<< HEAD
             <div class="chatbubble-time">{{ timenow(item.CreatedAt) }}</div>
+=======
+>>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
           </ChatBubble>
         </div>
         <div class="chatbubble" v-else>
-          <img class="headportrait" src="@/assets/images/logo.svg" alt="" />
+          <Icons class="headportrait" name="logo" />
           <ChatBubble direction="right">
             <div class="chatbubble-text">{{ item.Txt }}</div>
             <div class="chatbubble-time">{{ timenow(item.CreatedAt) }}</div>
@@ -56,6 +60,10 @@ import { Options, Vue } from "vue-class-component";
 import MessageBar from "@/components/MessageBar.vue";
 import MessageBarItem from "@/components/MessageBarItem.vue";
 import ChatBubble from "@/components/ChatBubble.vue";
+<<<<<<< HEAD
+=======
+import Icons from "@/components/Icons.vue";
+>>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
 import dayjs from "dayjs";
 
 @Options({
@@ -63,6 +71,7 @@ import dayjs from "dayjs";
     MessageBar,
     MessageBarItem,
     ChatBubble,
+    Icons,
   },
 })
 export default class SystemInforms extends Vue {
@@ -75,6 +84,10 @@ export default class SystemInforms extends Vue {
     this.emitter.on("event.SystemChat", this.loadData.bind(this));
   }
 
+  a(txt: string) {
+    return dayjs(txt).format("YYYY/MM/DD HH:mm:ss");
+  }
+  
   async destroyed() {
     this.emitter.off("event.SystemChat", this.loadData);
   }
@@ -132,9 +145,17 @@ export default class SystemInforms extends Vue {
         margin-top: 5px;
       }
     }
+    .systeminforms-time {
+      padding: 10px 0;
+      font-size: 14px;
+    }
     .chatbubble {
       display: flex;
+<<<<<<< HEAD
       padding: 10px 15px 0 15px;
+=======
+      padding: 0 15px;
+>>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
       .headportrait {
         width: 35px;
         height: 35px;
