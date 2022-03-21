@@ -12,7 +12,6 @@
       </div>
       <!-- 通知 -->
       <template v-for="(item, i) in dataList" :key="i">
-        <div class="systeminforms-time">{{ a(item.CreatedAt) }}</div>
         <div class="chatbubble" v-if="item.Type == 'Friends'">
           <Icons class="headportrait" name="logo" />
           <ChatBubble direction="right">
@@ -34,13 +33,8 @@
             <div v-else>
               {{ item.Result }}
             </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
+
             <div class="chatbubble-time">{{ timenow(item.CreatedAt) }}</div>
-=======
->>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
-=======
->>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
           </ChatBubble>
         </div>
         <div class="chatbubble" v-else>
@@ -63,14 +57,7 @@ import { Options, Vue } from "vue-class-component";
 import MessageBar from "@/components/MessageBar.vue";
 import MessageBarItem from "@/components/MessageBarItem.vue";
 import ChatBubble from "@/components/ChatBubble.vue";
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 import Icons from "@/components/Icons.vue";
->>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
-=======
-import Icons from "@/components/Icons.vue";
->>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
 import dayjs from "dayjs";
 
 @Options({
@@ -91,10 +78,6 @@ export default class SystemInforms extends Vue {
     this.emitter.on("event.SystemChat", this.loadData.bind(this));
   }
 
-  a(txt: string) {
-    return dayjs(txt).format("YYYY/MM/DD HH:mm:ss");
-  }
-  
   async destroyed() {
     this.emitter.off("event.SystemChat", this.loadData);
   }
@@ -158,15 +141,7 @@ export default class SystemInforms extends Vue {
     }
     .chatbubble {
       display: flex;
-<<<<<<< HEAD
-<<<<<<< HEAD
       padding: 10px 15px 0 15px;
-=======
-      padding: 0 15px;
->>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
-=======
-      padding: 0 15px;
->>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
       .headportrait {
         width: 35px;
         height: 35px;

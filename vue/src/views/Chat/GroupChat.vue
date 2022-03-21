@@ -19,40 +19,14 @@
             312312312312312312312312312312312312312312
             312312312312312312312312312312312312312312312312312312312312312
           </ChatBubble>
-<<<<<<< HEAD
-<<<<<<< HEAD
-          <!-- <img
-            class="headportrait"
-            src="@/assets/images/avatar/nv.svg"
-            alt=""
-          /> -->
-          <Icons class="headportrait" default="defaultAvatar" />
-=======
           <Icons class="headportrait" name="groupHead" />
->>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
-=======
-          <Icons class="headportrait" name="groupHead" />
->>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
         </div>
       </div>
 
       <div class="chatbox-he">
         <div class="he-time">上午9:41</div>
         <div class="chatbubble-he">
-<<<<<<< HEAD
-<<<<<<< HEAD
-          <!-- <img
-            class="headportrait"
-            src="@/assets/images/avatar/nan.svg"
-            alt=""
-          /> -->
-          <Icons class="headportrait" default="defaultAvatar" />
-=======
           <Icons class="headportrait" name="groupHead" />
->>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
-=======
-          <Icons class="headportrait" name="groupHead" />
->>>>>>> 8c89d803296ccbb590231d6e8655c4f42d60a6e7
           <ChatBubble direction="right">
             123123123123123123123123123123
             123123123123123123123123123123123123123123
@@ -78,7 +52,6 @@
 import { Options, Vue } from "vue-class-component";
 import ChatBubble from "@/components/ChatBubble.vue"; // @ is an alias to /src
 import Icons from "@/components/Icons.vue";
-
 /**
  * 
  * 
@@ -115,7 +88,6 @@ export default class GroupChat extends Vue {
       behavior: behavior,
     });
   }
-
   chatListIsEnd() {
     var dom = this.$refs.list;
     var top = dom.clientHeight + dom.scrollTop;
@@ -152,7 +124,6 @@ export default class GroupChat extends Vue {
         }
       }
     }
-
     .chatbox-he {
       text-align: center;
       .he-time {
@@ -171,7 +142,6 @@ export default class GroupChat extends Vue {
       }
     }
   }
-
   .groupchat-bar {
     display: flex;
     background-color: #efefef;
