@@ -3,8 +3,8 @@
   <!-- 聊天页 -->
   <div class="userchat">
     <BaseTopBarBack title="Mg">
-      <router-link to="/userchatset">
-        <img src="@/assets/images/more.svg" alt="" class="userchat-icons"
+      <router-link to="/userchatset" class="userchat-icons">
+        <img src="@/assets/images/more.svg" alt=""
       /></router-link>
     </BaseTopBarBack>
 
@@ -20,24 +20,18 @@
             312312312312312312312312312312312312312312
             312312312312312312312312312312312312312312312312312312312312312
           </ChatBubble>
-          <!-- <img
+          <Icons
             class="headportrait"
-            src="@/assets/images/avatar/nv.svg"
-            alt=""
-          /> -->
-          <Icons class="headportrait" name="defaultAvatar" />
+            default="defaultAvatar"
+            :name="userInfo.Avatars"
+          />
         </div>
       </div>
 
       <div class="chatbox-he">
         <div class="he-time">上午9:41</div>
         <div class="chatbubble-he">
-          <!-- <img
-            class="headportrait"
-            src="@/assets/images/avatar/nan.svg"
-            alt=""
-          /> -->
-          <Icons class="headportrait" name="defaultAvatar" />
+          <Icons class="headportrait" default="defaultAvatar" />
           <ChatBubble direction="right">
             123123123123123123123123123123
             123123123123123123123123123123123123123123
@@ -64,6 +58,7 @@
 import { Options, Vue } from "vue-class-component";
 import ChatBubble from "@/components/ChatBubble.vue"; // @ is an alias to /src
 import Icons from "@/components/Icons.vue";
+import { State, Action } from "vuex-class";
 /**
  * 
  * 
@@ -78,9 +73,11 @@ window.scrollTo({
 @Options({
   components: {
     ChatBubble,
+    Icons,
   },
 })
 export default class UserChat extends Vue {
+  @State("userInfo") userInfo!: any;
   declare $refs: {
     list: HTMLDivElement;
   };
@@ -110,11 +107,12 @@ export default class UserChat extends Vue {
 
 <style lang="less" scoped>
 .userchat {
-  a {
-    display: inline-block;
-  }
   .userchat-icons {
-    vertical-align: middle;
+    display: inline-block;
+    margin-right: 15px;
+    img {
+      vertical-align: middle;
+    }
   }
   .userchat-list {
     overflow-y: auto;

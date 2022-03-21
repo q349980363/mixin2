@@ -47,7 +47,7 @@ export default class BaseTopBarBack extends Vue {
   @color: #fff;
   background-color: @color;
   border-bottom: 1px solid darken(@color, 10%);
-  border-top: 1px solid darken(@color, 10%);
+  // border-top: 1px solid darken(@color, 10%);
   font-size: 18px;
   font-weight: 700;
 }

@@ -87,36 +87,36 @@
     <div class="demo-item demo-btn">
       <!-- 前两个默认相等 -->
       <!-- <button class="btn">登录</button> -->
-      <button class="btn btn-primary">primary</button>
-      <button class="btn btn-secondary">secondary</button>
-      <button class="btn btn-success">success</button>
-      <button class="btn btn-danger">danger</button>
-      <button class="btn btn-warning">warning</button>
-      <button class="btn btn-info">info</button>
-      <button class="btn btn-light">light</button>
-      <button class="btn btn-dark">dark</button>
+      <button class="btn btn-primary">按钮</button>
+      <button class="btn btn-secondary">按钮</button>
+      <button class="btn btn-success">按钮</button>
+      <button class="btn btn-danger">按钮</button>
+      <button class="btn btn-warning">按钮</button>
+      <button class="btn btn-info">按钮</button>
+      <button class="btn btn-light">按钮</button>
+      <button class="btn btn-dark">按钮</button>
       <hr />
       <!-- 单独边线按钮  线框按钮 -->
-      <button class="btn btn-outline-primary">primary</button>
-      <button class="btn btn-outline-secondary">secondary</button>
-      <button class="btn btn-outline-success">success</button>
-      <button class="btn btn-outline-danger">danger</button>
-      <button class="btn btn-outline-warning">warning</button>
-      <button class="btn btn-outline-info">info</button>
-      <button class="btn btn-outline-light">light</button>
-      <button class="btn btn-outline-dark">dark</button>
+      <button class="btn btn-outline-primary">按钮</button>
+      <button class="btn btn-outline-secondary">按钮</button>
+      <button class="btn btn-outline-success">按钮</button>
+      <button class="btn btn-outline-danger">按钮</button>
+      <button class="btn btn-outline-warning">按钮</button>
+      <button class="btn btn-outline-info">按钮</button>
+      <button class="btn btn-outline-light">按钮</button>
+      <button class="btn btn-outline-dark">按钮</button>
       <hr />
       <!-- 展示其他尺寸 -->
-      <button class="btn btn-primary btn-sm">primary</button>
-      <button class="btn btn-secondary btn-sm">secondary</button>
-      <button class="btn btn-outline-primary btn-sm">primary</button>
-      <button class="btn btn-outline-secondary btn-sm">secondary</button>
+      <button class="btn btn-primary btn-sm">按钮</button>
+      <button class="btn btn-secondary btn-sm">按钮</button>
+      <button class="btn btn-outline-primary btn-sm">按钮</button>
+      <button class="btn btn-outline-secondary btn-sm">按钮</button>
       <hr />
       <!-- 展示其他尺寸 -->
-      <button class="btn btn-primary btn-lg">primary</button>
-      <button class="btn btn-secondary btn-lg">secondary</button>
-      <button class="btn btn-outline-primary btn-lg">primary</button>
-      <button class="btn btn-outline-secondary btn-lg">secondary</button>
+      <button class="btn btn-primary btn-lg">按钮</button>
+      <button class="btn btn-secondary btn-lg">按钮</button>
+      <button class="btn btn-outline-primary btn-lg">按钮</button>
+      <button class="btn btn-outline-secondary btn-lg">按钮</button>
       <hr />
       <!-- 展示其他尺寸 -->
       <!-- TODO 不能用这个元素来 问题太多了,应该让父元素来想办法解决 GRID 布局方案 -->
@@ -170,8 +170,10 @@ export default class Demo extends Vue {
 
 <style lang="less" scoped>
 .demo-btn {
+  text-align: left;
   .btn {
-    margin: 2px;
+    margin: 5px;
+    padding: 5px 10px;
   }
   .btn-block {
     margin: 0;
@@ -189,6 +191,7 @@ export default class Demo extends Vue {
   margin: 10px;
   border: solid 1px #ccc;
   .icons {
+    margin-left: 15px;
     width: 20px;
     height: 20px;
   }

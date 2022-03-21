@@ -33,14 +33,14 @@
             <div v-else>
               {{ item.Result }}
             </div>
-            {{ item.CreatedAt }}
+            <div class="chatbubble-time">{{ timenow(item.CreatedAt) }}</div>
           </ChatBubble>
         </div>
         <div class="chatbubble" v-else>
           <img class="headportrait" src="@/assets/images/logo.svg" alt="" />
           <ChatBubble direction="right">
             <div class="chatbubble-text">{{ item.Txt }}</div>
-            {{ item.CreatedAt }}
+            <div class="chatbubble-time">{{ timenow(item.CreatedAt) }}</div>
           </ChatBubble>
         </div>
       </template>
@@ -56,6 +56,7 @@ import { Options, Vue } from "vue-class-component";
 import MessageBar from "@/components/MessageBar.vue";
 import MessageBarItem from "@/components/MessageBarItem.vue";
 import ChatBubble from "@/components/ChatBubble.vue";
+import dayjs from "dayjs";
 
 @Options({
   components: {
@@ -82,7 +83,9 @@ export default class SystemInforms extends Vue {
     var response = await this.hub.invoke("Systemchat", "Get");
     this.dataList = response;
   }
-
+  timenow(txt: string) {
+    return dayjs(txt).format("YYYY/MM/DD HH:mm:ss");
+  }
   public get Friends(): any {
     return this.dataList.filter((v: any) => v.Type == "Friends");
   }
@@ -130,7 +133,7 @@ export default class SystemInforms extends Vue {
     }
     .chatbubble {
       display: flex;
-      padding: 5px 15px;
+      padding: 10px 15px 0 15px;
       .headportrait {
         width: 35px;
         height: 35px;
@@ -157,6 +160,11 @@ export default class SystemInforms extends Vue {
           height: 26px;
           font-size: 14px;
         }
+      }
+      .chatbubble-time {
+        margin-top: 5px;
+        font-size: 14px;
+        color: #515151;
       }
     }
   }

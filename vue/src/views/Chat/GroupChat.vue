@@ -24,7 +24,7 @@
             src="@/assets/images/avatar/nv.svg"
             alt=""
           /> -->
-            <Icons class="headportrait" name="defaultAvatar" />
+          <Icons class="headportrait" default="defaultAvatar" />
         </div>
       </div>
 
@@ -36,7 +36,7 @@
             src="@/assets/images/avatar/nan.svg"
             alt=""
           /> -->
-           <Icons class="headportrait" name="defaultAvatar" />
+          <Icons class="headportrait" default="defaultAvatar" />
           <ChatBubble direction="right">
             123123123123123123123123123123
             123123123123123123123123123123123123123123
