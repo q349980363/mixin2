@@ -12,7 +12,7 @@
       </div>
       <!-- 通知 -->
       <template v-for="(item, i) in dataList" :key="i">
-        <div class="systeminforms-time">{{ item.CreatedAt }}</div>
+        <div class="systeminforms-time">{{ a(item.CreatedAt) }}</div>
         <div class="chatbubble" v-if="item.Type == 'Friends'">
           <Icons class="headportrait" name="logo" />
           <ChatBubble direction="right">
@@ -57,6 +57,7 @@ import MessageBar from "@/components/MessageBar.vue";
 import MessageBarItem from "@/components/MessageBarItem.vue";
 import ChatBubble from "@/components/ChatBubble.vue";
 import Icons from "@/components/Icons.vue";
+import dayjs from "dayjs";
 
 @Options({
   components: {
@@ -76,6 +77,10 @@ export default class SystemInforms extends Vue {
     this.emitter.on("event.SystemChat", this.loadData.bind(this));
   }
 
+  a(txt: string) {
+    return dayjs(txt).format("YYYY/MM/DD HH:mm:ss");
+  }
+  
   async destroyed() {
     this.emitter.off("event.SystemChat", this.loadData);
   }
@@ -130,7 +135,7 @@ export default class SystemInforms extends Vue {
         margin-top: 5px;
       }
     }
-    .systeminforms-time{
+    .systeminforms-time {
       padding: 10px 0;
       font-size: 14px;
     }
