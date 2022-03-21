@@ -9,7 +9,7 @@
     </BaseTopBarBack>
 
     <div class="userchat-list" ref="list">
-      <div class="chatbox-my" v-for="i in 10" :key="i">
+      <div class="chatbox-my">
         <div class="my-time">上午9:41</div>
         <div class="chatbubble-my">
           <ChatBubble direction="left">
@@ -59,6 +59,7 @@ import { Options, Vue } from "vue-class-component";
 import ChatBubble from "@/components/ChatBubble.vue"; // @ is an alias to /src
 import Icons from "@/components/Icons.vue";
 import { State, Action } from "vuex-class";
+import dayjs from "dayjs";
 /**
  * 
  * 
@@ -102,6 +103,9 @@ export default class UserChat extends Vue {
     var top = dom.clientHeight + dom.scrollTop;
     return top >= dom.scrollHeight;
   }
+  timenow(txt: string) {
+    return dayjs(txt).format("YYYY/MM/DD HH:mm:ss");
+  }
 }
 </script>
 
@@ -109,7 +113,7 @@ export default class UserChat extends Vue {
 .userchat {
   .userchat-icons {
     display: inline-block;
-    margin-right: 15px;
+    margin: 0 15px;
     img {
       vertical-align: middle;
     }

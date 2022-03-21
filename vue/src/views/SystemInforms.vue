@@ -83,9 +83,7 @@ export default class SystemInforms extends Vue {
     var response = await this.hub.invoke("Systemchat", "Get");
     this.dataList = response;
   }
-  timenow(txt: string) {
-    return dayjs(txt).format("YYYY/MM/DD HH:mm:ss");
-  }
+
   public get Friends(): any {
     return this.dataList.filter((v: any) => v.Type == "Friends");
   }
@@ -103,6 +101,9 @@ export default class SystemInforms extends Vue {
     var response = await this.hub.invoke("Systemchat", "Clear");
     this.tips(response);
     this.loadData();
+  }
+  timenow(txt: string) {
+    return dayjs(txt).format("YYYY/MM/DD HH:mm:ss");
   }
 }
 </script>
