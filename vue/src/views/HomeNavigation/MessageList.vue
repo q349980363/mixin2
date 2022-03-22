@@ -27,15 +27,24 @@
     </TopBar>
 
     <div class="messagelist-list">
-      <MessageBar to="/userchat">
+      <MessageBar
+        :to="{ path: '/userchat', query: item }"
+        v-for="item in users"
+        :key="item.ID"
+      >
         <div class="red-dot1"></div>
-        <MessageBarItem
+        <!-- <MessageBarItem
           :src="require('@/assets/images/avatar/nan.svg')"
           name="Mg"
           content="1111111"
           time="上午9:41"
-        >
-        </MessageBarItem>
+        /> -->
+        <MessageBarItem
+          :src="item.Avatars"
+          :name="item.Nickname"
+          content="1111111"
+          time="上午9:41"
+        />
       </MessageBar>
     </div>
   </div>
@@ -49,6 +58,8 @@ import PopupMenu from "@/components/PopupMenu.vue";
 import PopupMenuItem from "@/components/PopupMenuItem.vue";
 import MessageBar from "@/components/MessageBar.vue";
 import MessageBarItem from "@/components/MessageBarItem.vue";
+import { State } from "vuex-class";
+import Hub from "@/hub";
 
 @Options({
   components: {
@@ -61,7 +72,16 @@ import MessageBarItem from "@/components/MessageBarItem.vue";
   },
 })
 export default class MessageList extends Vue {
+  @State("hub") hub!: Hub;
+  users = [];
   msg!: string;
+  async created() {
+    // this.users.length = 0;
+    var response = await this.hub.invoke<[]>("Friends", "GetMyFriends");
+    response.forEach((item) => {
+      this.users.push(item);
+    });
+  }
 }
 </script>
 

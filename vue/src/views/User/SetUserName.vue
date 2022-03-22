@@ -7,7 +7,9 @@
     <!-- 设置备注 -->
     <div class="setusername-main">
       <div class="main-top">备注</div>
-      <input type="text" value="" placeholder="Mg" />
+      <!-- <input type="text" /> -->
+      {{ OtherName }}
+      <input type="text" v-model="OtherName" />
     </div>
   </div>
 </template>
@@ -19,9 +21,18 @@ import { Action } from "vuex-class";
   components: {},
 })
 export default class SetUserName extends Vue {
+  //好友用户信息
+  UserInfo!: any;
   msg!: string;
   @Action("back")
   back?: () => void;
+  // created() {
+  //   this.UserInfo = this.$route.query;
+  // }
+  OtherName = "";
+  async created() {
+    this.OtherName = this.UserInfo.UserName;
+  }
 }
 </script>
 

@@ -66,11 +66,10 @@ import Hub from "@/hub";
   },
 })
 export default class UserInfo extends Vue {
+  @State("userInfo") userInfo!: any;
   @State("hub") hub!: Hub;
   @Action("tips") tips!: (msg: string) => void;
   @Action("getMyUserInfo") getMyUserInfo!: () => void;
-
-  @State("userInfo") userInfo!: any;
   IsShowHeadEject = false;
   async SelectAvatar(name: string) {
     var response = await this.hub.invoke("User", "SetAvatar", name);

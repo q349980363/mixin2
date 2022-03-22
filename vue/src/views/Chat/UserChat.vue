@@ -14,7 +14,7 @@
     <div class="userchat-list" ref="list">
       <templete v-for="item in dataList" :key="item.ID">
         <div class="chatbox-my" v-if="item.UserName == MyUserInfo.UserName">
-          <div class="my-time">{{ item.CreatedAt }}</div>
+          <div class="my-time">{{ timenow(item.CreatedAt) }}</div>
           <div class="chatbubble-my">
             <ChatBubble direction="left">{{ item.Data }} </ChatBubble>
             <Icons
@@ -26,7 +26,7 @@
         </div>
 
         <div class="chatbox-he" v-else>
-          <div class="he-time">{{ item.CreatedAt }}</div>
+          <div class="he-time">{{ timenow(item.CreatedAt) }}</div>
           <div class="chatbubble-he">
             <Icons
               class="headportrait"
@@ -55,6 +55,7 @@ import Hub from "@/hub";
 import { State } from "vuex-class";
 import { EventEmitter2 } from "eventemitter2";
 import Icons from "@/components/Icons.vue";
+import dayjs from "dayjs";
 /**
  *
  *
@@ -156,6 +157,9 @@ export default class UserChat extends Vue {
     //   this.chatListToEnd("smooth");
     // });
     // thischatListToEnd("smooth");
+  }
+  timenow(txt: string) {
+    return dayjs(txt).format("YYYY/MM/DD HH:mm:ss");
   }
 }
 </script>
