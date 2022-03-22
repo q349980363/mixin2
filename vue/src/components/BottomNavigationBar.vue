@@ -80,7 +80,6 @@ export default class BottomNavigationBar extends Vue {
 .tabbar {
   display: flex;
   width: 100%;
-  height: 52px;
   @color: #fff;
   background-color: @color;
   border-top: 1px solid darken(@color, 10%);
@@ -94,6 +93,7 @@ export default class BottomNavigationBar extends Vue {
     display: inline-block;
     padding-top: 8px;
     padding-bottom: 5px;
+    height: 52px;
     img {
       margin-bottom: 3px;
       width: 20px;

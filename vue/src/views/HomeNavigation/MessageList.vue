@@ -33,17 +33,12 @@
         :key="item.ID"
       >
         <div class="red-dot1"></div>
-        <!-- <MessageBarItem
-          :src="require('@/assets/images/avatar/nan.svg')"
-          name="Mg"
-          content="1111111"
-          time="上午9:41"
-        /> -->
+
         <MessageBarItem
           :src="item.Avatars"
           :name="item.Nickname"
           content="1111111"
-          time="上午9:41"
+          :time="timenow(item.CreatedAt)"
         />
       </MessageBar>
     </div>
@@ -60,6 +55,7 @@ import MessageBar from "@/components/MessageBar.vue";
 import MessageBarItem from "@/components/MessageBarItem.vue";
 import { State } from "vuex-class";
 import Hub from "@/hub";
+import dayjs from "dayjs";
 
 @Options({
   components: {
@@ -81,6 +77,9 @@ export default class MessageList extends Vue {
     response.forEach((item) => {
       this.users.push(item);
     });
+  }
+  timenow(txt: string) {
+    return dayjs(txt).format("HH:mm:ss");
   }
 }
 </script>

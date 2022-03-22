@@ -7,8 +7,6 @@
     <!-- 设置备注 -->
     <div class="setusername-main">
       <div class="main-top">备注</div>
-      <!-- <input type="text" /> -->
-      {{ OtherName }}
       <input type="text" v-model="OtherName" />
     </div>
   </div>

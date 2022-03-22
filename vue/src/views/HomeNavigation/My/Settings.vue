@@ -4,10 +4,8 @@
     <BaseTopBarBack title="设置" />
 
     <div class="settings-list">
-      <ListItem to="/settingsnumber" name="账号与安全" />
       <ListItem to="/settingschat" name="聊天" />
       <ListItem to="/settingscurrency" name="通用" />
-
     </div>
   </div>
 </template>
