@@ -32,11 +32,7 @@
 
     <div class="users-list">
       <MessageBar to="/group">
-        <MessageBarItem
-          :src="require('@/assets/images/group-head.svg')"
-          name="群"
-        >
-        </MessageBarItem>
+        <MessageBarItem name="群" />
       </MessageBar>
 
       <MessageBar

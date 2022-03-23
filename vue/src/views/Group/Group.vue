@@ -5,11 +5,7 @@
 
     <div class="group-list">
       <MessageBar to="/groupchat">
-        <MessageBarItem
-          :src="require('@/assets/images/group-head.svg')"
-          name="群1"
-        >
-        </MessageBarItem>
+        <MessageBarItem name="群1" />
       </MessageBar>
     </div>
   </div>
@@ -19,10 +15,12 @@
 import { Options, Vue } from "vue-class-component";
 import MessageBar from "@/components/MessageBar.vue";
 import MessageBarItem from "@/components/MessageBarItem.vue";
+import Icons from "@/components/Icons.vue";
 @Options({
   components: {
     MessageBar,
     MessageBarItem,
+    Icons,
   },
 })
 export default class Group extends Vue {}

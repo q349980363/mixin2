@@ -10,11 +10,7 @@
 
     <div class="creategroup-list">
       <MessageBar to="/creategroup">
-        <div class="red-dot1"></div>
-        <MessageBarItem
-          :src="require('@/assets/images/avatar/nan.svg')"
-          name="Mg"
-        >
+        <MessageBarItem name="Mg">
           <template v-slot:left>
             <img
               class="list-icon"
@@ -78,7 +74,10 @@ export default class Creategroup extends Vue {}
     overflow-y: auto;
     flex: 1;
     .list-icon {
+      margin-top: 5px;
       margin-right: 8px;
+      width: 20px;
+      height: 20px;
     }
   }
   .creategroup-bar {
