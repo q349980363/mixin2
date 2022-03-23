@@ -79,7 +79,7 @@ export default class MessageList extends Vue {
     });
   }
   timenow(txt: string) {
-    return dayjs(txt).format("HH:mm:ss");
+    return dayjs(txt).format("YYYY/MM/DD HH:mm:ss");
   }
 }
 </script>

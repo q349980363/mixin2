@@ -3,18 +3,34 @@
   <div class="creategroup">
     <BaseTopBarBack title="创建群聊" />
 
-    <div class="creategroup-search">
-      <img src="@/assets/images/search.svg" alt="" />
-      <input type="text" placeholder="搜索" />
+    <div class="creategroup-searchbox">
+      <img class="searchbox-ico" src="@/assets/images/search.svg" alt="" />
+      <input class="searchbox-input" type="text" placeholder="搜索" />
+      <div>
+        <div class="searchbox-btn">搜索</div>
+      </div>
     </div>
 
     <div class="creategroup-list">
-      <MessageBar to="/creategroup">
-        <MessageBarItem name="Mg">
+      <MessageBar
+        :to="{ path: '/creategroup', query: item }"
+        v-for="item in users"
+        :key="item.ID"
+      >
+        <MessageBarItem :src="item.Avatars" :name="item.Nickname">
           <template v-slot:left>
             <img
+              v-if="isActive"
+              @click="unselectButton"
               class="list-icon"
               src="@/assets/images/creategroup-unchecked.svg"
+              alt=""
+            />
+            <img
+              v-else
+              @click="selectButton"
+              class="list-icon"
+              src="@/assets/images/creategroup-checked.svg"
               alt=""
             />
           </template>
@@ -41,32 +57,56 @@ import MessageBarItem from "@/components/MessageBarItem.vue";
     MessageBarItem,
   },
 })
-export default class Creategroup extends Vue {}
+export default class Creategroup extends Vue {
+  //好友用户信息
+  UserInfo!: any;
+  isActive = true;
+  unselectButton() {
+    this.isActive = false;
+  }
+  selectButton() {
+    this.isActive = true;
+  }
+  @State("hub") hub!: Hub;
+  users = [];
+  async created() {
+    // this.users.length = 0;
+    var response = await this.hub.invoke<[]>("Friends", "GetMyFriends");
+    response.forEach((item) => {
+      this.users.push(item);
+    });
+  }
+}
 </script>
 
 <style lang="less" scoped>
 .creategroup {
-  .creategroup-search {
+  .creategroup-searchbox {
     position: relative;
     display: flex;
-    width: 100%;
-    height: 49px;
-    line-height: 49px;
-    border-bottom: 1px solid #e6e6e6;
-    img {
+    padding: 0 15px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #d5d5d5;
+
+    .searchbox-ico {
       position: absolute;
-      left: 15px;
       top: 15px;
-      width: 18px;
-      height: 18px;
+      left: 15px;
+      width: 16px;
     }
-    input {
+    .searchbox-input {
       flex: 1;
-      padding: 0 40px;
-      line-height: 49px;
-      font-size: 16px;
+      height: 45px;
+      padding-left: 26px;
       border: none;
-      border-radius: 5px;
+    }
+    .searchbox-btn {
+      padding: 5px 10px;
+      background-color: #e2e2e2;
+      margin-top: 8px;
+      margin-left: 15px;
+      color: #000;
+      cursor: pointer;
     }
   }
 
