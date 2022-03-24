@@ -12,6 +12,12 @@ const routes: Array<RouteRecordRaw> = [
     name: "Creategroup",
     component: () => import("../views/Group/Creategroup.vue"),
   },
+// 创建群聊成功
+  {
+    path: "/creategroupchat",
+    name: "CreateGroupChat",
+    component: () => import("../views/Group/CreateGroupChat.vue"),
+  },
   // 群聊设置
   {
     path: "/groupchatset",

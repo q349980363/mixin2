@@ -25,18 +25,6 @@ const routes: Array<RouteRecordRaw> = [
     name: "Settings",
     component: () => import("../views/HomeNavigation/My/Settings.vue"),
   },
-  // 账号与安全 settings-settingsnumber  
-  {
-    path: "/settingsnumber",
-    name: "SettingsNumber",
-    component: () => import("../views/HomeNavigation/My/SettingsNumber.vue"),
-  },
-  // 账号与安全 - 设置账号 settings-settingsnumber - settingsnumberlist
-  {
-    path: "/settingsnumberlist",
-    name: "SettingsNumberList",
-    component: () => import("../views/HomeNavigation/My/SettingsNumberList.vue"),
-  },
   // 聊天 settings-settingschat
   {
     path: "/settingschat",

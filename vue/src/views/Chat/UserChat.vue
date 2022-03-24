@@ -14,7 +14,7 @@
     <div class="userchat-list" ref="list">
       <templete v-for="item in dataList" :key="item.ID">
         <div class="chatbox-my" v-if="item.UserName == MyUserInfo.UserName">
-          <div class="my-time">{{ item.CreatedAt }}</div>
+          <div class="my-time">{{ timenow(item.CreatedAt) }}</div>
           <div class="chatbubble-my">
             <ChatBubble direction="left">{{ item.Data }} </ChatBubble>
             <Icons
@@ -26,7 +26,7 @@
         </div>
 
         <div class="chatbox-he" v-else>
-          <div class="he-time">{{ item.CreatedAt }}</div>
+          <div class="he-time">{{ timenow(item.CreatedAt) }}</div>
           <div class="chatbubble-he">
             <Icons
               class="headportrait"
@@ -55,6 +55,7 @@ import Hub from "@/hub";
 import { State } from "vuex-class";
 import { EventEmitter2 } from "eventemitter2";
 import Icons from "@/components/Icons.vue";
+import dayjs from "dayjs";
 /**
  *
  *
@@ -75,7 +76,6 @@ window.scrollTo({
 export default class UserChat extends Vue {
   @State("hub") hub!: Hub;
   @State("emitter") emitter!: EventEmitter2;
-
   //自身用户信息
   @State("userInfo") MyUserInfo!: any;
   //好友用户信息
@@ -107,7 +107,6 @@ export default class UserChat extends Vue {
       this.addChat
     );
   }
-
   async addChat(data: any) {
     this.dataList.push(data);
     this.$nextTick(function () {
@@ -115,7 +114,6 @@ export default class UserChat extends Vue {
       this.chatListToEnd();
     });
   }
-
   async loadData() {
     var response = await this.hub.invoke<[]>(
       "Friends",
@@ -140,7 +138,6 @@ export default class UserChat extends Vue {
       behavior: behavior,
     });
   }
-
   chatListIsEnd() {
     var dom = this.$refs.list;
     var top = dom.clientHeight + dom.scrollTop;
@@ -161,6 +158,9 @@ export default class UserChat extends Vue {
     // });
     // thischatListToEnd("smooth");
   }
+  timenow(txt: string) {
+    return dayjs(txt).format("YYYY/MM/DD HH:mm:ss");
+  }
 }
 </script>
 
@@ -176,7 +176,6 @@ export default class UserChat extends Vue {
   .userchat-list {
     overflow-y: auto;
     flex: 1;
-
     .chatbox-my {
       text-align: center;
       .my-time {
@@ -194,7 +193,6 @@ export default class UserChat extends Vue {
         }
       }
     }
-
     .chatbox-he {
       text-align: center;
       .he-time {
@@ -213,7 +211,6 @@ export default class UserChat extends Vue {
       }
     }
   }
-
   .userchat-bar {
     display: flex;
     background-color: #efefef;

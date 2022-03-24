@@ -5,8 +5,15 @@
 
     <div class="card-main">
       <div class="main-top">
-        <img class="headportrait" src="@/assets/images/avatar/nv.svg" alt="" />
-        <div class="top-name">Mg1</div>
+        <!-- <img class="headportrait" src="@/assets/images/avatar/nv.svg" alt="" /> -->
+        <Icons
+          class="headportrait"
+          :name="userInfo.Avatars"
+          default="defaultAvatar"
+        />
+        <div class="top-name">
+          <div>{{ userInfo.UserName }}</div>
+        </div>
       </div>
       <div class="main-box">
         <img src="@/assets/images/qrcode.png" alt="" />
@@ -18,11 +25,14 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-
+import { State, Action } from "vuex-class";
+import Icons from "@/components/Icons.vue";
 @Options({
-  components: {},
+  components: { Icons },
 })
-export default class Card extends Vue {}
+export default class Card extends Vue {
+  @State("userInfo") userInfo!: any;
+}
 </script>
 
 <style lang="less" scoped>

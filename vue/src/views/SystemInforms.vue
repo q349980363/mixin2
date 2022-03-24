@@ -12,7 +12,6 @@
       </div>
       <!-- 通知 -->
       <template v-for="(item, i) in dataList" :key="i">
-        <div class="systeminforms-time">{{ a(item.CreatedAt) }}</div>
         <div class="chatbubble" v-if="item.Type == 'Friends'">
           <Icons class="headportrait" name="logo" />
           <ChatBubble direction="right">
@@ -34,13 +33,15 @@
             <div v-else>
               {{ item.Result }}
             </div>
+
+            <div class="chatbubble-time">{{ timenow(item.CreatedAt) }}</div>
           </ChatBubble>
         </div>
         <div class="chatbubble" v-else>
           <Icons class="headportrait" name="logo" />
           <ChatBubble direction="right">
             <div class="chatbubble-text">{{ item.Txt }}</div>
-            {{ item.CreatedAt }}
+            <div class="chatbubble-time">{{ timenow(item.CreatedAt) }}</div>
           </ChatBubble>
         </div>
       </template>
@@ -77,10 +78,6 @@ export default class SystemInforms extends Vue {
     this.emitter.on("event.SystemChat", this.loadData.bind(this));
   }
 
-  a(txt: string) {
-    return dayjs(txt).format("YYYY/MM/DD HH:mm:ss");
-  }
-  
   async destroyed() {
     this.emitter.off("event.SystemChat", this.loadData);
   }
@@ -107,6 +104,9 @@ export default class SystemInforms extends Vue {
     var response = await this.hub.invoke("Systemchat", "Clear");
     this.tips(response);
     this.loadData();
+  }
+  timenow(txt: string) {
+    return dayjs(txt).format("YYYY/MM/DD HH:mm:ss");
   }
 }
 </script>
@@ -141,7 +141,7 @@ export default class SystemInforms extends Vue {
     }
     .chatbubble {
       display: flex;
-      padding: 0 15px;
+      padding: 10px 15px 0 15px;
       .headportrait {
         width: 35px;
         height: 35px;
@@ -168,6 +168,11 @@ export default class SystemInforms extends Vue {
           height: 26px;
           font-size: 14px;
         }
+      }
+      .chatbubble-time {
+        margin-top: 5px;
+        font-size: 14px;
+        color: #515151;
       }
     }
   }

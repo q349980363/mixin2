@@ -93,6 +93,7 @@ export default class BottomNavigationBar extends Vue {
     display: inline-block;
     padding-top: 8px;
     padding-bottom: 5px;
+    height: 52px;
     img {
       margin-bottom: 3px;
       width: 20px;

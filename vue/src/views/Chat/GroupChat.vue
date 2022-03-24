@@ -52,7 +52,6 @@
 import { Options, Vue } from "vue-class-component";
 import ChatBubble from "@/components/ChatBubble.vue"; // @ is an alias to /src
 import Icons from "@/components/Icons.vue";
-
 /**
  * 
  * 
@@ -89,7 +88,6 @@ export default class GroupChat extends Vue {
       behavior: behavior,
     });
   }
-
   chatListIsEnd() {
     var dom = this.$refs.list;
     var top = dom.clientHeight + dom.scrollTop;
@@ -126,7 +124,6 @@ export default class GroupChat extends Vue {
         }
       }
     }
-
     .chatbox-he {
       text-align: center;
       .he-time {
@@ -145,7 +142,6 @@ export default class GroupChat extends Vue {
       }
     }
   }
-
   .groupchat-bar {
     display: flex;
     background-color: #efefef;
