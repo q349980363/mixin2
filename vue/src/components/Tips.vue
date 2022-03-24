@@ -1,4 +1,5 @@
 <template>
+  <!-- 底边提示框 -->
   <transition-group name="bottom">
     <div class="container" v-for="(item, i) in tipsList" :key="i">
       <div class="tips">{{ item }}</div>

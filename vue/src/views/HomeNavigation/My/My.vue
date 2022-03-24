@@ -5,29 +5,23 @@
       <!-- 个人信息 -->
       <div class="message-head" @click="IsShowHeadEject = !IsShowHeadEject">
         <Icons
-          class="message-headportrait"
+          class="headportrait"
           :name="userInfo.Avatars"
           default="defaultAvatar"
         />
-        <div class="icons-editor">
+        <div class="edit-avatar">
           <div>编辑头像</div>
         </div>
       </div>
-      <router-link to="/userinfo" class="message-main">
-        <div class="main-top">
-          <div class="main-name">{{ userInfo.Nickname }}</div>
-        </div>
-        <div class="main-down">
-          <div class="main-down-left">
+      <router-link to="/myinfo" class="head-content">
+        <div class="content-name">{{ userInfo.Nickname }}</div>
+        <div class="content-info">
+          <div class="info-left">
             UID:{{ userInfo.ID }} 账号:{{ userInfo.UserName }}
           </div>
-          <div class="main-down-right">
-            <img class="down-card" src="@/assets/images/qrCode.svg" alt="" />
-            <img
-              class="return-right"
-              src="@/assets/images/return-right.svg"
-              alt=""
-            />
+          <div class="info-right">
+            <Icons name="qrCode" class="qrcode" />
+            <Icons name="return2" class="return-right" />
           </div>
         </div>
       </router-link>
@@ -77,23 +71,19 @@
       <List name="用户信息">
         <ListItem to="/settings" name="设置">
           <template v-slot:left>
-            <img class="list-icon" src="@/assets/images/set.svg" alt="" />
+            <Icons name="set" class="list-icon" />
           </template>
         </ListItem>
         <ListItem to="/about" name="关于">
           <template v-slot:left>
-            <img class="list-icon" src="@/assets/images/about.svg" alt="" />
+            <Icons name="about" class="list-icon" />
           </template>
         </ListItem>
       </List>
       <List name="用户信息">
         <ListItem to="/administer" name="后台管理">
           <template v-slot:left>
-            <img
-              class="list-icon"
-              src="@/assets/images/administer.svg"
-              alt=""
-            />
+            <Icons name="administer" class="list-icon" />
           </template>
         </ListItem>
         <ListItem to="/demo" name="Demo"></ListItem>
@@ -162,7 +152,7 @@ export default class My extends Vue {
       position: relative;
       width: 60px;
       height: 60px;
-      .message-headportrait {
+      .headportrait {
         margin: 0 auto;
         width: 60px;
         height: 60px;
@@ -170,7 +160,7 @@ export default class My extends Vue {
         background-color: rgba(0, 0, 0, 0.1);
         border-radius: 4px;
       }
-      .icons-editor {
+      .edit-avatar {
         position: absolute;
         bottom: -12px;
         height: 12px;
@@ -182,7 +172,7 @@ export default class My extends Vue {
       }
     }
 
-    .message-main {
+    .head-content {
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -190,21 +180,19 @@ export default class My extends Vue {
       margin-left: 10px;
       line-height: 30px;
       text-align: left;
-      .main-top {
-        .main-name {
-          font-size: 20px;
-          font-weight: 700;
-        }
+      .content-name {
+        font-size: 20px;
+        font-weight: 700;
       }
-      .main-down {
+      .content-info {
         display: flex;
         // justify-content: space-between;
-        .main-down-left {
+        .info-left {
           flex: 1;
           font-size: 18px;
         }
-        .main-down-right {
-          .down-card {
+        .info-right {
+          .qrcode {
             width: 13px;
           }
           .return-right {

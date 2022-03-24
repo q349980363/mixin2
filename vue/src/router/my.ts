@@ -1,23 +1,23 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 // 我的页 my
 const routes: Array<RouteRecordRaw> = [
-  // 用户信息  my-userinfo
+  // 个人信息  my-myinfo
   {
-    path: "/userinfo",
-    name: "UserInfo",
-    component: () => import("../views/HomeNavigation/My/UserInfo.vue"),
+    path: "/myinfo",
+    name: "MyInfo",
+    component: () => import("../views/HomeNavigation/My/MyInfo.vue"),
   },
-  // 设置名字 my-userinfo-setmyname
+  // 设置昵称 my-userinfo-setnickname
   {
-    path: "/setmyname",
-    name: "SetMyName",
-    component: () => import("../views/HomeNavigation/My/SetMyName.vue"),
+    path: "/setnickname",
+    name: "SetNickname",
+    component: () => import("../views/HomeNavigation/My/SetNickname.vue"),
   },
-  // 设置名字 my-userinfo-card
+  // 设置名字 my-userinfo-myqrcode
   {
-    path: "/card",
-    name: "Card",
-    component: () => import("../views/HomeNavigation/My/Card.vue"),
+    path: "/myqrcode",
+    name: "MyQrCode",
+    component: () => import("../views/HomeNavigation/My/MyQrCode.vue"),
   },
 // 设置 
   {
@@ -52,7 +52,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   // 功能介绍  about-introduce
   {
-    path: "/aboutintroduce",
+    path: "/aboutIntroduce",
     name: "AboutIntroduce",
     component: () => import("../views/HomeNavigation/My/AboutIntroduce.vue"),
   },

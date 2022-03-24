@@ -1,8 +1,8 @@
 <template>
   <!-- 添加朋友 -->
-  <div class="addusers">
+  <div class="adduser">
     <BaseTopBarBack title="搜索用户" />
-    <div class="addusers-searchbox">
+    <div class="adduser-searchbox">
       <img class="searchbox-ico" src="@/assets/images/search.svg" alt="" />
       <input
         class="searchbox-input"
@@ -15,12 +15,8 @@
       </div>
     </div>
 
-    <div class="addusers-list">
-      <div
-        class="addusers-list-row"
-        v-for="item in usernameList"
-        :key="item.ID"
-      >
+    <div class="adduser-list">
+      <div class="adduser-list-row" v-for="item in usernameList" :key="item.ID">
         <Icons
           class="row-headportrait"
           :name="item.Avatars"
@@ -49,7 +45,7 @@ import Icons from "@/components/Icons.vue";
 @Options({
   components: { Icons },
 })
-export default class AddUsers extends Vue {
+export default class AddUser extends Vue {
   username = "";
   @State("hub") hub!: Hub;
   @State("userInfo") userInfo!: any;
@@ -87,8 +83,8 @@ export default class AddUsers extends Vue {
 </script>
 
 <style lang="less" scoped>
-.addusers {
-  .addusers-searchbox {
+.adduser {
+  .adduser-searchbox {
     position: relative;
     display: flex;
     padding: 0 15px;
@@ -116,10 +112,10 @@ export default class AddUsers extends Vue {
       cursor: pointer;
     }
   }
-  .addusers-list {
+  .adduser-list {
     overflow-y: auto;
     flex: 1;
-    .addusers-list-row {
+    .adduser-list-row {
       display: flex;
       padding: 12px 15px;
       background-color: #fff;

@@ -6,12 +6,14 @@
     <div class="settings-list">
       <ListItem to="/settingschat" name="聊天" />
       <ListItem to="/settingscurrency" name="通用" />
-      <ListItem name="注销账户" class="cancellation" @click="showModel = true" />
-       
-
-       <Modal v-model:show="showModel" cancel="取消" ok="确定" color="#DC3545">
-          删除所有数据,永久注销
-        </Modal>
+      <ListItem
+        name="注销账户"
+        class="cancellation"
+        @click="showModel = true"
+      />
+      <Modal v-model:show="showModel" cancel="取消" ok="确定" color="#DC3545">
+        删除所有数据,永久注销
+      </Modal>
     </div>
   </div>
 </template>

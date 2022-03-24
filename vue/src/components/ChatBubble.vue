@@ -1,4 +1,5 @@
 <template>
+  <!-- 聊天框 -->
   <div class="my-left" v-if="direction == 'left'">
     <svg
       xmlns="http://www.w3.org/2000/svg"

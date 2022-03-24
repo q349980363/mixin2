@@ -1,30 +1,26 @@
 <template>
   <div class="administerusers">
     <BaseTopBarBack title="用户列表" />
+
     <div class="administerusers-list">
-      <div class="administerusers-list-row">
-        <div class="row-left">
+      <div class="list-content">
+        <div class="content-left">
           <div class="left-head">
-            <img
-              class="headportrait"
-              src="@/assets/images/avatar/nan.svg"
-              alt=""
-            />
-            <div class="row-left-name">Mg</div>
+            <Icons name="nan" class="headportrait" />
+            <div class="head-name">Mg</div>
           </div>
 
           <div class="left-tips">
             <input type="checkbox" class="toggle-button-big" />
-            <div class="row-left-text">禁止登录</div>
+            <div class="tips-text">禁止登录</div>
           </div>
         </div>
-        <div class="row-main">
+        <div class="content-right">
           <div>注册时间:2022.22.22</div>
           <div>注册IP:127.127.127.127</div>
           <div>最后登录时间:2022.22.22</div>
           <div>最后登录IP:127.127.127.127</div>
         </div>
-        <div class="row-right"></div>
       </div>
     </div>
   </div>
@@ -32,9 +28,12 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import Icons from "@/components/Icons.vue";
 
 @Options({
-  components: {},
+  components: {
+    Icons,
+  },
 })
 export default class AdministerUsers extends Vue {}
 </script>
@@ -44,37 +43,39 @@ export default class AdministerUsers extends Vue {}
   .administerusers-list {
     overflow-y: auto;
     flex: 1;
-    .administerusers-list-row {
+    .list-content {
       display: flex;
       padding: 10px 15px;
       background-color: #fff;
       border-bottom: 1px solid #e6e6e6;
       box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-      .row-left {
+      .content-left {
         .left-head {
           display: flex;
+          .headportrait {
+            width: 35px;
+            height: 35px;
+            border: 1px solid #dbdbdb;
+            border-radius: 5px;
+            vertical-align: middle;
+          }
+          .head-name {
+            flex: 1;
+            margin-left: 10px;
+            text-align: left;
+            font-size: 14px;
+            line-height: 35px;
+          }
         }
-        .headportrait {
-          width: 35px;
-          height: 35px;
-          border: 1px solid #dbdbdb;
-          border-radius: 5px;
-          vertical-align: middle;
-        }
-        .row-left-name {
-          flex: 1;
-          margin-left: 10px;
-          text-align: left;
-          font-size: 14px;
-          line-height: 35px;
-        }
-        .row-left-text {
-          padding-left: 10px;
-          font-size: 14px;
-        }
+
         .left-tips {
           display: flex;
           padding-top: 28px;
+
+          .tips-text {
+            padding-left: 10px;
+            font-size: 14px;
+          }
           .toggle-button-big {
             appearance: none;
             position: relative;
@@ -113,7 +114,7 @@ export default class AdministerUsers extends Vue {}
           }
         }
       }
-      .row-main {
+      .content-right {
         flex: 1;
         margin-left: 35px;
         font-size: 14px;

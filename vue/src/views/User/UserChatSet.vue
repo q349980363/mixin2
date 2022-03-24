@@ -44,11 +44,6 @@
       >
         将联系人"Mg"删除,将同时删除与该联系人的聊天记录
       </Modal>
-      <!-- <SelectPrompt
-        text="确定删除和Mg的聊天记录吗?"
-        cancel="取消"
-        empty="清空"
-      /> -->
     </div>
   </div>
 </template>
@@ -57,14 +52,12 @@
 import { State, Action } from "vuex-class";
 import { Options, Vue } from "vue-class-component";
 import ListItem from "@/components/ListItem.vue";
-import SelectPrompt from "@/components/SelectPrompt.vue";
 import Hub from "@/hub";
 import Icons from "@/components/Icons.vue";
 import Modal from "@/components/Modal.vue";
 @Options({
   components: {
     ListItem,
-    SelectPrompt,
     Icons,
     Modal,
   },

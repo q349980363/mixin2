@@ -3,7 +3,7 @@
   <div class="messagelist">
     <TopBar title="消息">
       <!-- 系统中心 -->
-      <router-link to="/systeminforms" class="messagelist-notice">
+      <router-link to="/systeminforms" class="messagelist-systemCenter">
         <img
           src="@/assets/images/notice.svg"
           alt=""
@@ -19,7 +19,7 @@
           title="创建群聊"
         />
         <PopupMenuItem
-          to="/addusers"
+          to="/adduser"
           :src="require('@/assets/images/avatar/users.svg')"
           title="添加朋友"
         />

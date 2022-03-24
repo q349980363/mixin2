@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 // import Home from "../views/Home.vue";
 import my from "./my";
-import users from "./users";
+import users from "./user";
 import group from "./group";
 const routes: Array<RouteRecordRaw> = [
   {
@@ -30,6 +30,12 @@ const routes: Array<RouteRecordRaw> = [
       requiresAuth: false,
     },
   },
+    // 添加用户
+    {
+      path: "/adduser",
+      name: "AddUser",
+      component: () => import("../views/AddUser.vue"),
+    },
 
   // 主页导航
   {
@@ -77,12 +83,7 @@ const routes: Array<RouteRecordRaw> = [
     name: "WaitingLoad",
     component: () => import("../views/WaitingLoad.vue"),
   },
-  // 二维码
-  {
-    path: "/qrcode",
-    name: "QRCode",
-    component: () => import("../views/QRCode.vue"),
-  },
+
   // 聊天页
   {
     path: "/userchat",

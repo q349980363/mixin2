@@ -1,6 +1,7 @@
 <template>
   <div class="administer">
     <BaseTopBarBack title="后台管理" />
+
     <div class="administer-list">
       <ListItem to="/administerusers" name="用户列表" />
       <ListItem to="/administergroup" name="群列表" />
@@ -18,7 +19,7 @@ import ListItem from "@/components/ListItem.vue";
 })
 export default class Administer extends Vue {}
 </script>
-    
+
 <style lang="less" scoped>
 .administer {
   .administer-list {

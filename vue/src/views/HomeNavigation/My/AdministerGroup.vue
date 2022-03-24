@@ -3,11 +3,11 @@
     <BaseTopBarBack title="群列表" />
 
     <div class="administergroup-list">
-      <div class="administergroup-list-row">
-        <img class="headportrait" src="@/assets/images/group-head.svg" alt="" />
-        <div class="row-left-text">群1</div>
-        <div class="row-left-text1">群主:</div>
-        <div class="row-left-text2">群人数:</div>
+      <div class="list-content">
+        <Icons name="groupHead" class="content-headportrait" />
+        <div class="content-text">群1</div>
+        <div class="content-text1">群主:</div>
+        <div class="content-text2">群人数:</div>
         <input type="checkbox" class="toggle-button-big" />
       </div>
     </div>
@@ -16,9 +16,12 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import Icons from "@/components/Icons.vue";
 
 @Options({
-  components: {},
+  components: {
+    Icons,
+  },
 })
 export default class AdministerGroup extends Vue {}
 </script>
@@ -28,30 +31,33 @@ export default class AdministerGroup extends Vue {}
   .administergroup-list {
     overflow-y: auto;
     flex: 1;
-    .administergroup-list-row {
+    .list-content {
       display: flex;
-      padding: 10px 15px;
+      padding: 0 15px;
+      height: 55px;
+      line-height: 55px;
+      font-size: 14px;
       background-color: #fff;
       box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
       border-bottom: 1px solid #e6e6e6;
-      line-height: 2;
-      .headportrait {
+
+      .content-headportrait {
+        margin: auto;
         width: 35px;
         height: 35px;
         border: 1px solid #dbdbdb;
         border-radius: 5px;
-        vertical-align: middle;
       }
-      .row-left-text {
+      .content-text {
         margin-left: 10px;
       }
-      .row-left-text1,
-      .row-left-text2 {
+      .content-text1,
+      .content-text2 {
         margin-left: 60px;
       }
 
       .toggle-button-big {
-        margin-top: 7px;
+        margin-top: 18px;
         margin-left: 55px;
         appearance: none;
         position: relative;

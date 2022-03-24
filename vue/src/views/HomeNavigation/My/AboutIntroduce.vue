@@ -1,25 +1,29 @@
 <template>
-  <!-- 版本更新 -->
+  <!-- 关于 - 功能介绍 -->
   <div class="aboutIntroduce">
     <BaseTopBarBack title="系统通知" />
+
     <div class="aboutIntroduce-list">
-      <div class="list-main" v-for="i in 10" :key="i">
-        <div class="list-left">
+      <div class="list-content" v-for="i in 10" :key="i">
+        <div class="content-left">
           <div class="left-text">纸飞机1.1主要更新</div>
           <div class="left-time">03月11日</div>
         </div>
-        <img class="list-right" src="@/assets/images/return-right.svg" alt="" />
+        <Icons name="return2" class="content-right" />
       </div>
     </div>
   </div>
 </template>
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import Icons from "@/components/Icons.vue";
 
 @Options({
-  components: {},
+  components: {
+    Icons,
+  },
 })
-export default class MessageList extends Vue {}
+export default class AboutIntroduce extends Vue {}
 </script>
 
 <style lang="less" scoped>
@@ -30,12 +34,13 @@ export default class MessageList extends Vue {}
   .aboutIntroduce-list {
     overflow-y: auto;
     flex: 1;
-    .list-main {
+    .list-content {
       flex: 1;
       display: flex;
       padding: 5px 15px;
       border-bottom: 1px solid #e6e6e6;
-      .list-left {
+      background-color: #fff;
+      .content-left {
         flex: 1;
         text-align: left;
         .left-text {
@@ -47,7 +52,7 @@ export default class MessageList extends Vue {}
           color: #727272;
         }
       }
-      .list-right {
+      .content-right {
         margin: auto;
         width: 12px;
         height: 12px;

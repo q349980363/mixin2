@@ -23,7 +23,7 @@
           title="创建群聊"
         />
         <PopupMenuItem
-          to="/addusers"
+          to="/adduser"
           :src="require('@/assets/images/avatar/users.svg')"
           title="添加朋友"
         />
