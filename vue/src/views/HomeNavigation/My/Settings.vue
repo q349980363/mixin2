@@ -6,6 +6,11 @@
     <div class="settings-list">
       <ListItem to="/settingschat" name="聊天" />
       <ListItem to="/settingscurrency" name="通用" />
+      <ListItem name="注销账户" class="cancellation" @click="showModel = true">
+        <Modal v-model:show="showModel" cancel="取消" ok="确定" color="#DC3545">
+          删除所有数据,永久注销
+        </Modal>
+      </ListItem>
     </div>
   </div>
 </template>
@@ -13,12 +18,16 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import ListItem from "@/components/ListItem.vue";
+import Modal from "@/components/Modal.vue";
 @Options({
   components: {
     ListItem,
+    Modal,
   },
 })
-export default class Settings extends Vue {}
+export default class Settings extends Vue {
+  showModel = false;
+}
 </script>
 
 <style lang="less" scoped>
@@ -26,6 +35,9 @@ export default class Settings extends Vue {}
   .settings-list {
     overflow-y: auto;
     flex: 1;
+  }
+  .cancellation {
+    color: #dc3545;
   }
 }
 </style>

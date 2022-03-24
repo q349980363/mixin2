@@ -1,8 +1,11 @@
 <template>
   <!-- 消息 - 消息栏 -->
-  <router-link :to="to" class="messagebar">
+  <router-link :to="to" v-if="to" class="messagebar">
     <slot></slot>
   </router-link>
+  <div class="messagebar" v-else>
+    <slot></slot>
+  </div>
 </template>
 
 <script lang="ts">

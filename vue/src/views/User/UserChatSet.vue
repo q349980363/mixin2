@@ -19,13 +19,36 @@
         name="设置备注"
       />
       <ListItem to="/searchpageuser" name="查找聊天记录" />
-      <ListItem @click="clickClear" name="清空聊天记录" class="list-clear" />
-      <ListItem @click="clickDelete" name="删除好友" class="list-del" />
-      <SelectPrompt
+      <ListItem
+        @click="showModel1 = true"
+        name="清空聊天记录"
+        class="list-clear"
+      />
+      <ListItem @click="showModel2 = true" name="删除好友" class="list-del" />
+      <Modal
+        v-model:show="showModel1"
+        cancel="取消"
+        color="#DC3545"
+        ok="清空"
+        @onOk="clickClear"
+      >
+        确定删除和Mg的聊天记录吗
+      </Modal>
+      <Modal
+        v-model:show="showModel2"
+        cancel="取消"
+        ok="删除"
+        title="删除联系人"
+        color="#DC3545"
+        @onOk="clickDelete"
+      >
+        将联系人"Mg"删除,将同时删除与该联系人的聊天记录
+      </Modal>
+      <!-- <SelectPrompt
         text="确定删除和Mg的聊天记录吗?"
         cancel="取消"
         empty="清空"
-      />
+      /> -->
     </div>
   </div>
 </template>
@@ -37,16 +60,20 @@ import ListItem from "@/components/ListItem.vue";
 import SelectPrompt from "@/components/SelectPrompt.vue";
 import Hub from "@/hub";
 import Icons from "@/components/Icons.vue";
+import Modal from "@/components/Modal.vue";
 @Options({
   components: {
     ListItem,
     SelectPrompt,
     Icons,
+    Modal,
   },
 })
 export default class UserChatSet extends Vue {
   //好友用户信息
   UserInfo!: any;
+  showModel1 = false;
+  showModel2 = false;
   @State("hub") hub!: Hub;
   msg!: string;
   @State("userInfo") MyUserInfo!: any;

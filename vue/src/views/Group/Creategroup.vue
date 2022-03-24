@@ -13,24 +13,22 @@
 
     <div class="creategroup-list">
       <MessageBar
-        :to="{ path: '/creategroup', query: item }"
         v-for="item in users"
+        @click="item.isActive = !item.isActive"
         :key="item.ID"
       >
         <MessageBarItem :src="item.Avatars" :name="item.Nickname">
           <template v-slot:left>
             <img
-              v-if="isActive"
-              @click="unselectButton"
+              v-if="item.isActive"
               class="list-icon"
-              src="@/assets/images/creategroup-unchecked.svg"
+              src="@/assets/images/creategroup-checked.svg"
               alt=""
             />
             <img
               v-else
-              @click="selectButton"
               class="list-icon"
-              src="@/assets/images/creategroup-checked.svg"
+              src="@/assets/images/creategroup-unchecked.svg"
               alt=""
             />
           </template>
@@ -60,19 +58,20 @@ import MessageBarItem from "@/components/MessageBarItem.vue";
 export default class Creategroup extends Vue {
   //好友用户信息
   UserInfo!: any;
-  isActive = true;
+  // isActive = true;
   unselectButton() {
-    this.isActive = false;
+    // this.isActive = false;
   }
   selectButton() {
-    this.isActive = true;
+    // this.isActive = true;
   }
   @State("hub") hub!: Hub;
-  users = [];
+  users: any[] = [];
   async created() {
     // this.users.length = 0;
-    var response = await this.hub.invoke<[]>("Friends", "GetMyFriends");
-    response.forEach((item) => {
+    var response = await this.hub.invoke<any[]>("Friends", "GetMyFriends");
+    response.forEach((item: any) => {
+      item.isActive = false;
       this.users.push(item);
     });
   }
