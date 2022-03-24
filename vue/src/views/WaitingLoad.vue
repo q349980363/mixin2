@@ -1,4 +1,5 @@
 <template>
+  <!-- 等待进入 -->
   <div class="waitingload">
     <img src="@/assets/images/logo.svg" alt="" />
     <div>纸飞机</div>

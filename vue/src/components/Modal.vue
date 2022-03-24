@@ -1,6 +1,7 @@
 <template>
-  <div class="selectprompt" v-if="show">
-    <div class="selectprompt-main">
+  <!-- 弹出删除框 -->
+  <div class="modal" v-if="show">
+    <div class="modal-main">
       <div class="main-title" v-if="title">{{ title }}</div>
       <div class="main-text">
         <slot></slot>
@@ -59,14 +60,14 @@ export default class Modal extends Vue {
 </script>
 
 <style scoped lang="less">
-.selectprompt {
+.modal {
   position: absolute;
   background-color: rgba(204, 204, 204, 0.678);
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
-  .selectprompt-main {
+  .modal-main {
     display: flex;
     flex-direction: column;
     position: absolute;

@@ -3,7 +3,7 @@
   <div class="groupchat">
     <BaseTopBarBack title="群1">
       <router-link to="/groupchatset" class="tool-trigger">
-        <img src="@/assets/images/more.svg" alt="" />
+        <Icons name="more" class="trigger-icon" />
       </router-link>
     </BaseTopBarBack>
 
@@ -100,7 +100,7 @@ export default class GroupChat extends Vue {
   .tool-trigger {
     display: inline-block;
     padding: 0 15px;
-    img {
+    .trigger-icon {
       vertical-align: middle;
     }
   }

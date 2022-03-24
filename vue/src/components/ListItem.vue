@@ -11,7 +11,7 @@
       alt=""
     />
   </router-link>
-  <div class="listitem" v-else>
+  <div :to="to" class="listitem" v-else>
     <slot name="left" class="left"></slot>
     <div class="info">{{ name }}</div>
     <slot></slot>

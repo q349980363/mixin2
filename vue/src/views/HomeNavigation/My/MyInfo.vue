@@ -1,16 +1,16 @@
 <template>
-  <div class="userinfo views">
+  <div class="myinfo">
     <BaseTopBarBack title="个人信息" />
-    <div class="userinfo-list">
+
+    <div class="myinfo-list">
       <ListItem name="头像" @click="IsShowHeadEject = !IsShowHeadEject">
         <Icons
           class="list-icon-head"
           :name="userInfo.Avatars"
           default="defaultAvatar"
         />
-        <!-- <img class="list-icon" src="@/assets/images/avatar/nv.svg" alt="" /> -->
       </ListItem>
-      <ListItem to="/setmyname" name="昵称">
+      <ListItem to="/setnickname" name="昵称">
         <div>{{ userInfo.Nickname }}</div>
       </ListItem>
       <ListItem name="账号">
@@ -19,12 +19,12 @@
       <ListItem name="UID">
         <div>{{ userInfo.ID }}</div>
       </ListItem>
-      <ListItem to="/card" name="二维码名片">
+      <ListItem to="/myqrcode" name="二维码名片">
         <img class="list-icon-qr" src="@/assets/images/qrCode.svg" alt="" />
       </ListItem>
     </div>
   </div>
-  <div
+  <!-- <div
     class="head_eject"
     v-if="IsShowHeadEject"
     @click="IsShowHeadEject = !IsShowHeadEject"
@@ -50,7 +50,7 @@
         <Icons class="col" name="nan5" @click="SelectAvatar('nan5')" />
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script lang="ts">
@@ -65,7 +65,7 @@ import Hub from "@/hub";
     Icons,
   },
 })
-export default class UserInfo extends Vue {
+export default class MyInfo extends Vue {
   @State("userInfo") userInfo!: any;
   @State("hub") hub!: Hub;
   @Action("tips") tips!: (msg: string) => void;
@@ -80,8 +80,8 @@ export default class UserInfo extends Vue {
 </script>
 
 <style lang="less" scoped>
-.userinfo {
-  .userinfo-list {
+.myinfo {
+  .myinfo-list {
     position: relative;
     overflow-y: auto;
     flex: 1;
