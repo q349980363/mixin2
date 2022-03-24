@@ -27,9 +27,9 @@ export default class SetUserName extends Vue {
   // created() {
   //   this.UserInfo = this.$route.query;
   // }
-  OtherName = "";
+  OtherName: any = "";
   async created() {
-    this.OtherName = this.UserInfo.UserName;
+    this.OtherName = this.$route.query.UserName;
   }
 }
 </script>

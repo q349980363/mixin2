@@ -12,8 +12,30 @@
         <img class="list-icon" src="@/assets/images/qrCode.svg" alt="" />
       </ListItem>
       <ListItem to="/searchpagegroup" name="查找聊天记录" />
-      <ListItem @click="clickClear" name="清空聊天记录" class="list-clear" />
-      <ListItem @click="clickDelete" name="删除并退出" class="list-del" />
+      <ListItem
+        @click="showModel1 = true"
+        name="清空聊天记录"
+        class="list-clear"
+      />
+      <ListItem @click="showModel2 = true" name="删除并退出" class="list-del" />
+      <Modal
+        v-model:show="showModel1"
+        cancel="取消"
+        color="#DC3545"
+        ok="清空"
+        @onOk="clickClear"
+      >
+        确定删除群的聊天记录吗?
+      </Modal>
+      <Modal
+        v-model:show="showModel2"
+        cancel="取消"
+        ok="确定"
+        color="#DC3545"
+        @onOk="clickDelete"
+      >
+        删除并退出后,将不再接收此群聊信息
+      </Modal>
     </div>
   </div>
 </template>
@@ -24,15 +46,19 @@ import { State, Action } from "vuex-class";
 import { Options, Vue } from "vue-class-component";
 import ListItem from "@/components/ListItem.vue";
 import Icons from "@/components/Icons.vue";
+import Modal from "@/components/Modal.vue";
 @Options({
   components: {
     ListItem,
     Icons,
+    Modal,
   },
 })
 export default class GroupChatSet extends Vue {
   //好友用户信息
   UserInfo!: any;
+  showModel1 = false;
+  showModel2 = false;
   @State("hub") hub!: Hub;
   msg!: string;
   @State("userInfo") MyUserInfo!: any;
