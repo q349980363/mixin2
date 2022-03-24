@@ -19,7 +19,8 @@ func (hub *Hub) SendSystemChat(chat *SystemChat) {
 		db.Create(&Friends{
 			UserName: chat.UserName,
 			Target:   "系统消息",
-			Path:     "/system_session",
+			// Nickname: "系统消息",
+			Path: "/system_session",
 		})
 	}
 

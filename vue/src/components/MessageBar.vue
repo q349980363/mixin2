@@ -22,6 +22,7 @@ export default class MessageBar extends Vue {}
 
 <style lang="less" scoped>
 .messagebar {
+  position: relative;
   display: flex;
   padding: 10px 15px;
   height: 55px;

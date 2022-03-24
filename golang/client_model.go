@@ -24,4 +24,5 @@ type MessageListClient struct {
 	Unread     int       //消息是否已读  已读做到关系上还是做到消息上?
 	LastChatAt time.Time //消息是否已读  已读做到关系上还是做到消息上?
 	LastChat   string
+	Path       string //特殊参数
 }

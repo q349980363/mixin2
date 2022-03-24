@@ -3,7 +3,7 @@
   <div class="messagelist">
     <TopBar title="消息">
       <!-- 系统中心 -->
-      <router-link to="/systeminforms" class="messagelist-systemCenter">
+      <router-link to="/systeminforms" class="systemCenter">
         <img
           src="@/assets/images/notice.svg"
           alt=""
@@ -32,14 +32,15 @@
         v-for="item in users"
         :key="item.ID"
       >
-        <div class="red-dot1"></div>
+        <div class="red-dot1" v-if="item.Unread != 0"></div>
 
         <MessageBarItem
           :src="item.Avatars"
+          :path="item.Path"
           :name="item.Nickname"
           :content="item.LastChat"
           :time="timenow(item.LastChatAt)"
-        />
+        ></MessageBarItem>
       </MessageBar>
     </div>
   </div>
@@ -51,6 +52,7 @@ import BottomNavigationBar from "@/components/BottomNavigationBar.vue";
 import TopBar from "@/components/TopBar.vue";
 import PopupMenu from "@/components/PopupMenu.vue";
 import PopupMenuItem from "@/components/PopupMenuItem.vue";
+import { EventEmitter2 } from "eventemitter2";
 import MessageBar from "@/components/MessageBar.vue";
 import MessageBarItem from "@/components/MessageBarItem.vue";
 import { State } from "vuex-class";
@@ -69,15 +71,32 @@ import dayjs from "dayjs";
 })
 export default class MessageList extends Vue {
   @State("hub") hub!: Hub;
+  @State("emitter") emitter!: EventEmitter2;
   users = [];
   msg!: string;
   async created() {
     // this.users.length = 0;
+    this.loadData();
+    this.emitter.on("friends.*", this.addChat.bind(this));
+  }
+  async destroyed() {
+    this.emitter.off("friends.*", this.addChat);
+  }
+
+  async addChat(data: any) {
+    // console.log(data);
+    this.loadData();
+  }
+
+  async loadData() {
     var response = await this.hub.invoke<[]>("User", "GetMessageList");
+
+    this.users = [];
     response.forEach((item) => {
       this.users.push(item);
     });
   }
+
   timenow(txt: string) {
     return dayjs(txt).format("YYYY/MM/DD HH:mm:ss");
   }
@@ -92,7 +111,7 @@ export default class MessageList extends Vue {
   // flex: 1;
   display: flex;
   flex-direction: column;
-  .messagelist-notice {
+  .systemCenter {
     position: relative;
     .messagelist-icons {
       width: 20px;

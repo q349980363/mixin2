@@ -5,15 +5,21 @@
 
     <div class="creategroup-searchbox">
       <img class="searchbox-ico" src="@/assets/images/search.svg" alt="" />
-      <input class="searchbox-input" type="text" placeholder="搜索" />
+      <input
+        class="searchbox-input"
+        v-model="searchInput"
+        type="text"
+        placeholder="搜索"
+      />
       <div>
-        <div class="searchbox-btn">搜索</div>
+        <div class="searchbox-btn" v-if="!search" @click="search = searchInput">搜索</div>
+        <div class="searchbox-btn" v-else @click="search = ''">取消</div>
       </div>
     </div>
 
     <div class="creategroup-list">
       <MessageBar
-        v-for="item in users"
+        v-for="item in Users"
         @click="item.isActive = !item.isActive"
         :key="item.ID"
       >
@@ -56,6 +62,8 @@ import MessageBarItem from "@/components/MessageBarItem.vue";
   },
 })
 export default class Creategroup extends Vue {
+  searchInput = "";
+  search = "";
   //好友用户信息
   UserInfo!: any;
   // isActive = true;
@@ -67,6 +75,9 @@ export default class Creategroup extends Vue {
   }
   @State("hub") hub!: Hub;
   users: any[] = [];
+  get Users() {
+    return this.users.filter((v) => v.Nickname.indexOf(this.search) != -1);
+  }
   async created() {
     // this.users.length = 0;
     var response = await this.hub.invoke<any[]>("Friends", "GetMyFriends");
