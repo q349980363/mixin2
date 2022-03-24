@@ -1,6 +1,8 @@
 package main
 
 import (
+	"time"
+
 	"github.com/jinzhu/gorm"
 )
 
@@ -11,4 +13,15 @@ type UserInfoClient struct {
 	Tags     string
 	Avatars  string //用户头像
 	Nickname string
+}
+
+type MessageListClient struct {
+	gorm.Model
+	UserName   string
+	Tags       string
+	Avatars    string //用户头像
+	Nickname   string
+	Unread     int       //消息是否已读  已读做到关系上还是做到消息上?
+	LastChatAt time.Time //消息是否已读  已读做到关系上还是做到消息上?
+	LastChat   string
 }
