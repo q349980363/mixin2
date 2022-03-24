@@ -37,8 +37,8 @@
         <MessageBarItem
           :src="item.Avatars"
           :name="item.Nickname"
-          content="1111111"
-          :time="timenow(item.CreatedAt)"
+          :content="item.LastChat"
+          :time="timenow(item.LastChatAt)"
         />
       </MessageBar>
     </div>
@@ -73,7 +73,7 @@ export default class MessageList extends Vue {
   msg!: string;
   async created() {
     // this.users.length = 0;
-    var response = await this.hub.invoke<[]>("Friends", "GetMyFriends");
+    var response = await this.hub.invoke<[]>("User", "GetMessageList");
     response.forEach((item) => {
       this.users.push(item);
     });
