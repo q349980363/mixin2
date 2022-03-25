@@ -1,7 +1,7 @@
 <template>
   <!-- 消息列表 -->
   <router-link :to="to" v-if="to" class="messagecolumn">
-    <Icons class="messagecolumn-headportrait" :name="_src" />
+    <Icons class="messagecolumn-headportrait" :name="_src" default="defaultAvatar"/>
     <div class="messagecolumn-center">
       <div class="center-content">
         <div class="name">{{ _name }}</div>
@@ -77,10 +77,17 @@ export default class MessageColumn extends Vue {
     text-align: left;
     .name {
       margin-bottom: 5px;
+      max-width: 180px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     .content {
       color: #999;
       font-size: 10px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
   .messagecolumn-time {

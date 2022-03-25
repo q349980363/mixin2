@@ -1,3 +1,4 @@
+/// <reference types="@capacitor/local-notifications" />
 import { CapacitorConfig } from "@capacitor/cli";
 
 const config: CapacitorConfig = {
@@ -7,9 +8,10 @@ const config: CapacitorConfig = {
   bundledWebRuntime: false,
   plugins: {
     LocalNotifications: {
+      // "sound"
       smallIcon: "ic_stat_icon_config_sample",
       iconColor: "#488AFF",
-      sound: "prompt.mp3",
+      sound: "beep.wav",
     },
   },
 };

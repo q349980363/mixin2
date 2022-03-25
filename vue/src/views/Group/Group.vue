@@ -4,7 +4,7 @@
     <BaseTopBarBack title="群聊" />
 
     <div class="group-list">
-      <UsersColumn to="/groupchat" src="groupHead" name="群"></UsersColumn>
+      <UsersColumn to="/groupchat" src="groupHead" name="群1"></UsersColumn>
     </div>
   </div>
 </template>

@@ -1,9 +1,5 @@
 <template>
-  <router-view class="views" v-slot="{ Component, route }">
-    <transition :name="route.meta.transition || ''">
-      <component :is="Component" />
-    </transition>
-  </router-view>
+  <router-view class="views"> </router-view>
 
   <ConnectMask v-if="stateHubConnection == 0" />
   <ReconnectMask v-if="stateHubConnection == -1" />

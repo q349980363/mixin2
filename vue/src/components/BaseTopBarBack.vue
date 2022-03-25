@@ -18,7 +18,7 @@ import { Options, Vue } from "vue-class-component";
 import { Action } from "vuex-class";
 import Icons from "@/components/Icons.vue";
 @Options({
-   components: {
+  components: {
     Icons,
   },
   props: {
@@ -70,6 +70,9 @@ export default class BaseTopBarBack extends Vue {
   }
 }
 .title-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .tool {

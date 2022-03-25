@@ -83,7 +83,7 @@ export default class BottomNavigationBar extends Vue {
   @color: #fff;
   background-color: @color;
   border-top: 1px solid darken(@color, 10%);
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .tabbar-item {
@@ -91,18 +91,18 @@ export default class BottomNavigationBar extends Vue {
   .item-list {
     position: relative;
     display: inline-block;
-    padding-top: 8px;
+    padding-top: 10px;
     padding-bottom: 5px;
-    height: 52px;
+    height: 60px;
     img {
-      margin-bottom: 3px;
-      width: 20px;
-      height: 20px;
+      margin-bottom: 2px;
+      width: 22px;
+      height: 22px;
     }
     span {
       position: absolute;
-      left: 20px;
-      top: 8px;
+      left: 23px;
+      top: 12px;
       min-width: 8px;
       height: 8px;
       border: none;

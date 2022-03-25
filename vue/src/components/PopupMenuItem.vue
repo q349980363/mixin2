@@ -39,6 +39,7 @@ export default class PopupMenuItem extends Vue {}
   margin-left: 10px;
   flex: 1;
   text-align: left;
+  font-family: 'Helvetica Neue'
 }
 </style>
 
