@@ -2,7 +2,7 @@
   <!-- 修改用户名称 -->
   <div class="setusername">
     <BaseTopBarBack title="设置备注">
-      <div class="setusername-submit" @click="back()">提交</div>
+      <div class="setusername-submit" @click="SetNickname()">提交</div>
     </BaseTopBarBack>
     <!-- 设置备注 -->
     <div class="setusername-main">
@@ -13,8 +13,9 @@
 </template>
 
 <script lang="ts">
+import Hub from "@/hub";
 import { Options, Vue } from "vue-class-component";
-import { Action } from "vuex-class";
+import { State, Action } from "vuex-class";
 @Options({
   components: {},
 })
@@ -22,6 +23,9 @@ export default class SetUserName extends Vue {
   //好友用户信息
   UserInfo!: any;
   msg!: string;
+  @State("hub") hub!: Hub;
+  @Action("tips") tips!: (msg: string) => void;
+  @Action("getMyUserInfo") getMyUserInfo!: () => void;
   @Action("back")
   back?: () => void;
   // created() {
@@ -29,7 +33,12 @@ export default class SetUserName extends Vue {
   // }
   OtherName: any = "";
   async created() {
-    this.OtherName = this.$route.query.UserName;
+    this.OtherName = this.$route.query.Nickname;
+  }
+  async SetNickname() {
+    var response = await this.hub.invoke("User", "SetNickname", this.OtherName);
+    this.tips(response);
+    await this.getMyUserInfo();
   }
 }
 </script>

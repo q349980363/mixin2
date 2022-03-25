@@ -9,8 +9,10 @@
         :name="UserInfo.Avatars"
       />
       <div class="info-main">
-        <div class="main-name">{{ UserInfo.UserName }}</div>
-        <div class="main-down">UID:{{ UserInfo.ID }}</div>
+        <div class="main-name">{{ UserInfo.Nickname }}</div>
+        <div class="main-down">
+          UID:{{ UserInfo.ID }} 账号:{{ UserInfo.UserName }}
+        </div>
       </div>
     </div>
     <div class="userchatset-list">
