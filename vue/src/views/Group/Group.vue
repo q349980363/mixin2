@@ -4,23 +4,18 @@
     <BaseTopBarBack title="群聊" />
 
     <div class="group-list">
-      <MessageBar to="/groupchat">
-        <MessageBarItem name="群1" />
-      </MessageBar>
+      <UsersColumn to="/groupchat" src="groupHead" name="群"></UsersColumn>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import MessageBar from "@/components/MessageBar.vue";
-import MessageBarItem from "@/components/MessageBarItem.vue";
-import Icons from "@/components/Icons.vue";
+import UsersColumn from "@/components/UsersColumn.vue";
+
 @Options({
   components: {
-    MessageBar,
-    MessageBarItem,
-    Icons,
+    UsersColumn,
   },
 })
 export default class Group extends Vue {}

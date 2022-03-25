@@ -3,13 +3,9 @@
   <div class="users">
     <TopBar title="联系人">
       <!-- 系统中心 -->
-      <router-link to="/systeminforms" class="messagelist-notice">
-        <img
-          src="@/assets/images/notice.svg"
-          alt=""
-          class="messagelist-icons"
-        />
-        <div class="red-dot"></div>
+      <router-link to="/systeminforms" class="users-notice">
+        <Icons name="notice" class="users-icon" />
+        <div class="notice-dot"></div>
       </router-link>
       <!-- 搜索 -->
       <!-- <router-link to="/searchpage"> -->
@@ -31,41 +27,37 @@
     </TopBar>
 
     <div class="users-list">
-      <MessageBar to="/group">
-        <MessageBarItem src="groupHead" name="群" />
-      </MessageBar>
-
-      <MessageBar
+      <UsersColumn to="/group" src="groupHead" name="群"></UsersColumn>
+      <UsersColumn
         :to="{ path: '/userchat', query: item }"
         v-for="item in users"
         :key="item.ID"
-      >
-        <MessageBarItem :src="item.Avatars" :name="item.Nickname" />
-      </MessageBar>
+        :src="item.Avatars"
+        :name="item.Nickname"
+      ></UsersColumn>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import Hub from "@/hub";
+import { State } from "vuex-class";
 import { Options, Vue } from "vue-class-component";
-import BottomNavigationBar from "@/components/BottomNavigationBar.vue"; // @ is an alias to /src
+import Icons from "@/components/Icons.vue";
 import TopBar from "@/components/TopBar.vue"; // @ is an alias to /src
+import BottomNavigationBar from "@/components/BottomNavigationBar.vue"; // @ is an alias to /src
 import PopupMenu from "@/components/PopupMenu.vue";
 import PopupMenuItem from "@/components/PopupMenuItem.vue";
-import MessageBar from "@/components/MessageBar.vue";
-import MessageBarItem from "@/components/MessageBarItem.vue";
-import { State } from "vuex-class";
-import Hub from "@/hub";
-import Icons from "@/components/Icons.vue";
+import UsersColumn from "@/components/UsersColumn.vue";
+
 @Options({
   components: {
-    BottomNavigationBar,
+    Icons,
     TopBar,
+    BottomNavigationBar,
     PopupMenu,
     PopupMenuItem,
-    MessageBar,
-    MessageBarItem,
-    Icons,
+    UsersColumn,
   },
 })
 export default class Users extends Vue {
@@ -88,13 +80,13 @@ export default class Users extends Vue {
   // flex: 1;
   display: flex;
   flex-direction: column;
-  .messagelist-notice {
+  .users-notice {
     position: relative;
-    .messagelist-icons {
+    .users-icon {
       margin-right: 15px;
       width: 20px;
     }
-    .red-dot {
+    .notice-dot {
       position: absolute;
       left: 10px;
       top: 0;

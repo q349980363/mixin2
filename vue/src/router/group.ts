@@ -9,8 +9,8 @@ const routes: Array<RouteRecordRaw> = [
 // 创建群聊
   {
     path: "/creategroup",
-    name: "Creategroup",
-    component: () => import("../views/Group/Creategroup.vue"),
+    name: "CreateGroup",
+    component: () => import("../views/Group/CreateGroup.vue"),
   },
 // 创建群聊成功
   {

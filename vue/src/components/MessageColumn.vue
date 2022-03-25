@@ -1,17 +1,19 @@
 <template>
-  <div class="head">
-    <slot name="left" class="left"></slot>
-    <!-- <img :src="src" alt="" /> -->
-    <Icons class="headportrait" default="groupHead" :name="_src" />
-  </div>
-  <div class="main">
-    <div class="left">
-      <div class="name">{{ _name }}</div>
-      <div class="content">{{ _content }}</div>
+  <!-- 消息列表 -->
+  <router-link :to="to" v-if="to" class="messagecolumn">
+    <Icons class="messagecolumn-headportrait" :name="_src" />
+    <div class="messagecolumn-center">
+      <div class="center-content">
+        <div class="name">{{ _name }}</div>
+        <div class="content">{{ _content }}</div>
+      </div>
     </div>
-  </div>
-  <div class="time">
-    <div>{{ time }}</div>
+    <div class="messagecolumn-time">
+      {{ time }}
+    </div>
+    <slot></slot>
+  </router-link>
+  <div class="messagecolumn" v-else>
     <slot></slot>
   </div>
 </template>
@@ -21,8 +23,11 @@ import { Options, Vue } from "vue-class-component";
 import Icons from "@/components/Icons.vue";
 
 @Options({
-  components: { Icons },
+  components: {
+    Icons,
+  },
   props: {
+    to: String,
     src: String,
     name: String,
     content: String,
@@ -30,7 +35,7 @@ import Icons from "@/components/Icons.vue";
     path: String,
   },
 })
-export default class MessageBarItem extends Vue {
+export default class MessageColumn extends Vue {
   _src!: string;
   _name!: string;
   _content!: string;
@@ -52,25 +57,23 @@ export default class MessageBarItem extends Vue {
 </script>
 
 <style lang="less" scoped>
-// 头像
-.head {
+.messagecolumn {
+  position: relative;
   display: flex;
-  .headportrait {
+  padding: 10px 15px;
+  height: 55px;
+  background-color: #fff;
+  border-bottom: 1px solid #d5d5d5;
+  .messagecolumn-headportrait {
     width: 35px;
     height: 35px;
     border: 1px solid #dbdbdb;
     border-radius: 5px;
   }
-}
-.main {
-  flex: 1;
-  display: flex;
-  justify-content: space-between;
-  margin: auto;
-  margin-left: 10px;
-  font-size: 14px;
-  .left {
+  .messagecolumn-center {
     flex: 1;
+    margin-left: 10px;
+    font-size: 14px;
     text-align: left;
     .name {
       margin-bottom: 5px;
@@ -80,9 +83,9 @@ export default class MessageBarItem extends Vue {
       font-size: 10px;
     }
   }
-}
-.time {
-  color: #999;
-  font-size: 14px;
+  .messagecolumn-time {
+    color: #999;
+    font-size: 14px;
+  }
 }
 </style>

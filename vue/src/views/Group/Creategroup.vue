@@ -12,34 +12,36 @@
         placeholder="搜索"
       />
       <div>
-        <div class="searchbox-btn" v-if="!search" @click="search = searchInput">搜索</div>
+        <div class="searchbox-btn" v-if="!search" @click="search = searchInput">
+          搜索
+        </div>
         <div class="searchbox-btn" v-else @click="search = ''">取消</div>
       </div>
     </div>
 
     <div class="creategroup-list">
-      <MessageBar
+      <CreateGroupColumn
         v-for="item in Users"
         @click="item.isActive = !item.isActive"
         :key="item.ID"
+        :src="item.Avatars"
+        :name="item.Nickname"
       >
-        <MessageBarItem :src="item.Avatars" :name="item.Nickname">
-          <template v-slot:left>
-            <img
-              v-if="item.isActive"
-              class="list-icon"
-              src="@/assets/images/creategroup-checked.svg"
-              alt=""
-            />
-            <img
-              v-else
-              class="list-icon"
-              src="@/assets/images/creategroup-unchecked.svg"
-              alt=""
-            />
-          </template>
-        </MessageBarItem>
-      </MessageBar>
+        <template v-slot:creategroupcolumn-selectbox>
+          <img
+            v-if="item.isActive"
+            class="list-icon"
+            src="@/assets/images/creategroup-checked.svg"
+            alt=""
+          />
+          <img
+            v-else
+            class="list-icon"
+            src="@/assets/images/creategroup-unchecked.svg"
+            alt=""
+          />
+        </template>
+      </CreateGroupColumn>
     </div>
 
     <div class="creategroup-bar">
@@ -53,15 +55,14 @@
 import Hub from "@/hub";
 import { State, Action } from "vuex-class";
 import { Options, Vue } from "vue-class-component";
-import MessageBar from "@/components/MessageBar.vue";
-import MessageBarItem from "@/components/MessageBarItem.vue";
+import CreateGroupColumn from "@/components/CreateGroupColumn.vue";
+
 @Options({
   components: {
-    MessageBar,
-    MessageBarItem,
+    CreateGroupColumn,
   },
 })
-export default class Creategroup extends Vue {
+export default class CreateGroup extends Vue {
   searchInput = "";
   search = "";
   //好友用户信息
