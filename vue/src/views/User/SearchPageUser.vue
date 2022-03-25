@@ -6,12 +6,15 @@
       <img class="searchbox-ico" src="@/assets/images/search.svg" alt="" />
       <input
         class="searchbox-input"
+        v-model="searchInput"
         type="text"
-        placeholder="搜索联系人"
-        v-model="username"
+        placeholder="搜索"
       />
       <div>
-        <div class="searchbox-btn" @click="clickSearch">搜索</div>
+        <div class="searchbox-btn" v-if="!search" @click="search = searchInput">
+          搜索
+        </div>
+        <div class="searchbox-btn" v-else @click="search = ''">取消</div>
       </div>
     </div>
 
@@ -26,7 +29,14 @@ import { State, Getter, Action, Mutation, namespace } from "vuex-class";
 @Options({
   components: {},
 })
-export default class SearchPage extends Vue {}
+export default class SearchPageUser extends Vue {
+  searchInput = "";
+  search = "";
+  users: any[] = [];
+  get Users() {
+    return this.users.filter((v) => v.Nickname.indexOf(this.search) != -1);
+  }
+}
 </script>
 
 <style lang="less" scoped>

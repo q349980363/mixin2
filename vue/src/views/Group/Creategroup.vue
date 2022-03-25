@@ -65,15 +65,9 @@ import CreateGroupColumn from "@/components/CreateGroupColumn.vue";
 export default class CreateGroup extends Vue {
   searchInput = "";
   search = "";
+
   //好友用户信息
   UserInfo!: any;
-  // isActive = true;
-  unselectButton() {
-    // this.isActive = false;
-  }
-  selectButton() {
-    // this.isActive = true;
-  }
   @State("hub") hub!: Hub;
   users: any[] = [];
   get Users() {
