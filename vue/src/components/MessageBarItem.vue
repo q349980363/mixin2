@@ -2,12 +2,12 @@
   <div class="head">
     <slot name="left" class="left"></slot>
     <!-- <img :src="src" alt="" /> -->
-    <Icons class="headportrait" default="groupHead" :name="src" />
+    <Icons class="headportrait" default="groupHead" :name="_src" />
   </div>
   <div class="main">
     <div class="left">
-      <div class="name">{{ name }}</div>
-      <div class="content">{{ content }}</div>
+      <div class="name">{{ _name }}</div>
+      <div class="content">{{ _content }}</div>
     </div>
   </div>
   <div class="time">
@@ -27,9 +27,28 @@ import Icons from "@/components/Icons.vue";
     name: String,
     content: String,
     time: String,
+    path: String,
   },
 })
-export default class MessageBarItem extends Vue {}
+export default class MessageBarItem extends Vue {
+  _src!: string;
+  _name!: string;
+  _content!: string;
+  _time!: string;
+  _path!: string;
+  created() {
+    const _this = this as any;
+    this._src = _this.src;
+    this._name = _this.name;
+    this._content = _this.content;
+    this._time = _this.time;
+    this._path = _this.path;
+    if (this._path == "/system_session") {
+      this._name = "系统消息";
+      this._src = "logo";
+    }
+  }
+}
 </script>
 
 <style lang="less" scoped>

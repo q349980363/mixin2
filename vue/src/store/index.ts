@@ -31,7 +31,9 @@ export default createStore({
     hubConnection: 0,
     reconnectCount: 0,
     tipsList: Array<string>(),
-    emitter: new EventEmitter2(),
+    emitter: new EventEmitter2({
+      wildcard: true,
+    }),
     userInfo: <any>{
       // UserName: "",
     },
@@ -109,7 +111,7 @@ export default createStore({
         state.emitter.emit("event." + json.name);
       });
       state.hub.emitter.on("MessageEvent.friends", (json: any) => {
-        console.log(  "friends." + json.data.UserName + "-" + json.data.Target)
+        console.log("friends." + json.data.UserName + "-" + json.data.Target);
         state.emitter.emit(
           "friends." + json.data.UserName + "-" + json.data.Target,
           json.data

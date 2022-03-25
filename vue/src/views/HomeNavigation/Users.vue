@@ -32,7 +32,7 @@
 
     <div class="users-list">
       <MessageBar to="/group">
-        <MessageBarItem name="群" />
+        <MessageBarItem src="groupHead" name="群" />
       </MessageBar>
 
       <MessageBar
