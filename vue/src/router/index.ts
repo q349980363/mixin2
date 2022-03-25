@@ -30,12 +30,24 @@ const routes: Array<RouteRecordRaw> = [
       requiresAuth: false,
     },
   },
-    // 添加用户
-    {
-      path: "/adduser",
-      name: "AddUser",
-      component: () => import("../views/AddUser.vue"),
-    },
+  // 号码认证
+  {
+    path: "/certificationnumber",
+    name: "CertificationNumber",
+    component: () => import("../views/CertificationNumber.vue"),
+  },
+  // 一键登录
+  {
+    path: "/akeytologin",
+    name: "AKeyToLogIn",
+    component: () => import("../views/AKeyToLogIn.vue"),
+  },
+  // 添加用户
+  {
+    path: "/adduser",
+    name: "AddUser",
+    component: () => import("../views/AddUser.vue"),
+  },
 
   // 主页导航
   {

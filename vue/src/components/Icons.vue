@@ -44,6 +44,7 @@ import administer from "@/assets/images/administer.svg";
 import return1 from "@/assets/images/return.svg";
 import return2 from "@/assets/images/return-right.svg";
 import more from "@/assets/images/more.svg";
+import mobilephone from "@/assets/images/mobilephone.svg";
 
 const iconPathList: { [key: string]: string } = {
   defaultSvg,
@@ -86,6 +87,7 @@ const iconPathList: { [key: string]: string } = {
   return1,
   return2,
   more,
+  mobilephone,
 };
 
 @Options({

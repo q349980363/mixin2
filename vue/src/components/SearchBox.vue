@@ -8,7 +8,15 @@
     </div>
   </div>
 </template>
+<script lang="ts">
+import { Options, Vue } from "vue-class-component";
+import { State, Action } from "vuex-class";
 
+@Options({
+  components: {},
+})
+export default class SearchBox extends Vue {}
+</script>
 <style lang="less" scoped>
 .searchbox {
   position: relative;
@@ -28,6 +36,11 @@
     height: 45px;
     padding-left: 26px;
     border: none;
+  }
+  .searchbox-input:focus {
+    border-color: none;
+    outline: 0;
+    box-shadow: none;
   }
   .searchbox-btn {
     padding: 5px 10px;

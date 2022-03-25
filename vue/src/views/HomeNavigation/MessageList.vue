@@ -4,12 +4,13 @@
     <TopBar title="消息">
       <!-- 系统中心 -->
       <router-link to="/systeminforms" class="systemCenter">
-        <img
+        <!-- <img
           src="@/assets/images/notice.svg"
           alt=""
           class="messagelist-icons"
-        />
-        <div class="red-dot"></div>
+        /> -->
+        <Icons name="notice" class="messagelist-icon" />
+        <div class="notice-dot"></div>
       </router-link>
       <!-- 添加 -->
       <PopupMenu :show="false" :src="require('@/assets/images/add.svg')">
@@ -27,21 +28,18 @@
     </TopBar>
 
     <div class="messagelist-list">
-      <MessageBar
+      <MessageColumn
         :to="{ path: '/userchat', query: item }"
         v-for="item in users"
         :key="item.ID"
+        :src="item.Avatars"
+        :path="item.Path"
+        :name="item.Nickname"
+        :content="item.LastChat"
+        :time="timenow(item.LastChatAt)"
       >
-        <div class="red-dot1" v-if="item.Unread != 0"></div>
-
-        <MessageBarItem
-          :src="item.Avatars"
-          :path="item.Path"
-          :name="item.Nickname"
-          :content="item.LastChat"
-          :time="timenow(item.LastChatAt)"
-        ></MessageBarItem>
-      </MessageBar>
+        <div class="messagelist-dot" v-if="item.Unread != 0"></div>
+      </MessageColumn>
     </div>
   </div>
 </template>
@@ -53,11 +51,11 @@ import TopBar from "@/components/TopBar.vue";
 import PopupMenu from "@/components/PopupMenu.vue";
 import PopupMenuItem from "@/components/PopupMenuItem.vue";
 import { EventEmitter2 } from "eventemitter2";
-import MessageBar from "@/components/MessageBar.vue";
-import MessageBarItem from "@/components/MessageBarItem.vue";
+import MessageColumn from "@/components/MessageColumn.vue";
 import { State } from "vuex-class";
 import Hub from "@/hub";
 import dayjs from "dayjs";
+import Icons from "@/components/Icons.vue";
 
 @Options({
   components: {
@@ -65,8 +63,8 @@ import dayjs from "dayjs";
     TopBar,
     PopupMenu,
     PopupMenuItem,
-    MessageBar,
-    MessageBarItem,
+    MessageColumn,
+    Icons,
   },
 })
 export default class MessageList extends Vue {
@@ -113,11 +111,11 @@ export default class MessageList extends Vue {
   flex-direction: column;
   .systemCenter {
     position: relative;
-    .messagelist-icons {
+    .messagelist-icon {
       width: 20px;
       margin-right: 15px;
     }
-    .red-dot {
+    .notice-dot {
       position: absolute;
       left: 10px;
       top: 0;
@@ -134,7 +132,7 @@ export default class MessageList extends Vue {
     overflow-y: auto;
     flex: 1;
     position: relative;
-    .red-dot1 {
+    .messagelist-dot {
       position: absolute;
       left: 45px;
       top: 6px;

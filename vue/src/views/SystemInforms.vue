@@ -54,16 +54,12 @@ import Hub from "@/hub";
 import { EventEmitter2 } from "eventemitter2";
 import { State, Action } from "vuex-class";
 import { Options, Vue } from "vue-class-component";
-import MessageBar from "@/components/MessageBar.vue";
-import MessageBarItem from "@/components/MessageBarItem.vue";
 import ChatBubble from "@/components/ChatBubble.vue";
 import Icons from "@/components/Icons.vue";
 import dayjs from "dayjs";
 
 @Options({
   components: {
-    MessageBar,
-    MessageBarItem,
     ChatBubble,
     Icons,
   },

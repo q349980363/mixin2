@@ -103,6 +103,11 @@ export default class AddUser extends Vue {
       padding-left: 26px;
       border: none;
     }
+    .searchbox-input:focus {
+      border-color: none;
+      outline: 0;
+      box-shadow: none;
+    }
     .searchbox-btn {
       padding: 5px 10px;
       background-color: #e2e2e2;
