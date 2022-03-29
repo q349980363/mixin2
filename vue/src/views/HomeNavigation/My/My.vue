@@ -143,7 +143,7 @@ export default class My extends Vue {
 
   .my-message {
     display: flex;
-    padding: 50px 15px;
+    padding: 40px 15px;
     background: url("~@/assets/images/bg.png") no-repeat;
     background-size: 100% auto;
     background-position: 0 -349px;
@@ -183,6 +183,10 @@ export default class My extends Vue {
       .content-name {
         font-size: 20px;
         font-weight: 700;
+        max-width: 245px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
       .content-info {
         display: flex;

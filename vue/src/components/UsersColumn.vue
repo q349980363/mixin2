@@ -1,7 +1,7 @@
 <template>
   <!-- 消息列表 -->
   <router-link :to="to" v-if="to" class="userscolumn">
-    <Icons class="userscolumn-headportrait" :name="_src" />
+    <Icons class="userscolumn-headportrait" :name="_src" default="headgroup"/>
     <div class="userscolumn-name">{{ _name }}</div>
   </router-link>
   <div class="messagecolumn" v-else>
@@ -61,6 +61,10 @@ export default class UsersColumn extends Vue {
     margin-left: 10px;
     font-size: 14px;
     text-align: left;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 </style>

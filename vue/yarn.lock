@@ -986,6 +986,11 @@
   "resolved" "https://registry.npmjs.org/@capacitor/status-bar/-/status-bar-1.0.8.tgz"
   "version" "1.0.8"
 
+"@capacitor/toast@^1.0.8":
+  "integrity" "sha512-wLSxvf+GVt5VvLUBeaI2FwW846pAF9qVPq2z97Z+xSJ/7PkebTAHR2eixJ3jJXRCpm9J1gWkRvljSvQup3/xaw=="
+  "resolved" "https://registry.npmjs.org/@capacitor/toast/-/toast-1.0.8.tgz"
+  "version" "1.0.8"
+
 "@hapi/address@2.x.x":
   "integrity" "sha512-QD1PhQk+s31P1ixsX0H0Suoupp3VMXzIVMSwobR3F3MSUO2YCV0B7xqLcUw/Bh8yuvd3LhpyqLQWTNcRmp6IdQ=="
   "resolved" "https://registry.npmmirror.com/@hapi/address/-/address-2.1.4.tgz"

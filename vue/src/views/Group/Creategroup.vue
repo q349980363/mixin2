@@ -26,6 +26,7 @@
         :key="item.ID"
         :src="item.Avatars"
         :name="item.Nickname"
+       
       >
         <template v-slot:creategroupcolumn-selectbox>
           <img
@@ -61,6 +62,7 @@ import CreateGroupColumn from "@/components/CreateGroupColumn.vue";
   components: {
     CreateGroupColumn,
   },
+
 })
 export default class CreateGroup extends Vue {
   searchInput = "";

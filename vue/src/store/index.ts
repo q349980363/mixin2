@@ -2,8 +2,65 @@ import { createStore } from "vuex";
 import router from "../router";
 import Hub from "../hub";
 import { EventEmitter2 } from "eventemitter2";
+import { Haptics, ImpactStyle } from "@capacitor/haptics";
+import {
+  LocalNotifications,
+  PermissionStatus,
+} from "@capacitor/local-notifications";
 import { Capacitor } from "@capacitor/core";
+import { Toast } from "@capacitor/toast";
 
+//IMPORTANCE_DEFAULT
+//IMPORTANCE_HIGH
+// 更高的通知重要性：无处不在，发出噪音和窥视。可以使用全屏意图。
+// 恒定值：4 （0x00000004）
+//IMPORTANCE_LOW
+// 低通知重要性：显示在阴影中，并可能显示在状态栏中（请参阅），但不会有明显的干扰性。shouldHideSilentStatusBarIcons()
+// 恒定值：2 （0x00000002）
+//IMPORTANCE_MIN
+// 最小通知重要性：仅显示在阴影中，首屏下方。这不应该使用，因为前台服务应该是用户关心的东西，所以将其通知标记为最小重要性没有语义意义。如果您在Android版本上执行此操作，系统将显示有关您的应用程序在后台运行的更高优先级的通知。Service.startForegroundBuild.VERSION_CODES.O
+// 恒定值：1 （0x00000001）
+
+(async () => {
+  //初始化通知权限
+  var permissionStatus = await LocalNotifications.requestPermissions();
+  await LocalNotifications.createChannel({
+    id: "im",
+    name: "普通消息",
+    description: "聊天消息,屏蔽后无法收到通知",
+    importance: 4, //12345代表最高优先级别
+  });
+})();
+
+const hapticsImpactMedium = async () => {
+  await Haptics.impact({ style: ImpactStyle.Medium });
+};
+
+const hapticsNotification = async () => {
+  await Haptics.notification();
+};
+
+const hapticsImpactLight = async () => {
+  await Haptics.impact({ style: ImpactStyle.Light });
+};
+
+const hapticsVibrate = async () => {
+  await Haptics.vibrate();
+};
+
+const hapticsSelectionStart = async () => {
+  await Haptics.selectionStart();
+};
+
+const hapticsSelectionChanged = async () => {
+  await Haptics.selectionChanged();
+};
+
+const hapticsSelectionEnd = async () => {
+  await Haptics.selectionEnd();
+};
+
+hapticsVibrate();
 console.log(process.env.NODE_ENV);
 let serverHost = location.hostname;
 
@@ -110,8 +167,27 @@ export default createStore({
       state.hub.emitter.on("MessageEvent.event", (json: any) => {
         state.emitter.emit("event." + json.name);
       });
-      state.hub.emitter.on("MessageEvent.friends", (json: any) => {
+      state.hub.emitter.on("MessageEvent.friends", async (json: any) => {
         console.log("friends." + json.data.UserName + "-" + json.data.Target);
+        //接收人等于自己是别人给自己发的消息
+        if (json.data.Target == state.userInfo.UserName) {
+          var ret = await LocalNotifications.schedule({
+            notifications: [
+              {
+                title: json.data.UserName,
+                body: json.data.Data,
+                id: json.data.ID,
+                autoCancel: true,
+                channelId: "im",
+                // schedule: { at: new Date() },
+                // actionTypeId: "",
+                // extra: null,
+              },
+            ],
+          });
+
+          await hapticsNotification();
+        }
         state.emitter.emit(
           "friends." + json.data.UserName + "-" + json.data.Target,
           json.data
@@ -167,7 +243,7 @@ export default createStore({
       commit("addTips", msg);
       setTimeout(() => {
         commit("shiftTips");
-      }, 1000);
+      }, 2000);
     },
     // async invokeHub({ dispatch, commit, state }): Promise<T> {},
   },

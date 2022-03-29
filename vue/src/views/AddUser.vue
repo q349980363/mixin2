@@ -142,6 +142,10 @@ export default class AddUser extends Vue {
           flex: 1;
           font-weight: 600;
           text-align: left;
+          max-width: 200px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
         .content-number {
           margin-top: 10px;
