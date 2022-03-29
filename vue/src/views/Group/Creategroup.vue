@@ -26,7 +26,6 @@
         :key="item.ID"
         :src="item.Avatars"
         :name="item.Nickname"
-       
       >
         <template v-slot:creategroupcolumn-selectbox>
           <img
@@ -46,8 +45,8 @@
     </div>
 
     <div class="creategroup-bar">
-      <button class="bar-but-active">完成(2)</button>
-      <button class="bar-but">完成</button>
+      <!-- <button class="bar-but-active">完成(2)</button> -->
+      <button class="bar-but" :class="{ btnActive: isActive }">完成</button>
     </div>
   </div>
 </template>
@@ -62,12 +61,10 @@ import CreateGroupColumn from "@/components/CreateGroupColumn.vue";
   components: {
     CreateGroupColumn,
   },
-
 })
 export default class CreateGroup extends Vue {
   searchInput = "";
   search = "";
-
   //好友用户信息
   UserInfo!: any;
   @State("hub") hub!: Hub;
@@ -148,7 +145,7 @@ export default class CreateGroup extends Vue {
       border-radius: 5px;
       border: none;
     }
-    .bar-but-active {
+    .btnActive {
       margin-right: 15px;
       width: 65px;
       height: 36px;
