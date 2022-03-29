@@ -25,7 +25,7 @@ export default class TopBar extends Vue {
 <style scoped lang="less">
 .TopBar {
   display: flex;
-  padding: 12px 15px;
+  padding: 14px 15px;
   height: 48px;
   @color: #fff;
   background-color: @color;
