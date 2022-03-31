@@ -10,7 +10,7 @@
           class="messagelist-icons"
         /> -->
         <Icons name="notice" class="messagelist-icon" />
-        <div class="notice-dot"></div>
+        <!-- <div class="notice-dot"></div> -->
       </router-link>
       <!-- 添加 -->
       <PopupMenu :show="false" :src="require('@/assets/images/add.svg')">

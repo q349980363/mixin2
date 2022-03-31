@@ -42,7 +42,7 @@ export default class AdministerGroup extends Vue {}
       border-bottom: 1px solid #e6e6e6;
 
       .content-headportrait {
-        margin: auto;
+        margin-top: 10px;
         width: 35px;
         height: 35px;
         border: 1px solid #dbdbdb;

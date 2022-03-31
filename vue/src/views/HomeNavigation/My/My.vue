@@ -152,6 +152,7 @@ export default class My extends Vue {
       position: relative;
       width: 60px;
       height: 60px;
+      cursor: pointer;
       .headportrait {
         margin: 0 auto;
         width: 60px;

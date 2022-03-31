@@ -5,7 +5,7 @@
       <!-- 系统中心 -->
       <router-link to="/systeminforms" class="users-notice">
         <Icons name="notice" class="users-icon" />
-        <div class="notice-dot"></div>
+        <!-- <div class="notice-dot"></div> -->
       </router-link>
       <!-- 搜索 -->
       <!-- <router-link to="/searchpage"> -->
