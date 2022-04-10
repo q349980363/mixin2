@@ -1,11 +1,15 @@
 <template>
   <!-- 消息列表 -->
   <router-link :to="to" v-if="to" class="messagecolumn">
-    <Icons class="messagecolumn-headportrait" :name="_src" default="defaultAvatar"/>
+    <Icons
+      class="messagecolumn-headportrait"
+      :name="_src"
+      default="defaultAvatar"
+    />
     <div class="messagecolumn-center">
       <div class="center-content">
         <div class="name">{{ _name }}</div>
-        <div class="content">{{ _content }}</div>
+        <div class="content">{{ content }}</div>
       </div>
     </div>
     <div class="messagecolumn-time">
@@ -34,18 +38,23 @@ import Icons from "@/components/Icons.vue";
     time: String,
     path: String,
   },
+  watch: {},
 })
 export default class MessageColumn extends Vue {
-  _src!: string;
+  _src!: any;
   _name!: string;
   _content!: string;
   _time!: string;
   _path!: string;
   created() {
+    this.loadData();
+  }
+
+  loadData() {
     const _this = this as any;
     this._src = _this.src;
     this._name = _this.name;
-    this._content = _this.content;
+    // this._content = _this.content;
     this._time = _this.time;
     this._path = _this.path;
     if (this._path == "/system_session") {

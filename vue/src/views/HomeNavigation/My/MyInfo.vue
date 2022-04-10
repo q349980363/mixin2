@@ -11,7 +11,7 @@
         />
       </ListItem>
       <ListItem to="/setnickname" name="昵称">
-        <div>{{ userInfo.Nickname }}</div>
+        <div class="list-setnickname">{{ userInfo.Nickname }}</div>
       </ListItem>
       <ListItem name="账号">
         <div>{{ userInfo.UserName }}</div>
@@ -94,6 +94,12 @@ export default class MyInfo extends Vue {
       margin-top: 15px;
       width: 15px;
       height: 15px;
+    }
+    .list-setnickname {
+      max-width: 245px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 }

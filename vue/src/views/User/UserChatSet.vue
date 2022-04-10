@@ -34,7 +34,7 @@
         ok="清空"
         @onOk="clickClear"
       >
-        确定删除和Mg的聊天记录吗
+        确定删除和{{ UserInfo.Nickname }}的聊天记录吗
       </Modal>
       <Modal
         v-model:show="showModel2"
@@ -44,7 +44,7 @@
         color="#DC3545"
         @onOk="clickDelete"
       >
-        将联系人"Mg"删除,将同时删除与该联系人的聊天记录
+        将联系人"{{ UserInfo.Nickname }}"删除,将同时删除与该联系人的聊天记录
       </Modal>
     </div>
   </div>

@@ -50,12 +50,13 @@ import BottomNavigationBar from "@/components/BottomNavigationBar.vue";
 import TopBar from "@/components/TopBar.vue";
 import PopupMenu from "@/components/PopupMenu.vue";
 import PopupMenuItem from "@/components/PopupMenuItem.vue";
-import { EventEmitter2 } from "eventemitter2";
+import { EventEmitter2, Listener } from "eventemitter2";
 import MessageColumn from "@/components/MessageColumn.vue";
 import { State } from "vuex-class";
 import Hub from "@/hub";
 import dayjs from "dayjs";
 import Icons from "@/components/Icons.vue";
+// import { forEach } from "lodash";
 
 @Options({
   components: {
@@ -70,15 +71,24 @@ import Icons from "@/components/Icons.vue";
 export default class MessageList extends Vue {
   @State("hub") hub!: Hub;
   @State("emitter") emitter!: EventEmitter2;
+  ListenerList: Listener[] = [];
   users = [];
   msg!: string;
   async created() {
     // this.users.length = 0;
     this.loadData();
-    this.emitter.on("friends.*", this.addChat.bind(this));
+    var listener = this.emitter.on("friends.*", this.addChat.bind(this), {
+      objectify: true,
+    }) as Listener;
+    console.log(listener);
+    this.ListenerList.push(listener);
   }
-  async destroyed() {
-    this.emitter.off("friends.*", this.addChat);
+
+  unmounted() {
+    this.ListenerList.forEach((listener) => {
+      listener.off();
+    });
+    this.ListenerList = [];
   }
 
   async addChat(data: any) {
@@ -88,10 +98,10 @@ export default class MessageList extends Vue {
 
   async loadData() {
     var response = await this.hub.invoke<[]>("User", "GetMessageList");
-
     this.users = [];
     response.forEach((item) => {
       this.users.push(item);
+      // console.log(item);
     });
   }
 

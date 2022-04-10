@@ -76,6 +76,7 @@ func (hub *FriendsHub) ClearChat(username string) string {
 
 	hub.session.hub.SendUserEvent(hub.session.UserInfo.UserName, "ClearChat", username)
 	hub.session.hub.SendUserEvent(username, "ClearChat", hub.session.UserInfo.UserName)
+	updateFriendsLastChatTime(hub.session.UserInfo.UserName, username, "已清空.")
 	return "清除成功"
 }
 

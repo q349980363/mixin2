@@ -55,7 +55,7 @@ export default class SetNickname extends Vue {
     flex: 1;
     .list-content {
       input {
-        padding: 12px 0 12px 15px;
+        padding: 15px;
         width: 100%;
         border: none;
         border-bottom: 1px solid #d5d5d5;

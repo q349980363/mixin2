@@ -60,9 +60,9 @@ export default class SetUserName extends Vue {
       text-align: left;
     }
     input {
-      padding-left: 10px;
+      padding: 10px;
       width: 100%;
-      height: 36px;
+      height: 46px;
       border: none;
       background-color: #e2e2e2;
       border-radius: 5px;

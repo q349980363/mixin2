@@ -53,7 +53,7 @@ import { Options, Vue } from "vue-class-component";
 import ChatBubble from "@/components/ChatBubble.vue"; // @ is an alias to /src
 import Hub from "@/hub";
 import { State } from "vuex-class";
-import { EventEmitter2 } from "eventemitter2";
+import { EventEmitter2, Listener } from "eventemitter2";
 import Icons from "@/components/Icons.vue";
 import dayjs from "dayjs";
 /**
@@ -78,6 +78,7 @@ export default class UserChat extends Vue {
   @State("emitter") emitter!: EventEmitter2;
   //自身用户信息
   @State("userInfo") MyUserInfo!: any;
+  ListenerList: Listener[] = [];
   //好友用户信息
   UserInfo!: any;
   dataList: any[] = [];
@@ -88,25 +89,39 @@ export default class UserChat extends Vue {
   created() {
     this.UserInfo = this.$route.query;
     this.loadData();
-    this.emitter.on(
+    var listener = this.emitter.on(
       "friends." + this.UserInfo.UserName + "-" + this.MyUserInfo.UserName,
-      this.addChat.bind(this)
-    );
-    this.emitter.on(
+      this.addChat.bind(this),
+      {
+        objectify: true,
+      }
+    ) as Listener;
+    this.ListenerList.push(listener);
+    listener = this.emitter.on("event.ClearChat", this.clearChat.bind(this), {
+      objectify: true,
+    }) as Listener;
+    this.ListenerList.push(listener);
+    listener = this.emitter.on(
       "friends." + this.MyUserInfo.UserName + "-" + this.UserInfo.UserName,
-      this.addChat.bind(this)
-    );
+      this.addChat.bind(this),
+      {
+        objectify: true,
+      }
+    ) as Listener;
+    this.ListenerList.push(listener);
   }
-  async destroyed() {
-    this.emitter.off(
-      "friends." + this.UserInfo.UserName + "-" + this.MyUserInfo.UserName,
-      this.addChat
-    );
-    this.emitter.off(
-      "friends." + this.MyUserInfo.UserName + "-" + this.UserInfo.UserName,
-      this.addChat
-    );
+
+  async unmounted() {
+    this.ListenerList.forEach((listener) => {
+      listener.off();
+    });
+    this.ListenerList = [];
   }
+
+  async clearChat() {
+    this.dataList = [];
+  }
+
   async addChat(data: any) {
     this.dataList.push(data);
     this.$nextTick(function () {
