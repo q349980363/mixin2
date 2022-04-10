@@ -30,7 +30,7 @@ func (hub *Hub) SendSystemChat(chat *SystemChat) {
 	// 	"type": "system",
 	// 	"data": chat,
 	// })
-	hub.SendUserEvent(chat.UserName, "SystemChat")
+	hub.SendUserEvent(chat.UserName, "SystemChat", nil)
 }
 
 func (hub *Hub) SendFriendsChat(chat *FriendsChat) {

@@ -73,6 +73,9 @@ func (hub *FriendsHub) ClearChat(username string) string {
 		UserName: username,
 		Target:   hub.session.UserInfo.UserName,
 	}).Delete(&FriendsChat{})
+
+	hub.session.hub.SendUserEvent(hub.session.UserInfo.UserName, "ClearChat", username)
+	hub.session.hub.SendUserEvent(username, "ClearChat", hub.session.UserInfo.UserName)
 	return "清除成功"
 }
 

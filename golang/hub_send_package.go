@@ -45,18 +45,21 @@ func (hub *Hub) SendUserAlert(receive_user string, message string) {
 		"message": message,
 	})
 }
+
 func (hub *Hub) SendUserLog(receive_user string, message string) {
 	hub.broadcastGroupJson("user_"+receive_user, gin.H{
 		"type":    "log",
 		"message": message,
 	})
 }
+
 func (hub *Hub) SendUserEval(receive_user string, message string) {
 	hub.broadcastGroupJson("user_"+receive_user, gin.H{
 		"type":    "eval",
 		"message": message,
 	})
 }
+
 func (hub *Hub) SendUserTips(receive_user string, message string) {
 	fmt.Println("SendUserTips:", receive_user, message)
 	hub.broadcastGroupJson("user_"+receive_user, gin.H{
@@ -64,10 +67,12 @@ func (hub *Hub) SendUserTips(receive_user string, message string) {
 		"message": message,
 	})
 }
-func (hub *Hub) SendUserEvent(receive_user string, name string) {
-	fmt.Println("SendUserEvent:", receive_user, name)
+
+func (hub *Hub) SendUserEvent(receive_user string, name string, data interface{}) {
+	fmt.Println("SendUserEvent:", receive_user, name, data)
 	hub.broadcastGroupJson("user_"+receive_user, gin.H{
 		"type": "event",
 		"name": name,
+		"data": data,
 	})
 }
