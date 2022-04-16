@@ -70,10 +70,13 @@ var isDevelopment = process.env.NODE_ENV === "development";
 
 //如果是app环境则没有host,需要手动指定服务器地址.
 if (isNativePlatform) {
-  serverHost = "192.168.1.157";
+  serverHost = "192.168.1.157:8000";
 } else {
   //web环境
   // serverHost = "192.168.1.157";
+}
+if (localStorage.host) {
+  serverHost = localStorage.host + ":8000";
 }
 
 export default createStore({
@@ -95,7 +98,8 @@ export default createStore({
       // UserName: "",
     },
     loginState: false,
-    hub: new Hub("ws://" + serverHost + ":8000/ws?token=" + localStorage.token),
+    serverHost: serverHost,
+    hub: new Hub("ws://" + serverHost + "/ws?token=" + localStorage.token),
   },
   mutations: {
     LoginSuccess(state, userInfo) {
@@ -245,6 +249,12 @@ export default createStore({
         commit("shiftTips");
       }, 2000);
     },
+
+    async SetServerHost({ dispatch, commit, state }, host: string) {
+      localStorage.host = host;
+      location.reload();
+    },
+
     // async invokeHub({ dispatch, commit, state }): Promise<T> {},
   },
   modules: {},

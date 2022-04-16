@@ -44,6 +44,12 @@ const routes: Array<RouteRecordRaw> = [
     component: () =>
       import("../views/HomeNavigation/My/SettingsCurrencySize.vue"),
   },
+    // 服务器IP切换 settings-settingserver
+    {
+      path: "/settingserver",
+      name: "SettingServer",
+      component: () => import("../views/HomeNavigation/My/SettingServer.vue"),
+    },
   // 关于
   {
     path: "/about",
