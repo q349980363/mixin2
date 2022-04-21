@@ -16,8 +16,21 @@ func (hub *Hub) SendSystemTxt(username string, txt string) {
 		Operation: "ok_no",
 	})
 }
+func (hub *Hub) SendGlobalTxt(session *HubSession, txt string) {
+	send_user := session.UserInfo.UserName
+	ip, ipAddr := session.GetIp_Addr()
+	hub.SendGlobalChah(&GlobalChat{
+		Type:     "txt",
+		UserName: send_user,
+		Data:     txt,
+		Ip:       ip,
+		IpAddr:   ipAddr,
+	})
+}
 
-func (hub *Hub) SendFriendsTxt(send_user string, receive_user string, txt string) {
+func (hub *Hub) SendFriendsTxt(session *HubSession, receive_user string, txt string) {
+	send_user := session.UserInfo.UserName
+	ip, ipAddr := session.GetIp_Addr()
 	d := db.First(&Friends{}, &Friends{
 		UserName: receive_user,
 		Target:   send_user,
@@ -34,8 +47,8 @@ func (hub *Hub) SendFriendsTxt(send_user string, receive_user string, txt string
 		UserName: send_user,
 		Target:   receive_user,
 		Data:     txt,
-		Ip:       "",
-		IpAddr:   "",
+		Ip:       ip,
+		IpAddr:   ipAddr,
 	})
 }
 

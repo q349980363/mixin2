@@ -36,9 +36,11 @@ func (route *Route) handleMessage(s *HubSession, msgType string, json map[string
 	if msgType != "call" {
 		return
 	}
+	hubName := json["hubName"].(string)
+	functionName := json["functionName"].(string)
 	var controller interface{}
 	auth := false
-	switch json["hubName"].(string) {
+	switch hubName {
 	case "Login":
 		controller = &LoginHub{
 			session: s,
@@ -58,6 +60,16 @@ func (route *Route) handleMessage(s *HubSession, msgType string, json map[string
 			session: s,
 		}
 		auth = true
+	case "Group":
+		controller = &GroupHub{
+			session: s,
+		}
+		auth = true
+	case "Global":
+		controller = &GlobalHub{
+			session: s,
+		}
+		auth = true
 	default:
 		fmt.Println("Call", json["hubName"])
 		panic(errors.New("所调用的Hub不存在,严格区分大小写"))
@@ -73,15 +85,14 @@ func (route *Route) handleMessage(s *HubSession, msgType string, json map[string
 		}
 	}
 	t := reflect.ValueOf(controller)
-	functionName := json["functionName"].(string)
 	numMethod := t.NumMethod()
 	_ = numMethod
 	fn := t.MethodByName(functionName)
 
-	fmt.Println("Call", json["hubName"], functionName)
+	fmt.Println("Call", hubName, functionName)
 	if !fn.IsValid() {
 		//TODO 如果指针空则会触发异常.
-		panic(errors.New("所调用的函数不存在,严格区分大小写"))
+		panic(errors.New("所调用的函数" + hubName + "." + functionName + "()不存在,严格区分大小写"))
 	}
 	fnType := fn.Type()
 	fnLenth := fnType.NumIn()

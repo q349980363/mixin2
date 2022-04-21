@@ -1,6 +1,6 @@
 <template>
   <!-- 消息列表 -->
-  <router-link :to="to" v-if="to" class="messagecolumn">
+  <router-link :to="_to" v-if="_to" class="messagecolumn">
     <Icons
       class="messagecolumn-headportrait"
       :name="_src"
@@ -43,6 +43,7 @@ import Icons from "@/components/Icons.vue";
 export default class MessageColumn extends Vue {
   _src!: any;
   _name!: string;
+  _to!: string;
   _content!: string;
   _time!: string;
   _path!: string;
@@ -57,9 +58,17 @@ export default class MessageColumn extends Vue {
     // this._content = _this.content;
     this._time = _this.time;
     this._path = _this.path;
-    if (this._path == "/system_session") {
+    this._to = _this.to;
+    if (_this.path == "/system_session") {
+      this._to = "/systeminforms";
       this._name = "系统消息";
       this._src = "logo";
+      //系统消息自定义显示
+    } else if (_this.path == "/global_chat") {
+      this._to = "/globalchat";
+      // this._name = "系统消息";
+      // this._src = "logo";
+      //世界消息自定义信息
     }
   }
 }

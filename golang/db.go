@@ -24,6 +24,8 @@ func init() {
 	db.AutoMigrate(&Friends{})
 	db.AutoMigrate(&Group{})
 	db.AutoMigrate(&GroupRelation{})
+	db.AutoMigrate(&Config{})
+	db.AutoMigrate(&GlobalChat{})
 
 	// db.AutoMigrate(&Chat{})
 	db.LogMode(true)

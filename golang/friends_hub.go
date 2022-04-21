@@ -89,7 +89,7 @@ func (hub *FriendsHub) Read(username string) string {
 }
 
 func (hub *FriendsHub) SendChat(username string, txt string) string {
-	hub.session.hub.SendFriendsTxt(hub.session.UserInfo.UserName, username, txt)
+	hub.session.hub.SendFriendsTxt(hub.session, username, txt)
 	return ""
 }
 func (hub *FriendsHub) Delete(username string) string {

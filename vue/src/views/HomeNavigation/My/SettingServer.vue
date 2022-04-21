@@ -5,31 +5,18 @@
 
     <div class="settingserver-list">
       <div class="switch">
-        <div class="switch-title">
+        <ListItem class="switch-title">
           <!-- 服务器IP切换
           <br /> -->
           <small>当前 :{{ serverHost }}</small>
-        </div>
-        <div class="switch-item" @click="SetServerHost('')">重置为默认</div>
-        <div class="switch-item" @click="SetServerHost('127.0.0.1:8000')">
-          127.0.0.1:8000 (本机)
-        </div>
-        <div class="switch-item" @click="SetServerHost('192.168.1.157:8000')">
-          192.168.1.157:8000 (Mg1024)
-        </div>
-        <div class="switch-item" @click="SetServerHost('192.168.1.117:8000')">
-          192.168.1.117:8000 (Mg1025)
-        </div>
-        <div class="switch-item" @click="SetServerHost('192.168.1.235:8000')">
-          192.168.1.235:8000
-        </div>
-        <div class="switch-item" @click="SetServerHost('home.lingy.top:89')">
-          home.lingy.top:89
-        </div>
-
-        <div class="switch-item" @click="SetServerHost('198.211.7.244:8000')">
-          198.211.7.244:8000 (服务器1)
-        </div>
+        </ListItem>
+        <ListItem class="switch-item" @click="SetServerHost('')" name="重置为默认" />
+        <ListItem class="switch-item" @click="SetServerHost('127.0.0.1:8000')" name="127.0.0.1:8000 (本机)" />
+        <ListItem class="switch-item" @click="SetServerHost('192.168.1.157:8000')" name="192.168.1.157:8000 (Mg1024)" />
+        <ListItem class="switch-item" @click="SetServerHost('192.168.1.117:8000')" name="192.168.1.117:8000 (Mg1025)" />
+        <ListItem class="switch-item" @click="SetServerHost('192.168.1.235:8000')" name="192.168.1.235:8000" />
+        <ListItem class="switch-item" @click="SetServerHost('home.lingy.top:89')" name="home.lingy.top:89" />
+        <ListItem class="switch-item" @click="SetServerHost('198.211.7.244:8000')" name="198.211.7.244:8000 (服务器1)" />
       </div>
     </div>
   </div>

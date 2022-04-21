@@ -44,7 +44,18 @@ type FriendsChat struct {
 	Read     bool   //消息是否已读  已读做到关系上还是做到消息上?
 }
 
-//基础消息
+//世界消息
+type GlobalChat struct {
+	gorm.Model
+	Type     string //消息类型
+	Data     string
+	UserName string `gorm:"index"` //所属用户名
+	Ip       string //发送者IP
+	IpAddr   string //发送者IP物理位置定位
+	Read     bool   //消息是否已读  已读做到关系上还是做到消息上?
+}
+
+//群消息
 type GroupChat struct {
 	gorm.Model
 	Type     string //消息类型
@@ -83,4 +94,11 @@ type GroupRelation struct {
 	Unread     int       //消息是否已读  已读做到关系上还是做到消息上?
 	LastChatAt time.Time //消息是否已读  已读做到关系上还是做到消息上?
 	LastChat   string
+}
+
+type Config struct {
+	gorm.Model
+	Name       string `gorm:"index"` //所属用户名
+	DataString string
+	DataInt    int
 }

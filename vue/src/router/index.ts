@@ -109,6 +109,18 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/Chat/GroupChat.vue"),
     meta: { transition: "slide-left" },
   },
+  {
+    path: "/globalchat",
+    name: "GlobalChat",
+    component: () => import("../views/Chat/GlobalChat.vue"),
+    meta: { transition: "slide-left" },
+  },
+  {
+    path: "/globalchatset",
+    name: "GlobalChatSet",
+    component: () => import("../views/Global/GlobalChatSet.vue"),
+    meta: { transition: "slide-left" },
+  },
 
   {
     path: "/demo",

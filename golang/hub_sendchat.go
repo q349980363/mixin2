@@ -32,6 +32,13 @@ func (hub *Hub) SendSystemChat(chat *SystemChat) {
 	// })
 	hub.SendUserEvent(chat.UserName, "SystemChat", nil)
 }
+func (hub *Hub) SendGlobalChah(chat *GlobalChat) {
+	db.Create(chat)
+	hub.broadcastGroupJson("user_"+chat.UserName, gin.H{
+		"type": "global",
+		"data": chat,
+	})
+}
 
 func (hub *Hub) SendFriendsChat(chat *FriendsChat) {
 	db.Create(chat)

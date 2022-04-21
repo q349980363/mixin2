@@ -1,5 +1,7 @@
 package main
 
+import "sort"
+
 type UserHub struct {
 	session *HubSession
 }
@@ -34,8 +36,16 @@ func (hub *UserHub) GetMessageList() []MessageListClient {
 	where := db.Model(&Friends{}).Select("user_infos.*,friends.*").Where(&Friends{UserName: hub.session.UserInfo.UserName})
 	where.Joins("left join user_infos on user_infos.user_name = friends.target").Scan(&clientUsers)
 
-	// .Find(&users)
-	// clientUsers := make([]UserInfoClient, 0)
-	// copier.Copy(&clientUsers, &users)
+	var globalChat GlobalChat
+	db.Order("ID desc").Limit(1).Order("ID").Find(&globalChat)
+	clientUsers = append(clientUsers, MessageListClient{
+		Nickname:   "世界群聊",
+		Avatars:    "groupchat",
+		Path:       "/global_chat",
+		LastChat:   globalChat.Data,
+		LastChatAt: globalChat.CreatedAt,
+	})
+	sort.Sort(MessageListClients(clientUsers))
+
 	return clientUsers
 }

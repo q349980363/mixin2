@@ -4,8 +4,7 @@ type GroupHub struct {
 	session *HubSession
 }
 
-func NewGroupController(s *HubSession) *GroupHub {
-	obj := &GroupHub{}
-	obj.session = s
-	return obj
+func (hub *GroupHub) Create(userList string) (bool, string) {
+
+	return true, "创建成功"
 }

@@ -45,8 +45,10 @@
     </div>
 
     <div class="creategroup-bar">
-      <!-- <button class="bar-but-active">完成(2)</button> -->
-      <button class="bar-but" :class="{ btnActive: isActive }">完成</button>
+      <button class="bar-but btnActive" v-if="UsersCount > 1">
+        完成({{ UsersCount }})
+      </button>
+      <button class="bar-but" v-else>完成</button>
     </div>
   </div>
 </template>
@@ -72,6 +74,11 @@ export default class CreateGroup extends Vue {
   get Users() {
     return this.users.filter((v) => v.Nickname.indexOf(this.search) != -1);
   }
+
+  get UsersCount() {
+    return this.Users.filter((v) => v.isActive).length;
+  }
+
   async created() {
     // this.users.length = 0;
     var response = await this.hub.invoke<any[]>("Friends", "GetMyFriends");

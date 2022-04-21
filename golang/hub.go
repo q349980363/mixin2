@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"runtime/debug"
 	"sync"
 
 	"github.com/gin-gonic/gin"
@@ -44,6 +45,11 @@ func (hub *Hub) GetGroupAllUsers(name string) []*HubSession {
 	old = hub.session__GroupToSession[name]
 	hub.lock.Unlock()
 	return old
+}
+
+func (hub *Hub) broadcastJson(v interface{}) {
+	json, _ := json.Marshal(v)
+	hub.m.Broadcast(json)
 }
 
 func (hub *Hub) broadcastGroupJson(name string, data interface{}) {
@@ -97,7 +103,7 @@ func (hub *Hub) handleMessage(s *melody.Session, bytes []byte) {
 	defer func() {
 		if err := recover(); err != nil {
 			fmt.Println("\033[1;37;41m HandleMessage err :", err)
-
+			debug.PrintStack()
 			hubS.WriteError(-1, fmt.Sprintf("HandleMessage err :%s", err))
 		}
 	}()
@@ -342,4 +348,8 @@ func (hubS *HubSession) SendEvent(name string) {
 		"type": "event",
 		"name": name,
 	})
+}
+
+func (hubS *HubSession) GetIp_Addr() (string, string) {
+	return getIpAddr_melody(hubS.s)
 }

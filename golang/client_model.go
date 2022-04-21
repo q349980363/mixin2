@@ -26,3 +26,16 @@ type MessageListClient struct {
 	LastChat   string
 	Path       string //特殊参数
 }
+type MessageListClients []MessageListClient
+
+func (s MessageListClients) Len() int {
+	return len(s)
+}
+
+func (s MessageListClients) Less(i, j int) bool {
+	return s[j].LastChatAt.Before(s[i].LastChatAt)
+}
+
+func (s MessageListClients) Swap(i, j int) {
+	s[i], s[j] = s[j], s[i]
+}

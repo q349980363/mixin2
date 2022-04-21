@@ -62,7 +62,7 @@ const hapticsSelectionEnd = async () => {
 
 hapticsVibrate();
 console.log(process.env.NODE_ENV);
-let serverHost = location.hostname;
+let serverHost = location.hostname + ":8000";
 
 const isNativePlatform = Capacitor.isNativePlatform();
 // alert(isNativePlatform)
@@ -76,7 +76,7 @@ if (isNativePlatform) {
   // serverHost = "192.168.1.157";
 }
 if (localStorage.host) {
-  serverHost = localStorage.host + ":8000";
+  serverHost = localStorage.host;
 }
 
 export default createStore({
@@ -196,6 +196,28 @@ export default createStore({
           "friends." + json.data.UserName + "-" + json.data.Target,
           json.data
         );
+      });
+      state.hub.emitter.on("MessageEvent.global", async (json: any) => {
+        //接收人等于自己是别人给自己发的消息
+        if (json.data.Target == state.userInfo.UserName) {
+          var ret = await LocalNotifications.schedule({
+            notifications: [
+              {
+                title: json.data.UserName,
+                body: json.data.Data,
+                id: json.data.ID,
+                autoCancel: true,
+                channelId: "im",
+                // schedule: { at: new Date() },
+                // actionTypeId: "",
+                // extra: null,
+              },
+            ],
+          });
+
+          await hapticsNotification();
+        }
+        state.emitter.emit("global", json.data);
       });
       state.hub.emitter.onAny(function (
         event: string | string[],
