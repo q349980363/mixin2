@@ -11,6 +11,18 @@
         "runOn": "folderOpen"
       },
       "problemMatcher": []
+    },
+    {
+      "label": "docker build",
+      "type": "shell",
+      "command": "docker build --tag mixin .",
+      "problemMatcher": []
+    },
+    {
+      "label": "docker run",
+      "type": "shell",
+      "command": "docker run --tag mixin .",
+      "problemMatcher": []
     }
   ]
 }

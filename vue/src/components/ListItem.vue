@@ -37,7 +37,10 @@ import { Options, Vue } from "vue-class-component";
     name: String,
   },
 })
-export default class ListItem extends Vue {}
+export default class ListItem extends Vue {
+  to!: string;
+  name!: string;
+}
 </script>
 
 <style lang="less" scoped>

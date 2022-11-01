@@ -13,6 +13,9 @@
           <small>当前 :{{ serverHost }}</small>
         </div>
         <div class="switch-item" @click="SetServerHost('')">重置为默认</div>
+        <div class="switch-item" @click="SetServerHost(url)">
+          {{ url }} (本机同端口)
+        </div>
         <div class="switch-item" @click="SetServerHost('127.0.0.1:8000')">
           127.0.0.1:8000 (本机)
         </div>
@@ -52,7 +55,13 @@ export default class ReconnectMask extends Vue {
   @State("serverHost")
   serverHost!: string;
   @Action("SetServerHost")
-  SetServerHost?: (host: string) => void;
+  SetServerHost!: (host: string) => void;
+  url = "127.0.0.1";
+  created() {
+    if (location.port) {
+      this.url = this.url + ":" + location.port;
+    }
+  }
 }
 </script>
 <style scoped lang="less">

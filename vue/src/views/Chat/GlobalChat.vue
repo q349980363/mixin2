@@ -27,11 +27,13 @@
         <div class="chatbox-he" v-else>
           <div class="he-time">{{ timenow(item.CreatedAt) }}</div>
           <div class="chatbubble-he">
-            <Icons
+            <!-- <Icons
               class="headportrait"
               default="defaultAvatar"
               :name="UserInfo.Avatars"
-            />
+            /> -->
+            <!-- 头像问题暂时无法解决 -->
+            <Icons class="headportrait" default="defaultAvatar" />
             <ChatBubble direction="right">{{ item.Data }}</ChatBubble>
           </div>
         </div>
@@ -88,6 +90,7 @@ export default class GlobalChat extends Vue {
     });
     this.ListenerList = [];
   }
+
   async addChat(data: any) {
     this.dataList.push(data);
     this.$nextTick(function () {

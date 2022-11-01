@@ -1,0 +1,19 @@
+# syntax=docker/dockerfile:1
+
+FROM golang:1.18
+
+WORKDIR /app
+COPY go.mod ./
+COPY go.sum ./
+COPY /qqwry.dat ./
+COPY /Scripts/ ./Scripts
+COPY /webroot/ ./webroot
+RUN go mod download
+
+COPY *.go ./
+
+RUN go build -o /docker-mixin
+
+EXPOSE 8000
+
+CMD [ "/docker-mixin" ]
